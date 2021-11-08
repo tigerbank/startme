@@ -3,17 +3,8 @@ import Link from 'next/link';
 import { buildFeedbackPath, extractFeedback } from '../api/feedback';
 import { FeedbackItemProps } from '../../interfaces/common';
 import { ArrowBackIcon } from '@chakra-ui/icons';
-import {
-  Box,
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  Heading,
-  Button,
-} from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
+import FeedbackResult from '../components/FeedbackResult';
 
 function FeedbackPage({
   feedbackItems,
@@ -27,27 +18,7 @@ function FeedbackPage({
           Back
         </Button>
       </Link>
-      <Heading as="h1" textAlign="center" mb="20px">
-        Feedback
-      </Heading>
-      <Table variant="simple">
-        <Thead>
-          <Tr>
-            <Th>ID</Th>
-            <Th>Email</Th>
-            <Th>Feedback</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {feedbackItems.map((feedbackItem: any) => (
-            <Tr key={feedbackItem.id}>
-              <Td>{feedbackItem.id}</Td>
-              <Td>{feedbackItem.email}</Td>
-              <Td>{feedbackItem.feedbackText}</Td>
-            </Tr>
-          ))}
-        </Tbody>
-      </Table>
+      <FeedbackResult feedbackItems={feedbackItems} />
     </Box>
   );
 }
