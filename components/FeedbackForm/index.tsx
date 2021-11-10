@@ -58,7 +58,7 @@ function FeedbackForm() {
             ref={feedbackInputRef}
           />
         </FormControl>
-        <Button mt="20px" type="submit">
+        <Button mt="20px" type="submit" colorScheme="teal" variant="outline">
           Send Feedback
         </Button>
       </form>
