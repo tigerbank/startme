@@ -45,5 +45,6 @@ export async function getStaticProps() {
 
   return {
     props: { restaurants: data.restaurants },
+    revalidate: 10,
   };
 }
