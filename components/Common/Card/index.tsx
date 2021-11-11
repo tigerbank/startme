@@ -1,6 +1,7 @@
 import { Box, Heading, Text } from '@chakra-ui/layout';
 import React from 'react';
-import Image from 'next/image';
+// @ts-ignore
+import { Image } from 'cloudinary-react';
 
 function Card({ content }: any) {
   return (
@@ -14,10 +15,13 @@ function Card({ content }: any) {
       borderRadius="10px"
     >
       <Image
-        src={content.main_image.url}
+        secure
+        cloudName="di4k2zher"
+        publicId={content.main_image.hash}
+        width="300"
+        height="200"
+        crop="fill"
         alt={content.main_image.alternativeText}
-        width="300px"
-        height="200px"
       />
       <Heading as="h6" fontSize="22px">
         {content.name}

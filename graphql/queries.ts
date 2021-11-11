@@ -8,11 +8,24 @@ const GET_ALL_RESTAURANTS = gql`
       location
       detail
       main_image {
-        url
         alternativeText
+        hash
+        url
       }
     }
   }
 `;
 
-export { GET_ALL_RESTAURANTS };
+const GET_ALL_NAVIGATIONS = gql`
+  query {
+    navigations {
+      id
+      title
+      page {
+        slug
+      }
+    }
+  }
+`;
+
+export { GET_ALL_NAVIGATIONS, GET_ALL_RESTAURANTS };
