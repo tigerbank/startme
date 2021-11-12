@@ -16,7 +16,7 @@ const theme = extendTheme({ colors });
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
-      <Layout>
+      <Layout nav={pageProps.nav}>
         <Component {...pageProps} />
       </Layout>
     </ChakraProvider>

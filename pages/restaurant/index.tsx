@@ -21,21 +21,12 @@ function Restaurant({ restaurants }: any) {
 export default Restaurant;
 
 export async function getStaticProps() {
-  // const res = await fetch(
-  //   `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/restaurants`,
-  // );
-  // const restaurants = await res.json();
-
   const client = new ApolloClient({
     uri: process.env.STRAPI_GRAPHQL_API,
     cache: new InMemoryCache(),
   });
 
-  console.log(client);
-
   const { data } = await client.query({ query: GET_ALL_RESTAURANTS });
-
-  console.log(data.restaurants);
 
   if (!data) {
     return {

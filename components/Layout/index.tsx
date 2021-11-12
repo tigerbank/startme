@@ -1,13 +1,12 @@
-import { Box } from '@chakra-ui/layout';
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import Header from './Header';
 import Navigation from './Navigation';
 
-function Layout({ children }: PropsWithChildren<{}>) {
+function Layout({ children, nav }: any) {
   return (
     <>
       <Header />
-      <Navigation />
+      {nav && <Navigation nav={nav} />}
       <main>{children}</main>
     </>
   );
