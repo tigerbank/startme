@@ -12,7 +12,7 @@ function Todo({ todos }: { todos: TodoProps[] }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const todos = await getTodosData();
 
   if (!todos) {
