@@ -52,6 +52,7 @@ export async function getStaticProps({
 
   return {
     props: { page, nav },
+    revalidate: 10,
   };
 }
 
