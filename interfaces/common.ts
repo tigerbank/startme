@@ -20,6 +20,7 @@ export type NavProps = {
   title: string;
   slug: string;
   page: any;
+  url: string;
   order: number;
 };
 
