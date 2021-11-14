@@ -5,7 +5,7 @@ import styles from './Navigation.module.scss';
 import { NavProps } from 'interfaces/common';
 
 function Navigation({ nav }: { nav: NavProps[] }) {
-  const sortedNav = [...nav].sort((a, b) => a.order - b.order);
+  const sortedNav = nav && [...nav].sort((a, b) => a.order - b.order);
   return (
     <Box className={styles.navigation} bg="teal" mb="20px">
       <Box className="container">
