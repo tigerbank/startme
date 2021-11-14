@@ -11,7 +11,9 @@ function ToDoResult() {
     setTodos(data);
   }
 
-  getData();
+  useEffect(() => {
+    getData();
+  }, []);
 
   function handleDelete(id: number) {
     fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/todos/${id}`, {
