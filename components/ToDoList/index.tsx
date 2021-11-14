@@ -31,7 +31,7 @@ function ToDoList({ todos }: { todos: TodoProps[] }) {
   }
 
   function handleDelete(id: number) {
-    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/todos`, {
+    fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/todos/${id}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
