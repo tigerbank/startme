@@ -2,8 +2,9 @@ import React from 'react';
 import { buildEventPath, extractEvent } from 'util/common';
 import EventDetail from 'components/EventDetail';
 import Loading from 'components/Loading/Index';
+import { EventProps } from 'interfaces/common';
 
-function SingleEvent({ event }: any) {
+function SingleEvent({ event }: { event: EventProps }) {
   if (!event) {
     return <Loading />;
   }
@@ -36,7 +37,7 @@ export async function getStaticPaths() {
   const filePath = buildEventPath();
   const data = extractEvent(filePath);
 
-  const paths = data.map((event: any) => ({
+  const paths = data.map((event: EventProps) => ({
     params: { id: event.id },
   }));
 

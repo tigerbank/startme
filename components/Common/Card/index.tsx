@@ -2,8 +2,9 @@ import { Box, Heading, Text } from '@chakra-ui/layout';
 import React from 'react';
 // @ts-ignore
 import { Image } from 'cloudinary-react';
+import { RestaurantProps } from 'interfaces/common';
 
-function Card({ content }: any) {
+function Card({ content }: { content: RestaurantProps }) {
   return (
     <Box
       border="solid 1px"

@@ -3,8 +3,9 @@ import Card from 'components/Common/Card';
 import React from 'react';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { GET_ALL_RESTAURANTS } from 'graphql/queries';
+import { RestaurantProps } from 'interfaces/common';
 
-function Restaurant({ restaurants }: any) {
+function Restaurant({ restaurants }: { restaurants: RestaurantProps[] }) {
   return (
     <Box className="container">
       <Heading>Restaurant</Heading>

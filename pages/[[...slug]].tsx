@@ -1,8 +1,9 @@
 import { Box, Heading, Text } from '@chakra-ui/layout';
+import { PageProps } from 'interfaces/common';
 import React from 'react';
 import { getPageData, getNavData, fetchAPI } from 'util/api';
 
-function Page({ page }: any) {
+function Page({ page }: { page: PageProps }) {
   return (
     <Box className="container">
       <Heading>{page.title}</Heading>
@@ -11,9 +12,9 @@ function Page({ page }: any) {
   );
 }
 
-export async function getStaticPaths(context: any) {
+export async function getStaticPaths({ locales }: { locales: string[] }) {
   // Get all pages from Strapi
-  const allPages = await context.locales.map(async (locale: any) => {
+  const allPages = locales.map(async (locale: string) => {
     return fetchAPI(`/pages?_locale=${locale}`);
   });
 
@@ -32,10 +33,14 @@ export async function getStaticPaths(context: any) {
 
   return { paths, fallback: 'blocking' };
 }
-export async function getStaticProps(context: any) {
-  const { slug } = context.params;
-  const { locale } = context;
-
+export async function getStaticProps({
+  params,
+  locale,
+}: {
+  params: { slug: string[] };
+  locale: string;
+}) {
+  const { slug } = params;
   const page = await getPageData(slug ? slug : [''], locale);
   const nav = await getNavData(locale);
 

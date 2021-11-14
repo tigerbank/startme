@@ -7,7 +7,7 @@ export async function fetchAPI(path: string) {
   return res.json();
 }
 
-export async function getPageData(slug: any, locale: string) {
+export async function getPageData(slug: string[], locale: string) {
   const joinedSlug = slug.join('/');
   const data = await fetchAPI(`/pages?slug=${joinedSlug}&_locale=${locale}`);
 
@@ -19,4 +19,8 @@ export async function getPageData(slug: any, locale: string) {
 
 export async function getNavData(locale: string) {
   return fetchAPI(`/navigations?_locale=${locale}`);
+}
+
+export async function getTodosData() {
+  return fetchAPI(`/todos`);
 }
