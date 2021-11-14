@@ -23,7 +23,9 @@ export async function getStaticPaths({ locales }: { locales: string[] }) {
   const pagesCombined = pages.flat();
 
   const paths = pagesCombined.map((page: any) => {
-    const slugArray = !page.slug ? false : page.slug.split('/');
+    const slugArray = !page.slug ? [''] : page.slug.split('/');
+
+    console.log(slugArray);
 
     return {
       params: { slug: slugArray },
