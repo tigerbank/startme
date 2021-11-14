@@ -51,7 +51,7 @@ function FeedbackResult({
           </Tr>
         </Thead>
         <Tbody>
-          {feedbackItems.map((feedbackItem: any) => (
+          {feedbackItems.map((feedbackItem) => (
             <Tr key={feedbackItem.id}>
               <Td>{feedbackItem.id}</Td>
               <Td>{feedbackItem.email}</Td>

@@ -1,17 +1,17 @@
 import { Box, Heading, Text } from '@chakra-ui/layout';
 import { Button } from '@chakra-ui/react';
+import { EventProps } from 'interfaces/common';
 import Link from 'next/link';
-
 import React from 'react';
 import { buildEventPath, extractEvent } from 'util/common';
 
-function Event({ event }: any) {
+function Event({ event }: { event: EventProps[] }) {
   return (
     <>
       <Box className="container">
         <Heading as="h1">All Events</Heading>
         {event &&
-          event.map((eventItem: any) => (
+          event.map((eventItem: EventProps) => (
             <Box
               border="solid 1px"
               borderColor="gray.200"

@@ -1,8 +1,15 @@
 import React from 'react';
 import Header from './Header';
 import Navigation from './Navigation';
+import { NavProps } from 'interfaces/common';
 
-function Layout({ children, nav }: any) {
+function Layout({
+  children,
+  nav,
+}: {
+  children: React.ReactNode;
+  nav: NavProps[];
+}) {
   return (
     <>
       <Header />
