@@ -1,20 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Text } from '@chakra-ui/react';
 import { TodoProps } from 'interfaces/common';
-import { useRouter } from 'next/router';
+import { getTodosData } from 'util/api';
 
-function ToDoResult({ todos }: { todos: TodoProps[] }) {
-  const router = useRouter();
-  const refreshData = () => {
-    router.replace(router.asPath);
-  };
+function ToDoResult() {
+  const [todos, setTodos] = useState<TodoProps[]>([]);
+
+  async function getData() {
+    const data = await getTodosData();
+    setTodos(data);
+  }
+
+  getData();
+
   function handleDelete(id: number) {
     fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/todos/${id}`, {
       method: 'DELETE',
     })
       .then((response) => response.json())
-      .then((data) => refreshData());
+      .then((data) => {
+        return;
+      });
   }
+
   return (
     <Box>
       {todos &&

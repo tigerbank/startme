@@ -11,7 +11,7 @@ describe('toDoList', () => {
     //Act
 
     //Assert
-    const textElement = screen.getByText('ToDo', {
+    const textElement = screen.getByText('All Tasks', {
       exact: false,
     });
     expect(textElement).toBeInTheDocument();

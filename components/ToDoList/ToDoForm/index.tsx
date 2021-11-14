@@ -1,39 +1,43 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { Input, Button, Box } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
 
 function ToDoForm() {
-  const router = useRouter();
-  const refreshData = () => {
-    router.replace(router.asPath);
-  };
-  const todoInputRef = useRef<HTMLInputElement>(null);
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  const [todoInput, setTodoInput] = useState('');
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setTodoInput(e.target.value);
+  }
+
+  function handleSubmit(e: any) {
     e.preventDefault();
-    const addedTodo = todoInputRef.current?.value;
-    if (addedTodo) {
+    if (todoInput.trim() !== '') {
       fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/todos`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          item: addedTodo,
+          item: todoInput,
         }),
       })
         .then((response) => response.json())
-        .then((data) => refreshData());
+        .then((data) => {
+          setTodoInput('');
+        });
     }
   }
   return (
     <Box>
-      <form onSubmit={handleSubmit}>
+      <form>
         <Box d="flex">
           <Input
-            ref={todoInputRef}
+            onChange={handleChange}
+            value={todoInput}
             placeholder="What do you want to do next?"
           />
-          <Button type="submit">Submit</Button>
+          <Button onClick={handleSubmit} type="submit">
+            Submit
+          </Button>
         </Box>
       </form>
     </Box>
