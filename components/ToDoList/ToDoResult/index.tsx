@@ -4,7 +4,7 @@ import { TodoProps } from 'interfaces/common';
 import { getTodosData } from 'util/api';
 import useSWR from 'swr';
 
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = (url: any) => fetch(url).then((res) => res.json());
 
 function ToDoResult() {
   const { data, error } = useSWR(
