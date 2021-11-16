@@ -27,8 +27,8 @@ function ToDoList({ todos }: { todos: TodoProps[] }) {
         }),
       })
         .then((response) => response.json())
-        .then(() => {
-          setLists([...lists, data]);
+        .then((addedData) => {
+          setLists([...lists, addedData]);
         });
     }
     setTodoInput('');

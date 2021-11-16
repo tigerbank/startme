@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { Input, Button, Box } from '@chakra-ui/react';
 
 function ToDoForm({ handleChange, handleSubmit, todoInput }: any) {
