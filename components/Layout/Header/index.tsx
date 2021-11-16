@@ -14,7 +14,9 @@ function Header() {
       >
         <Box className="container" d="flex" justifyContent="space-between">
           <Heading fontSize="20px" as="h3" fontFamily="Comfortaa, cursive">
-            <Link href="/">TEERASAKYUKAN</Link>
+            <Link href="/">
+              <a>TEERASAKYUKAN</a>
+            </Link>
           </Heading>
 
           <LanguageSwitcher />

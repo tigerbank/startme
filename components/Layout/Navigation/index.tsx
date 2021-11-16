@@ -15,7 +15,11 @@ function Navigation({ nav }: { nav: NavProps[] }) {
               if (navItem.page || navItem.url) {
                 return (
                   <li key={navItem.id}>
-                    <Link href={navItem.page ? navItem.page.slug : navItem.url}>
+                    <Link
+                      href={
+                        navItem.page ? `/${navItem.page.slug}` : navItem.url
+                      }
+                    >
                       {navItem.title}
                     </Link>
                   </li>
