@@ -41,7 +41,7 @@ export type RestaurantProps = {
 export type BoxCarouselProps = {
   id: number;
   title: string;
-  BoxCarouselDetail: BoxCarouselDetailProps;
+  BoxCarouselDetail: any;
 };
 
 export type BoxCarouselDetailProps = {
