@@ -27,6 +27,7 @@ export type NavProps = {
 export type PageProps = {
   title: string;
   body: string;
+  contentSections: any;
 };
 
 export type RestaurantProps = {
@@ -35,4 +36,16 @@ export type RestaurantProps = {
   location: string;
   detail: string;
   main_image: any;
+};
+
+export type BoxCarouselProps = {
+  id: number;
+  title: string;
+  BoxCarouselDetail: BoxCarouselDetailProps;
+};
+
+export type BoxCarouselDetailProps = {
+  id: number;
+  title: string;
+  subtitle: string;
 };
