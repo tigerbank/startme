@@ -7,7 +7,13 @@ import { NavProps } from 'interfaces/common';
 function Navigation({ nav }: { nav: NavProps[] }) {
   const sortedNav = nav && [...nav].sort((a, b) => a.order - b.order);
   return (
-    <Box className={styles.navigation} bg="teal" mb="20px">
+    <Box
+      className={styles.navigation}
+      bg="black"
+      borderBottom="solid 5px"
+      borderColor="yellow.400"
+      mb="20px"
+    >
       <Box className="container">
         <Box color="white" d="flex" p="10px 0">
           <ul>

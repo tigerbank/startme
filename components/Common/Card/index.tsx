@@ -15,15 +15,18 @@ function Card({ content }: { content: RestaurantProps }) {
       w="300px"
       borderRadius="10px"
     >
-      <Image
-        secure
-        cloudName="di4k2zher"
-        publicId={content.main_image.hash}
-        width="300"
-        height="200"
-        crop="fill"
-        alt={content.main_image.alternativeText}
-      />
+      {content.main_image && (
+        <Image
+          secure
+          cloudName="di4k2zher"
+          publicId={content.main_image.hash}
+          width="300"
+          height="200"
+          crop="fill"
+          alt={content.main_image.alternativeText}
+        />
+      )}
+
       <Heading as="h6" fontSize="22px">
         {content.name}
       </Heading>
