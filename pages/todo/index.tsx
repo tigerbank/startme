@@ -23,6 +23,7 @@ export async function getStaticProps() {
 
   return {
     props: { todos },
+    revalidate: 10,
   };
 }
 

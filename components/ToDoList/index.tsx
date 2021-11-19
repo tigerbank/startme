@@ -45,7 +45,7 @@ function ToDoList({ todos }: { todos: TodoProps[] }) {
       });
   }
 
-  const { data, error } = useSWR(
+  const { data } = useSWR(
     `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/todos`,
     fetcher,
   );
@@ -56,7 +56,6 @@ function ToDoList({ todos }: { todos: TodoProps[] }) {
     }
   }, [data]);
 
-  if (error) return <div>failed to load</div>;
   if (!data && !lists) return <div>loading...</div>;
 
   return (

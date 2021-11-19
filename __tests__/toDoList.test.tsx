@@ -1,47 +1,26 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import ToDoList from '../components/ToDoList';
-import userEvent from '@testing-library/user-event';
 
 describe('toDoList', () => {
-  test('render "original" text', () => {
-    //arrnge
-    render(<ToDoList />);
-
-    //Act
-
-    //Assert
-    const textElement = screen.getByText('All Tasks', {
+  it('render "All tasks" text', async () => {
+    render(
+      <ToDoList
+        todos={[
+          {
+            id: 80,
+            item: 'ทดสอบ Todo list',
+          },
+          {
+            id: 81,
+            item: 'ทดสอบ Todo list',
+          },
+        ]}
+      />,
+    );
+    const textElement = await screen.findByText('All Tasks', {
       exact: false,
     });
     expect(textElement).toBeInTheDocument();
   });
-
-  // test('render "text changed"', () => {
-  //   //arrnge
-  //   render(<ToDoList />);
-
-  //   //Act
-  //   userEvent.click(screen.getByText('Button'));
-
-  //   //Assert
-  //   const textElement = screen.getByText('Text changed!', {
-  //     exact: false,
-  //   });
-  //   expect(textElement).toBeInTheDocument();
-  // });
-
-  // test('original text does not render when button is clicked', () => {
-  //   //arrnge
-  //   render(<ToDoList />);
-
-  //   //Act
-  //   userEvent.click(screen.getByText('Button'));
-
-  //   //Assert
-  //   const textElement = screen.queryByText('This is to do list', {
-  //     exact: false,
-  //   });
-  //   expect(textElement).toBeNull();
-  // });
 });
