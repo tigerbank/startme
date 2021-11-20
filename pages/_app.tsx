@@ -2,23 +2,24 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import Layout from 'components/Layout';
+import { Box } from '@chakra-ui/layout';
 
-const colors = {
-  brand: {
-    900: '#1a365d',
-    800: '#153e75',
-    700: '#2a69ac',
+const theme = extendTheme({
+  colors: {
+    main: {
+      gray: '#f1f1f1',
+    },
   },
-};
-
-const theme = extendTheme({ colors });
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider>
-      <Layout nav={pageProps.nav}>
-        <Component {...pageProps} />
-      </Layout>
+    <ChakraProvider theme={theme}>
+      <Box h="100vw" bg="main.gray">
+        <Layout nav={pageProps.nav}>
+          <Component {...pageProps} />
+        </Layout>
+      </Box>
     </ChakraProvider>
   );
 }

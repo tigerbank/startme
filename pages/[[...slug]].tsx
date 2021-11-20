@@ -1,4 +1,5 @@
 import { Box, Heading, Text } from '@chakra-ui/layout';
+
 import Sections from 'components/sections';
 import { PageProps } from 'interfaces/common';
 import React from 'react';
@@ -7,11 +8,12 @@ import { getPageData, getNavData, fetchAPI } from 'util/api';
 function Page({ page }: { page: PageProps }) {
   const sections = page.contentSections;
   return (
-    <Box className="container">
-      <Heading>{page.title}</Heading>
-      <Text>{page.body}</Text>
+    <>
+      {/* <Heading>{page.title}</Heading>
+      <Text>{page.body}</Text> */}
+
       <Sections sections={sections} />
-    </Box>
+    </>
   );
 }
 

@@ -12,7 +12,6 @@ function Navigation({ nav }: { nav: NavProps[] }) {
       bg="black"
       borderBottom="solid 5px"
       borderColor="yellow.400"
-      mb="20px"
     >
       <Box className="container">
         <Box color="white" d="flex" p="10px 0">
