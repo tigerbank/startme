@@ -1,9 +1,11 @@
 import { Box } from '@chakra-ui/layout';
 import React from 'react';
 import BoxCarousel from 'components/BoxCarousel';
+import Hero from 'components/Hero';
 
 const sectionComponents: any = {
   'elements.box-carousel': BoxCarousel,
+  'elements.hero': Hero,
 };
 
 const Section = ({ sectionData }: any) => {
