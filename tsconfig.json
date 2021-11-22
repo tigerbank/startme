@@ -20,7 +20,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "__tests__/todoForm.test.jsx"
+    "__tests__/todoForm.test.jsx",
+    "util/Store.js"
   ],
   "exclude": ["node_modules"]
 }

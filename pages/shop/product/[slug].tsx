@@ -1,14 +1,30 @@
 import { Box, Heading, Text } from '@chakra-ui/layout';
-import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useContext } from 'react';
 import Image from 'next/image';
 import { Button } from '@chakra-ui/button';
 import { getProductsBySlug } from 'util/api';
+import { Store } from 'util/Store';
 
 function ProductScreen({ product }: any) {
+  const { dispatch } = useContext(Store);
+
   if (!product) {
     return <Box>Product not found</Box>;
   }
+
+  const transformProduct = {
+    id: product.id,
+    name: product.name,
+    price: product.price,
+  };
+
+  const addToCartHandler = () => {
+    dispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...transformProduct, quantity: 1 },
+    });
+  };
+
   return (
     <Box className="container" mt="50px">
       <Box d="flex">
@@ -29,7 +45,9 @@ function ProductScreen({ product }: any) {
             <Text>{product.rating}</Text>
             <Text>{product.description}</Text>
             <Text>{product.price}</Text>
-            <Button mt="30px">Add to cart</Button>
+            <Button onClick={addToCartHandler} mt="30px">
+              Add to cart
+            </Button>
           </Box>
         </Box>
       </Box>
@@ -37,11 +55,9 @@ function ProductScreen({ product }: any) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
   const slug = context.query.slug;
   const product = await getProductsBySlug(slug);
-
-  console.log(product);
 
   return {
     props: {

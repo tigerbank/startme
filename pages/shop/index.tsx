@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { getProducts } from 'util/api';
 
 function Shop({ products }: any) {
-  console.log(products);
   return (
     <Box className="container">
       <Box d="flex" flexWrap="wrap" justifyContent="space-between">

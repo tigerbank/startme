@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
-import { Box, Heading } from '@chakra-ui/layout';
+import { Box, Heading, Text } from '@chakra-ui/layout';
 import LanguageSwitcher from './LanguageSwitcher';
 import ColorModeSwitcher from './ColorModeSwitcher';
+import { Store } from 'util/Store';
 
 function Header() {
+  const { state } = useContext(Store);
+  const { cart } = state;
   return (
     <>
       <Box
@@ -25,9 +28,13 @@ function Header() {
             </Link>
           </Heading>
           <Box d="flex" alignItems="center">
-            {/* <Box mr="10px">
-              <ColorModeSwitcher />
-            </Box> */}
+            <Box mr="10" d="flex">
+              <Text mr="5px">Cart</Text>
+              <Text suppressHydrationWarning>
+                {cart.cartItems.length > 0 && cart.cartItems.length}
+              </Text>
+            </Box>
+
             <Box>
               <LanguageSwitcher />
             </Box>

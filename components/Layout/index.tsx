@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from './Header';
 import Navigation from './Navigation';
 import { NavProps } from 'interfaces/common';
+import { Store } from 'util/Store';
 
 function Layout({
   children,
@@ -10,6 +11,8 @@ function Layout({
   children: React.ReactNode;
   nav: NavProps[];
 }) {
+  const { state, dispatch } = useContext(Store);
+
   return (
     <>
       <Header />
