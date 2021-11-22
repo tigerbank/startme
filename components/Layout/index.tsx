@@ -11,8 +11,6 @@ function Layout({
   children: React.ReactNode;
   nav: NavProps[];
 }) {
-  const { state, dispatch } = useContext(Store);
-
   return (
     <>
       <Header />

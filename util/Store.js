@@ -20,7 +20,6 @@ function reducer(state, action) {
       return { ...state, darkMode: false };
     case 'CART_ADD_ITEM': {
       const newItem = action.payload;
-      console.log(newItem);
       const existItem = state.cart.cartItems.find(
         (item) => item.name === newItem.name,
       );
@@ -29,6 +28,15 @@ function reducer(state, action) {
             item.name === existItem.name ? newItem : item,
           )
         : [...state.cart.cartItems, newItem];
+      Cookies.set('cartItems', JSON.stringify(cartItems));
+      return { ...state, cart: { ...state.cart, cartItems } };
+    }
+
+    case 'CART_DELETE_ITEM': {
+      const deleteItem = action.payload;
+      const cartItems = state.cart.cartItems.filter(
+        (item) => item.name !== deleteItem.name,
+      );
       Cookies.set('cartItems', JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
     }

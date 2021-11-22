@@ -4,25 +4,34 @@ import Image from 'next/image';
 import { Button } from '@chakra-ui/button';
 import { getProductsBySlug } from 'util/api';
 import { Store } from 'util/Store';
+import { useRouter } from 'next/router';
 
 function ProductScreen({ product }: any) {
-  const { dispatch } = useContext(Store);
+  const router = useRouter();
+  const { state, dispatch } = useContext(Store);
 
   if (!product) {
     return <Box>Product not found</Box>;
   }
 
+  const updateItem = state.cart.cartItems.find(
+    (item: any) => item.id === product.id,
+  );
+
   const transformProduct = {
     id: product.id,
     name: product.name,
     price: product.price,
+    image: product.image.formats.small.url,
+    countInStock: product.countInStock,
   };
 
   const addToCartHandler = () => {
     dispatch({
       type: 'CART_ADD_ITEM',
-      payload: { ...transformProduct, quantity: 1 },
+      payload: { ...transformProduct, quantity: updateItem.quantity + 1 || 1 },
     });
+    router.push('/shop/cart');
   };
 
   return (
