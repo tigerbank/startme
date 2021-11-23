@@ -24,3 +24,12 @@ export async function getNavData(locale: string) {
 export async function getTodosData() {
   return fetchAPI(`/todos`);
 }
+
+export async function getProducts() {
+  return fetchAPI(`/products`);
+}
+
+export async function getProductsBySlug(slug: string[]) {
+  const data = await fetchAPI(`/products?slug=${slug}`);
+  return data[0];
+}

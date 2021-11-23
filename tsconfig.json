@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "target": "es5",
+    "target": "es2015",
+    "downlevelIteration": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -20,7 +21,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "__tests__/todoForm.test.jsx"
+    "__tests__/todoForm.test.jsx",
+    "util/Store.js"
   ],
   "exclude": ["node_modules"]
 }
