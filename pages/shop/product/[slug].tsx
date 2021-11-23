@@ -29,7 +29,10 @@ function ProductScreen({ product }: any) {
   const addToCartHandler = () => {
     dispatch({
       type: 'CART_ADD_ITEM',
-      payload: { ...transformProduct, quantity: updateItem.quantity + 1 || 1 },
+      payload: {
+        ...transformProduct,
+        quantity: updateItem ? updateItem.quantity + 1 : 1,
+      },
     });
     router.push('/shop/cart');
   };
