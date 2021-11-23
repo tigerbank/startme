@@ -1,39 +1,11 @@
 import { Box, Text } from '@chakra-ui/layout';
-import React, { useContext } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { Button } from '@chakra-ui/button';
 import Link from 'next/link';
-import { getProducts } from 'util/api';
-import { Store } from 'util/Store';
-import { useRouter } from 'next/router';
+import { getNavData, getProducts } from 'util/api';
+import AddToCart from 'components/AddToCart';
 
 function Shop({ products }: any) {
-  const { state, dispatch } = useContext(Store);
-  const router = useRouter();
-
-  const addToCartHandler = (product: any) => {
-    const updateItem = state.cart.cartItems.find(
-      (item: any) => item.id === product.id,
-    );
-
-    const transformProduct = {
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      image: product.image.formats.small.url,
-      countInStock: product.countInStock,
-    };
-
-    dispatch({
-      type: 'CART_ADD_ITEM',
-      payload: {
-        ...transformProduct,
-        quantity: updateItem ? updateItem.quantity + 1 : 1,
-      },
-    });
-    router.push('/shop/cart');
-  };
-
   return (
     <Box className="container">
       <Box d="flex" flexWrap="wrap" justifyContent="space-between">
@@ -58,9 +30,7 @@ function Shop({ products }: any) {
                   <Text>{product.price}</Text>
                 </Box>
 
-                <Button onClick={() => addToCartHandler(product)}>
-                  Add to cart
-                </Button>
+                <AddToCart product={product} />
               </Box>
             </Box>
           ))}
@@ -69,12 +39,14 @@ function Shop({ products }: any) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps({ locale }: { locale: string }) {
   const products = await getProducts();
+  const nav = await getNavData(locale);
 
   return {
     props: {
       products,
+      nav,
     },
   };
 }

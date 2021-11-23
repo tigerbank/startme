@@ -1,41 +1,14 @@
 import { Box, Heading, Text } from '@chakra-ui/layout';
-import React, { useContext } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { Button } from '@chakra-ui/button';
-import { getProductsBySlug } from 'util/api';
-import { Store } from 'util/Store';
-import { useRouter } from 'next/router';
+import { getNavData, getProductsBySlug } from 'util/api';
+
+import AddToCart from 'components/AddToCart';
 
 function ProductScreen({ product }: any) {
-  const router = useRouter();
-  const { state, dispatch } = useContext(Store);
-
   if (!product) {
     return <Box>Product not found</Box>;
   }
-
-  const updateItem = state.cart.cartItems.find(
-    (item: any) => item.id === product.id,
-  );
-
-  const transformProduct = {
-    id: product.id,
-    name: product.name,
-    price: product.price,
-    image: product.image.formats.small.url,
-    countInStock: product.countInStock,
-  };
-
-  const addToCartHandler = () => {
-    dispatch({
-      type: 'CART_ADD_ITEM',
-      payload: {
-        ...transformProduct,
-        quantity: updateItem ? updateItem.quantity + 1 : 1,
-      },
-    });
-    router.push('/shop/cart');
-  };
 
   return (
     <Box className="container" mt="50px">
@@ -57,9 +30,8 @@ function ProductScreen({ product }: any) {
             <Text>{product.rating}</Text>
             <Text>{product.description}</Text>
             <Text>{product.price}</Text>
-            <Button onClick={addToCartHandler} mt="30px">
-              Add to cart
-            </Button>
+
+            <AddToCart product={product} />
           </Box>
         </Box>
       </Box>
@@ -69,11 +41,14 @@ function ProductScreen({ product }: any) {
 
 export async function getServerSideProps(context: any) {
   const slug = context.query.slug;
+  const locale = context.locale;
   const product = await getProductsBySlug(slug);
+  const nav = await getNavData(locale);
 
   return {
     props: {
       product,
+      nav,
     },
   };
 }
