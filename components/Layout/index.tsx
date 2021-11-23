@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Header from './Header';
 import Navigation from './Navigation';
 import { NavProps } from 'interfaces/common';
-import { Store } from 'util/Store';
 
 function Layout({
   children,
