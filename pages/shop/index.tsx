@@ -8,6 +8,7 @@ import AddToCart from 'components/AddToCart';
 function Shop({ products }: any) {
   return (
     <Box className="container" mt="40px">
+      Shop
       <Box d="flex" flexWrap="wrap" justifyContent="space-between">
         {products &&
           products.map((product: any) => (

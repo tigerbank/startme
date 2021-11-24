@@ -49,3 +49,9 @@ export type BoxCarouselDetailProps = {
   title: string;
   subtitle: string;
 };
+
+export type StoreContextState = {
+  darkMode: any;
+  cart: any;
+  user: any;
+};
