@@ -1,3 +1,5 @@
+import { LoginInfoProps } from 'interfaces/common';
+
 export function getStrapiURL(path: string) {
   return `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${path}`;
 }
@@ -32,4 +34,15 @@ export async function getProducts() {
 export async function getProductsBySlug(slug: string[]) {
   const data = await fetchAPI(`/products?slug=${slug}`);
   return data[0];
+}
+
+export async function postLogin(loginInfo: LoginInfoProps) {
+  return fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/auth/local`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(loginInfo),
+  });
 }
