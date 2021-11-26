@@ -37,11 +37,18 @@ function Header() {
           <Box d="flex" alignItems="center">
             <Box suppressHydrationWarning mr="5" d="flex">
               {!user ? (
-                <Text mr="5px">
-                  <Link href="/login">
-                    <a>Login</a>
-                  </Link>
-                </Text>
+                <>
+                  <Text mr="10px">
+                    <Link href="/login">
+                      <a>Login</a>
+                    </Link>
+                  </Text>
+                  <Text mr="10px">
+                    <Link href="/login">
+                      <a>Register</a>
+                    </Link>
+                  </Text>
+                </>
               ) : (
                 <Menu>
                   <MenuButton as={Button}>{user.username}</MenuButton>

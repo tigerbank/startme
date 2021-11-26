@@ -55,3 +55,14 @@ export type StoreContextState = {
   cart: any;
   user: any;
 };
+
+export type LoginInfoProps = {
+  identifier: string;
+  password: string;
+};
+
+export type RegisterInfoProps = {
+  username: string;
+  email: string;
+  password: string;
+};

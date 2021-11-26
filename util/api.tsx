@@ -1,4 +1,4 @@
-import { LoginInfoProps } from 'interfaces/common';
+import { LoginInfoProps, RegisterInfoProps } from 'interfaces/common';
 
 export function getStrapiURL(path: string) {
   return `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${path}`;
@@ -45,4 +45,18 @@ export async function postLogin(loginInfo: LoginInfoProps) {
     },
     body: JSON.stringify(loginInfo),
   });
+}
+
+export async function postRegister(registerInfo: RegisterInfoProps) {
+  return fetch(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/auth/local/register`,
+    {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(registerInfo),
+    },
+  );
 }
