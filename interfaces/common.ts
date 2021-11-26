@@ -49,3 +49,21 @@ export type BoxCarouselDetailProps = {
   title: string;
   subtitle: string;
 };
+
+export type StoreContextState = {
+  darkMode: any;
+  cart: any;
+  user: any;
+};
+
+export type LoginInfoProps = {
+  identifier: string;
+  password: string;
+};
+
+export type RegisterInfoProps = {
+  username: string;
+  email: string;
+  password: string;
+  confirmPassword?: string;
+};

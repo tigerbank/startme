@@ -22,6 +22,7 @@
     "**/*.ts",
     "**/*.tsx",
     "__tests__/todoForm.test.jsx",
+    "__tests__/shop.test.jsx",
     "util/Store.js"
   ],
   "exclude": ["node_modules"]
