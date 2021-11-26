@@ -65,4 +65,5 @@ export type RegisterInfoProps = {
   username: string;
   email: string;
   password: string;
+  confirmPassword?: string;
 };
