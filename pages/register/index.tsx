@@ -1,29 +1,32 @@
+import React, { useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useForm } from 'react-hook-form';
 import {
   Flex,
   Box,
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
   Stack,
-  Link,
   Button,
   Heading,
   useColorModeValue,
+  FormErrorMessage,
+  useToast,
 } from '@chakra-ui/react';
-import React, { useContext, useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { postRegister } from 'util/api';
 import { Store } from 'util/Store';
+import { RegisterInfoProps } from 'interfaces/common';
 
-function Register() {
-  const [username, setUsername] = useState<string>('');
-  const [email, setEmail] = useState<string>('');
-  const [confirmPassword, setConfirmPassword] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
+function RegisterScreen() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<any>();
   const router = useRouter();
+  const toast = useToast();
   const { state, dispatch } = useContext(Store);
-
   const { user } = state;
 
   useEffect(() => {
@@ -32,9 +35,12 @@ function Register() {
     }
   }, []);
 
-  const submitHandler = async (e: any) => {
-    e.preventDefault();
-
+  const submitHandler = async ({
+    username,
+    email,
+    password,
+    confirmPassword,
+  }: RegisterInfoProps) => {
     try {
       const registerInfo = {
         username: username,
@@ -42,11 +48,15 @@ function Register() {
         password: password,
       };
 
-      const register = await postRegister(registerInfo);
+      const registerFetch = await postRegister(registerInfo);
 
-      const registerResponse = await register.json();
-      if (register.status !== 200) {
+      const registerResponse = await registerFetch.json();
+      if (registerFetch.status !== 200) {
         throw new Error(registerResponse.message[0].messages[0].message);
+      }
+
+      if (password !== confirmPassword) {
+        throw new Error('Password does not match');
       }
 
       const userRegister = {
@@ -60,9 +70,23 @@ function Register() {
         payload: userRegister,
       });
 
+      toast({
+        title: 'Success',
+        description: 'success Register',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      });
+
       router.push('/');
-    } catch (error) {
-      alert(error);
+    } catch (error: any) {
+      toast({
+        title: 'Error',
+        description: error.message,
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
     }
   };
 
@@ -73,63 +97,93 @@ function Register() {
           <Stack align={'center'}>
             <Heading fontSize={'4xl'}>Register</Heading>]
           </Stack>
-          <Box
-            rounded={'lg'}
-            bg={useColorModeValue('white', 'gray.700')}
-            boxShadow={'lg'}
-            p={8}
-          >
-            <Stack spacing={4}>
-              <FormControl id="username">
-                <FormLabel>Username</FormLabel>
-                <Input
-                  onChange={(e) => setUsername(e.target.value)}
-                  type="email"
-                  value={username}
-                />
-              </FormControl>
-              <FormControl id="email">
-                <FormLabel>Email address</FormLabel>
-                <Input
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="email"
-                  value={email}
-                />
-              </FormControl>
-              <FormControl id="password">
-                <FormLabel>Password</FormLabel>
-                <Input
-                  onChange={(e) => setPassword(e.target.value)}
-                  type="password"
-                  value={password}
-                />
-              </FormControl>
-              <FormControl id="confirmPassword">
-                <FormLabel>Confirm Password</FormLabel>
-                <Input
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  type="password"
-                  value={confirmPassword}
-                />
-              </FormControl>
-              <Stack spacing={10}>
-                <Button
-                  bg={'blue.400'}
-                  color={'white'}
-                  _hover={{
-                    bg: 'blue.500',
-                  }}
-                  onClick={submitHandler}
-                >
-                  Register
-                </Button>
+          <form onSubmit={handleSubmit(submitHandler)}>
+            <Box
+              rounded={'lg'}
+              bg={useColorModeValue('white', 'gray.700')}
+              boxShadow={'lg'}
+              p={8}
+            >
+              <Stack spacing={4}>
+                <FormControl isInvalid={errors.username}>
+                  <FormLabel>Username</FormLabel>
+                  <Input
+                    id="username"
+                    type="text"
+                    placeholder="username"
+                    {...register('username', {
+                      required: 'This is required',
+                    })}
+                  />
+                  <FormErrorMessage>
+                    {errors.username && errors.username.message}
+                  </FormErrorMessage>
+                </FormControl>
+                <FormControl isInvalid={errors.email}>
+                  <FormLabel>Email</FormLabel>
+                  <Input
+                    id="identifier"
+                    type="email"
+                    placeholder="email"
+                    {...register('email', {
+                      required: 'This is required',
+                      pattern: {
+                        value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                        message: 'Email is wrong format',
+                      },
+                    })}
+                  />
+                  <FormErrorMessage>
+                    {errors.email && errors.email.message}
+                  </FormErrorMessage>
+                </FormControl>
+                <FormControl isInvalid={errors.password}>
+                  <FormLabel>Password</FormLabel>
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="password"
+                    {...register('password', {
+                      required: 'Password is required',
+                    })}
+                  />
+                  <FormErrorMessage>
+                    {errors.password && errors.password.message}
+                  </FormErrorMessage>
+                </FormControl>
+                <FormControl isInvalid={errors.confirmPassword}>
+                  <FormLabel>Confirm Password</FormLabel>
+                  <Input
+                    id="confirmPassword"
+                    type="password"
+                    placeholder="confirm password"
+                    {...register('confirmPassword', {
+                      required: 'Confirm Password is required',
+                    })}
+                  />
+                  <FormErrorMessage>
+                    {errors.confirmPassword && errors.confirmPassword.message}
+                  </FormErrorMessage>
+                </FormControl>
+                <Stack spacing={10}>
+                  <Button
+                    bg={'blue.400'}
+                    color={'white'}
+                    _hover={{
+                      bg: 'blue.500',
+                    }}
+                    type="submit"
+                  >
+                    Register
+                  </Button>
+                </Stack>
               </Stack>
-            </Stack>
-          </Box>
+            </Box>
+          </form>
         </Stack>
       </Flex>
     </Box>
   );
 }
 
-export default Register;
+export default RegisterScreen;

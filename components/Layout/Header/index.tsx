@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Box, Heading, Text } from '@chakra-ui/layout';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -7,6 +8,7 @@ import Cookies from 'js-cookie';
 import { Menu, MenuButton, MenuList, MenuItem, Button } from '@chakra-ui/react';
 
 function Header() {
+  const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { cart, user } = state;
 
@@ -14,6 +16,7 @@ function Header() {
     dispatch({ type: 'LOGOUT' });
     Cookies.remove('user');
     Cookies.remove('cartItems');
+    router.push('/');
   };
   return (
     <>
@@ -44,7 +47,7 @@ function Header() {
                     </Link>
                   </Text>
                   <Text mr="10px">
-                    <Link href="/login">
+                    <Link href="/register">
                       <a>Register</a>
                     </Link>
                   </Text>
