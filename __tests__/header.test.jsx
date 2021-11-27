@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Header from '../components/Layout/Header';
+import Header from '@/components/Layout/Header';
 
 describe('header', () => {
   test('render "Teerasakyukan" as a text', () => {

@@ -1,4 +1,4 @@
-import { LoginInfoProps, RegisterInfoProps } from 'interfaces/common';
+import { LoginInfoProps, RegisterInfoProps } from '@/interfaces/common';
 
 export function getStrapiURL(path: string) {
   return `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${path}`;

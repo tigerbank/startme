@@ -1,9 +1,9 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import Layout from 'components/Layout';
+import Layout from '@/components/Layout';
 import { Box } from '@chakra-ui/layout';
-import { StoreProvider } from 'util/Store';
+import { StoreProvider } from '@/util/Store';
 
 const theme = extendTheme({
   colors: {

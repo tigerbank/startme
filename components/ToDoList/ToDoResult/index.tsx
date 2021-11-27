@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Text } from '@chakra-ui/react';
-import { TodoProps } from 'interfaces/common';
+import { TodoProps } from '@/interfaces/common';
 
 function ToDoResult({ lists, handleDelete }: any) {
   return (

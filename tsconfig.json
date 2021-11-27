@@ -1,6 +1,12 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/util/*": ["util/*"],
+      "@/interfaces/*": ["interfaces/*"],
+      "@/pages/*": ["pages/*"]
+    },
     "target": "es2015",
     "downlevelIteration": true,
     "lib": ["dom", "dom.iterable", "esnext"],

@@ -16,9 +16,9 @@ import {
   FormErrorMessage,
   useToast,
 } from '@chakra-ui/react';
-import { postLogin } from 'util/api';
-import { Store } from 'util/Store';
-import { LoginInfoProps } from 'interfaces/common';
+import { postLogin } from '@/util/api';
+import { Store } from '@/util/Store';
+import { LoginInfoProps } from '@/interfaces/common';
 
 function Login() {
   const {

@@ -1,7 +1,7 @@
 import { Box, Heading, Text } from '@chakra-ui/layout';
 import React from 'react';
 import Slider from 'react-slick';
-import { BoxCarouselDetailProps, BoxCarouselProps } from 'interfaces/common';
+import { BoxCarouselDetailProps, BoxCarouselProps } from '@/interfaces/common';
 
 function BoxCarousel({ data }: { data: BoxCarouselProps }) {
   const settings = {

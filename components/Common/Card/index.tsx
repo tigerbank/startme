@@ -2,7 +2,7 @@ import { Box, Heading, Text } from '@chakra-ui/layout';
 import React from 'react';
 // @ts-ignore
 import { Image } from 'cloudinary-react';
-import { RestaurantProps } from 'interfaces/common';
+import { RestaurantProps } from '@/interfaces/common';
 
 function Card({ content }: { content: RestaurantProps }) {
   return (

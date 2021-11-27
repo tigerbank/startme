@@ -1,7 +1,7 @@
 import { Box, Heading, Text } from '@chakra-ui/layout';
 import React from 'react';
 import Image from 'next/image';
-import { getNavData, getProductsBySlug } from 'util/api';
+import { getNavData, getProductsBySlug } from '@/util/api';
 
 import AddToCart from 'components/AddToCart';
 

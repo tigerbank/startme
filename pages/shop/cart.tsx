@@ -1,7 +1,7 @@
 import { Box, Heading, Text } from '@chakra-ui/layout';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 import React, { useContext } from 'react';
-import { Store } from 'util/Store';
+import { Store } from '@/util/Store';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@chakra-ui/button';

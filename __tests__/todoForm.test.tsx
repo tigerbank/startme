@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ToDoForm from '../components/ToDoList/ToDoForm';
+import ToDoForm from '@/components/ToDoList/ToDoForm';
 
 const mockedHandleSubmit = jest
   .fn()

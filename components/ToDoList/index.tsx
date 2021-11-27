@@ -1,6 +1,6 @@
 import { Box, Heading } from '@chakra-ui/layout';
 import React, { useState, useEffect } from 'react';
-import { TodoProps } from 'interfaces/common';
+import { TodoProps } from '@/interfaces/common';
 import ToDoForm from './ToDoForm';
 import ToDoResult from './ToDoResult';
 import useSWR from 'swr';

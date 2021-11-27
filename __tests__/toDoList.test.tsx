@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ToDoList from 'components/ToDoList';
+import ToDoList from '@/components/ToDoList';
 
 describe('toDoList', () => {
   it('render "All tasks" text', async () => {

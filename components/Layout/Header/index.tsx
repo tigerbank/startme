@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Box, Heading, Text } from '@chakra-ui/layout';
-import LanguageSwitcher from './LanguageSwitcher';
-import { Store } from 'util/Store';
+import LanguageSwitcher from '@/components/Layout/Header/LanguageSwitcher';
+import { Store } from '@/util/Store';
 import Cookies from 'js-cookie';
 import { Menu, MenuButton, MenuList, MenuItem, Button } from '@chakra-ui/react';
 

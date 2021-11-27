@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/layout';
 import React from 'react';
 import Link from 'next/link';
 import styles from './Navigation.module.scss';
-import { NavProps } from 'interfaces/common';
+import { NavProps } from '@/interfaces/common';
 
 function Navigation({ nav }: { nav: NavProps[] }) {
   const sortedNav = nav && [...nav].sort((a, b) => a.order - b.order);

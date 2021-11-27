@@ -2,8 +2,8 @@ import { Box, Text } from '@chakra-ui/layout';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getNavData, getProducts } from 'util/api';
-import AddToCart from 'components/AddToCart';
+import { getNavData, getProducts } from '@/util/api';
+import AddToCart from '@/components/AddToCart';
 
 function Shop({ products }: any) {
   return (

@@ -1,9 +1,9 @@
 import { Box, Heading } from '@chakra-ui/layout';
-import Card from 'components/Common/Card';
+import Card from '@/components/Common/Card';
 import React from 'react';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { GET_ALL_RESTAURANTS } from 'graphql/queries';
-import { RestaurantProps } from 'interfaces/common';
+import { RestaurantProps } from '@/interfaces/common';
 
 function Restaurant({ restaurants }: { restaurants: RestaurantProps[] }) {
   return (

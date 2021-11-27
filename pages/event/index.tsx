@@ -1,9 +1,9 @@
+import React from 'react';
+import Link from 'next/link';
 import { Box, Heading, Text } from '@chakra-ui/layout';
 import { Button } from '@chakra-ui/react';
-import { EventProps } from 'interfaces/common';
-import Link from 'next/link';
-import React from 'react';
-import { buildEventPath, extractEvent } from 'util/common';
+import { EventProps } from '@/interfaces/common';
+import { buildEventPath, extractEvent } from '@/util/common';
 
 function Event({ event }: { event: EventProps[] }) {
   return (

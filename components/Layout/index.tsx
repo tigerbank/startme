@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import Navigation from './Navigation';
-import { NavProps } from 'interfaces/common';
+import { NavProps } from '@/interfaces/common';
 
 function Layout({
   children,

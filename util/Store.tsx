@@ -1,5 +1,6 @@
 import { createContext, useReducer } from 'react';
 import Cookies from 'js-cookie';
+import { StoreContextState } from '@/interfaces/common';
 
 const initialState = {
   darkMode: false,
@@ -11,7 +12,13 @@ const initialState = {
   user: Cookies.get('user') ? JSON.parse(Cookies.get('user')!) : null,
 };
 
-export const Store = createContext<any>(initialState);
+export const Store = createContext<{
+  state: StoreContextState;
+  dispatch: React.Dispatch<any>;
+}>({
+  state: initialState,
+  dispatch: () => null,
+});
 
 function reducer(state: any, action: any) {
   switch (action.type) {

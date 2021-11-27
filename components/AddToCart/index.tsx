@@ -1,6 +1,6 @@
 import { Button } from '@chakra-ui/button';
 import React, { useContext } from 'react';
-import { Store } from 'util/Store';
+import { Store } from '@/util/Store';
 import { useRouter } from 'next/router';
 
 function AddToCart({ product }: any) {

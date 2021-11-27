@@ -11,7 +11,7 @@ import {
   Button,
   Text,
 } from '@chakra-ui/react';
-import { FeedbackItemProps } from 'interfaces/common';
+import { FeedbackItemProps } from '@/interfaces/common';
 
 function FeedbackResult({
   feedbackItems,

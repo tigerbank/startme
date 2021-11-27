@@ -14,9 +14,9 @@ import {
   FormErrorMessage,
   useToast,
 } from '@chakra-ui/react';
-import { postRegister } from 'util/api';
-import { Store } from 'util/Store';
-import { RegisterInfoProps } from 'interfaces/common';
+import { postRegister } from '@/util/api';
+import { Store } from '@/util/Store';
+import { RegisterInfoProps } from '@/interfaces/common';
 
 function RegisterScreen() {
   const {
