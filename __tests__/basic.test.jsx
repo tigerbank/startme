@@ -50,8 +50,8 @@ describe('Basic', () => {
     expect(paragraphElement).toBeInTheDocument();
   });
 
-  test('if we have any products', async () => {
-    const products = await getProducts(['name', 'brand']);
-    console.log(products);
-  });
+  // test('if we have any products', async () => {
+  //   const products = await getProducts(['name', 'brand']);
+  //   console.log(products);
+  // });
 });
