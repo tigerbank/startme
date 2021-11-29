@@ -103,9 +103,13 @@ function CartScreen() {
               )}{' '}
               THB
             </Text>
-            <Button mt="20px" isFullWidth>
-              Check out
-            </Button>
+            <Link href="/shipping" passHref>
+              <a>
+                <Button mt="20px" isFullWidth>
+                  Check out
+                </Button>
+              </a>
+            </Link>
           </Box>
         </Box>
       )}

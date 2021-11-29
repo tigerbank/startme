@@ -16,6 +16,8 @@ function Header() {
     dispatch({ type: 'LOGOUT' });
     Cookies.remove('user');
     Cookies.remove('cartItems');
+    Cookies.remove('shippingAddress');
+    Cookies.remove('paymentMethod');
     router.push('/');
   };
   return (
