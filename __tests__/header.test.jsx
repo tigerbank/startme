@@ -6,6 +6,7 @@ describe('header', () => {
   test('render "Teerasakyukan" as a text', () => {
     //arrnge
     render(<Header />);
+    // screen.debug();
 
     //Act
 

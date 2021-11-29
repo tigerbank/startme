@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Basic from '@/pages/basic';
-import { getProducts } from '@/util/api';
 
 describe('Basic', () => {
   test('two plus two is four', () => {
@@ -49,9 +48,4 @@ describe('Basic', () => {
     const paragraphElement = await screen.findByText(/No task left/i);
     expect(paragraphElement).toBeInTheDocument();
   });
-
-  // test('if we have any products', async () => {
-  //   const products = await getProducts(['name', 'brand']);
-  //   console.log(products);
-  // });
 });

@@ -18,7 +18,6 @@ export type EventProps = {
 export type NavProps = {
   id: number;
   title: string;
-  slug: string;
   page: any;
   url: string;
   order: number;

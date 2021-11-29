@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/layout';
 import React from 'react';
 import Link from 'next/link';
-import styles from './Navigation.module.scss';
+import styles from '@/components/Layout/Navigation/Navigation.module.scss';
 import { NavProps } from '@/interfaces/common';
 
 function Navigation({ nav }: { nav: NavProps[] }) {

@@ -29,7 +29,9 @@
     "**/*.tsx",
     "__tests__/todoForm.test.jsx",
     "__tests__/shop.test.jsx",
-    "util/Store.js"
+    "util/Store.js",
+    "__tests__/todoTest.test.js",
+    "util/heroApi.js"
   ],
   "exclude": ["node_modules"]
 }
