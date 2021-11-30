@@ -68,6 +68,13 @@ function reducer(state: any, action: any) {
       };
     }
 
+    case 'CLEAR_CART': {
+      return {
+        ...state,
+        cart: { ...state.cart, cartItems: [] },
+      };
+    }
+
     case 'LOGIN': {
       const userLogin = action.payload;
 

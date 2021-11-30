@@ -56,6 +56,7 @@ function Login() {
       }
 
       const userLogin = {
+        id: loginResponse.user.id,
         username: loginResponse.user.username,
         email: loginResponse.user.email,
         jwt: loginResponse.jwt,

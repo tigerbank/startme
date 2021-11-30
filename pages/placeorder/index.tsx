@@ -1,21 +1,25 @@
 import CartSteps from '@/components/CartSteps';
 import { Store } from '@/util/Store';
 import { Box, Flex, Heading, Text } from '@chakra-ui/layout';
+import { useToast, Spinner } from '@chakra-ui/react';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 import { useRouter } from 'next/router';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { totalItemPrice } from '@/util/cart';
 import Link from 'next/link';
 import { Button } from '@chakra-ui/button';
+import Cookies from 'js-cookie';
 
 function PlaceOrder() {
   const { state, dispatch } = useContext(Store);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const toast = useToast();
   const {
     user,
     cart: { shippingAddress, paymentMethod, cartItems },
   } = state;
-  const router = useRouter();
 
   useEffect(() => {
     if (!user) {
@@ -29,12 +33,69 @@ function PlaceOrder() {
     if (!paymentMethod) {
       router.push('/payment');
     }
+
+    console.log(user);
   }, []);
 
-  const totalPrice = totalItemPrice(cartItems);
-  const shippingPrice = totalPrice > 200 ? 0 : 15;
-  const taxPrice = (totalPrice * 0.07).toFixed(2);
-  const total = totalPrice + shippingPrice + Number(taxPrice);
+  const itemPrice = totalItemPrice(cartItems);
+  const shippingPrice = itemPrice > 200 ? 0 : 15;
+  const taxPrice = (itemPrice * 0.07).toFixed(2);
+  const total = itemPrice + shippingPrice + Number(taxPrice);
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const order = await fetch(
+        `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/orders`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${user.jwt}`,
+          },
+          body: JSON.stringify({
+            paymentMethod,
+            shippingAddress: { ...shippingAddress },
+            orderItems: cartItems,
+            itemPrice,
+            shippingPrice,
+            taxPrice,
+            totalPrice: total,
+            user: user.id,
+          }),
+        },
+      );
+
+      if (order.status !== 200) {
+        throw new Error(order.statusText);
+      }
+
+      setLoading(false);
+      toast({
+        title: 'Success',
+        description: 'Submitted order successfully',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      });
+      dispatch({
+        type: 'CLEAR_CART',
+      });
+      Cookies.remove('cartItems');
+      router.push('/');
+    } catch (error: any) {
+      toast({
+        title: 'Error',
+        description: error.message,
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
+
+      setLoading(false);
+    }
+  };
 
   return (
     <Box className="container">
@@ -101,7 +162,7 @@ function PlaceOrder() {
             <Flex justifyContent="space-between">
               <Text>Items:</Text>
               <Text>
-                {totalPrice}
+                {itemPrice}
                 THB
               </Text>
             </Flex>
@@ -117,9 +178,14 @@ function PlaceOrder() {
               <Text fontWeight="bold">Total:</Text>
               <Text fontWeight="bold">{total}</Text>
             </Flex>
-            <Button mt="20px" isFullWidth>
+            <Button mt="20px" isFullWidth onClick={handleSubmit}>
               Place order
             </Button>
+            {loading && (
+              <Box textAlign="center" mt="20px">
+                <Spinner />
+              </Box>
+            )}
           </Box>
         </Box>
       </Flex>
