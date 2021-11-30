@@ -4,13 +4,28 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import Layout from '@/components/Layout';
 import { Box } from '@chakra-ui/layout';
 import { StoreProvider } from '@/util/Store';
+import { createBreakpoints } from '@chakra-ui/theme-tools';
+
+// 2. Update the breakpoints as key-value pairs
+const breakpoints = createBreakpoints({
+  sm: '320px',
+  md: '768px',
+  lg: '960px',
+  xl: '1200px',
+  '2xl': '1536px',
+});
 
 const theme = extendTheme({
+  fonts: {
+    heading: 'Prompt',
+    body: 'Prompt',
+  },
   colors: {
     main: {
       gray: '#f1f1f1',
     },
   },
+  breakpoints,
 });
 
 function MyApp({ Component, pageProps }: AppProps) {

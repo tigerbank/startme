@@ -9,6 +9,10 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link
+            href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;500&display=swap"
+            rel="stylesheet"
+          />
+          <link
             rel="stylesheet"
             type="text/css"
             charSet="UTF-8"

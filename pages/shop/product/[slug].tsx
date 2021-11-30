@@ -12,8 +12,8 @@ function ProductScreen({ product }: any) {
 
   return (
     <Box className="container" mt="50px">
-      <Box d="flex">
-        <Box w="50%">
+      <Box d={{ base: 'block', lg: 'flex' }}>
+        <Box w={{ base: '100%', lg: '50%' }}>
           <Image
             width="900"
             height="900"
@@ -22,7 +22,7 @@ function ProductScreen({ product }: any) {
             layout="responsive"
           />
         </Box>
-        <Box w="50%">
+        <Box w={{ base: '100%', lg: '50%' }}>
           <Box px="30px">
             <Heading>{product.name}</Heading>
             <Text>{product.category}</Text>

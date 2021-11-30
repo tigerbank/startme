@@ -31,7 +31,7 @@ function AddToCart({ product }: any) {
   };
 
   return (
-    <Button onClick={addToCartHandler} mt="30px">
+    <Button colorScheme="teal" onClick={addToCartHandler} mt="30px">
       Add to cart
     </Button>
   );

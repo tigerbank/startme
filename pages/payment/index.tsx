@@ -50,8 +50,14 @@ function Payment() {
             <Radio value="cash">Cash</Radio>
           </Stack>
         </RadioGroup>
-        <Button type="submit">Continue</Button>
-        <Button onClick={() => router.push('/shipping')}>Back</Button>
+        <Box mt="30px">
+          <Button mr="20px" onClick={() => router.push('/shipping')}>
+            Back
+          </Button>
+          <Button colorScheme="teal" type="submit">
+            Continue
+          </Button>
+        </Box>
       </form>
       <Box mt="30px">
         <Link href="/shop">Back to shop</Link>

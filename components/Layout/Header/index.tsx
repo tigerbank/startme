@@ -64,7 +64,7 @@ function Header() {
               )}
             </Box>
 
-            <Box mr="10" d="flex">
+            <Box mr="10" d={{ base: 'none', lg: 'flex' }}>
               <Text mr="5px">
                 <Link href="/shop/cart">
                   <a>Cart</a>
@@ -75,7 +75,7 @@ function Header() {
               </Text>
             </Box>
 
-            <Box>
+            <Box d={{ base: 'none', lg: 'flex' }}>
               <LanguageSwitcher />
             </Box>
           </Box>

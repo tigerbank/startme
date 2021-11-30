@@ -45,12 +45,12 @@ function CartScreen() {
       {cartItems.length === 0 && <Box>Cart is empty</Box>}
 
       {cartItems.length !== 0 && (
-        <Box d="flex" mt="30px">
-          <Box w="70%">
+        <Box d={{ base: 'block', lg: 'flex' }} mt="30px">
+          <Box w={{ base: '100%', lg: '70%' }}>
             <Table variant="simple">
               <Thead>
                 <Tr>
-                  <Th>Image</Th>
+                  <Th d={{ base: 'none', lg: 'table-cell' }}>Image</Th>
                   <Th>Name</Th>
                   <Th>Quantity</Th>
                   <Th>Price</Th>
@@ -60,7 +60,7 @@ function CartScreen() {
               <Tbody>
                 {cartItems.map((item: any) => (
                   <Tr key={item.name}>
-                    <Td>
+                    <Td d={{ base: 'none', lg: 'table-cell' }}>
                       <Image
                         src={item.image}
                         layout="fixed"
@@ -92,7 +92,11 @@ function CartScreen() {
             </Table>
           </Box>
 
-          <Box w="30%" textAlign="right">
+          <Box
+            w={{ base: '100%', lg: '30%' }}
+            textAlign="right"
+            mt={{ base: '30px', lg: '0px' }}
+          >
             <Heading as="h4">Subtotal</Heading>
             <Text>
               {cartItems.reduce((a: any, c: any) => a + c.quantity, 0)} Items
@@ -103,7 +107,7 @@ function CartScreen() {
             </Text>
             <Link href="/shipping" passHref>
               <a>
-                <Button mt="20px" isFullWidth>
+                <Button colorScheme="teal" mt="20px" isFullWidth>
                   Check out
                 </Button>
               </a>

@@ -151,14 +151,7 @@ function Shipping() {
             </FormControl>
 
             <Stack spacing={10}>
-              <Button
-                bg={'blue.400'}
-                color={'white'}
-                _hover={{
-                  bg: 'blue.500',
-                }}
-                type="submit"
-              >
+              <Button colorScheme="teal" type="submit">
                 Continue
               </Button>
             </Stack>

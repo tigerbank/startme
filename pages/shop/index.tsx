@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/layout';
+import { Box, Heading, Text } from '@chakra-ui/layout';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,17 +9,19 @@ import { Flex } from '@chakra-ui/react';
 function Shop({ products }: any) {
   return (
     <Box className="container" mt="40px">
-      Shop
+      <Heading as="h3" fontSize="18px">
+        Shop
+      </Heading>
       <Flex flexWrap="wrap" gridGap={30}>
         {products &&
           products.map((product: any) => (
-            <Box key={product.name} width="380">
+            <Box key={product.name} width={{ base: '100%', lg: '380px' }}>
               <Link href={`/shop/product/${product.slug}`} passHref>
                 <a>
                   <Image
                     src={product.image.url}
                     alt=""
-                    layout="fixed"
+                    layout="responsive"
                     width="380"
                     height="380"
                   />

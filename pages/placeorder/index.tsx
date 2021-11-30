@@ -101,8 +101,8 @@ function PlaceOrder() {
     <Box className="container">
       <CartSteps currentStep={3} />
       <Heading as="h3">Place order</Heading>
-      <Flex>
-        <Box w="70%" mr="40px">
+      <Flex flexDir={{ base: 'column', lg: 'row' }}>
+        <Box w={{ base: '100%', lg: '70%' }} mr="40px">
           <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
             <Heading mb="10px" as="h4" fontSize="18px">
               Shipping Address
@@ -127,7 +127,7 @@ function PlaceOrder() {
             <Table variant="simple">
               <Thead>
                 <Tr>
-                  <Th>Image</Th>
+                  <Th d={{ base: 'none', lg: 'table-cell' }}>Image</Th>
                   <Th>Name</Th>
                   <Th>Quantity</Th>
                   <Th>Price</Th>
@@ -136,7 +136,7 @@ function PlaceOrder() {
               <Tbody>
                 {cartItems.map((item: any) => (
                   <Tr key={item.name}>
-                    <Td>
+                    <Td d={{ base: 'none', lg: 'table-cell' }}>
                       <Image
                         src={item.image}
                         layout="fixed"
@@ -154,7 +154,7 @@ function PlaceOrder() {
             </Table>
           </Box>
         </Box>
-        <Box flex="1">
+        <Box flex="1" w={{ base: '100%', lg: 'auto' }}>
           <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
             <Heading mb="10px" as="h4" fontSize="18px">
               Order Summary
@@ -178,7 +178,12 @@ function PlaceOrder() {
               <Text fontWeight="bold">Total:</Text>
               <Text fontWeight="bold">{total}</Text>
             </Flex>
-            <Button mt="20px" isFullWidth onClick={handleSubmit}>
+            <Button
+              colorScheme="teal"
+              mt="20px"
+              isFullWidth
+              onClick={handleSubmit}
+            >
               Place order
             </Button>
             {loading && (
