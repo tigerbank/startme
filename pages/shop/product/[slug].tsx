@@ -2,7 +2,7 @@ import { Box, Heading, Text } from '@chakra-ui/layout';
 import React from 'react';
 import Image from 'next/image';
 import { getNavData, getProductsBySlug } from '@/util/api';
-
+import Link from 'next/link';
 import AddToCart from 'components/AddToCart';
 
 function ProductScreen({ product }: any) {
@@ -34,6 +34,9 @@ function ProductScreen({ product }: any) {
             <AddToCart product={product} />
           </Box>
         </Box>
+      </Box>
+      <Box mt="30px">
+        <Link href="/shop">Back to shop</Link>
       </Box>
     </Box>
   );

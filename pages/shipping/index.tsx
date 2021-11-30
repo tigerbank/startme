@@ -11,12 +11,14 @@ import { Input } from '@chakra-ui/input';
 import { Box, Heading, Link, Stack } from '@chakra-ui/layout';
 import { Store } from '@/util/Store';
 import Cookies from 'js-cookie';
+import CartSteps from '@/components/CartSteps';
 
 function Shipping() {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
 
   const {
+    user,
     cart: { shippingAddress },
   } = state;
 
@@ -60,14 +62,15 @@ function Shipping() {
   }, []);
 
   //redirect to home page if user is not logged in
-  //   useEffect(() => {
-  //     if (!user) {
-  //       router.push('/');
-  //     }
-  //   }, []);
+  useEffect(() => {
+    if (!user) {
+      router.push('/login');
+    }
+  }, []);
 
   return (
     <Box className="container">
+      <CartSteps currentStep={1} />
       <Heading as="h3">Shipping</Heading>
       <form onSubmit={handleSubmit(submitHandler)}>
         <Box rounded={'lg'} boxShadow={'lg'} p={8}>
@@ -162,6 +165,9 @@ function Shipping() {
           </Stack>
         </Box>
       </form>
+      <Box mt="30px">
+        <Link href="/shop">Back to shop</Link>
+      </Box>
     </Box>
   );
 }

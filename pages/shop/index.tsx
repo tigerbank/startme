@@ -4,23 +4,24 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getNavData, getProducts } from '@/util/api';
 import AddToCart from '@/components/AddToCart';
+import { Flex } from '@chakra-ui/react';
 
 function Shop({ products }: any) {
   return (
     <Box className="container" mt="40px">
       Shop
-      <Box d="flex" flexWrap="wrap" justifyContent="space-between">
+      <Flex flexWrap="wrap" gridGap={30}>
         {products &&
           products.map((product: any) => (
-            <Box key={product.name} w="350px">
+            <Box key={product.name} width="380">
               <Link href={`/shop/product/${product.slug}`} passHref>
                 <a>
                   <Image
                     src={product.image.url}
                     alt=""
                     layout="fixed"
-                    width="400"
-                    height="400"
+                    width="380"
+                    height="380"
                   />
                 </a>
               </Link>
@@ -35,7 +36,7 @@ function Shop({ products }: any) {
               </Box>
             </Box>
           ))}
-      </Box>
+      </Flex>
     </Box>
   );
 }

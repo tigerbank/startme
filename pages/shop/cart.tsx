@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@chakra-ui/button';
 import dynamic from 'next/dynamic';
+import { totalItemPrice } from '@/util/cart';
 
 function CartScreen() {
   const { state, dispatch } = useContext(Store);
@@ -97,10 +98,7 @@ function CartScreen() {
               {cartItems.reduce((a: any, c: any) => a + c.quantity, 0)} Items
             </Text>
             <Text>
-              {cartItems.reduce(
-                (a: any, c: any) => a + c.quantity * c.price,
-                0,
-              )}{' '}
+              {totalItemPrice(cartItems)}
               THB
             </Text>
             <Link href="/shipping" passHref>

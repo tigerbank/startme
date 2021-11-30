@@ -1,3 +1,4 @@
+import CartSteps from '@/components/CartSteps';
 import { Store } from '@/util/Store';
 import { Button } from '@chakra-ui/button';
 import { Box, Heading, Stack } from '@chakra-ui/layout';
@@ -5,6 +6,7 @@ import { Radio, RadioGroup } from '@chakra-ui/radio';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
+import Link from 'next/link';
 
 function Payment() {
   const router = useRouter();
@@ -30,12 +32,14 @@ function Payment() {
       type: 'SET_PAYMENT_METHOD',
       payload: paymentMethod,
     });
+
     Cookies.set('paymentMethod', paymentMethod);
     router.push('/placeorder');
   };
 
   return (
     <Box className="container">
+      <CartSteps currentStep={2} />
       <Heading mt="30px" as="h3">
         Payment Method
       </Heading>
@@ -49,6 +53,9 @@ function Payment() {
         <Button type="submit">Continue</Button>
         <Button onClick={() => router.push('/shipping')}>Back</Button>
       </form>
+      <Box mt="30px">
+        <Link href="/shop">Back to shop</Link>
+      </Box>
     </Box>
   );
 }
