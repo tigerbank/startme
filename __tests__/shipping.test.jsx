@@ -2,6 +2,16 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Shipping from '@/pages/shipping';
+import { useRouter } from 'next/router';
+
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(),
+}));
+
+const push = jest.fn();
+useRouter.mockImplementation(() => ({
+  push,
+}));
 
 const renderShipping = () => {
   render(<Shipping />);

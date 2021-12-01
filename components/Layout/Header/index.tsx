@@ -1,9 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
-
 import SubMenu from '@/components/Layout/Header/SubMenu';
 import { Box, Heading, useBreakpointValue } from '@chakra-ui/react';
-import MobileNavigation from '../Navigation/Mobile';
+import MobileNavigation from '@/components/Layout/Navigation/Mobile';
 
 function Header() {
   const isMobile = useBreakpointValue({ base: true, md: false });

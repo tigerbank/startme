@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Navigation from '@/components/Layout/Navigation';
+import DesktopNavigation from '@/components/Layout/Navigation/Desktop';
 
 describe('Nav', () => {
   let expectedProps = [
@@ -28,14 +28,14 @@ describe('Nav', () => {
   ];
 
   it('should render nav title', () => {
-    render(<Navigation nav={expectedProps} />);
+    render(<DesktopNavigation nav={expectedProps} />);
 
     const navTitle = screen.getAllByText('เกี่ยวกับเรา');
     expect(navTitle[0]).toBeVisible();
   });
 
   it('should render Nav item', () => {
-    render(<Navigation nav={expectedProps} />);
+    render(<DesktopNavigation nav={expectedProps} />);
 
     const navs = screen.getAllByText('เกี่ยวกับเรา');
     expect(navs).toHaveLength(expectedProps.length);
