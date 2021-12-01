@@ -5,8 +5,9 @@ import Link from 'next/link';
 import { getNavData, getProducts } from '@/util/api';
 import AddToCart from '@/components/AddToCart';
 import { Flex } from '@chakra-ui/react';
+import { ProductProps } from '@/interfaces/common';
 
-function Shop({ products }: any) {
+function Shop({ products }: { products: ProductProps[] }) {
   return (
     <Box className="container" mt="40px">
       <Heading as="h3" fontSize="18px">
@@ -14,7 +15,7 @@ function Shop({ products }: any) {
       </Heading>
       <Flex flexWrap="wrap" gridGap={30}>
         {products &&
-          products.map((product: any) => (
+          products.map((product: ProductProps) => (
             <Box key={product.name} width={{ base: '100%', lg: '380px' }}>
               <Link href={`/shop/product/${product.slug}`} passHref>
                 <a>

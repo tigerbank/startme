@@ -15,10 +15,10 @@ const breakpoints = createBreakpoints({
 });
 
 const theme = extendTheme({
-  fonts: {
-    heading: 'Prompt',
-    body: 'Prompt',
-  },
+  // fonts: {
+  //   heading: 'Prompt',
+  //   body: 'Prompt',
+  // },
   colors: {
     main: {
       gray: '#f1f1f1',

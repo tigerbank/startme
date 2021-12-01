@@ -4,8 +4,9 @@ import Image from 'next/image';
 import { getNavData, getProductsBySlug } from '@/util/api';
 import Link from 'next/link';
 import AddToCart from 'components/AddToCart';
+import { ProductProps } from '@/interfaces/common';
 
-function ProductScreen({ product }: any) {
+function ProductScreen({ product }: { product: ProductProps }) {
   if (!product) {
     return <Box>Product not found</Box>;
   }

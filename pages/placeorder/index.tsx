@@ -10,6 +10,7 @@ import { totalItemPrice } from '@/util/cart';
 import Link from 'next/link';
 import { Button } from '@chakra-ui/button';
 import Cookies from 'js-cookie';
+import { OrderItemProps } from '@/interfaces/common';
 
 function PlaceOrder() {
   const { state, dispatch } = useContext(Store);
@@ -33,8 +34,6 @@ function PlaceOrder() {
     if (!paymentMethod) {
       router.push('/payment');
     }
-
-    console.log(user);
   }, []);
 
   const itemPrice = totalItemPrice(cartItems);
@@ -67,6 +66,8 @@ function PlaceOrder() {
         },
       );
 
+      const orderResponse = await order.json();
+
       if (order.status !== 200) {
         throw new Error(order.statusText);
       }
@@ -83,7 +84,7 @@ function PlaceOrder() {
         type: 'CLEAR_CART',
       });
       Cookies.remove('cartItems');
-      router.push('/');
+      router.push(`/order/${orderResponse.id}`);
     } catch (error: any) {
       toast({
         title: 'Error',
@@ -134,7 +135,7 @@ function PlaceOrder() {
                 </Tr>
               </Thead>
               <Tbody>
-                {cartItems.map((item: any) => (
+                {cartItems.map((item: OrderItemProps) => (
                   <Tr key={item.name}>
                     <Td d={{ base: 'none', lg: 'table-cell' }}>
                       <Image

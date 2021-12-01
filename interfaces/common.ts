@@ -66,3 +66,85 @@ export type RegisterInfoProps = {
   password: string;
   confirmPassword?: string;
 };
+
+export interface OrderProps {
+  id: number;
+  paymentMethod: string;
+  user: UserProps;
+  itemPrice: number;
+  shippingPrice: number;
+  taxPrice: number;
+  totalPrice: number;
+  isPaid: boolean;
+  isDelivered: boolean;
+  paidAt: null;
+  deliveredAt: null;
+  published_at: Date;
+  created_at: Date;
+  updated_at: Date;
+  shippingAddress: ShippingAddressProps;
+  orderItems: OrderItemProps[];
+}
+
+export interface OrderItemProps {
+  id: number;
+  name: string;
+  quantity: number;
+  price: number;
+  image: string;
+}
+
+export interface ShippingAddressProps {
+  id: number;
+  fullName: string;
+  address: string;
+  city: string;
+  postalCode: number;
+  country: string;
+}
+
+export interface UserProps {
+  id: number;
+  username: string;
+  email: string;
+  provider: string;
+  confirmed: boolean;
+  blocked: boolean;
+  role: number;
+  created_at: Date;
+  updated_at: Date;
+}
+
+export interface ProductProps {
+  id: number;
+  name: string;
+  slug: string;
+  price: number;
+  category: string;
+  brand: string;
+  rating: number;
+  numReviews: number;
+  countInStock: number;
+  description: string;
+  locale: string;
+  published_at: Date;
+  created_at: Date;
+  updated_at: Date;
+  image: any;
+  localizations: any[];
+}
+
+export interface CartProps {
+  cartItems: CartItemProps[];
+  shippingAddress: ShippingAddressProps;
+  paymentMethod: string;
+}
+
+export interface CartItemProps {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  countInStock: number;
+  quantity: number;
+}

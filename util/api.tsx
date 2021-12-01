@@ -36,6 +36,10 @@ export async function getProductsBySlug(slug: string[]) {
   return data[0];
 }
 
+export async function getOrder(id: number) {
+  return fetchAPI(`/orders/${id}`);
+}
+
 export async function postLogin(loginInfo: LoginInfoProps) {
   return fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/auth/local`, {
     method: 'POST',

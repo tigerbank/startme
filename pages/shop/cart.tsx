@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Button } from '@chakra-ui/button';
 import dynamic from 'next/dynamic';
 import { totalItemPrice } from '@/util/cart';
+import { CartItemProps } from '@/interfaces/common';
 
 function CartScreen() {
   const { state, dispatch } = useContext(Store);
@@ -58,7 +59,7 @@ function CartScreen() {
                 </Tr>
               </Thead>
               <Tbody>
-                {cartItems.map((item: any) => (
+                {cartItems.map((item: CartItemProps) => (
                   <Tr key={item.name}>
                     <Td d={{ base: 'none', lg: 'table-cell' }}>
                       <Image

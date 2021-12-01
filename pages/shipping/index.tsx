@@ -35,7 +35,13 @@ function Shipping() {
     city,
     postalCode,
     country,
-  }: any) => {
+  }: {
+    fullName: string;
+    address: string;
+    city: string;
+    postalCode: number;
+    country: string;
+  }) => {
     const addressInfo = {
       fullName,
       address,

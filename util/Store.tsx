@@ -93,6 +93,7 @@ function reducer(state: any, action: any) {
         cart: {
           cartItems: [],
           shippingAddress: {},
+          paymentMethod: '',
         },
       };
     }
