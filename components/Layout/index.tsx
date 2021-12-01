@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './Header';
-import Navigation from './Navigation';
+import DesktopNavigation from './Navigation/Desktop';
 import { NavProps } from '@/interfaces/common';
 
 function Layout({
@@ -13,7 +13,7 @@ function Layout({
   return (
     <>
       <Header />
-      {nav && <Navigation nav={nav} />}
+      {nav && <DesktopNavigation nav={nav} />}
       <main>{children}</main>
     </>
   );

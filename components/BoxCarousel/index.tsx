@@ -10,6 +10,30 @@ function BoxCarousel({ data }: { data: BoxCarouselProps }) {
     speed: 300,
     slidesToShow: 3,
     slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -17,9 +41,11 @@ function BoxCarousel({ data }: { data: BoxCarouselProps }) {
       <Slider {...settings}>
         {data &&
           data.BoxCarouselDetail.map((item: BoxCarouselDetailProps) => (
-            <Box key={item.id}>
-              <Box bg="white" mr="20px" p="20px">
-                <Heading as="h4">{item.title}</Heading>
+            <Box key={item.id} p="10px">
+              <Box bg="white" p="20px">
+                <Heading as="h4" fontSize="20px">
+                  {item.title}
+                </Heading>
                 <Text>{item.subtitle}</Text>
               </Box>
             </Box>

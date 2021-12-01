@@ -1,10 +1,10 @@
 import { Box } from '@chakra-ui/layout';
 import React from 'react';
 import Link from 'next/link';
-import styles from '@/components/Layout/Navigation/Navigation.module.scss';
+import styles from '@/components/Layout/Navigation/Desktop/Navigation.module.scss';
 import { NavProps } from '@/interfaces/common';
 
-function Navigation({ nav }: { nav: NavProps[] }) {
+function DesktopNavigation({ nav }: { nav: NavProps[] }) {
   const sortedNav = nav && [...nav].sort((a, b) => a.order - b.order);
   return (
     <Box className={styles.navigation} bg="black" borderBottom="solid 5px">
@@ -33,4 +33,4 @@ function Navigation({ nav }: { nav: NavProps[] }) {
   );
 }
 
-export default Navigation;
+export default DesktopNavigation;
