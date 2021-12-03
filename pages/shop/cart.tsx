@@ -48,10 +48,10 @@ function CartScreen() {
       {cartItems.length !== 0 && (
         <Box d={{ base: 'block', lg: 'flex' }} mt="30px">
           <Box w={{ base: '100%', lg: '70%' }}>
-            <Table variant="simple">
+            <Table variant="simple" overflowX="auto" d="block">
               <Thead>
                 <Tr>
-                  <Th d={{ base: 'none', lg: 'table-cell' }}>Image</Th>
+                  <Th>Image</Th>
                   <Th>Name</Th>
                   <Th>Quantity</Th>
                   <Th>Price</Th>
@@ -61,7 +61,8 @@ function CartScreen() {
               <Tbody>
                 {cartItems.map((item: CartItemProps) => (
                   <Tr key={item.name}>
-                    <Td d={{ base: 'none', lg: 'table-cell' }}>
+                    {/* <Td d={{ base: 'none', lg: 'table-cell' }}> */}
+                    <Td>
                       <Image
                         src={item.image}
                         layout="fixed"

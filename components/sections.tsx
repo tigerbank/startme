@@ -19,7 +19,7 @@ const Section = ({ sectionData }: any) => {
 
 function Sections({ sections }: { sections: any[] }) {
   return (
-    <Box>
+    <Box overflow="hidden">
       {sections.map((section: any) => {
         return (
           <Section

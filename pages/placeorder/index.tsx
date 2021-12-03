@@ -73,13 +73,17 @@ function PlaceOrder() {
       }
 
       setLoading(false);
-      toast({
-        title: 'Success',
-        description: 'Submitted order successfully',
-        status: 'success',
-        duration: 3000,
-        isClosable: true,
-      });
+
+      if (paymentMethod === 'cash') {
+        toast({
+          title: 'Success',
+          description: 'Submitted order successfully',
+          status: 'success',
+          duration: 8000,
+          isClosable: true,
+        });
+      }
+
       dispatch({
         type: 'CLEAR_CART',
       });
@@ -125,10 +129,10 @@ function PlaceOrder() {
             <Heading mb="10px" as="h4" fontSize="18px">
               Order Items
             </Heading>
-            <Table variant="simple">
+            <Table variant="simple" overflowX="scroll" d="block">
               <Thead>
                 <Tr>
-                  <Th d={{ base: 'none', lg: 'table-cell' }}>Image</Th>
+                  <Th>Image</Th>
                   <Th>Name</Th>
                   <Th>Quantity</Th>
                   <Th>Price</Th>
@@ -137,7 +141,7 @@ function PlaceOrder() {
               <Tbody>
                 {cartItems.map((item: OrderItemProps) => (
                   <Tr key={item.name}>
-                    <Td d={{ base: 'none', lg: 'table-cell' }}>
+                    <Td>
                       <Image
                         src={item.image}
                         layout="fixed"

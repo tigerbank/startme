@@ -40,6 +40,17 @@ export async function getOrder(id: number) {
   return fetchAPI(`/orders/${id}`);
 }
 
+export async function updateOrderStatus(id: number) {
+  return fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/orders/${id}`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ isPaid: true }),
+  });
+}
+
 export async function postLogin(loginInfo: LoginInfoProps) {
   return fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/auth/local`, {
     method: 'POST',
