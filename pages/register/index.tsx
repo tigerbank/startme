@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
+import { NextSeo } from 'next-seo';
 import {
   Flex,
   Box,
@@ -14,9 +15,9 @@ import {
   FormErrorMessage,
   useToast,
 } from '@chakra-ui/react';
+import { RegisterInfoProps } from '@/interfaces/common';
 import { postRegister } from '@/util/api';
 import { Store } from '@/util/Store';
-import { RegisterInfoProps } from '@/interfaces/common';
 
 function RegisterScreen() {
   const {
@@ -91,98 +92,95 @@ function RegisterScreen() {
   };
 
   return (
-    <Box className="container" mt="20px">
-      <Flex align={'center'} justify={'center'}>
-        <Stack w="600px" spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-          <Stack align={'center'}>
-            <Heading fontSize={'4xl'}>Register</Heading>]
-          </Stack>
-          <form onSubmit={handleSubmit(submitHandler)}>
-            <Box
-              rounded={'lg'}
-              bg={useColorModeValue('white', 'gray.700')}
-              boxShadow={'lg'}
-              p={8}
-            >
-              <Stack spacing={4}>
-                <FormControl isInvalid={errors.username}>
-                  <FormLabel>Username</FormLabel>
-                  <Input
-                    id="username"
-                    type="text"
-                    placeholder="username"
-                    {...register('username', {
-                      required: 'This is required',
-                    })}
-                  />
-                  <FormErrorMessage>
-                    {errors.username && errors.username.message}
-                  </FormErrorMessage>
-                </FormControl>
-                <FormControl isInvalid={errors.email}>
-                  <FormLabel>Email</FormLabel>
-                  <Input
-                    id="identifier"
-                    type="email"
-                    placeholder="email"
-                    {...register('email', {
-                      required: 'This is required',
-                      pattern: {
-                        value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-                        message: 'Email is wrong format',
-                      },
-                    })}
-                  />
-                  <FormErrorMessage>
-                    {errors.email && errors.email.message}
-                  </FormErrorMessage>
-                </FormControl>
-                <FormControl isInvalid={errors.password}>
-                  <FormLabel>Password</FormLabel>
-                  <Input
-                    id="password"
-                    type="password"
-                    placeholder="password"
-                    {...register('password', {
-                      required: 'Password is required',
-                    })}
-                  />
-                  <FormErrorMessage>
-                    {errors.password && errors.password.message}
-                  </FormErrorMessage>
-                </FormControl>
-                <FormControl isInvalid={errors.confirmPassword}>
-                  <FormLabel>Confirm Password</FormLabel>
-                  <Input
-                    id="confirmPassword"
-                    type="password"
-                    placeholder="confirm password"
-                    {...register('confirmPassword', {
-                      required: 'Confirm Password is required',
-                    })}
-                  />
-                  <FormErrorMessage>
-                    {errors.confirmPassword && errors.confirmPassword.message}
-                  </FormErrorMessage>
-                </FormControl>
-                <Stack spacing={10}>
-                  <Button
-                    bg={'blue.400'}
-                    color={'white'}
-                    _hover={{
-                      bg: 'blue.500',
-                    }}
-                    type="submit"
-                  >
-                    Register
-                  </Button>
+    <>
+      <NextSeo title="Register" description="A short description goes here." />
+      <Box className="container" mt="20px">
+        <Flex align={'center'} justify={'center'}>
+          <Stack w="600px" spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+            <Stack align={'center'}>
+              <Heading fontSize={'4xl'}>Register</Heading>]
+            </Stack>
+            <form onSubmit={handleSubmit(submitHandler)}>
+              <Box
+                rounded={'lg'}
+                bg={useColorModeValue('white', 'gray.700')}
+                boxShadow={'lg'}
+                p={8}
+              >
+                <Stack spacing={4}>
+                  <FormControl isInvalid={errors.username}>
+                    <FormLabel>Username</FormLabel>
+                    <Input
+                      id="username"
+                      type="text"
+                      placeholder="username"
+                      {...register('username', {
+                        required: 'This is required',
+                      })}
+                    />
+                    <FormErrorMessage>
+                      {errors.username && errors.username.message}
+                    </FormErrorMessage>
+                  </FormControl>
+                  <FormControl isInvalid={errors.email}>
+                    <FormLabel>Email</FormLabel>
+                    <Input
+                      id="identifier"
+                      type="email"
+                      placeholder="email"
+                      {...register('email', {
+                        required: 'This is required',
+                        pattern: {
+                          value:
+                            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                          message: 'Email is wrong format',
+                        },
+                      })}
+                    />
+                    <FormErrorMessage>
+                      {errors.email && errors.email.message}
+                    </FormErrorMessage>
+                  </FormControl>
+                  <FormControl isInvalid={errors.password}>
+                    <FormLabel>Password</FormLabel>
+                    <Input
+                      id="password"
+                      type="password"
+                      placeholder="password"
+                      {...register('password', {
+                        required: 'Password is required',
+                      })}
+                    />
+                    <FormErrorMessage>
+                      {errors.password && errors.password.message}
+                    </FormErrorMessage>
+                  </FormControl>
+                  <FormControl isInvalid={errors.confirmPassword}>
+                    <FormLabel>Confirm Password</FormLabel>
+                    <Input
+                      id="confirmPassword"
+                      type="password"
+                      placeholder="confirm password"
+                      {...register('confirmPassword', {
+                        required: 'Confirm Password is required',
+                      })}
+                    />
+                    <FormErrorMessage>
+                      {errors.confirmPassword && errors.confirmPassword.message}
+                    </FormErrorMessage>
+                  </FormControl>
+                  <Stack spacing={10}>
+                    <Button colorScheme="teal" type="submit">
+                      Register
+                    </Button>
+                  </Stack>
                 </Stack>
-              </Stack>
-            </Box>
-          </form>
-        </Stack>
-      </Flex>
-    </Box>
+              </Box>
+            </form>
+          </Stack>
+        </Flex>
+      </Box>
+    </>
   );
 }
 

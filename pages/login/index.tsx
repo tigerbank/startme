@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
+import { NextSeo } from 'next-seo';
 import {
   Flex,
   Box,
@@ -16,9 +17,9 @@ import {
   FormErrorMessage,
   useToast,
 } from '@chakra-ui/react';
-import { postLogin } from '@/util/api';
-import { Store } from '@/util/Store';
 import { LoginInfoProps } from '@/interfaces/common';
+import { Store } from '@/util/Store';
+import { postLogin } from '@/util/api';
 
 function Login() {
   const {
@@ -88,78 +89,75 @@ function Login() {
   };
 
   return (
-    <Box className="container" mt="20px">
-      <Flex align={'center'} justify={'center'}>
-        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-          <Stack align={'center'}>
-            <Heading fontSize={'4xl'}>Sign in to your account</Heading>]
-          </Stack>
-          <form onSubmit={handleSubmit(submitHandler)}>
-            <Box
-              rounded={'lg'}
-              bg={useColorModeValue('white', 'gray.700')}
-              boxShadow={'lg'}
-              p={8}
-            >
-              <Stack spacing={4}>
-                <FormControl isInvalid={errors.identifier}>
-                  <FormLabel>Email</FormLabel>
-                  <Input
-                    id="identifier"
-                    type="email"
-                    placeholder="email"
-                    {...register('identifier', {
-                      required: 'This is required',
-                      pattern: {
-                        value: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-                        message: 'Email is wrong format',
-                      },
-                    })}
-                  />
-                  <FormErrorMessage>
-                    {errors.identifier && errors.identifier.message}
-                  </FormErrorMessage>
-                </FormControl>
-                <FormControl isInvalid={errors.password}>
-                  <FormLabel>Password</FormLabel>
-                  <Input
-                    id="password"
-                    type="password"
-                    placeholder="password"
-                    {...register('password', {
-                      required: 'Password is required',
-                    })}
-                  />
-                  <FormErrorMessage>
-                    {errors.password && errors.password.message}
-                  </FormErrorMessage>
-                </FormControl>
-                <Stack spacing={10}>
-                  <Stack
-                    direction={{ base: 'column', sm: 'row' }}
-                    align={'start'}
-                    justify={'space-between'}
-                  >
-                    <Checkbox>Remember me</Checkbox>
-                    <Link color={'blue.400'}>Forgot password?</Link>
+    <>
+      <NextSeo title="Login" description="A short description goes here." />
+      <Box className="container" mt="20px">
+        <Flex align={'center'} justify={'center'}>
+          <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+            <Stack align={'center'}>
+              <Heading fontSize={'4xl'}>Sign in to your account</Heading>]
+            </Stack>
+            <form onSubmit={handleSubmit(submitHandler)}>
+              <Box
+                rounded={'lg'}
+                bg={useColorModeValue('white', 'gray.700')}
+                boxShadow={'lg'}
+                p={8}
+              >
+                <Stack spacing={4}>
+                  <FormControl isInvalid={errors.identifier}>
+                    <FormLabel>Email</FormLabel>
+                    <Input
+                      id="identifier"
+                      type="email"
+                      placeholder="email"
+                      {...register('identifier', {
+                        required: 'This is required',
+                        pattern: {
+                          value:
+                            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                          message: 'Email is wrong format',
+                        },
+                      })}
+                    />
+                    <FormErrorMessage>
+                      {errors.identifier && errors.identifier.message}
+                    </FormErrorMessage>
+                  </FormControl>
+                  <FormControl isInvalid={errors.password}>
+                    <FormLabel>Password</FormLabel>
+                    <Input
+                      id="password"
+                      type="password"
+                      placeholder="password"
+                      {...register('password', {
+                        required: 'Password is required',
+                      })}
+                    />
+                    <FormErrorMessage>
+                      {errors.password && errors.password.message}
+                    </FormErrorMessage>
+                  </FormControl>
+                  <Stack spacing={10}>
+                    <Stack
+                      direction={{ base: 'column', sm: 'row' }}
+                      align={'start'}
+                      justify={'space-between'}
+                    >
+                      <Checkbox>Remember me</Checkbox>
+                      <Link color={'teal.400'}>Forgot password?</Link>
+                    </Stack>
+                    <Button colorScheme="teal" type="submit">
+                      Sign in
+                    </Button>
                   </Stack>
-                  <Button
-                    bg={'blue.400'}
-                    color={'white'}
-                    _hover={{
-                      bg: 'blue.500',
-                    }}
-                    type="submit"
-                  >
-                    Sign in
-                  </Button>
                 </Stack>
-              </Stack>
-            </Box>
-          </form>
-        </Stack>
-      </Flex>
-    </Box>
+              </Box>
+            </form>
+          </Stack>
+        </Flex>
+      </Box>
+    </>
   );
 }
 

@@ -1,16 +1,28 @@
-import CartSteps from '@/components/CartSteps';
-import { Store } from '@/util/Store';
-import { Box, Flex, Heading, Text } from '@chakra-ui/layout';
-import { useToast, Spinner } from '@chakra-ui/react';
-import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
-import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
-import { totalItemPrice } from '@/util/cart';
-import Link from 'next/link';
-import { Button } from '@chakra-ui/button';
+import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
+import { NextSeo } from 'next-seo';
+import {
+  useToast,
+  Spinner,
+  Box,
+  Flex,
+  Heading,
+  Text,
+  Table,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+  Button,
+} from '@chakra-ui/react';
 import { OrderItemProps } from '@/interfaces/common';
+import CartSteps from '@/components/CartSteps';
+import BackToShop from '@/components/BackToShop';
+import { totalItemPrice } from '@/util/cart';
+import { Store } from '@/util/Store';
 
 function PlaceOrder() {
   const { state, dispatch } = useContext(Store);
@@ -103,110 +115,111 @@ function PlaceOrder() {
   };
 
   return (
-    <Box className="container">
-      <CartSteps currentStep={3} />
-      <Heading as="h3">Place order</Heading>
-      <Flex flexDir={{ base: 'column', xl: 'row' }}>
-        <Box w={{ base: '100%', xl: '70%' }} mr="40px">
-          <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
-            <Heading mb="10px" as="h4" fontSize="18px">
-              Shipping Address
-            </Heading>
-            <Text>
-              {shippingAddress.address}, {shippingAddress.city},{' '}
-              {shippingAddress.postalCode} {shippingAddress.country}
-            </Text>
-          </Box>
-
-          <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
-            <Heading mb="10px" as="h4" fontSize="18px">
-              Payment Method
-            </Heading>
-            <Text>{paymentMethod}</Text>
-          </Box>
-
-          <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
-            <Heading mb="10px" as="h4" fontSize="18px">
-              Order Items
-            </Heading>
-            <Table
-              variant="simple"
-              overflowX="scroll"
-              d={{ base: 'block', md: 'table' }}
-            >
-              <Thead>
-                <Tr>
-                  <Th>Image</Th>
-                  <Th>Name</Th>
-                  <Th>Quantity</Th>
-                  <Th>Price</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {cartItems.map((item: OrderItemProps) => (
-                  <Tr key={item.name}>
-                    <Td>
-                      <Image
-                        src={item.image}
-                        layout="fixed"
-                        width="100"
-                        height="100"
-                        alt=""
-                      />
-                    </Td>
-                    <Td>{item.name}</Td>
-                    <Td>{item.quantity}</Td>
-                    <Td>{item.price}</Td>
-                  </Tr>
-                ))}
-              </Tbody>
-            </Table>
-          </Box>
-        </Box>
-        <Box flex="1" w={{ base: '100%', xl: 'auto' }}>
-          <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
-            <Heading mb="10px" as="h4" fontSize="18px">
-              Order Summary
-            </Heading>
-            <Flex justifyContent="space-between">
-              <Text>Items:</Text>
+    <>
+      <NextSeo title="Register" description="A short description goes here." />
+      <Box className="container">
+        <CartSteps currentStep={3} />
+        <Heading as="h3">Place order</Heading>
+        <Flex flexDir={{ base: 'column', xl: 'row' }}>
+          <Box w={{ base: '100%', xl: '70%' }} mr="40px">
+            <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
+              <Heading mb="10px" as="h4" fontSize="18px">
+                Shipping Address
+              </Heading>
               <Text>
-                {itemPrice}
-                THB
+                {shippingAddress.address}, {shippingAddress.city},{' '}
+                {shippingAddress.postalCode} {shippingAddress.country}
               </Text>
-            </Flex>
-            <Flex justifyContent="space-between">
-              <Text>Tax:</Text>
-              <Text>{taxPrice}</Text>
-            </Flex>
-            <Flex justifyContent="space-between">
-              <Text>Shipping:</Text>
-              <Text>{shippingPrice}</Text>
-            </Flex>
-            <Flex justifyContent="space-between">
-              <Text fontWeight="bold">Total:</Text>
-              <Text fontWeight="bold">{total}</Text>
-            </Flex>
-            <Button
-              colorScheme="teal"
-              mt="20px"
-              isFullWidth
-              onClick={handleSubmit}
-            >
-              Place order
-            </Button>
-            {loading && (
-              <Box textAlign="center" mt="20px">
-                <Spinner />
-              </Box>
-            )}
+            </Box>
+
+            <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
+              <Heading mb="10px" as="h4" fontSize="18px">
+                Payment Method
+              </Heading>
+              <Text>{paymentMethod}</Text>
+            </Box>
+
+            <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
+              <Heading mb="10px" as="h4" fontSize="18px">
+                Order Items
+              </Heading>
+              <Table
+                variant="simple"
+                overflowX="scroll"
+                d={{ base: 'block', md: 'table' }}
+              >
+                <Thead>
+                  <Tr>
+                    <Th textAlign="center">Image</Th>
+                    <Th textAlign="center">Name</Th>
+                    <Th textAlign="center">Quantity</Th>
+                    <Th textAlign="center">Price</Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {cartItems.map((item: OrderItemProps) => (
+                    <Tr key={item.name}>
+                      <Td textAlign="center">
+                        <Image
+                          src={item.image}
+                          layout="fixed"
+                          width="100"
+                          height="100"
+                          alt=""
+                        />
+                      </Td>
+                      <Td textAlign="center">{item.name}</Td>
+                      <Td textAlign="center">{item.quantity}</Td>
+                      <Td textAlign="center">{item.price}</Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+              </Table>
+            </Box>
           </Box>
-        </Box>
-      </Flex>
-      <Box mt="30px">
-        <Link href="/shop">Back to shop</Link>
+          <Box flex="1" w={{ base: '100%', xl: 'auto' }}>
+            <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
+              <Heading mb="10px" as="h4" fontSize="18px">
+                Order Summary
+              </Heading>
+              <Flex justifyContent="space-between">
+                <Text>Items:</Text>
+                <Text>
+                  {itemPrice}
+                  THB
+                </Text>
+              </Flex>
+              <Flex justifyContent="space-between">
+                <Text>Tax:</Text>
+                <Text>{taxPrice}</Text>
+              </Flex>
+              <Flex justifyContent="space-between">
+                <Text>Shipping:</Text>
+                <Text>{shippingPrice}</Text>
+              </Flex>
+              <Flex justifyContent="space-between">
+                <Text fontWeight="bold">Total:</Text>
+                <Text fontWeight="bold">{total}</Text>
+              </Flex>
+              <Button
+                colorScheme="teal"
+                mt="20px"
+                isFullWidth
+                onClick={handleSubmit}
+              >
+                Place order
+              </Button>
+              {loading && (
+                <Box textAlign="center" mt="20px">
+                  <Spinner />
+                </Box>
+              )}
+            </Box>
+          </Box>
+        </Flex>
+        <BackToShop />
       </Box>
-    </Box>
+    </>
   );
 }
 

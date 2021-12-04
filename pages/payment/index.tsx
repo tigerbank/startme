@@ -1,12 +1,18 @@
-import CartSteps from '@/components/CartSteps';
-import { Store } from '@/util/Store';
-import { Button } from '@chakra-ui/button';
-import { Box, Heading, Stack } from '@chakra-ui/layout';
-import { Radio, RadioGroup } from '@chakra-ui/radio';
-import Cookies from 'js-cookie';
-import { useRouter } from 'next/router';
 import React, { useContext, useEffect, useState } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
+import Cookies from 'js-cookie';
+import {
+  Button,
+  Box,
+  Heading,
+  Stack,
+  Radio,
+  RadioGroup,
+} from '@chakra-ui/react';
+import { Store } from '@/util/Store';
+import CartSteps from '@/components/CartSteps';
+import BackToShop from '@/components/BackToShop';
 
 function Payment() {
   const router = useRouter();
@@ -38,38 +44,39 @@ function Payment() {
   };
 
   return (
-    <Box className="container">
-      <CartSteps currentStep={2} />
-      <Heading as="h3">Payment</Heading>
-      <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
-        <Heading mb="10px" as="h4" fontSize="18px">
-          Select Payment Method
-        </Heading>
-        <form onSubmit={submitHandler}>
-          <RadioGroup
-            mt="20px"
-            onChange={setPaymentMethod}
-            value={paymentMethod}
-          >
-            <Stack direction="column">
-              <Radio value="paypal">Paypal</Radio>
-              <Radio value="cash">Cash</Radio>
-            </Stack>
-          </RadioGroup>
-          <Box mt="30px">
-            <Button mr="20px" onClick={() => router.push('/shipping')}>
-              Back
-            </Button>
-            <Button colorScheme="teal" type="submit">
-              Continue
-            </Button>
-          </Box>
-        </form>
+    <>
+      <NextSeo title="Payment" description="A short description goes here." />
+      <Box className="container">
+        <CartSteps currentStep={2} />
+        <Heading as="h3">Payment</Heading>
+        <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
+          <Heading mb="10px" as="h4" fontSize="18px">
+            Select Payment Method
+          </Heading>
+          <form onSubmit={submitHandler}>
+            <RadioGroup
+              mt="20px"
+              onChange={setPaymentMethod}
+              value={paymentMethod}
+            >
+              <Stack direction="column">
+                <Radio value="paypal">Paypal</Radio>
+                <Radio value="cash">Cash</Radio>
+              </Stack>
+            </RadioGroup>
+            <Box mt="30px">
+              <Button mr="20px" onClick={() => router.push('/shipping')}>
+                Back
+              </Button>
+              <Button colorScheme="teal" type="submit">
+                Continue
+              </Button>
+            </Box>
+          </form>
+        </Box>
+        <BackToShop />
       </Box>
-      <Box mt="30px">
-        <Link href="/shop">Back to shop</Link>
-      </Box>
-    </Box>
+    </>
   );
 }
 

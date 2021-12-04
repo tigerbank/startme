@@ -14,7 +14,7 @@ function CartSteps({ currentStep }: { currentStep: number }) {
       <Flex
         justifyContent="space-between"
         gridGap={10}
-        flexDir={{ base: 'column', lg: 'row' }}
+        flexDir={{ base: 'column', md: 'row' }}
       >
         {stepsArray.map((item, i) => (
           <Box
@@ -26,14 +26,14 @@ function CartSteps({ currentStep }: { currentStep: number }) {
             gridGap="10"
           >
             <Box>
-              Step {i + 1}
-              <br />
+              <Box textAlign="center">Step {i + 1}</Box>
+
               <Link href={item.link}>
                 <a>{item.label}</a>
               </Link>
             </Box>
             <Box
-              d={{ base: 'none', lg: 'block' }}
+              d={{ base: 'none', md: 'block' }}
               flexGrow="1"
               borderTop="solid 1px #cecece"
             ></Box>

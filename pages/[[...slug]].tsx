@@ -1,12 +1,18 @@
+import React from 'react';
+import { NextSeo } from 'next-seo';
 import Sections from '@/components/sections';
 import { PageProps } from '@/interfaces/common';
-import React from 'react';
 import { getPageData, getNavData, fetchAPI } from '@/util/api';
 
 function Page({ page }: { page: PageProps }) {
   const sections = page.contentSections;
   return (
     <>
+      <NextSeo
+        title={page.title}
+        description="A short description goes here."
+      />
+      ;
       <Sections sections={sections} />
     </>
   );

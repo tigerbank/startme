@@ -1,10 +1,11 @@
-import { Box, Heading, Text } from '@chakra-ui/layout';
 import React from 'react';
 import Image from 'next/image';
-import { getNavData, getProductsBySlug } from '@/util/api';
-import Link from 'next/link';
-import AddToCart from 'components/AddToCart';
+import { Box, Heading, Text } from '@chakra-ui/react';
+import { NextSeo } from 'next-seo';
 import { ProductProps } from '@/interfaces/common';
+import AddToCart from '@/components/AddToCart';
+import BackToShop from '@/components/BackToShop';
+import { getNavData, getProductsBySlug } from '@/util/api';
 
 function ProductScreen({ product }: { product: ProductProps }) {
   if (!product) {
@@ -12,34 +13,40 @@ function ProductScreen({ product }: { product: ProductProps }) {
   }
 
   return (
-    <Box className="container" mt="50px">
-      <Box d={{ base: 'block', lg: 'flex' }}>
-        <Box w={{ base: '100%', lg: '50%' }}>
-          <Image
-            width="900"
-            height="900"
-            src={product.image.url}
-            alt=""
-            layout="responsive"
-          />
-        </Box>
-        <Box w={{ base: '100%', lg: '50%' }}>
-          <Box px="30px">
-            <Heading>{product.name}</Heading>
-            <Text>{product.category}</Text>
-            <Text>{product.brand}</Text>
-            <Text>{product.rating}</Text>
-            <Text>{product.description}</Text>
-            <Text>{product.price}</Text>
+    <>
+      <NextSeo
+        title={product.name}
+        description="A short description goes here."
+      />
+      <Box className="container" mt="50px">
+        <Box d={{ base: 'block', md: 'flex' }}>
+          <Box w={{ base: '100%', md: '50%' }}>
+            <Image
+              width="900"
+              height="900"
+              src={product.image.url}
+              alt=""
+              layout="responsive"
+            />
+          </Box>
+          <Box mt={{ base: '20px', md: 0 }} w={{ base: '100%', md: '50%' }}>
+            <Box px="30px">
+              <Heading>{product.name}</Heading>
+              <Text>{product.category}</Text>
+              <Text>{product.brand}</Text>
+              <Text>{product.rating}</Text>
+              <Text>{product.description}</Text>
+              <Text>THB {product.price}</Text>
 
-            <AddToCart product={product} />
+              <Box mt="20px">
+                <AddToCart product={product} />
+              </Box>
+            </Box>
           </Box>
         </Box>
+        <BackToShop />
       </Box>
-      <Box mt="30px">
-        <Link href="/shop">Back to shop</Link>
-      </Box>
-    </Box>
+    </>
   );
 }
 

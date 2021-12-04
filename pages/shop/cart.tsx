@@ -8,6 +8,7 @@ import { Button } from '@chakra-ui/button';
 import dynamic from 'next/dynamic';
 import { totalItemPrice } from '@/util/cart';
 import { CartItemProps } from '@/interfaces/common';
+import BackToShop from '@/components/BackToShop';
 
 function CartScreen() {
   const { state, dispatch } = useContext(Store);
@@ -41,7 +42,7 @@ function CartScreen() {
   return (
     <Box className="container" mt="30px">
       <Heading as="h3">Shopping Cart</Heading>
-      {cartItems.length === 0 && <Box>Cart is empty</Box>}
+      {cartItems.length === 0 && <Box mt="20px">Cart is empty</Box>}
 
       {cartItems.length !== 0 && (
         <Box d={{ base: 'block', xl: 'flex' }} mt="30px">
@@ -57,17 +58,17 @@ function CartScreen() {
               >
                 <Thead>
                   <Tr>
-                    <Th>Image</Th>
-                    <Th>Name</Th>
-                    <Th>Quantity</Th>
-                    <Th>Price</Th>
-                    <Th>Action</Th>
+                    <Th textAlign="center">Image</Th>
+                    <Th textAlign="center">Name</Th>
+                    <Th textAlign="center">Quantity</Th>
+                    <Th textAlign="center">Price</Th>
+                    <Th textAlign="center">Action</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
                   {cartItems.map((item: CartItemProps) => (
                     <Tr key={item.name}>
-                      <Td>
+                      <Td textAlign="center">
                         <Image
                           src={item.image}
                           layout="fixed"
@@ -76,8 +77,8 @@ function CartScreen() {
                           alt=""
                         />
                       </Td>
-                      <Td>{item.name}</Td>
-                      <Td>
+                      <Td textAlign="center">{item.name}</Td>
+                      <Td textAlign="center">
                         <select
                           value={Number(item.quantity)}
                           onChange={(e) =>
@@ -89,8 +90,8 @@ function CartScreen() {
                           ))}
                         </select>
                       </Td>
-                      <Td>{item.price}</Td>
-                      <Td>
+                      <Td textAlign="center">{item.price}</Td>
+                      <Td textAlign="center">
                         <button onClick={() => handleDelete(item)}>X</button>
                       </Td>
                     </Tr>
@@ -124,9 +125,7 @@ function CartScreen() {
         </Box>
       )}
 
-      <Box mt="30px">
-        <Link href="/shop">Back to shop</Link>
-      </Box>
+      <BackToShop />
     </Box>
   );
 }
