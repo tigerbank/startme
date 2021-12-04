@@ -12,7 +12,6 @@ function Page({ page }: { page: PageProps }) {
         title={page.title}
         description="A short description goes here."
       />
-      ;
       <Sections sections={sections} />
     </>
   );
