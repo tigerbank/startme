@@ -79,7 +79,7 @@ function Shipping() {
       <CartSteps currentStep={1} />
       <Heading as="h3">Shipping</Heading>
       <form onSubmit={handleSubmit(submitHandler)}>
-        <Box rounded={'lg'} boxShadow={'lg'} p={8}>
+        <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
           <Stack spacing={4}>
             <FormControl id="fullName" isInvalid={errors.fullName}>
               <FormLabel htmlFor="fullName">Full Name</FormLabel>

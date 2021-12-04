@@ -106,8 +106,8 @@ function PlaceOrder() {
     <Box className="container">
       <CartSteps currentStep={3} />
       <Heading as="h3">Place order</Heading>
-      <Flex flexDir={{ base: 'column', lg: 'row' }}>
-        <Box w={{ base: '100%', lg: '70%' }} mr="40px">
+      <Flex flexDir={{ base: 'column', xl: 'row' }}>
+        <Box w={{ base: '100%', xl: '70%' }} mr="40px">
           <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
             <Heading mb="10px" as="h4" fontSize="18px">
               Shipping Address
@@ -129,7 +129,11 @@ function PlaceOrder() {
             <Heading mb="10px" as="h4" fontSize="18px">
               Order Items
             </Heading>
-            <Table variant="simple" overflowX="scroll" d="block">
+            <Table
+              variant="simple"
+              overflowX="scroll"
+              d={{ base: 'block', md: 'table' }}
+            >
               <Thead>
                 <Tr>
                   <Th>Image</Th>
@@ -159,7 +163,7 @@ function PlaceOrder() {
             </Table>
           </Box>
         </Box>
-        <Box flex="1" w={{ base: '100%', lg: 'auto' }}>
+        <Box flex="1" w={{ base: '100%', xl: 'auto' }}>
           <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
             <Heading mb="10px" as="h4" fontSize="18px">
               Order Summary

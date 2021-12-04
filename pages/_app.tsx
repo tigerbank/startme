@@ -31,7 +31,7 @@ const theme = extendTheme({
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <NextNprogress />
+      <NextNprogress options={{ showSpinner: false }} />
       <StoreProvider>
         <ChakraProvider theme={theme}>
           <Box h="100vw" bg="main.gray">

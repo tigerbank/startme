@@ -54,7 +54,7 @@ function Order({ orderId }: { orderId: number }) {
   } else {
     return (
       <Box className="container" mt="20px">
-        <Heading as="h3">Order Summary {}</Heading>
+        <Heading as="h3">Order Summary</Heading>
         <Flex flexDir={{ base: 'column', lg: 'row' }}>
           <Box w={{ base: '100%', lg: '70%' }} mr="40px">
             <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
@@ -79,19 +79,23 @@ function Order({ orderId }: { orderId: number }) {
               <Heading mb="10px" as="h4" fontSize="18px">
                 Order Items
               </Heading>
-              <Table variant="simple">
+              <Table
+                variant="simple"
+                overflowX="scroll"
+                d={{ base: 'block', md: 'table' }}
+              >
                 <Thead>
                   <Tr>
-                    <Th d={{ base: 'none', lg: 'table-cell' }}>Image</Th>
-                    <Th>Name</Th>
-                    <Th>Quantity</Th>
-                    <Th>Price</Th>
+                    <Th w="25%">Image</Th>
+                    <Th w="25%">Name</Th>
+                    <Th w="25%">Quantity</Th>
+                    <Th w="25%">Price</Th>
                   </Tr>
                 </Thead>
                 <Tbody>
                   {order.orderItems.map((item: any) => (
                     <Tr key={item.name}>
-                      <Td d={{ base: 'none', lg: 'table-cell' }}>
+                      <Td>
                         <Image
                           src={item.image}
                           layout="fixed"

@@ -40,25 +40,32 @@ function Payment() {
   return (
     <Box className="container">
       <CartSteps currentStep={2} />
-      <Heading mt="30px" as="h3">
-        Payment Method
-      </Heading>
-      <form onSubmit={submitHandler}>
-        <RadioGroup mt="20px" onChange={setPaymentMethod} value={paymentMethod}>
-          <Stack direction="column">
-            <Radio value="paypal">Paypal</Radio>
-            <Radio value="cash">Cash</Radio>
-          </Stack>
-        </RadioGroup>
-        <Box mt="30px">
-          <Button mr="20px" onClick={() => router.push('/shipping')}>
-            Back
-          </Button>
-          <Button colorScheme="teal" type="submit">
-            Continue
-          </Button>
-        </Box>
-      </form>
+      <Heading as="h3">Payment</Heading>
+      <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
+        <Heading mb="10px" as="h4" fontSize="18px">
+          Select Payment Method
+        </Heading>
+        <form onSubmit={submitHandler}>
+          <RadioGroup
+            mt="20px"
+            onChange={setPaymentMethod}
+            value={paymentMethod}
+          >
+            <Stack direction="column">
+              <Radio value="paypal">Paypal</Radio>
+              <Radio value="cash">Cash</Radio>
+            </Stack>
+          </RadioGroup>
+          <Box mt="30px">
+            <Button mr="20px" onClick={() => router.push('/shipping')}>
+              Back
+            </Button>
+            <Button colorScheme="teal" type="submit">
+              Continue
+            </Button>
+          </Box>
+        </form>
+      </Box>
       <Box mt="30px">
         <Link href="/shop">Back to shop</Link>
       </Box>

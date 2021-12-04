@@ -40,64 +40,70 @@ function CartScreen() {
 
   return (
     <Box className="container" mt="30px">
-      <Heading as="h3" fontSize="16px">
-        Shopping Cart
-      </Heading>
+      <Heading as="h3">Shopping Cart</Heading>
       {cartItems.length === 0 && <Box>Cart is empty</Box>}
 
       {cartItems.length !== 0 && (
-        <Box d={{ base: 'block', lg: 'flex' }} mt="30px">
-          <Box w={{ base: '100%', lg: '70%' }}>
-            <Table variant="simple" overflowX="auto" d="block">
-              <Thead>
-                <Tr>
-                  <Th>Image</Th>
-                  <Th>Name</Th>
-                  <Th>Quantity</Th>
-                  <Th>Price</Th>
-                  <Th>Action</Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {cartItems.map((item: CartItemProps) => (
-                  <Tr key={item.name}>
-                    {/* <Td d={{ base: 'none', lg: 'table-cell' }}> */}
-                    <Td>
-                      <Image
-                        src={item.image}
-                        layout="fixed"
-                        width="100"
-                        height="100"
-                        alt=""
-                      />
-                    </Td>
-                    <Td>{item.name}</Td>
-                    <Td>
-                      <select
-                        value={Number(item.quantity)}
-                        onChange={(e) =>
-                          updateCartHandler(item, Number(e.target.value))
-                        }
-                      >
-                        {[...Array(item.countInStock).keys()].map((x) => (
-                          <option key={x + 1}>{x + 1}</option>
-                        ))}
-                      </select>
-                    </Td>
-                    <Td>{item.price}</Td>
-                    <Td>
-                      <button onClick={() => handleDelete(item)}>X</button>
-                    </Td>
+        <Box d={{ base: 'block', xl: 'flex' }} mt="30px">
+          <Box w={{ base: '100%', xl: '65%' }} mr={{ base: '0', xl: '5%' }}>
+            <Box bg="white" borderRadius="md" boxShadow="md" p="30px">
+              <Heading mb="10px" as="h4" fontSize="18px">
+                Order Items
+              </Heading>
+              <Table
+                variant="simple"
+                overflowX="auto"
+                d={{ base: 'block', md: 'table' }}
+              >
+                <Thead>
+                  <Tr>
+                    <Th>Image</Th>
+                    <Th>Name</Th>
+                    <Th>Quantity</Th>
+                    <Th>Price</Th>
+                    <Th>Action</Th>
                   </Tr>
-                ))}
-              </Tbody>
-            </Table>
+                </Thead>
+                <Tbody>
+                  {cartItems.map((item: CartItemProps) => (
+                    <Tr key={item.name}>
+                      <Td>
+                        <Image
+                          src={item.image}
+                          layout="fixed"
+                          width="100"
+                          height="100"
+                          alt=""
+                        />
+                      </Td>
+                      <Td>{item.name}</Td>
+                      <Td>
+                        <select
+                          value={Number(item.quantity)}
+                          onChange={(e) =>
+                            updateCartHandler(item, Number(e.target.value))
+                          }
+                        >
+                          {[...Array(item.countInStock).keys()].map((x) => (
+                            <option key={x + 1}>{x + 1}</option>
+                          ))}
+                        </select>
+                      </Td>
+                      <Td>{item.price}</Td>
+                      <Td>
+                        <button onClick={() => handleDelete(item)}>X</button>
+                      </Td>
+                    </Tr>
+                  ))}
+                </Tbody>
+              </Table>
+            </Box>
           </Box>
 
           <Box
-            w={{ base: '100%', lg: '30%' }}
+            w={{ base: '100%', xl: '30%' }}
             textAlign="right"
-            mt={{ base: '30px', lg: '0px' }}
+            mt={{ base: '30px', xl: '0px' }}
           >
             <Heading as="h4">Subtotal</Heading>
             <Text>

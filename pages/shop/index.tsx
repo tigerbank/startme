@@ -10,13 +10,19 @@ import { ProductProps } from '@/interfaces/common';
 function Shop({ products }: { products: ProductProps[] }) {
   return (
     <Box className="container" mt="40px">
-      <Heading as="h3" fontSize="18px">
-        Shop
-      </Heading>
-      <Flex flexWrap="wrap" gridGap={30}>
+      <Heading as="h3">Shop</Heading>
+      <Flex
+        mt="20px"
+        flexWrap="wrap"
+        gridGap={{ base: 0, xl: 30 }}
+        justifyContent={{ base: 'space-between', xl: 'initial' }}
+      >
         {products &&
           products.map((product: ProductProps) => (
-            <Box key={product.name} width={{ base: '100%', lg: '380px' }}>
+            <Box
+              key={product.name}
+              width={{ base: '100%', md: '48%', xl: '380px' }}
+            >
               <Link href={`/shop/product/${product.slug}`} passHref>
                 <a>
                   <Image
