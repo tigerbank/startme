@@ -27,7 +27,9 @@ function Header({ nav }: { nav: NavProps[] }) {
             </Link>
           </Heading>
           {!isMobile && <SubMenu />}
-          {isMobile && <MobileNavigation nav={nav} />}
+
+          {/*If it is not [[...slug]], need to pass nav prop to page */}
+          {isMobile && nav && <MobileNavigation nav={nav} />}
         </Box>
       </Box>
     </>
