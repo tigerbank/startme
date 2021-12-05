@@ -19,14 +19,15 @@ function CartSteps({ currentStep }: { currentStep: number }) {
         {stepsArray.map((item, i) => (
           <Box
             d="flex"
+            flexDir={{ base: 'column', md: 'row' }}
             key={i}
             fontWeight={currentStep === i + 1 ? 'bold' : ''}
-            alignItems="center"
+            alignItems={{ base: 'flex-start', md: 'center' }}
             w="100%"
-            gridGap="10"
+            gridGap={{ base: 1, md: 10 }}
           >
             <Box>
-              <Box textAlign="center">Step {i + 1}</Box>
+              <Box textAlign={{ base: 'left', md: 'center' }}>Step {i + 1}</Box>
 
               <Link href={item.link}>
                 <a>{item.label}</a>

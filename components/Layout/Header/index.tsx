@@ -3,8 +3,9 @@ import Link from 'next/link';
 import SubMenu from '@/components/Layout/Header/SubMenu';
 import { Box, Heading, useBreakpointValue } from '@chakra-ui/react';
 import MobileNavigation from '@/components/Layout/Navigation/Mobile';
+import { NavProps } from '@/interfaces/common';
 
-function Header() {
+function Header({ nav }: { nav: NavProps[] }) {
   const isMobile = useBreakpointValue({ base: true, md: false });
   return (
     <>
@@ -26,7 +27,7 @@ function Header() {
             </Link>
           </Heading>
           {!isMobile && <SubMenu />}
-          {isMobile && <MobileNavigation />}
+          {isMobile && <MobileNavigation nav={nav} />}
         </Box>
       </Box>
     </>

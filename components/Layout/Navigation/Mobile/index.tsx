@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import Link from 'next/link';
 import {
   Drawer,
   DrawerBody,
@@ -7,45 +8,58 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Button,
   IconButton,
   useDisclosure,
+  Box,
+  Button,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
+import styles from '@/components/Layout/Navigation/Mobile/Navigation.module.scss';
+import { NavProps } from '@/interfaces/common';
 
-function MobileNavigation() {
+function MobileNavigation({ nav }: { nav: NavProps[] }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef<any>();
+  const sortedNav = nav && [...nav].sort((a, b) => a.order - b.order);
   return (
     <>
-      <IconButton
-        variant="outline"
-        colorScheme="teal"
-        aria-label="Call Sage"
-        fontSize="20px"
-        icon={<HamburgerIcon />}
-        onClick={onOpen}
-        ref={btnRef}
-      />
+      <HamburgerIcon fontSize="30px" onClick={onOpen} ref={btnRef} />
+
       <Drawer
         isOpen={isOpen}
         placement="left"
         onClose={onClose}
         finalFocusRef={btnRef}
+        size="full"
       >
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
+          <DrawerCloseButton outline="none" />
+          <DrawerHeader>Menu</DrawerHeader>
 
-          <DrawerBody>test</DrawerBody>
+          <DrawerBody>
+            <Box className={styles.navigation}>
+              <ul>
+                {sortedNav.map((navItem: NavProps) => {
+                  if (navItem.page || navItem.url) {
+                    return (
+                      <li key={navItem.id}>
+                        <Link
+                          href={
+                            navItem.page ? `/${navItem.page.slug}` : navItem.url
+                          }
+                        >
+                          {navItem.title}
+                        </Link>
+                      </li>
+                    );
+                  }
+                })}
+              </ul>
+            </Box>
+          </DrawerBody>
 
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
-          </DrawerFooter>
+          {/* <DrawerFooter>Footer content</DrawerFooter> */}
         </DrawerContent>
       </Drawer>
     </>

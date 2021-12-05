@@ -2,6 +2,10 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Basic from '@/pages/basic';
 
+beforeEach(() => {
+  fetch.resetMocks();
+});
+
 describe('Basic', () => {
   test('two plus two is four', () => {
     expect(2 + 2).toBe(4);
@@ -46,6 +50,27 @@ describe('Basic', () => {
   test('should show "no task left" when there is no task', async () => {
     render(<Basic numberOfIncompleteTasks={0} />);
     const paragraphElement = await screen.findByText(/No task left/i);
+    expect(paragraphElement).toBeInTheDocument();
+  });
+
+  test('should render text when success fetch', async () => {
+    fetch.mockResponseOnce(
+      JSON.stringify({
+        userId: 1,
+        id: 2,
+        title: 'hello',
+        completed: false,
+      }),
+    );
+    render(<Basic numberOfIncompleteTasks={0} />);
+    const paragraphElement = await screen.findByText(/hello/i);
+    expect(paragraphElement).toBeInTheDocument();
+  });
+
+  test('should render error message when fetch fail', async () => {
+    fetch.mockReject(() => Promise.reject(new Error('API is down')));
+    render(<Basic numberOfIncompleteTasks={0} />);
+    const paragraphElement = await screen.findByText(/API is down/i);
     expect(paragraphElement).toBeInTheDocument();
   });
 });

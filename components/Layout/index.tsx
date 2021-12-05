@@ -12,7 +12,7 @@ function Layout({
 }) {
   return (
     <>
-      <Header />
+      <Header nav={nav} />
       {nav && <DesktopNavigation nav={nav} />}
       <main>{children}</main>
     </>
