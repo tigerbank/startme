@@ -47,6 +47,8 @@ export type BoxCarouselDetailProps = {
   id: number;
   title: string;
   subtitle: string;
+  image: any;
+  url: string;
 };
 
 export type StoreContextState = {

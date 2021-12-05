@@ -1,5 +1,7 @@
 import { Box, Heading, Text } from '@chakra-ui/layout';
 import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import Slider from 'react-slick';
 import { BoxCarouselDetailProps, BoxCarouselProps } from '@/interfaces/common';
 
@@ -8,7 +10,7 @@ function BoxCarousel({ data }: { data: BoxCarouselProps }) {
     dots: true,
     infinite: true,
     speed: 300,
-    slidesToShow: 3,
+    slidesToShow: 3.5,
     slidesToScroll: 3,
     responsive: [
       {
@@ -37,13 +39,28 @@ function BoxCarousel({ data }: { data: BoxCarouselProps }) {
   };
 
   return (
-    <Box className="container" mb="20px">
+    <Box mb="20px">
       <Slider {...settings}>
         {data &&
           data.BoxCarouselDetail.map((item: BoxCarouselDetailProps) => (
             <Box key={item.id} p="10px">
-              <Box bg="white" p="20px">
-                <Heading as="h4" fontSize="20px">
+              <Box bg="white" h="100%" p="20px">
+                <Box w="100%" h="100%">
+                  <Link href={item.url ? item.url : '#'}>
+                    <a target="_blank">
+                      {item.image && (
+                        <Image
+                          width={item.image.width}
+                          height={item.image.height}
+                          src={item.image.url}
+                          alt=""
+                          layout="responsive"
+                        />
+                      )}
+                    </a>
+                  </Link>
+                </Box>
+                <Heading mt="15px" as="h4" fontSize="20px">
                   {item.title}
                 </Heading>
                 <Text>{item.subtitle}</Text>
