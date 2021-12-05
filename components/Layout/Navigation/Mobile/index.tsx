@@ -3,15 +3,12 @@ import Link from 'next/link';
 import {
   Drawer,
   DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  IconButton,
   useDisclosure,
   Box,
-  Button,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import styles from '@/components/Layout/Navigation/Mobile/Navigation.module.scss';
@@ -35,6 +32,7 @@ function MobileNavigation({ nav }: { nav: NavProps[] }) {
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton outline="none" />
+
           <DrawerHeader>Menu</DrawerHeader>
 
           <DrawerBody>
@@ -43,7 +41,7 @@ function MobileNavigation({ nav }: { nav: NavProps[] }) {
                 {sortedNav.map((navItem: NavProps) => {
                   if (navItem.page || navItem.url) {
                     return (
-                      <li key={navItem.id}>
+                      <li onClick={onClose} key={navItem.id}>
                         <Link
                           href={
                             navItem.page ? `/${navItem.page.slug}` : navItem.url
