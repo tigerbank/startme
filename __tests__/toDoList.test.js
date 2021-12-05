@@ -23,4 +23,12 @@ describe('toDoList', () => {
     });
     expect(textElement).toBeInTheDocument();
   });
+
+  it('render show should empty list if there is no task', async () => {
+    render(<ToDoList todos={[]} />);
+    const textElement = await screen.findByText('There is no task yet.', {
+      exact: false,
+    });
+    expect(textElement).toBeInTheDocument();
+  });
 });

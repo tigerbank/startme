@@ -3,6 +3,9 @@ import { Box, Text } from '@chakra-ui/react';
 import { TodoProps } from '@/interfaces/common';
 
 function ToDoResult({ lists, handleDelete }: any) {
+  if (lists.length === 0) {
+    return <Box mt="20px">There is no task yet.</Box>;
+  }
   return (
     <Box data-testid="task-container">
       {lists.map((todo: TodoProps) => (

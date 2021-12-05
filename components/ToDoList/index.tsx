@@ -1,4 +1,4 @@
-import { Box, Heading } from '@chakra-ui/layout';
+import { Box, Heading, useToast } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { TodoProps } from '@/interfaces/common';
 import ToDoForm from './ToDoForm';
@@ -10,13 +10,17 @@ const fetcher = (url: any) => fetch(url).then((res) => res.json());
 function ToDoList({ todos }: { todos: TodoProps[] }) {
   const [todoInput, setTodoInput] = useState('');
   const [lists, setLists] = useState<any>(todos);
+  const toast = useToast();
+  const [loading, setLoading] = useState(false);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setTodoInput(e.target.value);
   }
   function handleSubmit(e: any) {
     e.preventDefault();
+
     if (todoInput.trim() !== '') {
+      setLoading(true);
       fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/todos`, {
         method: 'POST',
         headers: {
@@ -26,7 +30,17 @@ function ToDoList({ todos }: { todos: TodoProps[] }) {
           item: todoInput,
         }),
       })
-        .then((response) => response.json())
+        .then((response) => {
+          toast({
+            title: 'Success',
+            description: 'Task submitted',
+            status: 'success',
+            duration: 8000,
+            isClosable: true,
+          });
+          setLoading(false);
+          return response.json();
+        })
         .then((addedData) => {
           setLists([...lists, addedData]);
         });
@@ -38,7 +52,16 @@ function ToDoList({ todos }: { todos: TodoProps[] }) {
     fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/todos/${id}`, {
       method: 'DELETE',
     })
-      .then((response) => response.json())
+      .then((response) => {
+        toast({
+          title: 'Success',
+          description: 'Task Deleted',
+          status: 'success',
+          duration: 2000,
+          isClosable: true,
+        });
+        return response.json();
+      })
       .then(() => {
         const newTodos = lists.filter((_todo: any) => _todo.id !== id);
         setLists(newTodos);
@@ -63,11 +86,14 @@ function ToDoList({ todos }: { todos: TodoProps[] }) {
       <Heading as="h2" textAlign="center" fontSize="18px" mb="10px">
         All Tasks
       </Heading>
+
       <ToDoForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         todoInput={todoInput}
+        loading={loading}
       />
+
       <ToDoResult lists={lists} handleDelete={handleDelete} />
     </Box>
   );

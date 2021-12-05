@@ -1,6 +1,6 @@
-import { Input, Button, Box } from '@chakra-ui/react';
+import { Input, Button, Box, Spinner } from '@chakra-ui/react';
 
-function ToDoForm({ handleChange, handleSubmit, todoInput }: any) {
+function ToDoForm({ handleChange, handleSubmit, todoInput, loading }: any) {
   return (
     <Box>
       <form>
@@ -10,8 +10,8 @@ function ToDoForm({ handleChange, handleSubmit, todoInput }: any) {
             value={todoInput}
             placeholder="What do you want to do next?"
           />
-          <Button onClick={handleSubmit} type="submit">
-            Submit
+          <Button colorScheme="teal" onClick={handleSubmit} type="submit">
+            {loading ? <Spinner /> : 'Submit'}
           </Button>
         </Box>
       </form>
