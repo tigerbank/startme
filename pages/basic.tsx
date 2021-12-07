@@ -41,7 +41,9 @@ function Basic({
       <div>
         {numberOfIncompleteTasks < 1 && <p>No task left</p>}
         {isLoading && <p>Loading...</p>}
-        {errorMessage !== null && <p>{errorMessage}</p>}
+        {errorMessage !== null && (
+          <p data-testid="errorMessage">{errorMessage}</p>
+        )}
         <span>{todo && todo.title}</span>
       </div>
     </div>

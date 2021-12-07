@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ToDoForm from '@/components/ToDoList/ToDoForm';
 
@@ -8,51 +8,34 @@ const mockedHandleSubmit = jest
   .mockImplementation((e) => e.preventDefault());
 
 describe('ToDoForm', () => {
-  it('should render todo form', async () => {
+  beforeEach(() => {
     render(
-      <ToDoForm
-        todoInput="test"
-        handleChange={() => {}}
-        handleSubmit={mockedHandleSubmit}
-      />,
+      <ToDoForm handleChange={() => {}} handleSubmit={mockedHandleSubmit} />,
     );
+  });
+
+  it('should render todo form', async () => {
     const inputElement = screen.getByPlaceholderText(
       'What do you want to do next?',
     );
-
     expect(inputElement).toBeInTheDocument();
   });
 
   it('should be able to type input', async () => {
-    render(
-      <ToDoForm
-        todoInput="test"
-        handleChange={() => {}}
-        handleSubmit={mockedHandleSubmit}
-      />,
-    );
     const inputElement = screen.getByPlaceholderText(
       'What do you want to do next?',
     );
-    fireEvent.change(inputElement, { target: { value: 'test' } });
-
-    expect(inputElement.value).toBe('test');
+    userEvent.type(inputElement, 'good');
+    expect(inputElement).toHaveValue('good');
   });
 
   it('should have empty input when add button', async () => {
-    render(
-      <ToDoForm
-        todoInput="test"
-        handleChange={() => {}}
-        handleSubmit={mockedHandleSubmit}
-      />,
-    );
     const inputElement = screen.getByPlaceholderText(
       'What do you want to do next?',
     );
     const buttonElement = screen.getByRole('button');
-    fireEvent.change(inputElement, { target: { value: 'test' } });
-    fireEvent.click(buttonElement);
-    expect(buttonElement.value).toBe('');
+    userEvent.type(inputElement, '');
+    userEvent.click(buttonElement);
+    expect(buttonElement).toHaveValue('');
   });
 });
