@@ -1,11 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import Basic from '@/pages/basic';
 
 describe('Basic', () => {
   beforeEach(() => {
     fetch.resetMocks();
-    jest.useFakeTimers();
   });
 
   test('should show Basic Component', () => {
@@ -37,11 +36,13 @@ describe('Basic', () => {
     expect(await screen.findByText(/hello/i)).toBeInTheDocument();
   });
 
-  test('should render error message when fetch fail', async () => {
+  it('should render error message when fetch fail', async () => {
     fetch.mockReject(() => Promise.reject(new Error('API is down')));
     render(<Basic numberOfIncompleteTasks={0} />);
 
-    const paragraphElement = await screen.findByText(/API is down/i);
+    const paragraphElement = await waitFor(() =>
+      screen.findByText(/API is down/i),
+    );
     expect(paragraphElement).toBeInTheDocument();
   });
 });
