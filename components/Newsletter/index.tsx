@@ -13,7 +13,6 @@ function Newsletter() {
     const data = await response.json();
 
     setInputText('');
-    setMessage(data.message);
     toast({
       title: 'Success',
       description: data.message,
