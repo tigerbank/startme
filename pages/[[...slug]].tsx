@@ -3,6 +3,7 @@ import { NextSeo } from 'next-seo';
 import Sections from '@/components/sections';
 import { PageProps } from '@/interfaces/common';
 import { getPageData, getNavData, fetchAPI } from '@/util/api';
+import Newsletter from '@/components/Newsletter';
 
 function Page({ page }: { page: PageProps }) {
   const sections = page.contentSections;
@@ -13,6 +14,7 @@ function Page({ page }: { page: PageProps }) {
         description="A short description goes here."
       />
       <Sections sections={sections} />
+      <Newsletter />
     </>
   );
 }

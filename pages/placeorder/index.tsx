@@ -55,6 +55,18 @@ function PlaceOrder() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    const data = {
+      paymentMethod,
+      shippingAddress: { ...shippingAddress },
+      orderItems: cartItems,
+      itemPrice,
+      shippingPrice,
+      taxPrice,
+      totalPrice: total,
+      user: user.id,
+    };
+
     try {
       setLoading(true);
       const order = await fetch(
@@ -65,16 +77,7 @@ function PlaceOrder() {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${user.jwt}`,
           },
-          body: JSON.stringify({
-            paymentMethod,
-            shippingAddress: { ...shippingAddress },
-            orderItems: cartItems,
-            itemPrice,
-            shippingPrice,
-            taxPrice,
-            totalPrice: total,
-            user: user.id,
-          }),
+          body: JSON.stringify(data),
         },
       );
 
@@ -83,6 +86,14 @@ function PlaceOrder() {
       if (order.status !== 200) {
         throw new Error(order.statusText);
       }
+
+      await fetch(`/api/mail`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
       setLoading(false);
 

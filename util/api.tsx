@@ -75,3 +75,33 @@ export async function postRegister(registerInfo: RegisterInfoProps) {
     },
   );
 }
+
+export async function subscribeMail(mail: string) {
+  return fetch('/api/mailingList', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      email: mail,
+    }),
+  });
+}
+
+export async function sendGridsubscribeMail(mail: string) {
+  return fetch('https://api.sendgrid.com/v3/marketing/contacts', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${process.env.SENDGRID_API_KEY}`,
+    },
+    body: JSON.stringify({
+      list_ids: [process.env.SENDGRID_MAILIINGLIST_ID],
+      contacts: [
+        {
+          email: mail,
+        },
+      ],
+    }),
+  });
+}

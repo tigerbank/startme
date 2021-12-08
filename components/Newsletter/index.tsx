@@ -1,24 +1,30 @@
-import { Input, Box, Heading, Button } from '@chakra-ui/react';
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
+import { Input, Box, Heading, Button, useToast } from '@chakra-ui/react';
+import { subscribeMail } from '@/util/api';
 
 function Newsletter() {
-  const emailRef = useRef<HTMLInputElement>(null);
+  const [inputText, setInputText] = useState('');
+  const toast = useToast();
 
-  function submitFormHandler(event: React.FormEvent<HTMLFormElement>) {
+  async function submitFormHandler(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    fetch('/api/newsletter', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: emailRef.current?.value,
-      }),
-    }).then((response) => response.json().then((data) => console.log(data)));
+
+    const response = await subscribeMail(inputText);
+    const data = await response.json();
+
+    setInputText('');
+    setMessage(data.message);
+    toast({
+      title: 'Success',
+      description: data.message,
+      status: 'success',
+      duration: 8000,
+      isClosable: true,
+    });
   }
 
   return (
-    <Box mt="20px" background="gray.50" padding="50px">
+    <Box mt="20px">
       <Heading as="h4" textAlign="center">
         Signup for Newsletter
       </Heading>
@@ -28,7 +34,8 @@ function Newsletter() {
             background="white"
             type="email"
             placeholder="enter your email"
-            ref={emailRef}
+            onChange={(e) => setInputText(e.target.value)}
+            value={inputText}
           />
           <Button type="submit" ml="15px" w="100px" colorScheme="teal">
             Submit
