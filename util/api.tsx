@@ -105,3 +105,7 @@ export async function sendGridsubscribeMail(mail: string) {
     }),
   });
 }
+
+export async function getJobsData() {
+  return fetchAPI(`/jobs`);
+}

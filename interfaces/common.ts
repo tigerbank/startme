@@ -150,3 +150,20 @@ export interface CartItemProps {
   countInStock: number;
   quantity: number;
 }
+
+export interface JobProps {
+  id: number;
+  position: string;
+  type: string;
+  city: string;
+  company: CompanyProps;
+  locale: string;
+  updated_at: Date;
+}
+
+export interface CompanyProps {
+  id: number;
+  name: string;
+  locale: string;
+  logo: any;
+}
