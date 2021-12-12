@@ -1,4 +1,5 @@
 import { LoginInfoProps, RegisterInfoProps } from '@/interfaces/common';
+import axios from 'axios';
 
 export function getStrapiURL(path: string) {
   return `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${path}`;
@@ -106,6 +107,35 @@ export async function sendGridsubscribeMail(mail: string) {
   });
 }
 
+//frontend filter
 export async function getJobsData() {
   return fetchAPI(`/jobs`);
+}
+
+//backend filter
+export async function axiosJobsData(filterJobs: {
+  s: string;
+  company: string;
+  city: string;
+}) {
+  console.log(filterJobs);
+
+  let arr = [];
+
+  if (filterJobs.s !== '') {
+    arr.push(`position_contains=${filterJobs.s}`);
+  }
+
+  if (filterJobs.company !== '' && filterJobs.company !== 'All') {
+    arr.push(`company.name=${filterJobs.company}`);
+  }
+
+  if (filterJobs.city !== '' && filterJobs.city !== 'All') {
+    arr.push(`city=${filterJobs.city}`);
+  }
+
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/jobs/?${arr.join('&')}`,
+  );
+  return response.data;
 }
