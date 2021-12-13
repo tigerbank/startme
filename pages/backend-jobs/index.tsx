@@ -150,7 +150,7 @@ function BackendJobs() {
           <>
             {!loading && <JobList jobs={jobs} />}
 
-            {jobs.length !== 0 && !lastPage && (
+            {!loading && jobs.length !== 0 && !lastPage && (
               <Button colorScheme="teal" isFullWidth onClick={loadMore}>
                 {loading ? 'Loading...' : 'Load More'}
               </Button>
