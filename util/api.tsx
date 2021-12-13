@@ -10,6 +10,11 @@ export async function fetchAPI(path: string) {
   return res.json();
 }
 
+export async function axiosAPI(path: string) {
+  const response = await axios.get(getStrapiURL(path));
+  return response.data;
+}
+
 export async function getPageData(slug: string[], locale: string) {
   const joinedSlug = slug.join('/');
   const data = await fetchAPI(`/pages?slug=${joinedSlug}&_locale=${locale}`);
@@ -113,13 +118,15 @@ export async function getJobsData() {
 }
 
 //backend filter
-export async function axiosJobsData(filterJobs: {
-  s: string;
-  company: string;
-  city: string;
-}) {
-  console.log(filterJobs);
-
+export async function axiosJobsData(
+  filterJobs: {
+    s: string;
+    company: string;
+    location: string;
+    page: number;
+  },
+  perPage: number,
+) {
   let arr = [];
 
   if (filterJobs.s !== '') {
@@ -130,12 +137,25 @@ export async function axiosJobsData(filterJobs: {
     arr.push(`company.name=${filterJobs.company}`);
   }
 
-  if (filterJobs.city !== '' && filterJobs.city !== 'All') {
-    arr.push(`city=${filterJobs.city}`);
+  if (filterJobs.location !== '' && filterJobs.location !== 'All') {
+    arr.push(`location.id=${filterJobs.location}`);
   }
 
-  const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/jobs/?${arr.join('&')}`,
+  return axiosAPI(
+    `/jobs/?_limit=${perPage}&_start=${
+      perPage * (filterJobs.page - 1)
+    }&${arr.join('&')}`,
   );
-  return response.data;
+}
+
+export async function getCompanies() {
+  return axiosAPI(`/companies`);
+}
+
+export async function getLocations() {
+  return axiosAPI(`/cities`);
+}
+
+export async function countJobs() {
+  return axiosAPI(`/jobs/count`);
 }

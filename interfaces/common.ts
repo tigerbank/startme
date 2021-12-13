@@ -155,7 +155,7 @@ export interface JobProps {
   id: number;
   position: string;
   type: string;
-  city: string;
+  location: LocationProps;
   company: CompanyProps;
   locale: string;
   updated_at: Date;
@@ -166,4 +166,9 @@ export interface CompanyProps {
   name: string;
   locale: string;
   logo: any;
+}
+
+export interface LocationProps {
+  id: number;
+  name: string;
 }

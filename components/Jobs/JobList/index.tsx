@@ -5,6 +5,14 @@ import { JobProps } from '@/interfaces/common';
 import moment from 'moment';
 
 function JobList({ jobs }: any) {
+  if (jobs.length === 0) {
+    return (
+      <Box textAlign="center" mt="50px">
+        <Text>No jobs found...</Text>
+      </Box>
+    );
+  }
+
   return (
     <>
       {jobs.map((job: JobProps, index: number) => (
@@ -19,7 +27,11 @@ function JobList({ jobs }: any) {
         >
           <Box w="90px" mr="12px">
             <Image
-              src="https://via.placeholder.com/90"
+              src={
+                job.company.logo
+                  ? job.company.logo.url
+                  : 'https://via.placeholder.com/90'
+              }
               layout="fixed"
               width="90"
               height="90"
@@ -41,7 +53,7 @@ function JobList({ jobs }: any) {
 
           <Box ml="auto" mt="auto">
             <Text textAlign="right" fontSize="12px" color="#B7BCCE">
-              {job.city}
+              {job.location.name}
             </Text>
             <Text textAlign="right" fontSize="12px" color="#B7BCCE">
               {moment(job.updated_at, 'YYYYMMDD').fromNow()}
