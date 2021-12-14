@@ -112,12 +112,12 @@ export async function sendGridsubscribeMail(mail: string) {
   });
 }
 
-//frontend filter
+//frontend jobs filter
 export async function getJobsData() {
   return fetchAPI(`/jobs`);
 }
 
-//backend filter
+//backend jobs filter
 export async function axiosJobsData(
   filterJobs: {
     s: string;
@@ -154,8 +154,4 @@ export async function getCompanies() {
 
 export async function getLocations() {
   return axiosAPI(`/cities`);
-}
-
-export async function countJobs() {
-  return axiosAPI(`/jobs/count`);
 }

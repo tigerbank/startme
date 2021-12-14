@@ -1,11 +1,4 @@
 import React from 'react';
-import {
-  render,
-  screen,
-  waitFor,
-  wait,
-  waitForElement,
-} from '@testing-library/react';
 import { axiosJobsData, getCompanies } from '@/util/api';
 
 import mockAxios from 'axios';
@@ -183,7 +176,7 @@ const jobs = [
   },
 ];
 
-describe('BackendJobs', () => {
+describe('Backend Filtering Jobs', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
