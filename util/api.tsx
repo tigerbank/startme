@@ -155,3 +155,18 @@ export async function getCompanies() {
 export async function getLocations() {
   return axiosAPI(`/cities`);
 }
+
+export async function filterProducts(filterProducts: any) {
+  let arr = [];
+  if (filterProducts.s !== '') {
+    arr.push(`name_contains=${filterProducts.s}`);
+  }
+
+  if (filterProducts.range.length !== 0) {
+    arr.push(
+      `price_gte=${filterProducts.range[0]}&price_lte=${filterProducts.range[1]}`,
+    );
+  }
+
+  return axiosAPI(`/products?${arr.join('&')}`);
+}

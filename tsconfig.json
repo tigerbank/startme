@@ -31,7 +31,8 @@
     "__tests__/shop.test.jsx",
     "util/Store.js",
     "__tests__/todoTest.test.js",
-    "util/heroApi.js"
+    "util/heroApi.js",
+    "pages/shop/__tests__/shop.test.jsx"
   ],
   "exclude": ["node_modules"]
 }
