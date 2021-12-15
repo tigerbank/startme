@@ -29,13 +29,5 @@ describe('ToDoForm', () => {
     expect(inputElement).toHaveValue('good');
   });
 
-  it('should have empty input when add button', async () => {
-    const inputElement = screen.getByPlaceholderText(
-      'What do you want to do next?',
-    );
-    const buttonElement = screen.getByRole('button');
-    userEvent.type(inputElement, '');
-    userEvent.click(buttonElement);
-    expect(buttonElement).toHaveValue('');
-  });
+ 
 });

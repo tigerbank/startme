@@ -15,6 +15,7 @@ function Shop({ data }: { data: ProductProps[] }) {
   const [productFilter, setProductFilter] = useState({
     s: '',
     range: [],
+    brand: [],
   });
 
   useEffect(() => {
@@ -38,7 +39,7 @@ function Shop({ data }: { data: ProductProps[] }) {
       <Box className="container" mt="40px">
         <Flex flexDir={{ base: 'column', xl: 'row' }}>
           <Box w={{ base: '100%', xl: '20%' }} mb="50px">
-            <Box pr="50px">
+            <Box px={{ base: '30px', xl: '0px' }}>
               <FilterProduct
                 productFilter={productFilter}
                 setProductFilter={setProductFilter}

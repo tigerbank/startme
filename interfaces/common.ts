@@ -123,7 +123,7 @@ export interface ProductProps {
   slug: string;
   price: number;
   category: string;
-  brand: string;
+  brand: BrandProps;
   rating: number;
   numReviews: number;
   countInStock: number;
@@ -134,6 +134,11 @@ export interface ProductProps {
   updated_at: Date;
   image: any;
   localizations: any[];
+}
+
+export interface BrandProps {
+  id: number;
+  name: string;
 }
 
 export interface CartProps {

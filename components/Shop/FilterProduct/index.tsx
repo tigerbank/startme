@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Heading, Input, Select, Stack } from '@chakra-ui/react';
-import PriceRangeScreen from './PriceRange';
+import PriceRangeScreen from '@/components/Shop/FilterProduct/PriceRange';
+import BrandCheckBox from '@/components/Shop/FilterProduct/BrandCheckBox';
 
 function FilterProduct({ productFilter, setProductFilter }: any) {
   const [range, setRange] = useState([0, 50000]);
+  const [checkedBrand, setCheckedBrand] = useState([]);
 
   useEffect(() => {
     setProductFilter({
@@ -11,6 +13,13 @@ function FilterProduct({ productFilter, setProductFilter }: any) {
       range,
     });
   }, [range]);
+
+  useEffect(() => {
+    setProductFilter({
+      ...productFilter,
+      checkedBrand,
+    });
+  }, [checkedBrand]);
 
   return (
     <Box mt="20px">
@@ -28,11 +37,11 @@ function FilterProduct({ productFilter, setProductFilter }: any) {
             })
           }
         />
-        {/* <Select>
-          <option>All</option>
-          <option>Nike</option>
-          <option>Adidas</option>
-        </Select> */}
+
+        <BrandCheckBox
+          checkedBrand={checkedBrand}
+          setCheckedBrand={setCheckedBrand}
+        />
 
         <PriceRangeScreen setRange={setRange} range={range} />
       </Stack>

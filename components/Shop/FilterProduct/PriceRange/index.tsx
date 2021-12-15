@@ -10,8 +10,8 @@ import React, { useState } from 'react';
 
 function PriceRangeScreen({ range, setRange }: any) {
   return (
-    <Box mt="15px">
-      <Text mb="30px" fontWeight="bold">
+    <Box px="20px">
+      <Text mb="30px" mt="15px" fontWeight="bold">
         Price
       </Text>
       <RangeSlider

@@ -33,7 +33,7 @@ function ProductScreen({ product }: { product: ProductProps }) {
             <Box px="30px">
               <Heading>{product.name}</Heading>
               <Text>{product.category}</Text>
-              <Text>{product.brand}</Text>
+              <Text>{product.brands.name}</Text>
               <Text>{product.rating}</Text>
               <Text>{product.description}</Text>
               <Text>THB {product.price}</Text>

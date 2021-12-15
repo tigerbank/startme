@@ -156,6 +156,10 @@ export async function getLocations() {
   return axiosAPI(`/cities`);
 }
 
+export async function getBrands() {
+  return axiosAPI(`/brands`);
+}
+
 export async function filterProducts(filterProducts: any) {
   let arr = [];
   if (filterProducts.s !== '') {
@@ -166,6 +170,15 @@ export async function filterProducts(filterProducts: any) {
     arr.push(
       `price_gte=${filterProducts.range[0]}&price_lte=${filterProducts.range[1]}`,
     );
+  }
+
+  if (filterProducts.checkedBrand !== []) {
+    let brandArr: string[] = [];
+    filterProducts?.checkedBrand?.forEach((brand: number) => {
+      brandArr.push(`brands.id=${brand}`);
+    });
+
+    arr.push(`${brandArr.join('&')}`);
   }
 
   return axiosAPI(`/products?${arr.join('&')}`);
