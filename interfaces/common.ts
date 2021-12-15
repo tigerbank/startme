@@ -123,7 +123,7 @@ export interface ProductProps {
   slug: string;
   price: number;
   category: string;
-  brand: BrandProps;
+  brands: BrandProps;
   rating: number;
   numReviews: number;
   countInStock: number;
