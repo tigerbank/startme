@@ -24,7 +24,7 @@ function ProductScreen({ product }: { product: ProductProps }) {
             <Image
               width="900"
               height="900"
-              src={product.image.url}
+              src={product.image.url || 'https://via.placeholder.com/800'}
               alt=""
               layout="responsive"
             />

@@ -43,7 +43,9 @@ function ProductLists({
                   <Link href={`/shop/product/${product.slug}`} passHref>
                     <a>
                       <Image
-                        src={product.image.url}
+                        src={
+                          product.image.url || 'https://via.placeholder.com/800'
+                        }
                         alt=""
                         layout="responsive"
                         width="800"
