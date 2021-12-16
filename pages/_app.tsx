@@ -1,6 +1,5 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { appWithTranslation } from 'next-i18next';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import NextNprogress from 'nextjs-progressbar';
 import Layout from '@/components/Layout';
@@ -46,4 +45,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default appWithTranslation(MyApp);
+export default MyApp;
