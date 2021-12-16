@@ -4,6 +4,7 @@ import Sections from '@/components/sections';
 import { PageProps } from '@/interfaces/common';
 import { getPageData, getNavData, fetchAPI } from '@/util/api';
 import Newsletter from '@/components/Newsletter';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Page({ page }: { page: PageProps }) {
   const sections = page.contentSections;
@@ -58,7 +59,7 @@ export async function getStaticProps({
   }
 
   return {
-    props: { page, nav },
+    props: { ...(await serverSideTranslations(locale, ['common'])), page, nav },
     revalidate: 10,
   };
 }

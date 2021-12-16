@@ -6,13 +6,15 @@ import {
   RangeSliderThumb,
   Text,
 } from '@chakra-ui/react';
+import { useTranslation } from 'next-i18next';
 import React from 'react';
 
 function PriceRangeScreen({ range, setRange }: any) {
+  const { t } = useTranslation('common');
   return (
     <Box px="20px">
       <Text mb="30px" mt="15px" fontWeight="bold">
-        Price
+        {t('price')}
       </Text>
       <RangeSlider
         onChangeEnd={(val) => {

@@ -90,7 +90,7 @@ function CartScreen() {
                           ))}
                         </select>
                       </Td>
-                      <Td textAlign="center">{item.price}</Td>
+                      <Td textAlign="center">{item.price.toLocaleString()}</Td>
                       <Td textAlign="center">
                         <button onClick={() => handleDelete(item)}>X</button>
                       </Td>
@@ -110,8 +110,8 @@ function CartScreen() {
             <Text>
               {cartItems.reduce((a: any, c: any) => a + c.quantity, 0)} Items
             </Text>
-            <Text>
-              {totalItemPrice(cartItems)}
+            <Text fontWeight="bold">
+              {totalItemPrice(cartItems).toLocaleString()}
               THB
             </Text>
             <Link href="/shipping" passHref>

@@ -32,11 +32,23 @@ function ProductScreen({ product }: { product: ProductProps }) {
           <Box mt={{ base: '20px', md: 0 }} w={{ base: '100%', md: '50%' }}>
             <Box px="30px">
               <Heading>{product.name}</Heading>
-              <Text>{product.category}</Text>
-              <Text>{product.brands.name}</Text>
-              <Text>{product.rating}</Text>
-              <Text>{product.description}</Text>
-              <Text>THB {product.price}</Text>
+              <Text mb="20px" fontSize="20px" fontWeight="bold">
+                THB {product.price.toLocaleString()}
+              </Text>
+              <Text>
+                <strong>Category:</strong> {product.category}
+              </Text>
+              <Text>
+                <strong>Brand:</strong> {product.brands.name}
+              </Text>
+              <Text>
+                <strong>Stock:</strong> {product.countInStock}
+              </Text>
+              <Box as="hr" my="20px" />
+              <Text>
+                <strong>Detail:</strong>
+                <br /> {product.description}
+              </Text>
 
               <Box mt="20px">
                 <AddToCart product={product} />

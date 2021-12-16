@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'next-i18next';
 import { Input, Box, Heading, Button, useToast } from '@chakra-ui/react';
 import { subscribeMail } from '@/util/api';
 
 function Newsletter() {
+  const { t } = useTranslation('common');
   const [inputText, setInputText] = useState('');
   const toast = useToast();
 
@@ -25,7 +27,7 @@ function Newsletter() {
   return (
     <Box mt="20px">
       <Heading as="h4" textAlign="center">
-        Signup for Newsletter
+        {t('newsletter_title')}
       </Heading>
       <form onSubmit={submitFormHandler}>
         <Box w="320px" ml="auto" mr="auto" mt="20px" d="flex">

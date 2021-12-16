@@ -55,7 +55,7 @@ function ProductLists({
                   <Box p="20px" d="flex" justifyContent="space-between">
                     <Box>
                       <Text fontWeight="bold">{product.name}</Text>
-                      <Text>THB {product.price}</Text>
+                      <Text>THB {product.price.toLocaleString()}</Text>
                     </Box>
 
                     <Box mt="5px">

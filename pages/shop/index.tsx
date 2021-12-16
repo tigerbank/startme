@@ -6,8 +6,11 @@ import { ProductProps } from '@/interfaces/common';
 import FilterProduct from '@/components/Shop/FilterProduct';
 import ProductLists from '@/components/Shop/ProductLists';
 import Pagination from '@/components/Pagination';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Shop({ data }: { data: ProductProps[] }) {
+  const { t } = useTranslation('common');
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState(data);
   const [productFilter, setProductFilter] = useState({
@@ -60,7 +63,7 @@ function Shop({ data }: { data: ProductProps[] }) {
             <Box px="25px">
               <Box d="flex" alignItems="center" justifyContent="flex-end">
                 <Text fontSize="14px" mr="15px">
-                  Show products per page
+                  {t('show_products_per_page')}
                 </Text>
                 <Select
                   w="60px"
@@ -97,6 +100,7 @@ export async function getServerSideProps({ locale }: { locale: string }) {
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common'])),
       data,
       nav,
     },

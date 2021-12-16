@@ -181,7 +181,7 @@ function PlaceOrder() {
                       </Td>
                       <Td textAlign="center">{item.name}</Td>
                       <Td textAlign="center">{item.quantity}</Td>
-                      <Td textAlign="center">{item.price}</Td>
+                      <Td textAlign="center">{item.price.toLocaleString()}</Td>
                     </Tr>
                   ))}
                 </Tbody>
@@ -196,21 +196,21 @@ function PlaceOrder() {
               <Flex justifyContent="space-between">
                 <Text>Items:</Text>
                 <Text>
-                  {itemPrice}
+                  {itemPrice.toLocaleString()}
                   THB
                 </Text>
               </Flex>
               <Flex justifyContent="space-between">
                 <Text>Tax:</Text>
-                <Text>{taxPrice}</Text>
+                <Text>{taxPrice.toLocaleString()}</Text>
               </Flex>
               <Flex justifyContent="space-between">
                 <Text>Shipping:</Text>
-                <Text>{shippingPrice}</Text>
+                <Text>{shippingPrice.toLocaleString()}</Text>
               </Flex>
               <Flex justifyContent="space-between">
                 <Text fontWeight="bold">Total:</Text>
-                <Text fontWeight="bold">{total}</Text>
+                <Text fontWeight="bold">{total.toLocaleString()}</Text>
               </Flex>
               <Button
                 colorScheme="teal"

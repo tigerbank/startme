@@ -1,9 +1,11 @@
 import { BrandProps } from '@/interfaces/common';
 import { getBrands } from '@/util/api';
 import { Box, Checkbox, Stack, Heading } from '@chakra-ui/react';
+import { useTranslation } from 'next-i18next';
 import React, { useEffect, useState } from 'react';
 
 function BrandCheckBox({ checkedBrand, setCheckedBrand }: any) {
+  const { t } = useTranslation('common');
   const [brands, setBrands] = useState([]);
 
   useEffect(() => {
@@ -33,7 +35,7 @@ function BrandCheckBox({ checkedBrand, setCheckedBrand }: any) {
   return (
     <Box>
       <Heading my="15px" as="h4" fontSize="16px">
-        Brand
+        {t('brand')}
       </Heading>
       <Stack>
         {brands.map((brand: BrandProps) => (

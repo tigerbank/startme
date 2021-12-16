@@ -9,7 +9,7 @@ describe('Newsletter', () => {
   });
   it('should show Newsletter Component', () => {
     render(<Newsletter />);
-    expect(screen.getByText(/Signup for Newsletter/i)).toBeInTheDocument();
+    expect(screen.getByText('newsletter_title')).toBeInTheDocument();
   });
 
   it('input should be blank after submit', () => {
@@ -20,6 +20,4 @@ describe('Newsletter', () => {
     userEvent.click(button);
     expect(button).toHaveValue('');
   });
-
- 
 });

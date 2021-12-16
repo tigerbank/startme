@@ -18,8 +18,7 @@ describe('FilterProduct ', () => {
     jest.clearAllMocks();
   });
   it('render "Filter Product" Component', async () => {
-
-    const { getByText} = render(
+    const { getByText } = render(
       <FilterProduct
         productFilter={{
           s: '',
@@ -28,13 +27,12 @@ describe('FilterProduct ', () => {
         setProductFilter={() => {}}
       />,
     );
-    const textElement = await waitFor(() => getByText('Filter Product'));
+    const textElement = await waitFor(() => getByText('filter_product'));
     expect(textElement).toBeInTheDocument();
   });
 
   it('render "input" search by product title', async () => {
-
-      const { findByPlaceholderText } = render(
+    const { findByPlaceholderText } = render(
       <FilterProduct
         productFilter={{
           s: '',
@@ -44,7 +42,7 @@ describe('FilterProduct ', () => {
       />,
     );
     const inputElement = await waitFor(() =>
-     findByPlaceholderText('Product name'),
+      findByPlaceholderText('product_name'),
     );
     expect(inputElement).toBeInTheDocument();
   });

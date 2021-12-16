@@ -139,7 +139,9 @@ function Order({ orderId }: { orderId: number }) {
                         </Td>
                         <Td textAlign="center">{item.name}</Td>
                         <Td textAlign="center">{item.quantity}</Td>
-                        <Td textAlign="center">{item.price}</Td>
+                        <Td textAlign="center">
+                          {item.price.toLocaleString()}
+                        </Td>
                       </Tr>
                     ))}
                   </Tbody>
@@ -185,19 +187,21 @@ function Order({ orderId }: { orderId: number }) {
                 </Heading>
                 <Flex justifyContent="space-between">
                   <Text>Items:</Text>
-                  <Text>{order.itemPrice} THB</Text>
+                  <Text>{order.itemPrice.toLocaleString()} THB</Text>
                 </Flex>
                 <Flex justifyContent="space-between">
                   <Text>Tax:</Text>
-                  <Text>{order.taxPrice}</Text>
+                  <Text>{order.taxPrice.toLocaleString()}</Text>
                 </Flex>
                 <Flex justifyContent="space-between">
                   <Text>Shipping:</Text>
-                  <Text>{order.shippingPrice}</Text>
+                  <Text>{order.shippingPrice.toLocaleString()}</Text>
                 </Flex>
                 <Flex justifyContent="space-between">
                   <Text fontWeight="bold">Total:</Text>
-                  <Text fontWeight="bold">{order.totalPrice}</Text>
+                  <Text fontWeight="bold">
+                    {order.totalPrice.toLocaleString()}
+                  </Text>
                 </Flex>
                 <Box mt="20px">
                   {order.paymentMethod === 'paypal' && !order.isPaid && (
