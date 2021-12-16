@@ -44,7 +44,9 @@ function ProductLists({
                     <a>
                       <Image
                         src={
-                          product.image.url || 'https://via.placeholder.com/800'
+                          product.image.url
+                            ? product.image.url
+                            : 'https://via.placeholder.com/800'
                         }
                         alt=""
                         layout="responsive"
