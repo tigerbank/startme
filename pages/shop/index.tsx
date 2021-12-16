@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import { NextSeo } from 'next-seo';
-import { Box, Heading, Text, Flex } from '@chakra-ui/react';
+import { Box, Flex, Select, Text } from '@chakra-ui/react';
 import { filterProducts, getNavData, getProducts } from '@/util/api';
-import AddToCart from '@/components/AddToCart';
 import { ProductProps } from '@/interfaces/common';
 import FilterProduct from '@/components/Shop/FilterProduct';
-import Loading from '@/components/Loading/Index';
+import ProductLists from '@/components/Shop/ProductLists';
+import Pagination from '@/components/Pagination';
 
 function Shop({ data }: { data: ProductProps[] }) {
   const [loading, setLoading] = useState(false);
@@ -17,6 +15,9 @@ function Shop({ data }: { data: ProductProps[] }) {
     range: [],
     brand: [],
   });
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(9);
 
   useEffect(() => {
     setProducts(data);
@@ -33,6 +34,14 @@ function Shop({ data }: { data: ProductProps[] }) {
     fetchProducts();
   }, [productFilter]);
 
+  // get current posts
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentList = products.slice(indexOfFirstPost, indexOfLastPost);
+  const noOfAllPosts = Math.ceil(products.length / postsPerPage);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
   return (
     <>
       <NextSeo title="Shop" description="A short description goes here." />
@@ -48,55 +57,33 @@ function Shop({ data }: { data: ProductProps[] }) {
           </Box>
 
           <Box w={{ base: '100%', xl: '80%' }}>
-            <Heading as="h3" ml="20px">
-              Shop
-            </Heading>
-            {products.length > 0 ? (
-              <Flex
-                flexWrap="wrap"
-                justifyContent={{ base: 'space-between', xl: 'initial' }}
-                w="100%"
-              >
-                {products &&
-                  products.map((product: ProductProps) => (
-                    <Box
-                      key={product.name}
-                      width={{ base: '100%', md: '50%', xl: '33%' }}
-                    >
-                      <Box p="20px">
-                        <Link href={`/shop/product/${product.slug}`} passHref>
-                          <a>
-                            <Image
-                              src={product.image.url}
-                              alt=""
-                              layout="responsive"
-                              width="800"
-                              height="800"
-                            />
-                          </a>
-                        </Link>
-
-                        <Box p="20px" d="flex" justifyContent="space-between">
-                          <Box>
-                            <Text fontWeight="bold">{product.name}</Text>
-                            <Text>THB {product.price}</Text>
-                          </Box>
-
-                          <Box mt="5px">
-                            <AddToCart product={product} />
-                          </Box>
-                        </Box>
-                      </Box>
-                    </Box>
-                  ))}
-              </Flex>
-            ) : loading ? (
-              <Loading />
-            ) : (
-              <Text mt="20px" ml="20px">
-                No product available
+            <Box px="25px">
+              <Box d="flex" alignItems="center" justifyContent="flex-end">
+                <Text fontSize="14px" mr="15px">
+                  Show products per page
+                </Text>
+                <Select
+                  w="60px"
+                  onChange={(e) => setPostsPerPage(Number(e.target.value))}
+                  value={postsPerPage}
+                >
+                  <option value={3}>3</option>
+                  <option value={6}>6</option>
+                  <option value={9}>9</option>
+                </Select>
+              </Box>
+            </Box>
+            <ProductLists products={currentList} loading={loading} />
+            <Flex alignItems="center">
+              <Pagination
+                postsPerPage={postsPerPage}
+                totalPosts={products.length}
+                paginate={paginate}
+              />
+              <Text fontSize="12px" textAlign="right">
+                Page {currentPage} of {noOfAllPosts}
               </Text>
-            )}
+            </Flex>
           </Box>
         </Flex>
       </Box>
@@ -110,7 +97,7 @@ export async function getServerSideProps({ locale }: { locale: string }) {
 
   return {
     props: {
-      data: [],
+      data,
       nav,
     },
   };

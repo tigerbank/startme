@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Heading, Input, Select, Stack } from '@chakra-ui/react';
+import { Box, Heading, Input, Stack } from '@chakra-ui/react';
 import PriceRangeScreen from '@/components/Shop/FilterProduct/PriceRange';
 import BrandCheckBox from '@/components/Shop/FilterProduct/BrandCheckBox';
 

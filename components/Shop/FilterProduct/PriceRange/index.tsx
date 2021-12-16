@@ -6,7 +6,7 @@ import {
   RangeSliderThumb,
   Text,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React from 'react';
 
 function PriceRangeScreen({ range, setRange }: any) {
   return (
