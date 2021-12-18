@@ -23,5 +23,4 @@ describe('Nav', () => {
     const navTitle = screen.getAllByText('เกี่ยวกับเรา');
     expect(navTitle[0]).toBeVisible();
   });
-
 });

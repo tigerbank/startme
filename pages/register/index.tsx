@@ -16,8 +16,9 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { RegisterInfoProps } from '@/interfaces/common';
-import { postRegister } from '@/util/api';
+import { getGlobalData, postRegister } from '@/util/api';
 import { Store } from '@/util/Store';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function RegisterScreen() {
   const {
@@ -182,6 +183,17 @@ function RegisterScreen() {
       </Box>
     </>
   );
+}
+
+export async function getServerSideProps({ locale }: { locale: string }) {
+  const global = await getGlobalData(locale);
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+      global,
+    },
+  };
 }
 
 export default RegisterScreen;

@@ -7,6 +7,7 @@ import Pagination from '@/components/Pagination';
 import { JobProps } from '@/interfaces/common';
 import { getGlobalData, getJobsData } from '@/util/api';
 import { Box, Button } from '@chakra-ui/react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Jobs() {
   const [loading, setLoading] = useState(false);
@@ -135,6 +136,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common'])),
       global,
     },
   };

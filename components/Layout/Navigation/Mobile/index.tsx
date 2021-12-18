@@ -29,8 +29,8 @@ function MobileNavigation({ nav }: { nav: NavProps[] }) {
         size="full"
       >
         <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton outline="none" />
+        <DrawerContent pt="50px">
+          <DrawerCloseButton outline="none" top="50px" right="10px" />
 
           <DrawerHeader>Menu</DrawerHeader>
 

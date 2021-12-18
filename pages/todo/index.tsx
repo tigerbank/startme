@@ -3,6 +3,7 @@ import ToDoList from '@/components/ToDoList';
 import { Box } from '@chakra-ui/layout';
 import { getGlobalData, getTodosData } from '@/util/api';
 import { TodoProps } from '@/interfaces/common';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Todo({ todos }: { todos: TodoProps[] }) {
   return (
@@ -23,7 +24,11 @@ export async function getStaticProps({ locale }: { locale: string }) {
   }
 
   return {
-    props: { todos, global },
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+      todos,
+      global,
+    },
     revalidate: 10,
   };
 }

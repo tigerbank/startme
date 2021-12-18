@@ -4,6 +4,7 @@ import { axiosJobsData, getGlobalData } from '@/util/api';
 import JobList from '@/components/Jobs/JobList';
 import Loading from '@/components/Loading/Index';
 import JobFilterBackend from '@/components/Jobs/JobFilterBackend';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function BackendJobs() {
   const [loading, setLoading] = useState(false);
@@ -81,6 +82,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common'])),
       global,
     },
   };

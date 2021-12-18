@@ -6,6 +6,7 @@ import { ProductProps } from '@/interfaces/common';
 import AddToCart from '@/components/AddToCart';
 import BackToShop from '@/components/BackToShop';
 import { getGlobalData, getProductsBySlug } from '@/util/api';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function ProductScreen({ product }: { product: ProductProps }) {
   if (!product) {
@@ -74,6 +75,7 @@ export async function getServerSideProps(context: any) {
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common'])),
       product,
       global,
     },

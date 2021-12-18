@@ -24,6 +24,7 @@ import BackToShop from '@/components/BackToShop';
 import { totalItemPrice } from '@/util/cart';
 import { Store } from '@/util/Store';
 import { getGlobalData } from '@/util/api';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function PlaceOrder() {
   const { state, dispatch } = useContext(Store);
@@ -240,6 +241,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common'])),
       global,
     },
   };

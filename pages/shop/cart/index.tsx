@@ -133,7 +133,7 @@ function CartScreen() {
 
 // export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
 
-export async function getStaticProps({ locale }: { locale: string }) {
+export async function getServerSideProps({ locale }: { locale: string }) {
   const global = await getGlobalData(locale);
 
   return {

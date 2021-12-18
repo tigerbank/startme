@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import SubMenu from '@/components/Layout/Header/SubMenu';
+import CartMenu from '@/components/Layout/Header/CartMenu';
 import { Box, Heading, useBreakpointValue } from '@chakra-ui/react';
 import MobileNavigation from '@/components/Layout/Navigation/Mobile';
 import { NavProps } from '@/interfaces/common';
@@ -10,10 +11,15 @@ function Header({ nav }: { nav: NavProps[] }) {
   return (
     <>
       <Box
-        height="60px"
-        borderBottom="solid 1px #cecece"
+        position="fixed"
+        top="0"
+        width="100%"
+        borderBottom="solid 1px #b1b1b1"
         display="flex"
         alignItems="center"
+        bg="#f9f9f9"
+        zIndex={9999}
+        height="45px"
       >
         <Box
           className="container"
@@ -29,7 +35,14 @@ function Header({ nav }: { nav: NavProps[] }) {
           {!isMobile && <SubMenu />}
 
           {/*If it is not [[...slug]], need to pass nav prop to page */}
-          {isMobile && nav && <MobileNavigation nav={nav} />}
+          {isMobile && nav && (
+            <Box d="flex" alignItems="center">
+              <Box mr="5px">
+                <CartMenu />
+              </Box>
+              <MobileNavigation nav={nav} />
+            </Box>
+          )}
         </Box>
       </Box>
     </>

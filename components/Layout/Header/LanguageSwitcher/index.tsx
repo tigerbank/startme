@@ -19,7 +19,7 @@ function LanguageSwitcher() {
       <Link passHref locale="th" href={(router && router.asPath) || '/'}>
         <a>
           <Text fontWeight={router.locale === 'th' ? 'bold' : 'normal'}>
-            TH
+            ไทย
           </Text>
         </a>
       </Link>

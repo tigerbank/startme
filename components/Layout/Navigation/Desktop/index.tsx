@@ -56,7 +56,12 @@ function DesktopNavigation({ nav }: { nav: NavProps[] }) {
   };
 
   return (
-    <Box className={styles.navigation} bg="black" borderBottom="solid 5px">
+    <Box
+      mt="45px"
+      className={styles.navigation}
+      bg="black"
+      borderBottom="solid 5px"
+    >
       <Box className="container">
         <Box color="white" d="flex" p="10px 0">
           <ul>

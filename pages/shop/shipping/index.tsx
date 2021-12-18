@@ -17,6 +17,7 @@ import CartSteps from '@/components/CartSteps';
 import BackToShop from '@/components/BackToShop';
 import { Store } from '@/util/Store';
 import { getGlobalData } from '@/util/api';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Shipping() {
   const router = useRouter();
@@ -185,6 +186,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common'])),
       global,
     },
   };

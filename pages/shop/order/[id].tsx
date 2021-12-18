@@ -22,6 +22,7 @@ import { OrderProps } from '@/interfaces/common';
 import { Store } from '@/util/Store';
 import BackToShop from '@/components/BackToShop';
 import { getGlobalData, getOrder, updateOrderStatus } from '@/util/api';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Order({ orderId }: { orderId: number }) {
   const router = useRouter();
@@ -249,6 +250,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common'])),
       orderId,
       global,
     },
