@@ -130,7 +130,7 @@ function PlaceOrder() {
   return (
     <>
       <NextSeo title="Register" description="A short description goes here." />
-      <Box className="container">
+      <Box className="container" pt="30px">
         <CartSteps currentStep={3} />
         <Heading as="h3">Place order</Heading>
         <Flex flexDir={{ base: 'column', xl: 'row' }}>

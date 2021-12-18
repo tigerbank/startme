@@ -86,7 +86,7 @@ function Shipping() {
         title="Shipping | Shop"
         description="A short description goes here."
       />
-      <Box className="container">
+      <Box className="container" pt="20px">
         <CartSteps currentStep={1} />
         <Heading as="h3">Shipping</Heading>
         <form onSubmit={handleSubmit(submitHandler)}>

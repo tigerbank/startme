@@ -41,7 +41,7 @@ function CartScreen() {
   };
 
   return (
-    <Box className="container" mt="30px">
+    <Box className="container" pt="30px">
       <Heading as="h3">Shopping Cart</Heading>
       {cartItems.length === 0 && <Box mt="20px">Cart is empty</Box>}
 

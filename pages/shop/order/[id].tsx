@@ -60,7 +60,7 @@ function Order({ orderId }: { orderId: number }) {
           title="Order detail"
           description="A short description goes here."
         />
-        <Box className="container" mt="20px">
+        <Box className="container" pt="30px">
           <Heading as="h3">Order Summary</Heading>
           <Flex flexDir={{ base: 'column', lg: 'row' }}>
             <Box w={{ base: '100%', lg: '70%' }} mr="40px">

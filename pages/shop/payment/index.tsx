@@ -48,7 +48,7 @@ function Payment() {
   return (
     <>
       <NextSeo title="Payment" description="A short description goes here." />
-      <Box className="container">
+      <Box className="container" pt="20px">
         <CartSteps currentStep={2} />
         <Heading as="h3">Payment</Heading>
         <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">

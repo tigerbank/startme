@@ -9,10 +9,14 @@ import {
   DrawerCloseButton,
   useDisclosure,
   Box,
+  DrawerFooter,
+  Text,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import styles from '@/components/Layout/Navigation/Mobile/Navigation.module.scss';
 import { NavProps } from '@/interfaces/common';
+import LanguageSwitcher from '@/components/Layout/Header/LanguageSwitcher';
+import UserMenu from '@/components/Layout/Header/UserMenu';
 
 function MobileNavigation({ nav }: { nav: NavProps[] }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -30,11 +34,13 @@ function MobileNavigation({ nav }: { nav: NavProps[] }) {
       >
         <DrawerOverlay />
         <DrawerContent pt="50px">
-          <DrawerCloseButton outline="none" top="50px" right="10px" />
+          <DrawerCloseButton
+            _focus={{ outline: 'none' }}
+            top="50px"
+            right="10px"
+          />
 
-          <DrawerHeader>Menu</DrawerHeader>
-
-          <DrawerBody>
+          <DrawerBody p="0">
             <Box className={styles.navigation}>
               <ul>
                 {nav &&
@@ -49,7 +55,15 @@ function MobileNavigation({ nav }: { nav: NavProps[] }) {
             </Box>
           </DrawerBody>
 
-          {/* <DrawerFooter>Footer content</DrawerFooter> */}
+          <DrawerFooter flexDir="row" justifyContent="space-between">
+            <Box>
+              <UserMenu />
+            </Box>
+            <Box d="flex">
+              <Text mr="10px">Language: </Text>
+              <LanguageSwitcher />
+            </Box>
+          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </>
