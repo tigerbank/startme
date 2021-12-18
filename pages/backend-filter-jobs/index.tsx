@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button } from '@chakra-ui/react';
-import { axiosJobsData } from '@/util/api';
+import { axiosJobsData, getGlobalData } from '@/util/api';
 import JobList from '@/components/Jobs/JobList';
 import Loading from '@/components/Loading/Index';
 import JobFilterBackend from '@/components/Jobs/JobFilterBackend';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function BackendJobs() {
   const [loading, setLoading] = useState(false);
@@ -74,6 +75,17 @@ function BackendJobs() {
       </Box>
     </Box>
   );
+}
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  const global = await getGlobalData(locale);
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+      global,
+    },
+  };
 }
 
 export default BackendJobs;

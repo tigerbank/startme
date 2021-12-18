@@ -2,7 +2,7 @@ import React from 'react';
 import { NextSeo } from 'next-seo';
 import Sections from '@/components/sections';
 import { PageProps } from '@/interfaces/common';
-import { getPageData, getNavData, fetchAPI } from '@/util/api';
+import { getPageData, getGlobalData, fetchAPI } from '@/util/api';
 import Newsletter from '@/components/Newsletter';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
@@ -50,7 +50,7 @@ export async function getStaticProps({
 }) {
   const { slug } = params;
   const page = await getPageData(slug ? slug : [''], locale);
-  const nav = await getNavData(locale);
+  const global = await getGlobalData(locale);
 
   if (!page) {
     return {
@@ -59,7 +59,11 @@ export async function getStaticProps({
   }
 
   return {
-    props: { ...(await serverSideTranslations(locale, ['common'])), page, nav },
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+      page,
+      global,
+    },
     revalidate: 10,
   };
 }

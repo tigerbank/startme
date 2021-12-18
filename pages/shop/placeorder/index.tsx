@@ -23,6 +23,8 @@ import CartSteps from '@/components/CartSteps';
 import BackToShop from '@/components/BackToShop';
 import { totalItemPrice } from '@/util/cart';
 import { Store } from '@/util/Store';
+import { getGlobalData } from '@/util/api';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function PlaceOrder() {
   const { state, dispatch } = useContext(Store);
@@ -40,11 +42,11 @@ function PlaceOrder() {
     }
 
     if (!shippingAddress.address) {
-      router.push('/shipping');
+      router.push('/shop/shipping');
     }
 
     if (!paymentMethod) {
-      router.push('/payment');
+      router.push('/shop/payment');
     }
   }, []);
 
@@ -111,7 +113,7 @@ function PlaceOrder() {
         type: 'CLEAR_CART',
       });
       Cookies.remove('cartItems');
-      router.push(`/order/${orderResponse.id}`);
+      router.push(`/shop/order/${orderResponse.id}`);
     } catch (error: any) {
       toast({
         title: 'Error',
@@ -232,6 +234,17 @@ function PlaceOrder() {
       </Box>
     </>
   );
+}
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  const global = await getGlobalData(locale);
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+      global,
+    },
+  };
 }
 
 export default PlaceOrder;

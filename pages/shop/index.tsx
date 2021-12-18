@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NextSeo } from 'next-seo';
 import { Box, Flex, Select, Text } from '@chakra-ui/react';
-import { filterProducts, getNavData, getProducts } from '@/util/api';
+import { filterProducts, getGlobalData, getProducts } from '@/util/api';
 import { ProductProps } from '@/interfaces/common';
 import FilterProduct from '@/components/Shop/FilterProduct';
 import ProductLists from '@/components/Shop/ProductLists';
@@ -96,13 +96,13 @@ function Shop({ data }: { data: ProductProps[] }) {
 
 export async function getServerSideProps({ locale }: { locale: string }) {
   const data = await getProducts();
-  const nav = await getNavData(locale);
+  const global = await getGlobalData(locale);
 
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       data,
-      nav,
+      global,
     },
   };
 }

@@ -19,7 +19,8 @@ import {
 } from '@chakra-ui/react';
 import { LoginInfoProps } from '@/interfaces/common';
 import { Store } from '@/util/Store';
-import { postLogin } from '@/util/api';
+import { getGlobalData, postLogin } from '@/util/api';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Login() {
   const {
@@ -159,6 +160,17 @@ function Login() {
       </Box>
     </>
   );
+}
+
+export async function getServerSideProps({ locale }: { locale: string }) {
+  const global = await getGlobalData(locale);
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+      global,
+    },
+  };
 }
 
 export default Login;

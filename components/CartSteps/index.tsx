@@ -4,9 +4,9 @@ import Link from 'next/link';
 
 function CartSteps({ currentStep }: { currentStep: number }) {
   const stepsArray = [
-    { label: 'Shipping Address', link: '/shipping' },
-    { label: 'Payment Method', link: '/payment' },
-    { label: 'Place order', link: '/placeorder' },
+    { label: 'Shipping Address', link: '/shop/shipping' },
+    { label: 'Payment Method', link: '/shop/payment' },
+    { label: 'Place order', link: '/shop/placeorder' },
   ];
 
   return (

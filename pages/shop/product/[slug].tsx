@@ -5,7 +5,8 @@ import { NextSeo } from 'next-seo';
 import { ProductProps } from '@/interfaces/common';
 import AddToCart from '@/components/AddToCart';
 import BackToShop from '@/components/BackToShop';
-import { getNavData, getProductsBySlug } from '@/util/api';
+import { getGlobalData, getProductsBySlug } from '@/util/api';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function ProductScreen({ product }: { product: ProductProps }) {
   if (!product) {
@@ -70,12 +71,13 @@ export async function getServerSideProps(context: any) {
   const slug = context.query.slug;
   const locale = context.locale;
   const product = await getProductsBySlug(slug);
-  const nav = await getNavData(locale);
+  const global = await getGlobalData(locale);
 
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common'])),
       product,
-      nav,
+      global,
     },
   };
 }

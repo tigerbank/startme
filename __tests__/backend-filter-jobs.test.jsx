@@ -189,6 +189,7 @@ describe('Backend Filtering Jobs', () => {
       s: '',
       company: '',
       city: '',
+      perPage: '',
     });
     expect(data.length).toBeGreaterThan(0);
     expect(mockAxios.get).toHaveBeenCalledTimes(1);

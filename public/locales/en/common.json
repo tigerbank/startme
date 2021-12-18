@@ -4,5 +4,6 @@
   "filter_product": "Filter products",
   "product_name": "Product Name",
   "brand": "Brand",
-  "price": "Price"
+  "price": "Price",
+  "add_to_cart": "Add to Cart"
 }

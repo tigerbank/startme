@@ -32,7 +32,8 @@
     "util/Store.js",
     "__tests__/todoTest.test.js",
     "util/heroApi.js",
-    "pages/shop/__tests__/shop.test.jsx"
+    "pages/shop/__tests__/shop.test.jsx",
+    "__tests__/backend-filter-jobs.test.jsx"
   ],
   "exclude": ["node_modules"]
 }

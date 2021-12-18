@@ -13,10 +13,11 @@ import React, { useContext } from 'react';
 import { Store } from '@/util/Store';
 import { useRouter } from 'next/router';
 import LanguageSwitcher from '@/components/Layout/Header/LanguageSwitcher';
+import CartMenu from '../CartMenu';
 
 function SubMenu() {
   const { state, dispatch } = useContext(Store);
-  const { cart, user } = state;
+  const { user } = state;
   const router = useRouter();
 
   const logoutHandler = () => {
@@ -48,23 +49,23 @@ function SubMenu() {
             </>
           ) : (
             <Menu>
-              <MenuButton as={Button}>{user.username}</MenuButton>
-              <MenuList>
+              <MenuButton
+                size="xs"
+                variant="solid"
+                colorScheme="teal"
+                as={Button}
+              >
+                {user.username}
+              </MenuButton>
+              <MenuList p="0px">
                 <MenuItem onClick={logoutHandler}>Logout</MenuItem>
               </MenuList>
             </Menu>
           )}
         </Box>
 
-        <Box mr="10" d="flex">
-          <Text mr="5px">
-            <Link href="/shop/cart">
-              <a>Cart</a>
-            </Link>
-          </Text>
-          <Text suppressHydrationWarning>
-            {cart.cartItems.length > 0 && cart.cartItems.length}
-          </Text>
+        <Box mr="10px" d="flex">
+          <CartMenu />
         </Box>
 
         <Box d="flex">

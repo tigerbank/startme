@@ -13,6 +13,8 @@ import {
 import { Store } from '@/util/Store';
 import CartSteps from '@/components/CartSteps';
 import BackToShop from '@/components/BackToShop';
+import { getGlobalData } from '@/util/api';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Payment() {
   const router = useRouter();
@@ -25,7 +27,7 @@ function Payment() {
 
   useEffect(() => {
     if (!shippingAddress.address) {
-      router.push('/shipping');
+      router.push('/shop/shipping');
     } else {
       setPaymentMethod(Cookies.get('paymentMethod') || 'paypal');
     }
@@ -40,7 +42,7 @@ function Payment() {
     });
 
     Cookies.set('paymentMethod', paymentMethod);
-    router.push('/placeorder');
+    router.push('/shop/placeorder');
   };
 
   return (
@@ -78,6 +80,17 @@ function Payment() {
       </Box>
     </>
   );
+}
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  const global = await getGlobalData(locale);
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+      global,
+    },
+  };
 }
 
 export default Payment;

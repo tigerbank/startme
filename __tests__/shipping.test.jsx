@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Shipping from '@/pages/shipping';
+import Shipping from '@/pages/shop/shipping';
 import { useRouter } from 'next/router';
 
 jest.mock('next/router', () => ({
