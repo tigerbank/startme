@@ -17,7 +17,6 @@ import { NavProps } from '@/interfaces/common';
 function MobileNavigation({ nav }: { nav: NavProps[] }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef<any>();
-  const sortedNav = nav && [...nav].sort((a, b) => a.order - b.order);
   return (
     <>
       <HamburgerIcon fontSize="30px" onClick={onOpen} ref={btnRef} />
@@ -38,21 +37,14 @@ function MobileNavigation({ nav }: { nav: NavProps[] }) {
           <DrawerBody>
             <Box className={styles.navigation}>
               <ul>
-                {sortedNav.map((navItem: NavProps) => {
-                  if (navItem.page || navItem.url) {
+                {nav &&
+                  nav.map((navItem: NavProps) => {
                     return (
                       <li onClick={onClose} key={navItem.id}>
-                        <Link
-                          href={
-                            navItem.page ? `/${navItem.page.slug}` : navItem.url
-                          }
-                        >
-                          {navItem.title}
-                        </Link>
+                        <Link href={navItem.url}>{navItem.text}</Link>
                       </li>
                     );
-                  }
-                })}
+                  })}
               </ul>
             </Box>
           </DrawerBody>

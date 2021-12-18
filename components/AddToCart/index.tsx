@@ -2,8 +2,10 @@ import { Button } from '@chakra-ui/button';
 import React, { useContext } from 'react';
 import { Store } from '@/util/Store';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 function AddToCart({ product }: any) {
+  const { t } = useTranslation('common');
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
 
@@ -32,7 +34,7 @@ function AddToCart({ product }: any) {
 
   return (
     <Button colorScheme="teal" onClick={addToCartHandler}>
-      Add to cart
+      {t('add_to_cart')}
     </Button>
   );
 }

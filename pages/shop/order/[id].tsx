@@ -21,7 +21,7 @@ import {
 import { OrderProps } from '@/interfaces/common';
 import { Store } from '@/util/Store';
 import BackToShop from '@/components/BackToShop';
-import { getOrder, updateOrderStatus } from '@/util/api';
+import { getGlobalData, getOrder, updateOrderStatus } from '@/util/api';
 
 function Order({ orderId }: { orderId: number }) {
   const router = useRouter();
@@ -240,12 +240,17 @@ function Order({ orderId }: { orderId: number }) {
   }
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const orderId: number = Number(context.params?.id);
+export const getServerSideProps: GetServerSideProps = async ({
+  params,
+  locale,
+}: any) => {
+  const orderId: number = Number(params?.id);
+  const global = await getGlobalData(locale);
 
   return {
     props: {
       orderId,
+      global,
     },
   };
 };

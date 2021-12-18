@@ -25,8 +25,8 @@ export async function getPageData(slug: string[], locale: string) {
   return data[0];
 }
 
-export async function getNavData(locale: string) {
-  return fetchAPI(`/navigations?_locale=${locale}`);
+export async function getGlobalData(locale: string) {
+  return fetchAPI(`/global?_locale=${locale}`);
 }
 
 export async function getTodosData() {

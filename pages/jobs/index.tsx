@@ -5,7 +5,7 @@ import JobList from '@/components/Jobs/JobList';
 import Loading from '@/components/Loading/Index';
 import Pagination from '@/components/Pagination';
 import { JobProps } from '@/interfaces/common';
-import { getJobsData } from '@/util/api';
+import { getGlobalData, getJobsData } from '@/util/api';
 import { Box, Button } from '@chakra-ui/react';
 
 function Jobs() {
@@ -128,6 +128,16 @@ function Jobs() {
       </Box>
     </Box>
   );
+}
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  const global = await getGlobalData(locale);
+
+  return {
+    props: {
+      global,
+    },
+  };
 }
 
 export default Jobs;

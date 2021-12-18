@@ -1,7 +1,7 @@
 import React from 'react';
 import ToDoList from '@/components/ToDoList';
 import { Box } from '@chakra-ui/layout';
-import { getTodosData } from '@/util/api';
+import { getGlobalData, getTodosData } from '@/util/api';
 import { TodoProps } from '@/interfaces/common';
 
 function Todo({ todos }: { todos: TodoProps[] }) {
@@ -12,8 +12,9 @@ function Todo({ todos }: { todos: TodoProps[] }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ locale }: { locale: string }) {
   const todos = await getTodosData();
+  const global = await getGlobalData(locale);
 
   if (!todos) {
     return {
@@ -22,7 +23,7 @@ export async function getStaticProps() {
   }
 
   return {
-    props: { todos },
+    props: { todos, global },
     revalidate: 10,
   };
 }

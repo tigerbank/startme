@@ -6,6 +6,7 @@ import Layout from '@/components/Layout';
 import { Box } from '@chakra-ui/layout';
 import { StoreProvider } from '@/util/Store';
 import { createBreakpoints } from '@chakra-ui/theme-tools';
+import { appWithTranslation } from 'next-i18next';
 
 const breakpoints = createBreakpoints({
   sm: '320px',
@@ -35,7 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <StoreProvider>
         <ChakraProvider theme={theme}>
           <Box h="100vw" bg="main.gray">
-            <Layout nav={pageProps.nav}>
+            <Layout nav={pageProps.global?.nav}>
               <Component {...pageProps} />
             </Layout>
           </Box>
@@ -45,4 +46,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

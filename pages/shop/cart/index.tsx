@@ -5,10 +5,11 @@ import { Store } from '@/util/Store';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@chakra-ui/button';
-import dynamic from 'next/dynamic';
 import { totalItemPrice } from '@/util/cart';
 import { CartItemProps } from '@/interfaces/common';
 import BackToShop from '@/components/BackToShop';
+import { getGlobalData } from '@/util/api';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function CartScreen() {
   const { state, dispatch } = useContext(Store);
@@ -45,8 +46,8 @@ function CartScreen() {
       {cartItems.length === 0 && <Box mt="20px">Cart is empty</Box>}
 
       {cartItems.length !== 0 && (
-        <Box d={{ base: 'block', xl: 'flex' }} mt="30px">
-          <Box w={{ base: '100%', xl: '65%' }} mr={{ base: '0', xl: '5%' }}>
+        <Box d={{ base: 'block', lg: 'flex' }} mt="30px">
+          <Box w={{ base: '100%', lg: '65%' }} mr={{ base: '0', lg: '5%' }}>
             <Box bg="white" borderRadius="md" boxShadow="md" p="30px">
               <Heading mb="10px" as="h4" fontSize="18px">
                 Order Items
@@ -102,9 +103,9 @@ function CartScreen() {
           </Box>
 
           <Box
-            w={{ base: '100%', xl: '30%' }}
+            w={{ base: '100%', lg: '30%' }}
             textAlign="right"
-            mt={{ base: '30px', xl: '0px' }}
+            mt={{ base: '30px', lg: '0px' }}
           >
             <Heading as="h4">Subtotal</Heading>
             <Text>
@@ -114,7 +115,7 @@ function CartScreen() {
               {totalItemPrice(cartItems).toLocaleString()}
               THB
             </Text>
-            <Link href="/shipping" passHref>
+            <Link href="/shop/shipping" passHref>
               <a>
                 <Button colorScheme="teal" mt="20px" isFullWidth>
                   Check out
@@ -130,4 +131,17 @@ function CartScreen() {
   );
 }
 
-export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
+// export default dynamic(() => Promise.resolve(CartScreen), { ssr: false });
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  const global = await getGlobalData(locale);
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+      global,
+    },
+  };
+}
+
+export default CartScreen;

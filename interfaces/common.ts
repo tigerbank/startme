@@ -17,10 +17,9 @@ export type EventProps = {
 
 export type NavProps = {
   id: number;
-  title: string;
-  page: any;
   url: string;
-  order: number;
+  newTab: boolean;
+  text: string;
 };
 
 export type PageProps = {

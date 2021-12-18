@@ -16,6 +16,7 @@ import {
 import CartSteps from '@/components/CartSteps';
 import BackToShop from '@/components/BackToShop';
 import { Store } from '@/util/Store';
+import { getGlobalData } from '@/util/api';
 
 function Shipping() {
   const router = useRouter();
@@ -60,7 +61,7 @@ function Shipping() {
     });
 
     Cookies.set('shippingAddress', JSON.stringify(addressInfo));
-    router.push('/payment');
+    router.push('/shop/payment');
   };
 
   useEffect(() => {
@@ -177,6 +178,16 @@ function Shipping() {
       </Box>
     </>
   );
+}
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  const global = await getGlobalData(locale);
+
+  return {
+    props: {
+      global,
+    },
+  };
 }
 
 export default Shipping;

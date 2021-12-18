@@ -4,5 +4,6 @@
   "filter_product": "ค้าหาสินค้า",
   "product_name": "ชื่อสินค้า",
   "brand": "แบรนด์",
-  "price": "ราคา"
+  "price": "ราคา",
+  "add_to_cart": "เพิ่มลงตระกร้า"
 }
