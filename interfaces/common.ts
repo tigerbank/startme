@@ -20,6 +20,7 @@ export type NavProps = {
   url: string;
   newTab: boolean;
   text: string;
+  subnav: any;
 };
 
 export type PageProps = {
