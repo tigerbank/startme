@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <NextNprogress options={{ showSpinner: false }} />
       <StoreProvider>
         <ChakraProvider theme={theme}>
-          <Box bg="main.gray" pb="100px">
+          <Box bg="main.gray">
             <Layout nav={pageProps.global?.nav}>
               <Component {...pageProps} />
             </Layout>

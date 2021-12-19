@@ -23,9 +23,6 @@ function Jobs() {
   const perPage = 5;
   const [lastPage, setLastPage] = useState(0);
 
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const [postsPerPage, setPostsPerPage] = useState(5);
-
   useEffect(() => {
     const fetchJobs = async () => {
       try {
@@ -70,14 +67,6 @@ function Jobs() {
     });
   };
 
-  //get current posts
-  // const indexOfLastPost = currentPage * postsPerPage;
-  // const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  // const currentJobs = jobs.slice(indexOfFirstPost, indexOfLastPost);
-
-  //change page
-  // const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
-
   return (
     <Box className="container">
       <Box d={{ base: 'none', md: 'block' }} mt="40px" mb="40px">
@@ -119,12 +108,6 @@ function Jobs() {
               Load More
             </Button>
           )}
-
-          {/* <Pagination
-            postsPerPage={postsPerPage}
-            totalPosts={jobs.length}
-            paginate={paginate}
-          /> */}
         </Box>
       </Box>
     </Box>

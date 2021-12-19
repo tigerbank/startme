@@ -3,6 +3,7 @@ import { Box, useBreakpointValue } from '@chakra-ui/react';
 import Header from './Header';
 import DesktopNavigation from './Navigation/Desktop';
 import { NavProps } from '@/interfaces/common';
+import Footer from '@/components/Layout/Footer';
 
 function Layout({
   children,
@@ -15,9 +16,14 @@ function Layout({
 
   return (
     <>
-      <Header nav={nav} />
-      {!isMobile && nav && <DesktopNavigation nav={nav} />}
-      <Box mt={{ base: '45px', md: '0' }}>{children}</Box>
+      <Box h="100vh" d="flex" flexDir="column" justifyContent="space-between">
+        <Header nav={nav} />
+        {!isMobile && nav && <DesktopNavigation nav={nav} />}
+        <Box mb="40px" mt={{ base: '45px', md: '0' }}>
+          {children}
+        </Box>
+        <Footer />
+      </Box>
     </>
   );
 }
