@@ -50,7 +50,12 @@ function MobileNavigation({ nav }: { nav: NavProps[] }) {
             <AccordionPanel bg="#f9f9f9" px="0px" pb="0px">
               {navItem.subnav &&
                 navItem.subnav.map((subNavItem: any) => (
-                  <Box as="li" color="black" key={subNavItem.id}>
+                  <Box
+                    as="li"
+                    color="black"
+                    key={subNavItem.id}
+                    onClick={onClose}
+                  >
                     <Link href={subNavItem.url}>{subNavItem.text}</Link>
                   </Box>
                 ))}
