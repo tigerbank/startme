@@ -3,14 +3,18 @@ import Link from 'next/link';
 import {
   Drawer,
   DrawerBody,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
-  Box,
   DrawerFooter,
   Text,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionIcon,
+  AccordionPanel,
+  Box,
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import styles from '@/components/Layout/Navigation/Mobile/Navigation.module.scss';
@@ -21,6 +25,42 @@ import UserMenu from '@/components/Layout/Header/UserMenu';
 function MobileNavigation({ nav }: { nav: NavProps[] }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef<any>();
+
+  const renderNavItem = (navItem: NavProps) => {
+    if (navItem.subnav.length === 0) {
+      return (
+        <li onClick={onClose} key={navItem.id}>
+          <Link href={navItem.url}>{navItem.text}</Link>
+        </li>
+      );
+    } else {
+      return (
+        <Accordion allowToggle>
+          <AccordionItem
+            isFocusable={false}
+            borderTop="none"
+            borderBottom="none"
+          >
+            <AccordionButton py="15px">
+              <Box flex="1" textAlign="left">
+                {navItem.text}
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+            <AccordionPanel bg="#f9f9f9" px="0px" pb="0px">
+              {navItem.subnav &&
+                navItem.subnav.map((subNavItem: any) => (
+                  <Box as="li" color="black" key={subNavItem.id}>
+                    <Link href={subNavItem.url}>{subNavItem.text}</Link>
+                  </Box>
+                ))}
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
+      );
+    }
+  };
+
   return (
     <>
       <HamburgerIcon fontSize="30px" onClick={onOpen} ref={btnRef} />
@@ -45,25 +85,32 @@ function MobileNavigation({ nav }: { nav: NavProps[] }) {
               <ul>
                 {nav &&
                   nav.map((navItem: NavProps) => {
-                    return (
-                      <li onClick={onClose} key={navItem.id}>
-                        <Link href={navItem.url}>{navItem.text}</Link>
-                      </li>
-                    );
+                    return renderNavItem(navItem);
                   })}
               </ul>
             </Box>
+
+            <Box
+              d="flex"
+              flexDir="row"
+              justifyContent="space-between"
+              mt="20px"
+              className="container"
+            >
+              <Box>
+                <UserMenu onClose={onClose} />
+              </Box>
+              <Box d="flex">
+                <Text mr="10px">Language: </Text>
+                <LanguageSwitcher />
+              </Box>
+            </Box>
           </DrawerBody>
 
-          <DrawerFooter flexDir="row" justifyContent="space-between">
-            <Box>
-              <UserMenu />
-            </Box>
-            <Box d="flex">
-              <Text mr="10px">Language: </Text>
-              <LanguageSwitcher />
-            </Box>
-          </DrawerFooter>
+          <DrawerFooter
+            flexDir="row"
+            justifyContent="space-between"
+          ></DrawerFooter>
         </DrawerContent>
       </Drawer>
     </>

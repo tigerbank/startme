@@ -3,13 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import styles from '@/components/Layout/Navigation/Desktop/Navigation.module.scss';
 import { NavProps } from '@/interfaces/common';
-import {
-  Popover,
-  PopoverBody,
-  PopoverContent,
-  PopoverTrigger,
-  Text,
-} from '@chakra-ui/react';
+import { Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 
 function DesktopNavigation({ nav }: { nav: NavProps[] }) {
@@ -23,33 +17,22 @@ function DesktopNavigation({ nav }: { nav: NavProps[] }) {
     } else {
       return (
         <li key={navItem.id}>
-          <Popover>
-            <PopoverTrigger>
+          <Menu>
+            <MenuButton>
               <Text cursor="pointer">
                 {navItem.text} <ChevronDownIcon />
               </Text>
-            </PopoverTrigger>
+            </MenuButton>
 
-            <PopoverContent
-              position="relative"
-              width="250px"
-              left="80px"
-              border="none"
-              mt="7px"
-              _focus={{ outline: 'none' }}
-            >
-              <PopoverBody p="0" color="black">
-                <ul>
-                  {navItem.subnav &&
-                    navItem.subnav.map((subNavItem: any) => (
-                      <li key={subNavItem.id}>
-                        <Link href={subNavItem.url}>{subNavItem.text}</Link>
-                      </li>
-                    ))}
-                </ul>
-              </PopoverBody>
-            </PopoverContent>
-          </Popover>
+            <MenuList p="0" mt="7px">
+              {navItem.subnav &&
+                navItem.subnav.map((subNavItem: any) => (
+                  <MenuItem color="black" key={subNavItem.id}>
+                    <Link href={subNavItem.url}>{subNavItem.text}</Link>
+                  </MenuItem>
+                ))}
+            </MenuList>
+          </Menu>
         </li>
       );
     }

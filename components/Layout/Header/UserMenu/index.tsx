@@ -13,7 +13,7 @@ import React, { useContext } from 'react';
 import { Store } from '@/util/Store';
 import { useRouter } from 'next/router';
 
-function UserMenu() {
+function UserMenu({ onClose }: { onClose: () => void }) {
   const { state, dispatch } = useContext(Store);
   const { user } = state;
   const router = useRouter();
@@ -33,13 +33,13 @@ function UserMenu() {
         <>
           <Text mr="10px">
             <Link href="/login">
-              <a>Login</a>
+              <a onClick={onClose}>Login</a>
             </Link>
           </Text>
 
           <Text mr="10px">
             <Link href="/register">
-              <a>Register</a>
+              <a onClick={onClose}>Register</a>
             </Link>
           </Text>
         </>
