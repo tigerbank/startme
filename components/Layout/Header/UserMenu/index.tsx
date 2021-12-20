@@ -13,7 +13,7 @@ import React, { useContext } from 'react';
 import { Store } from '@/util/Store';
 import { useRouter } from 'next/router';
 
-function UserMenu({ onClose }: { onClose: () => void }) {
+function UserMenu({ onClose }: { onClose?: () => void }) {
   const { state, dispatch } = useContext(Store);
   const { user } = state;
   const router = useRouter();
