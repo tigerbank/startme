@@ -6,16 +6,9 @@ import {
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
-  DrawerHeader,
   DrawerOverlay,
   Heading,
   Input,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverTrigger,
   Stack,
   useDisclosure,
   useBreakpointValue,
@@ -29,6 +22,8 @@ function FilterProduct({ productFilter, setProductFilter }: any) {
   const { t } = useTranslation('common');
   const [range, setRange] = useState([0, 50000]);
   const [checkedBrand, setCheckedBrand] = useState([]);
+
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setProductFilter({
@@ -44,7 +39,7 @@ function FilterProduct({ productFilter, setProductFilter }: any) {
     });
   }, [checkedBrand]);
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const { isOpen, onOpen, onClose } = useDisclosure();
 
   const filterForm = () => {
     return (
@@ -73,33 +68,35 @@ function FilterProduct({ productFilter, setProductFilter }: any) {
       </>
     );
   };
-  const renderFilter = () => {
-    if (isMobile) {
-      return (
+
+  return (
+    <Box mt="20px">
+      {isMobile ? (
         <>
           <Button
             isFullWidth
             colorScheme="teal"
-            onClick={onOpen}
+            onClick={() => setIsOpen(!isOpen)}
             variant="outline"
+            mb="20px"
           >
-            {t('filter_product')}
+            {!isOpen ? t('filter_product') : 'Close filter'}
           </Button>
-          <Drawer placement="top" onClose={onClose} isOpen={isOpen} size="full">
+          {/* <Drawer placement="top" onClose={onClose} isOpen={isOpen} size="full">
             <DrawerOverlay />
             <DrawerContent pt="100px">
               <DrawerCloseButton _focus={{ outline: 'none' }} top="50px" />
-              <DrawerBody>{filterForm()}</DrawerBody>
+              <DrawerBody></DrawerBody>
             </DrawerContent>
-          </Drawer>
-        </>
-      );
-    } else {
-      return filterForm();
-    }
-  };
+          </Drawer> */}
 
-  return <Box mt="20px">{renderFilter()}</Box>;
+          <Box d={isOpen ? 'block' : 'none'}>{filterForm()}</Box>
+        </>
+      ) : (
+        filterForm()
+      )}
+    </Box>
+  );
 }
 
 export default FilterProduct;
