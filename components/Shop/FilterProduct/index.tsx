@@ -2,15 +2,9 @@ import React, { useState, useEffect } from 'react';
 import {
   Box,
   Button,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerOverlay,
   Heading,
   Input,
   Stack,
-  useDisclosure,
   useBreakpointValue,
 } from '@chakra-ui/react';
 import PriceRangeScreen from '@/components/Shop/FilterProduct/PriceRange';
@@ -18,7 +12,7 @@ import BrandCheckBox from '@/components/Shop/FilterProduct/BrandCheckBox';
 import { useTranslation } from 'next-i18next';
 
 function FilterProduct({ productFilter, setProductFilter }: any) {
-  const isMobile = useBreakpointValue({ base: true, md: false });
+  const isNotXl = useBreakpointValue({ base: true, xl: false });
   const { t } = useTranslation('common');
   const [range, setRange] = useState([0, 50000]);
   const [checkedBrand, setCheckedBrand] = useState([]);
@@ -39,12 +33,15 @@ function FilterProduct({ productFilter, setProductFilter }: any) {
     });
   }, [checkedBrand]);
 
-  // const { isOpen, onOpen, onClose } = useDisclosure();
-
   const filterForm = () => {
     return (
       <>
-        <Heading as="h5" fontSize="20px" mb="15px">
+        <Heading
+          as="h5"
+          fontSize="20px"
+          mb="15px"
+          mt={{ base: '50px', xl: '0px' }}
+        >
           {t('filter_product')}
         </Heading>
         <Stack>
@@ -71,24 +68,16 @@ function FilterProduct({ productFilter, setProductFilter }: any) {
 
   return (
     <Box mt="20px">
-      {isMobile ? (
+      {isNotXl ? (
         <>
           <Button
             isFullWidth
             colorScheme="teal"
             onClick={() => setIsOpen(!isOpen)}
             variant="outline"
-            mb="120px"
           >
             {!isOpen ? t('filter_product') : 'Close filter'}
           </Button>
-          {/* <Drawer placement="top" onClose={onClose} isOpen={isOpen} size="full">
-            <DrawerOverlay />
-            <DrawerContent pt="100px">
-              <DrawerCloseButton _focus={{ outline: 'none' }} top="50px" />
-              <DrawerBody></DrawerBody>
-            </DrawerContent>
-          </Drawer> */}
 
           <Box d={isOpen ? 'block' : 'none'}>{filterForm()}</Box>
         </>
