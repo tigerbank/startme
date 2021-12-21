@@ -25,7 +25,7 @@ function Newsletter() {
   }
 
   return (
-    <Box mt="20px">
+    <Box py="50px">
       <Heading as="h4" textAlign="center">
         {t('newsletter_title')}
       </Heading>

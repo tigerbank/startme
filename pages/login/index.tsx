@@ -96,7 +96,7 @@ function Login() {
         <Flex align={'center'} justify={'center'}>
           <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
             <Stack align={'center'}>
-              <Heading fontSize={'4xl'}>Sign in to your account</Heading>]
+              <Heading as="h3">Sign in to your account</Heading>]
             </Stack>
             <form onSubmit={handleSubmit(submitHandler)}>
               <Box
@@ -141,7 +141,7 @@ function Login() {
                   </FormControl>
                   <Stack spacing={10}>
                     <Stack
-                      direction={{ base: 'column', sm: 'row' }}
+                      direction={{ base: 'column', md: 'row' }}
                       align={'start'}
                       justify={'space-between'}
                     >

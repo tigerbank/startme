@@ -99,7 +99,7 @@ function RegisterScreen() {
         <Flex align={'center'} justify={'center'}>
           <Stack w="600px" spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
             <Stack align={'center'}>
-              <Heading fontSize={'4xl'}>Register</Heading>]
+              <Heading as="h3">Register</Heading>]
             </Stack>
             <form onSubmit={handleSubmit(submitHandler)}>
               <Box
