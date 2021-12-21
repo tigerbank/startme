@@ -78,7 +78,7 @@ function FilterProduct({ productFilter, setProductFilter }: any) {
             colorScheme="teal"
             onClick={() => setIsOpen(!isOpen)}
             variant="outline"
-            mb="20px"
+            mb="120px"
           >
             {!isOpen ? t('filter_product') : 'Close filter'}
           </Button>
