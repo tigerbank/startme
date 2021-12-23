@@ -177,3 +177,25 @@ export interface LocationProps {
   id: number;
   name: string;
 }
+
+export interface PropertyProps {
+  name: string;
+  property_slug: string;
+  type: string;
+  listType: string;
+  address: string;
+  price: string;
+  shortDetail: string;
+  fullDetail: string;
+  bedRoom: number;
+  bathRoom: number;
+  carPark: number;
+}
+
+export interface PaginationProps {
+  postsPerPage: number;
+  totalPosts: number;
+  paginate: (pageNumber: number) => void;
+  currentPage: number;
+  noOfAllPosts: number;
+}

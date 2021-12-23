@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Button } from '@chakra-ui/react';
 import { axiosJobsData, getGlobalData } from '@/util/api';
 import JobList from '@/components/Jobs/JobList';
-import Loading from '@/components/Loading/Index';
+import Loading from '@/components/Common/Loading/Index';
 import JobFilterBackend from '@/components/Jobs/JobFilterBackend';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 

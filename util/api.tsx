@@ -1,4 +1,8 @@
-import { LoginInfoProps, RegisterInfoProps } from '@/interfaces/common';
+import {
+  LoginInfoProps,
+  PropertyProps,
+  RegisterInfoProps,
+} from '@/interfaces/common';
 import axios from 'axios';
 
 export function getStrapiURL(path: string) {
@@ -182,4 +186,30 @@ export async function filterProducts(filterProducts: any) {
   }
 
   return axiosAPI(`/products?${arr.join('&')}`);
+}
+
+export async function getPropertyBySlug(slug: string[]) {
+  const data = await fetchAPI(`/properties?property_slug=${slug}`);
+  return data[0];
+}
+
+export async function getAllProperties() {
+  return await fetchAPI(`/properties`);
+}
+
+export async function postProperty(data: PropertyProps) {
+  return fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/properties`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+}
+
+export async function filterProperty(searchString: any, listType: any) {
+  return axiosAPI(
+    `/properties?name_contains=${searchString}&listType=${listType}`,
+  );
 }

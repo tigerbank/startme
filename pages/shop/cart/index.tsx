@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { Button } from '@chakra-ui/button';
 import { totalItemPrice } from '@/util/cart';
 import { CartItemProps } from '@/interfaces/common';
-import BackToShop from '@/components/BackToShop';
+import BackToShop from '@/components/Shop/BackToShop';
 import { getGlobalData } from '@/util/api';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 

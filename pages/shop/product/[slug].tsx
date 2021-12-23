@@ -3,8 +3,8 @@ import Image from 'next/image';
 import { Box, Heading, Text } from '@chakra-ui/react';
 import { NextSeo } from 'next-seo';
 import { ProductProps } from '@/interfaces/common';
-import AddToCart from '@/components/AddToCart';
-import BackToShop from '@/components/BackToShop';
+import AddToCart from '@/components/Shop/AddToCart';
+import BackToShop from '@/components/Shop/BackToShop';
 import { getGlobalData, getProductsBySlug } from '@/util/api';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 

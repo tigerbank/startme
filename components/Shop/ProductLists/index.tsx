@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Box, Text, Flex } from '@chakra-ui/react';
 import { ProductProps } from '@/interfaces/common';
-import AddToCart from '@/components/AddToCart';
-import Loading from '@/components/Loading/Index';
+import AddToCart from '@/components/Shop/AddToCart';
+import Loading from '@/components/Common/Loading/Index';
 
 function ProductLists({
   products,

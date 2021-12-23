@@ -13,8 +13,8 @@ import {
   Heading,
   Stack,
 } from '@chakra-ui/react';
-import CartSteps from '@/components/CartSteps';
-import BackToShop from '@/components/BackToShop';
+import CartSteps from '@/components/Shop/CartSteps';
+import BackToShop from '@/components/Shop/BackToShop';
 import { Store } from '@/util/Store';
 import { getGlobalData } from '@/util/api';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';

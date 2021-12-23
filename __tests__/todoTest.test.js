@@ -61,7 +61,6 @@ describe('TodoTest', () => {
     expect(getHeroDetail).toHaveBeenCalledWith('superman');
   });
 
-  //it.only ใช้เพื่อทำให้ test นี้เท่านั้น
   it('should loading while call api', async () => {
     const { runSearchJourney } = renderTodoTest();
     await runSearchJourney('superman', () => {

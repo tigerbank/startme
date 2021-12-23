@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import AddToCart from '@/components/AddToCart';
+import AddToCart from '@/components/Shop/AddToCart';
 
 describe('Add to cart Button', () => {
   it('should render button', () => {

@@ -5,7 +5,7 @@ import { filterProducts, getGlobalData, getProducts } from '@/util/api';
 import { ProductProps } from '@/interfaces/common';
 import FilterProduct from '@/components/Shop/FilterProduct';
 import ProductLists from '@/components/Shop/ProductLists';
-import Pagination from '@/components/Pagination';
+import Pagination from '@/components/Common/Pagination';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
@@ -77,16 +77,13 @@ function Shop({ data }: { data: ProductProps[] }) {
               </Box>
             </Box>
             <ProductLists products={currentList} loading={loading} />
-            <Flex alignItems="center">
-              <Pagination
-                postsPerPage={postsPerPage}
-                totalPosts={products.length}
-                paginate={paginate}
-              />
-              <Text fontSize="12px" textAlign="right">
-                Page {currentPage} of {noOfAllPosts}
-              </Text>
-            </Flex>
+            <Pagination
+              postsPerPage={postsPerPage}
+              totalPosts={products.length}
+              paginate={paginate}
+              currentPage={currentPage}
+              noOfAllPosts={noOfAllPosts}
+            />
           </Box>
         </Flex>
       </Box>

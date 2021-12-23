@@ -1,7 +1,7 @@
 import React from 'react';
 import { buildEventPath, extractEvent } from '@/util/common';
 import EventDetail from '@/components/EventDetail';
-import Loading from '@/components/Loading/Index';
+import Loading from '@/components/Common/Loading/Index';
 import { EventProps } from '@/interfaces/common';
 
 function SingleEvent({ event }: { event: EventProps }) {

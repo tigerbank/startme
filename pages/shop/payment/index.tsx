@@ -11,8 +11,8 @@ import {
   RadioGroup,
 } from '@chakra-ui/react';
 import { Store } from '@/util/Store';
-import CartSteps from '@/components/CartSteps';
-import BackToShop from '@/components/BackToShop';
+import CartSteps from '@/components/Shop/CartSteps';
+import BackToShop from '@/components/Shop/BackToShop';
 import { getGlobalData } from '@/util/api';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 

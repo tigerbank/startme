@@ -20,7 +20,7 @@ import {
 } from '@chakra-ui/react';
 import { OrderProps } from '@/interfaces/common';
 import { Store } from '@/util/Store';
-import BackToShop from '@/components/BackToShop';
+import BackToShop from '@/components/Shop/BackToShop';
 import { getGlobalData, getOrder, updateOrderStatus } from '@/util/api';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 

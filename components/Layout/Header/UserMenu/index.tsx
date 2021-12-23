@@ -44,14 +44,21 @@ function UserMenu({ onClose }: { onClose?: () => void }) {
           </Text>
         </>
       ) : (
-        <Menu>
-          <MenuButton size="xs" variant="solid" colorScheme="teal" as={Button}>
-            {user.username}
-          </MenuButton>
-          <MenuList p="0px">
-            <MenuItem onClick={logoutHandler}>Logout</MenuItem>
-          </MenuList>
-        </Menu>
+        <Box mr="10px">
+          <Menu>
+            <MenuButton
+              size="xs"
+              variant="solid"
+              colorScheme="teal"
+              as={Button}
+            >
+              {user.username}
+            </MenuButton>
+            <MenuList p="0px">
+              <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+            </MenuList>
+          </Menu>
+        </Box>
       )}
     </Box>
   );
