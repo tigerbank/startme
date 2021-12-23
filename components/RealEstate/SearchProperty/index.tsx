@@ -13,7 +13,7 @@ import { useRouter } from 'next/router';
 function SearchProperty() {
   const router = useRouter();
   const [input, setInput] = useState('');
-  const [listType, setListType] = useState();
+  const [listType, setListType] = useState('');
 
   const handleClick = () => {
     router.push(
@@ -24,7 +24,7 @@ function SearchProperty() {
   return (
     <Box bg="teal" p="30px" mb="30px">
       <HStack>
-        <RadioGroup onChange={(e: string) => setListType(e)} value={listType}>
+        <RadioGroup onChange={(e) => setListType(e)} value={listType}>
           <Stack direction="row">
             <Radio bg="white" value="buy">
               Buy

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import RealEstateMain from '@/pages/real-estate/';
-import { mockProperties } from '../__mocks__/mockPropertiesData';
+import { mockProperties } from '__mocks__/mockPropertiesData';
 
 describe('Real Estate', () => {
   beforeEach(() => {
