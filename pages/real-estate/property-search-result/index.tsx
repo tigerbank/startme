@@ -7,17 +7,22 @@ import BackToRealEstate from '@/components/RealEstate/BackToRealEstate';
 
 function PropertySearchResult() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const searchString = router.query.search;
   const listType = router.query.listType;
 
-  console.log(searchString);
-  console.log(listType);
   const [properties, setProperties] = useState([]);
 
   useEffect(() => {
     const fetchResult = async () => {
-      const result = await filterProperty(searchString, listType);
-      setProperties(result);
+      try {
+        setIsLoading(true);
+        const result = await filterProperty(searchString, listType);
+        setProperties(result);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchResult();
   }, []);
@@ -25,6 +30,7 @@ function PropertySearchResult() {
   return (
     <Box className="container" mt="50px">
       Search Result: {searchString}
+      {isLoading && <div>Loading...</div>}
       {properties && <PropertyLists properties={properties} />}
       <BackToRealEstate />
     </Box>

@@ -194,7 +194,7 @@ export async function getPropertyBySlug(slug: string[]) {
 }
 
 export async function getAllProperties() {
-  return await fetchAPI(`/properties`);
+  return fetchAPI(`/properties`);
 }
 
 export async function postProperty(data: PropertyProps) {

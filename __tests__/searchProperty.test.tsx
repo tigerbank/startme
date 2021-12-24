@@ -5,7 +5,7 @@ import Router from 'next/router';
 
 describe('Search property', () => {
   beforeEach(() => {
-    jest.mock('next/router', () => ({ push: jest.fn() }));
+    // jest.mock('next/router', () => ({ push: jest.fn() }));
     render(<SearchProperty />);
   });
 
