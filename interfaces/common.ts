@@ -179,6 +179,7 @@ export interface LocationProps {
 }
 
 export interface PropertyProps {
+  id: number;
   name: string;
   property_slug: string;
   type: string;

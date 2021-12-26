@@ -213,3 +213,10 @@ export async function filterProperty(searchString: any, listType: any) {
     `/properties?name_contains=${searchString}&listType=${listType}`,
   );
 }
+
+export async function getTestProperties() {
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/properties`,
+  );
+  return response.data;
+}
