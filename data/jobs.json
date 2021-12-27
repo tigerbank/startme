@@ -1,0 +1,146 @@
+[
+  {
+    "id": 10,
+    "position": "Project Manager",
+    "type": "fulltime",
+    "company": {
+      "id": 6,
+      "name": "Amazon",
+      "locale": "en",
+      "published_at": "2021-12-17T09:20:10.801Z",
+      "created_at": "2021-12-17T09:20:08.265Z",
+      "updated_at": "2021-12-17T09:20:11.008Z",
+      "logo": {
+        "id": 22,
+        "name": "amazon-logo.jpg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 90,
+        "height": 90,
+        "formats": null,
+        "hash": "amazon_logo_8d29e1011d",
+        "ext": ".jpg",
+        "mime": "image/jpeg",
+        "size": 1.99,
+        "url": "https://res.cloudinary.com/di4k2zher/image/upload/v1639380484/startme-development/amazon_logo_8d29e1011d.jpg",
+        "previewUrl": null,
+        "provider": "cloudinary",
+        "provider_metadata": {
+          "public_id": "startme-development/amazon_logo_8d29e1011d",
+          "resource_type": "image"
+        },
+        "created_at": "2021-12-13T07:28:05.128Z",
+        "updated_at": "2021-12-13T07:28:05.154Z"
+      }
+    },
+    "location": {
+      "id": 5,
+      "name": "Bangkok",
+      "locale": "en",
+      "published_at": "2021-12-17T09:20:20.880Z",
+      "created_at": "2021-12-17T09:20:19.050Z",
+      "updated_at": "2021-12-17T09:20:20.900Z"
+    },
+    "locale": "en",
+    "published_at": "2021-12-17T09:20:33.660Z",
+    "created_at": "2021-12-17T09:20:31.470Z",
+    "updated_at": "2021-12-17T09:20:33.722Z",
+    "localizations": []
+  },
+  {
+    "id": 11,
+    "position": "Frontend Developer (Reactjs)",
+    "type": "fulltime",
+    "company": {
+      "id": 6,
+      "name": "Amazon",
+      "locale": "en",
+      "published_at": "2021-12-17T09:20:10.801Z",
+      "created_at": "2021-12-17T09:20:08.265Z",
+      "updated_at": "2021-12-17T09:20:11.008Z",
+      "logo": {
+        "id": 22,
+        "name": "amazon-logo.jpg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 90,
+        "height": 90,
+        "formats": null,
+        "hash": "amazon_logo_8d29e1011d",
+        "ext": ".jpg",
+        "mime": "image/jpeg",
+        "size": 1.99,
+        "url": "https://res.cloudinary.com/di4k2zher/image/upload/v1639380484/startme-development/amazon_logo_8d29e1011d.jpg",
+        "previewUrl": null,
+        "provider": "cloudinary",
+        "provider_metadata": {
+          "public_id": "startme-development/amazon_logo_8d29e1011d",
+          "resource_type": "image"
+        },
+        "created_at": "2021-12-13T07:28:05.128Z",
+        "updated_at": "2021-12-13T07:28:05.154Z"
+      }
+    },
+    "location": {
+      "id": 5,
+      "name": "Bangkok",
+      "locale": "en",
+      "published_at": "2021-12-17T09:20:20.880Z",
+      "created_at": "2021-12-17T09:20:19.050Z",
+      "updated_at": "2021-12-17T09:20:20.900Z"
+    },
+    "locale": "en",
+    "published_at": "2021-12-26T15:47:05.843Z",
+    "created_at": "2021-12-26T15:47:03.602Z",
+    "updated_at": "2021-12-26T15:47:05.871Z",
+    "localizations": []
+  },
+  {
+    "id": 12,
+    "position": "UX/UI mock",
+    "type": "fulltime",
+    "company": {
+      "id": 6,
+      "name": "Amazon",
+      "locale": "en",
+      "published_at": "2021-12-17T09:20:10.801Z",
+      "created_at": "2021-12-17T09:20:08.265Z",
+      "updated_at": "2021-12-17T09:20:11.008Z",
+      "logo": {
+        "id": 22,
+        "name": "amazon-logo.jpg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 90,
+        "height": 90,
+        "formats": null,
+        "hash": "amazon_logo_8d29e1011d",
+        "ext": ".jpg",
+        "mime": "image/jpeg",
+        "size": 1.99,
+        "url": "https://res.cloudinary.com/di4k2zher/image/upload/v1639380484/startme-development/amazon_logo_8d29e1011d.jpg",
+        "previewUrl": null,
+        "provider": "cloudinary",
+        "provider_metadata": {
+          "public_id": "startme-development/amazon_logo_8d29e1011d",
+          "resource_type": "image"
+        },
+        "created_at": "2021-12-13T07:28:05.128Z",
+        "updated_at": "2021-12-13T07:28:05.154Z"
+      }
+    },
+    "location": {
+      "id": 5,
+      "name": "Bangkok",
+      "locale": "en",
+      "published_at": "2021-12-17T09:20:20.880Z",
+      "created_at": "2021-12-17T09:20:19.050Z",
+      "updated_at": "2021-12-17T09:20:20.900Z"
+    },
+    "locale": "en",
+    "published_at": "2021-12-26T15:47:17.386Z",
+    "created_at": "2021-12-26T15:47:15.562Z",
+    "updated_at": "2021-12-26T15:47:17.411Z",
+    "localizations": []
+  }
+]

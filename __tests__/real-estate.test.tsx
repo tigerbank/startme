@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import RealEstateMain from '@/pages/real-estate/';
-import { mockProperties } from '__mocks__/mockPropertiesData';
+import mockProperties from '../data/properties.json';
 
 describe('Real Estate', () => {
   beforeEach(() => {
@@ -12,12 +12,12 @@ describe('Real Estate', () => {
     expect(screen.getByText(/Real Estate App/i)).toBeInTheDocument();
   });
 
-  it('should render lists of properties', () => {
+  it('should render lists of properties per page 3', () => {
     const allProperties = screen.getByRole('list', {
       name: 'properties',
     });
     const { getAllByRole } = within(allProperties);
     const listItems = getAllByRole('listitem');
-    expect(listItems.length).toBe(mockProperties.length);
+    expect(listItems.length).toBe(3);
   });
 });

@@ -185,12 +185,17 @@ export interface PropertyProps {
   type: string;
   listType: string;
   address: string;
-  price: string;
+  price: number;
   shortDetail: string;
   fullDetail: string;
   bedRoom: number;
   bathRoom: number;
   carPark: number;
+  locale: string;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+  localizations: any;
 }
 
 export interface PaginationProps {

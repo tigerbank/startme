@@ -4,9 +4,6 @@ import userEvent from '@testing-library/user-event';
 import Newsletter from '@/components/newsletter';
 
 describe('Newsletter', () => {
-  beforeEach(() => {
-    fetch.resetMocks();
-  });
   it('should show Newsletter Component', () => {
     render(<Newsletter />);
     expect(screen.getByText('newsletter_title')).toBeInTheDocument();

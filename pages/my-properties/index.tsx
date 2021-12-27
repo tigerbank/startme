@@ -21,7 +21,7 @@ function MyProperties() {
   }, []);
 
   return (
-    <Box mt="30px">
+    <Box mt="50px">
       <p>Hello</p>
       {properties &&
         properties.map((property: PropertyProps) => {
