@@ -5,7 +5,9 @@
       "@/components/*": ["components/*"],
       "@/util/*": ["util/*"],
       "@/interfaces/*": ["interfaces/*"],
-      "@/pages/*": ["pages/*"]
+      "@/pages/*": ["pages/*"],
+      "@/data/*": ["data/*"],
+      "@/mocks/*": ["mocks/*"]
     },
     "target": "es2015",
     "downlevelIteration": true,
@@ -30,10 +32,10 @@
     "__tests__/todoForm.test.jsx",
     "__tests__/shop.test.jsx",
     "util/Store.js",
-    "__tests__/todoTest.test.js",
+    "__tests__/pages/todo/todoTest.test.js",
     "util/heroApi.js",
     "pages/shop/__tests__/shop.test.jsx",
-    "__tests__/backend-filter-jobs.test.jsx"
+    "__tests__/pages/backend-filter-jobs/backend-filter-jobs.test.jsx"
   ],
   "exclude": ["node_modules"]
 }
