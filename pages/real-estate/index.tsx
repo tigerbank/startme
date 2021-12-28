@@ -3,21 +3,28 @@ import { getGlobalData, getAllProperties } from '@/util/api';
 import { Box, Button } from '@chakra-ui/react';
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import PropertyLists from '@/components/RealEstate/PropertyLists';
 import SearchProperty from '@/components/RealEstate/SearchProperty';
 
 function RealEstateMain({ properties }: { properties: PropertyProps[] }) {
   return (
-    <Box className="container">
-      <SearchProperty />
-      <Button>
-        <Link href="/real-estate/add-property">Add property</Link>
-      </Button>
-      <br />
-      Real Estate App
-      <PropertyLists properties={properties} />
-    </Box>
+    <>
+      <Box h="300px" w="100%" className="realEstate__main">
+        <Box className="container">
+          <SearchProperty />
+        </Box>
+      </Box>
+
+      <Box mt="100px" className="container">
+        <Button>
+          <Link href="/real-estate/add-property">Add property</Link>
+        </Button>
+        Real Estate App
+        <PropertyLists properties={properties} />
+      </Box>
+    </>
   );
 }
 

@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { ListItem, UnorderedList, Box } from '@chakra-ui/react';
 import Link from 'next/link';
 import Pagination from '@/components/Common/Pagination';
+import PropertyItem from '../PropertyItem';
 
 function PropertyLists({ properties }: { properties: PropertyProps[] }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(3);
+  const [postsPerPage, setPostsPerPage] = useState(6);
 
   // get current posts
   const indexOfLastPost = currentPage * postsPerPage;
@@ -19,13 +20,17 @@ function PropertyLists({ properties }: { properties: PropertyProps[] }) {
   return (
     <>
       <Box mb="20px">
-        <UnorderedList aria-label="properties">
+        <UnorderedList
+          d="flex"
+          flexDir="row"
+          aria-label="properties"
+          gap="40px"
+          flexWrap="wrap"
+        >
           {currentList &&
             currentList.map((property) => (
-              <ListItem key={property.name}>
-                <Link href={`/real-estate/${property.property_slug}`}>
-                  {property.name}
-                </Link>
+              <ListItem listStyleType="none" key={property.name}>
+                <PropertyItem property={property} />
               </ListItem>
             ))}
         </UnorderedList>

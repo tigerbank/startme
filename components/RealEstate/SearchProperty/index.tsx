@@ -6,6 +6,7 @@ import {
   RadioGroup,
   Stack,
   Radio,
+  Text,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
@@ -22,18 +23,36 @@ function SearchProperty() {
   };
 
   return (
-    <Box bg="teal" p="30px" mb="30px">
+    <Box
+      borderRadius="xl"
+      ml="auto"
+      mr="auto"
+      w="700px"
+      bg="teal"
+      p="40px 30px"
+      mb="30px"
+      top="200px"
+      position="relative"
+      color="white"
+      boxShadow="lg"
+    >
       <HStack>
         <RadioGroup onChange={(e) => setListType(e)} value={listType}>
-          <Stack direction="row">
+          <Stack direction="row" mb="10px">
             <Radio bg="white" value="buy">
-              Buy
+              <Text fontSize="18px" fontWeight="bold">
+                Buy
+              </Text>
             </Radio>
             <Radio bg="white" value="rent">
-              Rent
+              <Text fontSize="18px" fontWeight="bold">
+                Rent
+              </Text>
             </Radio>
             <Radio bg="white" value="both">
-              Both
+              <Text fontSize="18px" fontWeight="bold">
+                Both
+              </Text>
             </Radio>
           </Stack>
         </RadioGroup>
@@ -46,7 +65,9 @@ function SearchProperty() {
           type="text"
           value={input}
         />
-        <Button onClick={handleClick}>Search</Button>
+        <Button colorScheme="orange" onClick={handleClick}>
+          Search
+        </Button>
       </HStack>
     </Box>
   );
