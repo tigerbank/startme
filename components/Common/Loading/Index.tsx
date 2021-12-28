@@ -4,7 +4,7 @@ import React from 'react';
 
 function Loading() {
   return (
-    <Box textAlign="center" mt="50px">
+    <Box data-testid="loadElement" textAlign="center" mt="50px">
       <CircularProgress isIndeterminate color="teal" />
     </Box>
   );

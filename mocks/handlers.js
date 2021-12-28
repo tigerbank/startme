@@ -5,6 +5,9 @@ require('dotenv').config({ path: path.resolve(__dirname, '../.env.local') });
 import mockJobs from './data/jobs.json';
 import mockProperties from './data/properties.json';
 import mockBrands from './data/brands.json';
+import mockProducts from './data/products.json';
+import mockCompanies from './data/companies.json';
+import mockLocations from './data/locations.json';
 
 export const handlers = [
   rest.get(
@@ -25,6 +28,27 @@ export const handlers = [
     `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/brands`,
     (req, res, ctx) => {
       return res(ctx.status(200), ctx.json(mockBrands));
+    },
+  ),
+
+  rest.get(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/products`,
+    (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json(mockProducts));
+    },
+  ),
+
+  rest.get(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/companies`,
+    (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json(mockCompanies));
+    },
+  ),
+
+  rest.get(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cities`,
+    (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json(mockCompanies));
     },
   ),
 

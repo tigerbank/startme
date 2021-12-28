@@ -21,6 +21,9 @@ function JobFilterBackend({ filterJobs, setJobs, setFilterJobs }: any) {
       setCompanies(data);
     };
     fetchCompanies();
+    return () => {
+      setCompanies([]);
+    };
   }, []);
 
   useEffect(() => {

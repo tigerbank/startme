@@ -1,30 +1,16 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import CompanyList from '@/components/Jobs/CompanyList';
-
-const companies = [
-  {
-    id: 1,
-    name: 'Company 1',
-    locale: 'th',
-    logo: 'test',
-  },
-  {
-    id: 2,
-    name: 'Company 2',
-    locale: 'th',
-    logo: 'test',
-  },
-];
+import MockCompanies from '../../../mocks/data/companies.json';
 
 describe('CompanyList component', () => {
   beforeEach(() => {
-    render(<CompanyList companies={companies} />);
+    render(<CompanyList companies={MockCompanies} />);
   });
 
   it('render company option correctly', () => {
     let options = screen.getAllByTestId('select-option');
     expect(options[0]).toBeInTheDocument();
-    expect(options[1]).toHaveValue('Company 1');
+    expect(options[1]).toHaveValue('Amazon');
   });
 });

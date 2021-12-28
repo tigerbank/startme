@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, Text } from '@chakra-ui/react';
 import { axiosJobsData, getGlobalData } from '@/util/api';
 import JobList from '@/components/Jobs/JobList';
 import Loading from '@/components/Common/Loading/Index';
@@ -34,6 +34,12 @@ function BackendJobs() {
       setLoading(false);
     };
     fetchJobs();
+
+    return () => {
+      setLoading(false);
+      setLoading(false);
+      setJobs([]);
+    };
   }, [filterJobs]);
 
   const loadMore = () => {

@@ -27,9 +27,9 @@ function DesktopNavigation({ nav }: { nav: NavProps[] }) {
             <MenuList p="0" mt="7px">
               {navItem.subnav &&
                 navItem.subnav.map((subNavItem: any) => (
-                  <MenuItem color="black" key={subNavItem.id}>
-                    <Link href={subNavItem.url}>{subNavItem.text}</Link>
-                  </MenuItem>
+                  <Link passHref href={subNavItem.url} key={subNavItem.id}>
+                    <MenuItem color="black">{subNavItem.text}</MenuItem>
+                  </Link>
                 ))}
             </MenuList>
           </Menu>
