@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
 
 export function buildFeedbackPath() {
-  return path.join(process.cwd(), 'data', 'feedback.json');
+  return path.join(process.cwd(), 'mocks/data', 'feedback.json');
 }
 
 export function extractFeedback(filePath: string) {

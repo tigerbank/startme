@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 export function buildEventPath() {
-  return path.join(process.cwd(), 'data', 'event.json');
+  return path.join(process.cwd(), 'mocks/data', 'event.json');
 }
 
 export function extractEvent(filePath: string) {

@@ -2,8 +2,9 @@ import { rest } from 'msw';
 import 'whatwg-fetch';
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env.local') });
-import mockJobs from '../data/jobs.json';
-import mockProperties from '../data/properties.json';
+import mockJobs from './data/jobs.json';
+import mockProperties from './data/properties.json';
+import mockBrands from './data/brands.json';
 
 export const handlers = [
   rest.get(
@@ -17,6 +18,13 @@ export const handlers = [
     `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/jobs`,
     (req, res, ctx) => {
       return res(ctx.status(200), ctx.json(mockJobs));
+    },
+  ),
+
+  rest.get(
+    `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/brands`,
+    (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json(mockBrands));
     },
   ),
 

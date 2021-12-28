@@ -25,6 +25,7 @@ function CartSteps({ currentStep }: { currentStep: number }) {
             alignItems={{ base: 'flex-start', md: 'center' }}
             w="100%"
             gridGap={{ base: 1, md: 10 }}
+            data-testid={`step${i + 1}`}
           >
             <Box>
               <Box textAlign={{ base: 'left', md: 'center' }}>Step {i + 1}</Box>

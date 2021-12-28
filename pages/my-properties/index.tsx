@@ -18,6 +18,9 @@ function MyProperties() {
       }
     };
     fetchProperties();
+    return () => {
+      setProperties([]);
+    };
   }, []);
 
   return (

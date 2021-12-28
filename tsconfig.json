@@ -6,7 +6,6 @@
       "@/util/*": ["util/*"],
       "@/interfaces/*": ["interfaces/*"],
       "@/pages/*": ["pages/*"],
-      "@/data/*": ["data/*"],
       "@/mocks/*": ["mocks/*"]
     },
     "target": "es2015",
