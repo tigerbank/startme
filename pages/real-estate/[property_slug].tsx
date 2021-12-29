@@ -7,9 +7,11 @@ import { getGlobalData, getPropertyBySlug } from '@/util/api';
 
 function Property({ property }: { property: PropertyProps }) {
   return (
-    <Box className="container" mt="100px">
+    <Box mt="50px">
       <PropertyDetail property={property} />
-      <BackToRealEstate />
+      <Box className="container">
+        <BackToRealEstate />
+      </Box>
     </Box>
   );
 }

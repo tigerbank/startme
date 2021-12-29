@@ -1,0 +1,18 @@
+.propertyDetail {
+  &__info {
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+      margin-top: 10px;
+      padding-bottom: 5px;
+      border-bottom: dotted 1px #ccc;
+      width: 50%;
+      p:first-child {
+        color: rgb(153, 153, 153);
+      }
+    }
+  }
+}

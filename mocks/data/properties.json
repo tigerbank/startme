@@ -119,7 +119,7 @@
     "locale": "en",
     "published_at": "2021-12-21T16:02:31.071Z",
     "created_at": "2021-12-21T16:02:31.124Z",
-    "updated_at": "2021-12-29T04:16:49.593Z",
+    "updated_at": "2021-12-29T09:46:17.398Z",
     "images": [
       {
         "id": 23,
@@ -369,6 +369,89 @@
         },
         "created_at": "2021-12-29T04:16:26.100Z",
         "updated_at": "2021-12-29T04:16:26.122Z"
+      },
+      {
+        "id": 31,
+        "name": "property-9.jpg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 1280,
+        "height": 1706,
+        "formats": {
+          "thumbnail": {
+            "name": "thumbnail_property-9.jpg",
+            "hash": "thumbnail_property_9_d30ccd8f66",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "width": 117,
+            "height": 156,
+            "size": 5.2,
+            "path": null,
+            "url": "https://res.cloudinary.com/di4k2zher/image/upload/v1640771161/startme-development/thumbnail_property_9_d30ccd8f66.jpg",
+            "provider_metadata": {
+              "public_id": "startme-development/thumbnail_property_9_d30ccd8f66",
+              "resource_type": "image"
+            }
+          },
+          "large": {
+            "name": "large_property-9.jpg",
+            "hash": "large_property_9_d30ccd8f66",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "width": 750,
+            "height": 1000,
+            "size": 150.64,
+            "path": null,
+            "url": "https://res.cloudinary.com/di4k2zher/image/upload/v1640771165/startme-development/large_property_9_d30ccd8f66.jpg",
+            "provider_metadata": {
+              "public_id": "startme-development/large_property_9_d30ccd8f66",
+              "resource_type": "image"
+            }
+          },
+          "medium": {
+            "name": "medium_property-9.jpg",
+            "hash": "medium_property_9_d30ccd8f66",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "width": 563,
+            "height": 750,
+            "size": 85.04,
+            "path": null,
+            "url": "https://res.cloudinary.com/di4k2zher/image/upload/v1640771168/startme-development/medium_property_9_d30ccd8f66.jpg",
+            "provider_metadata": {
+              "public_id": "startme-development/medium_property_9_d30ccd8f66",
+              "resource_type": "image"
+            }
+          },
+          "small": {
+            "name": "small_property-9.jpg",
+            "hash": "small_property_9_d30ccd8f66",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "width": 375,
+            "height": 500,
+            "size": 39.92,
+            "path": null,
+            "url": "https://res.cloudinary.com/di4k2zher/image/upload/v1640771170/startme-development/small_property_9_d30ccd8f66.jpg",
+            "provider_metadata": {
+              "public_id": "startme-development/small_property_9_d30ccd8f66",
+              "resource_type": "image"
+            }
+          }
+        },
+        "hash": "property_9_d30ccd8f66",
+        "ext": ".jpg",
+        "mime": "image/jpeg",
+        "size": 417.28,
+        "url": "https://res.cloudinary.com/di4k2zher/image/upload/v1640771159/startme-development/property_9_d30ccd8f66.jpg",
+        "previewUrl": null,
+        "provider": "cloudinary",
+        "provider_metadata": {
+          "public_id": "startme-development/property_9_d30ccd8f66",
+          "resource_type": "image"
+        },
+        "created_at": "2021-12-29T09:46:10.458Z",
+        "updated_at": "2021-12-29T09:46:10.486Z"
       }
     ],
     "localizations": []
