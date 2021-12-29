@@ -1,6 +1,6 @@
 import fs from 'fs';
-import type { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 export function buildFeedbackPath() {
   return path.join(process.cwd(), 'mocks/data', 'feedback.json');

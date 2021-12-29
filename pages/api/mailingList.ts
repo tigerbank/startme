@@ -1,5 +1,5 @@
-import { sendGridsubscribeMail } from '@/util/api';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { sendGridsubscribeMail } from '@/util/api';
 
 type Data = {
   message: string;
