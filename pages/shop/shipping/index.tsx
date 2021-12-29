@@ -13,11 +13,11 @@ import {
   Heading,
   Stack,
 } from '@chakra-ui/react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import CartSteps from '@/components/Shop/CartSteps';
 import BackToShop from '@/components/Shop/BackToShop';
 import { Store } from '@/util/Store';
 import { getGlobalData } from '@/util/api';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Shipping() {
   const router = useRouter();

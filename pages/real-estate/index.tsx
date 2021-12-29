@@ -1,9 +1,8 @@
-import { PropertyProps } from '@/interfaces/common';
-import { getGlobalData, getAllProperties } from '@/util/api';
 import { Box, Button } from '@chakra-ui/react';
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { getGlobalData, getAllProperties } from '@/util/api';
+import { PropertyProps } from '@/interfaces/common';
 
 import PropertyLists from '@/components/RealEstate/PropertyLists';
 import SearchProperty from '@/components/RealEstate/SearchProperty';

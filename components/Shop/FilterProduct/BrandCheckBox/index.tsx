@@ -1,8 +1,8 @@
-import { BrandProps } from '@/interfaces/common';
-import { getBrands } from '@/util/api';
 import { Box, Checkbox, Stack, Heading } from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
 import React, { useEffect, useState } from 'react';
+import { getBrands } from '@/util/api';
+import { BrandProps } from '@/interfaces/common';
 
 function BrandCheckBox({ checkedBrand, setCheckedBrand }: any) {
   const { t } = useTranslation('common');

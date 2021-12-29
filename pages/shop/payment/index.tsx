@@ -10,11 +10,11 @@ import {
   Radio,
   RadioGroup,
 } from '@chakra-ui/react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { Store } from '@/util/Store';
 import CartSteps from '@/components/Shop/CartSteps';
 import BackToShop from '@/components/Shop/BackToShop';
 import { getGlobalData } from '@/util/api';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Payment() {
   const router = useRouter();

@@ -1,9 +1,9 @@
 import { Box, Heading, useToast } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
-import { TodoProps } from '@/interfaces/common';
+import useSWR from 'swr';
 import ToDoForm from './ToDoForm';
 import ToDoResult from './ToDoResult';
-import useSWR from 'swr';
+import { TodoProps } from '@/interfaces/common';
 
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
 

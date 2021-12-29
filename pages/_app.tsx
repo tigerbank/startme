@@ -2,11 +2,11 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import NextNprogress from 'nextjs-progressbar';
-import Layout from '@/components/Layout';
 import { Box } from '@chakra-ui/layout';
-import { StoreProvider } from '@/util/Store';
 import { createBreakpoints } from '@chakra-ui/theme-tools';
 import { appWithTranslation } from 'next-i18next';
+import { StoreProvider } from '@/util/Store';
+import Layout from '@/components/Layout';
 
 const breakpoints = createBreakpoints({
   sm: '320px',

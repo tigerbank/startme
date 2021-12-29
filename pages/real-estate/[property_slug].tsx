@@ -1,32 +1,14 @@
-import BackToRealEstate from '@/components/RealEstate/BackToRealEstate';
-import { PropertyProps } from '@/interfaces/common';
-import { getGlobalData, getPropertyBySlug } from '@/util/api';
-
 import { Box } from '@chakra-ui/react';
 import React from 'react';
+import BackToRealEstate from '@/components/RealEstate/BackToRealEstate';
+import PropertyDetail from '@/components/RealEstate/PropertyDetail';
+import { PropertyProps } from '@/interfaces/common';
+import { getGlobalData, getPropertyBySlug } from '@/util/api';
 
 function Property({ property }: { property: PropertyProps }) {
   return (
     <Box className="container" mt="100px">
-      {property.name}
-      <br />
-      {property.type}
-      <br />
-      {property.listType}
-      <br />
-      {property.address}
-      <br />
-      {property.price}
-      <br />
-      {property.shortDetail}
-      <br />
-      {property.fullDetail}
-      <br />
-      {property.bedRoom}
-      <br />
-      {property.bathRoom}
-      <br />
-      {property.carPark}
+      <PropertyDetail property={property} />
       <BackToRealEstate />
     </Box>
   );

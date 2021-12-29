@@ -1,9 +1,8 @@
-import { PropertyProps } from '@/interfaces/common';
 import React, { useState } from 'react';
 import { ListItem, UnorderedList, Box } from '@chakra-ui/react';
-import Link from 'next/link';
+import { PropertyProps } from '@/interfaces/common';
 import Pagination from '@/components/Common/Pagination';
-import PropertyItem from '../PropertyItem';
+import PropertyItem from '@/components/RealEstate/PropertyItem';
 
 function PropertyLists({ properties }: { properties: PropertyProps[] }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,6 +15,8 @@ function PropertyLists({ properties }: { properties: PropertyProps[] }) {
   const noOfAllPosts = Math.ceil(properties.length / postsPerPage);
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
+  console.log(properties);
 
   return (
     <>

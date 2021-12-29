@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Heading, Text, Badge } from '@chakra-ui/react';
 import Image from 'next/image';
-import { JobProps } from '@/interfaces/common';
 import moment from 'moment';
+import { JobProps } from '@/interfaces/common';
 
 function JobList({ jobs }: any) {
   if (jobs.length === 0) {

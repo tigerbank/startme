@@ -1,10 +1,10 @@
 import { Box } from '@chakra-ui/layout';
 import React from 'react';
 import Link from 'next/link';
-import styles from '@/components/Layout/Navigation/Desktop/Navigation.module.scss';
-import { NavProps } from '@/interfaces/common';
 import { Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
+import styles from '@/components/Layout/Navigation/Desktop/Navigation.module.scss';
+import { NavProps } from '@/interfaces/common';
 
 function DesktopNavigation({ nav }: { nav: NavProps[] }) {
   const renderNavItem = (navItem: NavProps) => {

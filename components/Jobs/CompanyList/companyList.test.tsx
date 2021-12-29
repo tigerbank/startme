@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import CompanyList from '@/components/Jobs/CompanyList';
 import MockCompanies from '../../../mocks/data/companies.json';
+import CompanyList from '@/components/Jobs/CompanyList';
 
 describe('CompanyList component', () => {
   beforeEach(() => {

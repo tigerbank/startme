@@ -1,10 +1,10 @@
 import React from 'react';
 import { NextSeo } from 'next-seo';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Sections from '@/components/sections';
 import { PageProps } from '@/interfaces/common';
 import { getPageData, getGlobalData, fetchAPI } from '@/util/api';
 import Newsletter from '@/components/Newsletter';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Page({ page }: { page: PageProps }) {
   const sections = page.contentSections;

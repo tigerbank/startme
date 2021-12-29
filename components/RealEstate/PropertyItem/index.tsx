@@ -1,8 +1,8 @@
 import { Badge, Box } from '@chakra-ui/react';
 import React from 'react';
 import Link from 'next/link';
-import { PropertyProps } from '@/interfaces/common';
 import Image from 'next/image';
+import { PropertyProps } from '@/interfaces/common';
 
 function PropertyItem({ property }: { property: PropertyProps }) {
   return (
@@ -13,9 +13,10 @@ function PropertyItem({ property }: { property: PropertyProps }) {
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
+        cursor="pointer"
       >
         <Image
-          src="https://via.placeholder.com/350x200"
+          src={property.images[0].url || 'https://via.placeholder.com/350x200'}
           alt="image name"
           width="350"
           height="200"
@@ -34,7 +35,7 @@ function PropertyItem({ property }: { property: PropertyProps }) {
               textTransform="uppercase"
               ml="2"
             >
-              {/* {property.beds} beds &bull; {property.baths} baths */}xx
+              {property.bedRoom} beds &bull; {property.bathRoom} baths
             </Box>
           </Box>
 
@@ -48,12 +49,7 @@ function PropertyItem({ property }: { property: PropertyProps }) {
             {property.name}
           </Box>
 
-          <Box>
-            {/* {property.formattedPrice} */}xxx
-            <Box as="span" color="gray.600" fontSize="sm">
-              / wk
-            </Box>
-          </Box>
+          <Box>THB {property.price.toLocaleString()}</Box>
 
           {/* <Box display="flex" mt="2" alignItems="center">
             {Array(5)

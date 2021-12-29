@@ -12,7 +12,7 @@ describe('My-properties component', () => {
 
   it('correctly fetch data', async () => {
     const { findByText, findAllByRole } = render(<MyProperties />);
-    const text = await findByText('manchester');
+    const text = await findByText(/Kent Street/i);
     expect(text).toBeInTheDocument();
 
     const heading = await findAllByRole('heading');

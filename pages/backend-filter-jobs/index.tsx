@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Text } from '@chakra-ui/react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { axiosJobsData, getGlobalData } from '@/util/api';
 import JobList from '@/components/Jobs/JobList';
 import Loading from '@/components/Common/Loading/Index';
 import JobFilterBackend from '@/components/Jobs/JobFilterBackend';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function BackendJobs() {
   const [loading, setLoading] = useState(false);

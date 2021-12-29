@@ -7,9 +7,9 @@ import {
   Stack,
   useBreakpointValue,
 } from '@chakra-ui/react';
+import { useTranslation } from 'next-i18next';
 import PriceRangeScreen from '@/components/Shop/FilterProduct/PriceRange';
 import BrandCheckBox from '@/components/Shop/FilterProduct/BrandCheckBox';
-import { useTranslation } from 'next-i18next';
 
 function FilterProduct({ productFilter, setProductFilter }: any) {
   const isNotXl = useBreakpointValue({ base: true, xl: false });

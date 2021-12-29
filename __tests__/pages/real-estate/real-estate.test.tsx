@@ -12,12 +12,12 @@ describe('Real Estate', () => {
     expect(screen.getByText(/Real Estate App/i)).toBeInTheDocument();
   });
 
-  it('should render lists of properties per page 3', () => {
+  it('should render lists of properties per page 6', () => {
     const allProperties = screen.getByRole('list', {
       name: 'properties',
     });
     const { getAllByRole } = within(allProperties);
     const listItems = getAllByRole('listitem');
-    expect(listItems.length).toBe(3);
+    expect(listItems.length).toBe(6);
   });
 });

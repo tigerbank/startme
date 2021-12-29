@@ -11,8 +11,8 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { PropertyProps } from '@/interfaces/common';
 import { useRouter } from 'next/router';
+import { PropertyProps } from '@/interfaces/common';
 import { postProperty } from '@/util/api';
 
 function AddForm() {

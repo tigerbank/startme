@@ -1,9 +1,9 @@
 import React from 'react';
-import ToDoList from '@/components/ToDoList';
 import { Box } from '@chakra-ui/layout';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import ToDoList from '@/components/ToDoList';
 import { getGlobalData, getTodosData } from '@/util/api';
 import { TodoProps } from '@/interfaces/common';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Todo({ todos }: { todos: TodoProps[] }) {
   return (

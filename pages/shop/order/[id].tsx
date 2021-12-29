@@ -18,11 +18,11 @@ import {
   Thead,
   Tr,
 } from '@chakra-ui/react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { OrderProps } from '@/interfaces/common';
 import { Store } from '@/util/Store';
 import BackToShop from '@/components/Shop/BackToShop';
 import { getGlobalData, getOrder, updateOrderStatus } from '@/util/api';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Order({ orderId }: { orderId: number }) {
   const router = useRouter();

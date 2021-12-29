@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import LocationList from '@/components/Jobs/LocationList';
 import MockLocations from '../../../mocks/data/locations.json';
+import LocationList from '@/components/Jobs/LocationList';
 
 describe('LocationList component', () => {
   beforeEach(() => {

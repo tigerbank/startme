@@ -10,8 +10,8 @@ import {
 import Link from 'next/link';
 import Cookies from 'js-cookie';
 import React, { useContext } from 'react';
-import { Store } from '@/util/Store';
 import { useRouter } from 'next/router';
+import { Store } from '@/util/Store';
 
 function UserMenu({ onClose }: { onClose?: () => void }) {
   const { state, dispatch } = useContext(Store);

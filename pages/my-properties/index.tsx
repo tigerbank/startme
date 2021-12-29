@@ -1,7 +1,7 @@
-import { PropertyProps } from '@/interfaces/common';
-import { getAllProperties } from '@/util/api';
 import { Box } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
+import { PropertyProps } from '@/interfaces/common';
+import { getAllProperties } from '@/util/api';
 
 function MyProperties() {
   const [properties, setProperties] = useState([]);

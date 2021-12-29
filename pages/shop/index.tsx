@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { NextSeo } from 'next-seo';
 import { Box, Flex, Select, Text } from '@chakra-ui/react';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { filterProducts, getGlobalData, getProducts } from '@/util/api';
 import { ProductProps } from '@/interfaces/common';
 import FilterProduct from '@/components/Shop/FilterProduct';
 import ProductLists from '@/components/Shop/ProductLists';
 import Pagination from '@/components/Common/Pagination';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Shop({ data }: { data: ProductProps[] }) {
   const { t } = useTranslation('common');

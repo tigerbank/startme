@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import SearchProperty from '@/components/RealEstate/SearchProperty';
 import Router from 'next/router';
+import SearchProperty from '@/components/RealEstate/SearchProperty';
 
 describe('Search property', () => {
   beforeEach(() => {

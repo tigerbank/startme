@@ -1,8 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
+import { Box, Heading, useBreakpointValue } from '@chakra-ui/react';
 import SubMenu from '@/components/Layout/Header/SubMenu';
 import CartMenu from '@/components/Layout/Header/CartMenu';
-import { Box, Heading, useBreakpointValue } from '@chakra-ui/react';
 import MobileNavigation from '@/components/Layout/Navigation/Mobile';
 import { NavProps } from '@/interfaces/common';
 

@@ -18,13 +18,13 @@ import {
   Tr,
   Button,
 } from '@chakra-ui/react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { OrderItemProps } from '@/interfaces/common';
 import CartSteps from '@/components/Shop/CartSteps';
 import BackToShop from '@/components/Shop/BackToShop';
 import { totalItemPrice } from '@/util/cart';
 import { Store } from '@/util/Store';
 import { getGlobalData } from '@/util/api';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function PlaceOrder() {
   const { state, dispatch } = useContext(Store);

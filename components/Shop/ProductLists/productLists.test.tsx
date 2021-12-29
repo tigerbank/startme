@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import ProductLists from '@/components/Shop/ProductLists';
 import mockProducts from '../../../mocks/data/products.json';
+import ProductLists from '@/components/Shop/ProductLists';
 
 describe('Product lists', () => {
   it('should render button', () => {

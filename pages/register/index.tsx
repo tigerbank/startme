@@ -15,10 +15,10 @@ import {
   FormErrorMessage,
   useToast,
 } from '@chakra-ui/react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { RegisterInfoProps } from '@/interfaces/common';
 import { getGlobalData, postRegister } from '@/util/api';
 import { Store } from '@/util/Store';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function RegisterScreen() {
   const {

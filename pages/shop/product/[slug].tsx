@@ -2,11 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import { Box, Heading, Text } from '@chakra-ui/react';
 import { NextSeo } from 'next-seo';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { ProductProps } from '@/interfaces/common';
 import AddToCart from '@/components/Shop/AddToCart';
 import BackToShop from '@/components/Shop/BackToShop';
 import { getGlobalData, getProductsBySlug } from '@/util/api';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function ProductScreen({ product }: { product: ProductProps }) {
   if (!product) {

@@ -1,0 +1,107 @@
+
+{
+    "id": 1,
+    "name": "38/515 Kent Street, Sydney",
+    "property_slug": "kent-street",
+    "type": "apartment",
+    "listType": "rent",
+    "address": "38/515 Kent Street, Sydney",
+    "price": 1200000,
+    "shortDetail": "Offering an exceptional opportunity to obtain this stunning apartment filled with natural light, here you can enjoy the vigour of the top-notch, urban lifestyle that Sydney CBD offers. Delightfully located in a secure building, this property is positioned to experience a privileged and private way of life, with luxury resort style recreational facilities, including a heated swimming pool, sauna, spa, and a gymnasium within the complex",
+    "fullDetail": "Showcasing two double bedrooms, both w/ built-ins, and a contemporary open plan living/dining area, this property is perfect for an inner-city home or an investment opportunity.",
+    "bedRoom": 2,
+    "bathRoom": 2,
+    "carPark": 1,
+    "locale": "en",
+    "published_at": "2021-12-21T16:02:31.071Z",
+    "created_at": "2021-12-21T16:02:31.091Z",
+    "updated_at": "2021-12-29T04:27:51.255Z",
+    "images": [
+      {
+        "id": 24,
+        "name": "property1-3.jpg",
+        "alternativeText": "",
+        "caption": "",
+        "width": 1280,
+        "height": 853,
+        "formats": {
+          "thumbnail": {
+            "name": "thumbnail_property1-3.jpg",
+            "hash": "thumbnail_property1_3_8e86261cba",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "width": 234,
+            "height": 156,
+            "size": 10.58,
+            "path": null,
+            "url": "https://res.cloudinary.com/di4k2zher/image/upload/v1640751378/startme-development/thumbnail_property1_3_8e86261cba.jpg",
+            "provider_metadata": {
+              "public_id": "startme-development/thumbnail_property1_3_8e86261cba",
+              "resource_type": "image"
+            }
+          },
+          "large": {
+            "name": "large_property1-3.jpg",
+            "hash": "large_property1_3_8e86261cba",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "width": 1000,
+            "height": 666,
+            "size": 139.01,
+            "path": null,
+            "url": "https://res.cloudinary.com/di4k2zher/image/upload/v1640751381/startme-development/large_property1_3_8e86261cba.jpg",
+            "provider_metadata": {
+              "public_id": "startme-development/large_property1_3_8e86261cba",
+              "resource_type": "image"
+            }
+          },
+          "medium": {
+            "name": "medium_property1-3.jpg",
+            "hash": "medium_property1_3_8e86261cba",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "width": 750,
+            "height": 500,
+            "size": 82.16,
+            "path": null,
+            "url": "https://res.cloudinary.com/di4k2zher/image/upload/v1640751383/startme-development/medium_property1_3_8e86261cba.jpg",
+            "provider_metadata": {
+              "public_id": "startme-development/medium_property1_3_8e86261cba",
+              "resource_type": "image"
+            }
+          },
+          "small": {
+            "name": "small_property1-3.jpg",
+            "hash": "small_property1_3_8e86261cba",
+            "ext": ".jpg",
+            "mime": "image/jpeg",
+            "width": 500,
+            "height": 333,
+            "size": 38.61,
+            "path": null,
+            "url": "https://res.cloudinary.com/di4k2zher/image/upload/v1640751385/startme-development/small_property1_3_8e86261cba.jpg",
+            "provider_metadata": {
+              "public_id": "startme-development/small_property1_3_8e86261cba",
+              "resource_type": "image"
+            }
+          }
+        },
+        "hash": "property1_3_8e86261cba",
+        "ext": ".jpg",
+        "mime": "image/jpeg",
+        "size": 222.43,
+        "url": "https://res.cloudinary.com/di4k2zher/image/upload/v1640751377/startme-development/property1_3_8e86261cba.jpg",
+        "previewUrl": null,
+        "provider": "cloudinary",
+        "provider_metadata": {
+          "public_id": "startme-development/property1_3_8e86261cba",
+          "resource_type": "image"
+        },
+        "created_at": "2021-12-29T04:16:26.057Z",
+        "updated_at": "2021-12-29T04:16:26.075Z"
+      }
+    ],
+    "localizations": []
+  }
+  
+

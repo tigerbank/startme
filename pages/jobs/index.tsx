@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { Box, Button } from '@chakra-ui/react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import JobFilter from '@/components/Jobs/JobFilter';
 import JobList from '@/components/Jobs/JobList';
 import Loading from '@/components/Common/Loading/Index';
-import Pagination from '@/components/Common/Pagination';
 import { JobProps } from '@/interfaces/common';
 import { getGlobalData, getJobsData } from '@/util/api';
-import { Box, Button } from '@chakra-ui/react';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Jobs() {
   const [loading, setLoading] = useState(false);

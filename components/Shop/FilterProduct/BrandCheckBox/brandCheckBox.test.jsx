@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import BrandCheckBox from '@/components/Shop/FilterProduct/BrandCheckBox';
 import { rest } from 'msw';
 import { server } from '../../../../mocks/server.js';
+import BrandCheckBox from '@/components/Shop/FilterProduct/BrandCheckBox';
 
 describe('BrandCheckBox ', () => {
   beforeEach(() => {

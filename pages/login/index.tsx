@@ -17,10 +17,10 @@ import {
   FormErrorMessage,
   useToast,
 } from '@chakra-ui/react';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { LoginInfoProps } from '@/interfaces/common';
 import { Store } from '@/util/Store';
 import { getGlobalData, postLogin } from '@/util/api';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function Login() {
   const {

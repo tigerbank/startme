@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import mockAxios from 'axios';
 import FilterProduct from '@/components/Shop/FilterProduct';
 
-import mockAxios from 'axios';
 jest.mock('axios');
 
 describe('FilterProduct ', () => {

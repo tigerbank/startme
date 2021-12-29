@@ -196,6 +196,7 @@ export interface PropertyProps {
   created_at: string;
   updated_at: string;
   localizations: any;
+  images: any[];
 }
 
 export interface PaginationProps {
