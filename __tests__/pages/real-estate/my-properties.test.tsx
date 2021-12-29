@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import MyProperties from '@/pages/my-properties';
 import { rest } from 'msw';
 import { server } from '../../../mocks/server.js';
+import MyProperties from '@/pages/my-properties';
 
 describe('My-properties component', () => {
   it('should render component', () => {

@@ -5,6 +5,10 @@ import FilterProduct from '@/components/Shop/FilterProduct';
 
 jest.mock('axios');
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({ t: (key: any) => key }),
+}));
+
 describe('FilterProduct ', () => {
   beforeAll(() => {
     Object.defineProperty(window, 'matchMedia', {

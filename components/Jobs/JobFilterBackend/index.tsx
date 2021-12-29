@@ -16,22 +16,37 @@ function JobFilterBackend({ filterJobs, setJobs, setFilterJobs }: any) {
   const [companies, setCompanies] = useState([]);
   const [locations, setLocations] = useState([]);
   useEffect(() => {
+    let controller: any = new AbortController();
+
     const fetchCompanies = async () => {
-      const data = await getCompanies();
-      setCompanies(data);
+      try {
+        const data = await getCompanies({
+          signal: controller.signal,
+        });
+        controller = null;
+        setCompanies(data);
+      } catch (error) {}
     };
+
     fetchCompanies();
-    return () => {
-      setCompanies([]);
-    };
+    return () => controller?.abort();
   }, []);
 
   useEffect(() => {
+    let controller: any = new AbortController();
+
     const fetchLocations = async () => {
-      const data = await getLocations();
-      setLocations(data);
+      try {
+        const data = await getLocations({
+          signal: controller.signal,
+        });
+        controller = null;
+        setLocations(data);
+      } catch (error) {}
     };
+
     fetchLocations();
+    return () => controller?.abort();
   }, []);
 
   return (

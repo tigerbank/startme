@@ -8,19 +8,22 @@ function MyProperties() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
+    let controller: any = new AbortController();
     const fetchProperties = async () => {
       try {
-        const data = await getAllProperties();
+        const data = await getAllProperties({
+          signal: controller.signal,
+        });
         setProperties(data);
-      } catch (e) {
-        console.log(e);
-        setMessage('Could not fetch properties');
+        controller = null;
+      } catch (error: any) {
+        if (error.name !== 'AbortError') {
+          setMessage('Could not fetch properties');
+        }
       }
     };
     fetchProperties();
-    return () => {
-      setProperties([]);
-    };
+    return () => controller?.abort();
   }, []);
 
   return (

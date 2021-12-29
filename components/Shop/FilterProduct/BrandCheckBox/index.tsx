@@ -11,23 +11,20 @@ function BrandCheckBox({ checkedBrand, setCheckedBrand }: any) {
   const [status, setStatus] = useState<any>(null);
 
   useEffect(() => {
+    let controller: any = new AbortController();
     const fetchBrands = async () => {
       try {
         setLoading(true);
-        const data = await getBrands();
+        const data = await getBrands({
+          signal: controller.signal,
+        });
         setBrands(data);
         setLoading(false);
-      } catch (error) {
-        setLoading(false);
-        setStatus('Could not fetch brands');
-      }
+        controller = null;
+      } catch (error: any) {}
     };
     fetchBrands();
-    return () => {
-      setLoading(false);
-      setBrands([]);
-      setStatus(null);
-    };
+    return () => controller?.abort();
   }, []);
 
   const handleToggle = (id: number) => {

@@ -20,6 +20,10 @@ const product = {
   },
 };
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({ t: (key: any) => key }),
+}));
+
 describe('Add to cart Button', () => {
   it('should render button', () => {
     render(<AddToCart product={product} />);

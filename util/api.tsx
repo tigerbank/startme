@@ -1,27 +1,31 @@
+import axios from 'axios';
+import { isNull } from 'cypress/types/lodash';
 import {
   LoginInfoProps,
   PropertyProps,
   RegisterInfoProps,
 } from '@/interfaces/common';
-import axios from 'axios';
 
 export function getStrapiURL(path: string) {
   return `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${path}`;
 }
 
-export async function fetchAPI(path: string) {
-  const res = await fetch(getStrapiURL(path));
+export async function fetchAPI(path: string, signal: any) {
+  const res = await fetch(getStrapiURL(path), signal);
   return res.json();
 }
 
-export async function axiosAPI(path: string) {
-  const response = await axios.get(getStrapiURL(path));
+export async function axiosAPI(path: string, signal: any) {
+  const response = await axios.get(getStrapiURL(path), signal);
   return response.data;
 }
 
 export async function getPageData(slug: string[], locale: string) {
   const joinedSlug = slug.join('/');
-  const data = await fetchAPI(`/pages?slug=${joinedSlug}&_locale=${locale}`);
+  const data = await fetchAPI(
+    `/pages?slug=${joinedSlug}&_locale=${locale}`,
+    null,
+  );
 
   if (data == null || data.length === 0) {
     return null;
@@ -30,24 +34,24 @@ export async function getPageData(slug: string[], locale: string) {
 }
 
 export async function getGlobalData(locale: string) {
-  return fetchAPI(`/global?_locale=${locale}`);
+  return fetchAPI(`/global?_locale=${locale}`, null);
 }
 
 export async function getTodosData() {
-  return fetchAPI(`/todos`);
+  return fetchAPI(`/todos`, null);
 }
 
 export async function getProducts() {
-  return fetchAPI(`/products`);
+  return fetchAPI(`/products`, null);
 }
 
 export async function getProductsBySlug(slug: string[]) {
-  const data = await fetchAPI(`/products?slug=${slug}`);
+  const data = await fetchAPI(`/products?slug=${slug}`, null);
   return data[0];
 }
 
 export async function getOrder(id: number) {
-  return fetchAPI(`/orders/${id}`);
+  return fetchAPI(`/orders/${id}`, null);
 }
 
 export async function updateOrderStatus(id: number) {
@@ -117,8 +121,8 @@ export async function sendGridsubscribeMail(mail: string) {
 }
 
 //frontend jobs filter
-export async function getJobsData() {
-  return fetchAPI(`/jobs`);
+export async function getJobsData(signal: any) {
+  return fetchAPI(`/jobs`, signal);
 }
 
 //backend jobs filter
@@ -149,19 +153,20 @@ export async function axiosJobsData(
     `/jobs/?_limit=${perPage}&_start=${
       perPage * (filterJobs.page - 1)
     }&${arr.join('&')}`,
+    null,
   );
 }
 
-export async function getCompanies() {
-  return axiosAPI(`/companies`);
+export async function getCompanies(signal: any) {
+  return axiosAPI(`/companies`, signal);
 }
 
-export async function getLocations() {
-  return axiosAPI(`/cities`);
+export async function getLocations(signal: any) {
+  return axiosAPI(`/cities`, signal);
 }
 
-export async function getBrands() {
-  return axiosAPI(`/brands`);
+export async function getBrands(signal: any) {
+  return axiosAPI(`/brands`, signal);
 }
 
 export async function filterProducts(filterProducts: any) {
@@ -185,16 +190,16 @@ export async function filterProducts(filterProducts: any) {
     arr.push(`${brandArr.join('&')}`);
   }
 
-  return axiosAPI(`/products?${arr.join('&')}`);
+  return axiosAPI(`/products?${arr.join('&')}`, null);
 }
 
 export async function getPropertyBySlug(slug: string[]) {
-  const data = await fetchAPI(`/properties?property_slug=${slug}`);
+  const data = await fetchAPI(`/properties?property_slug=${slug}`, null);
   return data[0];
 }
 
-export async function getAllProperties() {
-  return fetchAPI(`/properties`);
+export async function getAllProperties(signal: any) {
+  return fetchAPI(`/properties`, signal);
 }
 
 export async function postProperty(data: PropertyProps) {
@@ -208,9 +213,14 @@ export async function postProperty(data: PropertyProps) {
   });
 }
 
-export async function filterProperty(searchString: any, listType: any) {
+export async function filterProperty(
+  searchString: any,
+  listType: any,
+  signal: any,
+) {
   return axiosAPI(
     `/properties?name_contains=${searchString}&listType=${listType}`,
+    signal,
   );
 }
 

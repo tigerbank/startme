@@ -29,7 +29,9 @@ function RealEstateMain({ properties }: { properties: PropertyProps[] }) {
 
 export const getStaticProps = async (context: any) => {
   const locale = context.locale;
-  const properties = await getAllProperties();
+
+  const properties = await getAllProperties(null);
+
   const global = await getGlobalData(locale);
 
   if (!properties) {

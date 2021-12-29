@@ -23,7 +23,7 @@ function Page({ page }: { page: PageProps }) {
 export async function getStaticPaths({ locales }: { locales: string[] }) {
   // Get all pages from Strapi
   const allPages = locales.map(async (locale: string) => {
-    return fetchAPI(`/pages?_locale=${locale}`);
+    return fetchAPI(`/pages?_locale=${locale}`, null);
   });
 
   const pages = await Promise.all(allPages);

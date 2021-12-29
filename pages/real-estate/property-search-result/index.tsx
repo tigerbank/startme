@@ -14,18 +14,21 @@ function PropertySearchResult() {
   const [properties, setProperties] = useState([]);
 
   useEffect(() => {
+    let controller: any = new AbortController();
     const fetchResult = async () => {
       try {
         setIsLoading(true);
-        const result = await filterProperty(searchString, listType);
+        const result = await filterProperty(searchString, listType, {
+          signal: controller.signal,
+        });
         setProperties(result);
         setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
+        controller = null;
+      } catch (error) {}
     };
     fetchResult();
-  }, []);
+    return () => controller?.abort();
+  }, [router]);
 
   return (
     <Box className="container" mt="50px">

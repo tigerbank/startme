@@ -3,6 +3,10 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Newsletter from '@/components/newsletter';
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({ t: (key) => key }),
+}));
+
 describe('Newsletter', () => {
   it('should show Newsletter Component', () => {
     render(<Newsletter />);

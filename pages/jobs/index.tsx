@@ -23,19 +23,23 @@ function Jobs() {
   const [lastPage, setLastPage] = useState(0);
 
   useEffect(() => {
+    let controller: any = new AbortController();
     const fetchJobs = async () => {
       try {
         setLoading(true);
-        const data = await getJobsData();
+        const data = await getJobsData({
+          signal: controller.signal,
+        });
+
         setAllJobs(data);
         setFilteredJobs(data.slice(0, filters.page * perPage));
         setLastPage(Math.ceil(data.length / perPage));
         setLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
+        controller = null;
+      } catch (error) {}
     };
     fetchJobs();
+    return () => controller?.abort();
   }, []);
 
   useEffect(() => {

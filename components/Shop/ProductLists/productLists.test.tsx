@@ -3,6 +3,10 @@ import { render, screen } from '@testing-library/react';
 import mockProducts from '../../../mocks/data/products.json';
 import ProductLists from '@/components/Shop/ProductLists';
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({ t: (key: any) => key }),
+}));
+
 describe('Product lists', () => {
   it('should render button', () => {
     render(<ProductLists products={mockProducts} loading={false} />);

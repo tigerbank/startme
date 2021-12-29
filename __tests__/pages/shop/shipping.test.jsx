@@ -1,8 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Shipping from '@/pages/shop/shipping';
 import { useRouter } from 'next/router';
+import Shipping from '@/pages/shop/shipping';
 
 jest.mock('next/router', () => ({
   useRouter: jest.fn(),

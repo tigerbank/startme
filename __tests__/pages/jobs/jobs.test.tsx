@@ -1,5 +1,9 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Jobs from '@/pages/jobs/';
 
@@ -8,8 +12,8 @@ describe('Real Estate', () => {
     render(<Jobs />);
   });
 
-  it('should render Real Estate', () => {
-    expect(screen.getByText(/Search/i)).toBeInTheDocument();
+  it('should render Real Estate', async () => {
+    expect(await screen.findByText(/Search/i)).toBeInTheDocument();
   });
 
   it('should render "position" ', async () => {

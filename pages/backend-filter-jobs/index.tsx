@@ -20,25 +20,27 @@ function BackendJobs() {
   const perPage = 4;
 
   useEffect(() => {
+    let identifier: any = null;
     const fetchJobs = async () => {
       setLoading(true);
       setLastPage(false);
-      const data = await axiosJobsData(filterJobs, perPage);
 
-      setJobs([...jobs, ...data]);
+      //to prevent API request for every key stroke
+      identifier = setTimeout(async () => {
+        const data = await axiosJobsData(filterJobs, perPage);
+        setJobs([...jobs, ...data]);
 
-      if (data.length === 0 || data.length < perPage) {
-        setLastPage(true);
-      }
+        if (data.length === 0 || data.length < perPage) {
+          setLastPage(true);
+        }
+        setLoading(false);
+      }, 1000);
 
-      setLoading(false);
+      return identifier;
     };
     fetchJobs();
-
     return () => {
-      setLoading(false);
-      setLoading(false);
-      setJobs([]);
+      clearTimeout(identifier);
     };
   }, [filterJobs]);
 
