@@ -80,8 +80,6 @@ function reducer(state: any, action: any) {
 
       Cookies.set('user', JSON.stringify(userLogin));
 
-      console.log(userLogin);
-
       return {
         ...state,
         user: userLogin,

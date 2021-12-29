@@ -15,12 +15,17 @@ function PropertyItem({ property }: { property: PropertyProps }) {
         overflow="hidden"
         cursor="pointer"
       >
-        <Image
-          src={property.images[0].url || 'https://via.placeholder.com/350x200'}
-          alt="image name"
-          width="350"
-          height="200"
-        />
+        <Box height="200px" overflow="hidden">
+          <Image
+            src={
+              property.images[0].url || 'https://via.placeholder.com/350x200'
+            }
+            alt="image name"
+            width={property.images[0].formats.thumbnail.width}
+            height={property.images[0].formats.thumbnail.height}
+            layout="responsive"
+          />
+        </Box>
 
         <Box p="6">
           <Box display="flex" alignItems="baseline">

@@ -16,7 +16,7 @@ function RealEstateMain({ properties }: { properties: PropertyProps[] }) {
         </Box>
       </Box>
 
-      <Box mt="100px" className="container">
+      <Box mt={{ base: '150px', md: '100px' }} className="container">
         <Button>
           <Link href="/real-estate/add-property">Add property</Link>
         </Button>

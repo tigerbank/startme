@@ -28,7 +28,7 @@ function SearchProperty() {
       borderRadius="xl"
       ml="auto"
       mr="auto"
-      w="700px"
+      w={{ base: '100%', md: '700px' }}
       bg="teal"
       p="40px 30px"
       mb="30px"
@@ -37,7 +37,11 @@ function SearchProperty() {
       color="white"
       boxShadow="lg"
     >
-      <Box d="flex" justifyContent="space-between" mb="5px">
+      <Box
+        d={{ base: 'block', md: 'flex' }}
+        justifyContent="space-between"
+        mb="5px"
+      >
         <Heading as="h2" fontSize="22px" mb="10px">
           Search properties
         </Heading>

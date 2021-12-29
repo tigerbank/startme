@@ -16,8 +16,6 @@ function PropertyLists({ properties }: { properties: PropertyProps[] }) {
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-  console.log(properties);
-
   return (
     <>
       <Box mb="20px">
