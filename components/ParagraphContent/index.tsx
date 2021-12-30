@@ -8,24 +8,26 @@ function ParagraphContent() {
         <Heading as="h3" fontSize="30px" textAlign="center">
           About This Website
         </Heading>
-        <Text px="80px" mt="20px" textAlign="center">
-          This site is a simple portfolio that contains multiple projects for
-          website development showcase and experiment. This website is built
-          with Nextjs, Strapi, Typescript, Chakra-ui, and many other
-          technologies. More detail about this project, <br />
-          <Text as="span" whiteSpace="nowrap">
-            please check :
+        <Box maxWidth="900px" ml="auto" mr="auto">
+          <Text px="20px" mt="20px" textAlign="center">
+            This site is a simple portfolio that contains multiple projects for
+            website development showcase and experiment. This website is built
+            with Nextjs, Strapi, Typescript, Chakra-ui, and many other
+            technologies. More detail about this project, <br />
+            <Text as="span" whiteSpace="nowrap">
+              please check :
+            </Text>
+            <Link ml="3px" fontWeight="bold" whiteSpace="nowrap">
+              <a
+                target="_blank"
+                href="https://github.com/tigerbank/startme/"
+                rel="noreferrer"
+              >
+                https://github.com/tigerbank/startme/
+              </a>
+            </Link>
           </Text>
-          <Link ml="3px" fontWeight="bold" whiteSpace="nowrap">
-            <a
-              target="_blank"
-              href="https://github.com/tigerbank/startme/"
-              rel="noreferrer"
-            >
-              https://github.com/tigerbank/startme/
-            </a>
-          </Link>
-        </Text>
+        </Box>
       </Box>
     </Box>
   );
