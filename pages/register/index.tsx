@@ -132,8 +132,7 @@ function RegisterScreen() {
                       {...register('email', {
                         required: 'This is required',
                         pattern: {
-                          value:
-                            /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+                          value: /\S+@\S+\.\S+/,
                           message: 'Email is wrong format',
                         },
                       })}
