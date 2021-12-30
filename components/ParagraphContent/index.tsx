@@ -17,7 +17,7 @@ function ParagraphContent() {
             <Text as="span" whiteSpace="nowrap">
               please check :
             </Text>
-            <Link ml="3px" fontWeight="bold" whiteSpace="nowrap">
+            <Link ml="3px" fontWeight="bold">
               <a
                 target="_blank"
                 href="https://github.com/tigerbank/startme/"
