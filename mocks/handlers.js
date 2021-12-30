@@ -48,7 +48,7 @@ export const handlers = [
   rest.get(
     `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/cities`,
     (req, res, ctx) => {
-      return res(ctx.status(200), ctx.json(mockCompanies));
+      return res(ctx.status(200), ctx.json(mockLocations));
     },
   ),
 

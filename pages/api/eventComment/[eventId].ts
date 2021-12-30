@@ -4,8 +4,6 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>,
 ) {
-  const eventId = req.query.eventId;
-
   if (req.method === 'POST') {
     const { name, email, comment } = req.body;
     //Server-side validation
@@ -28,21 +26,6 @@ export default function handler(
       comment: newComment,
     });
   } else {
-    const dummyList = [
-      {
-        id: '1',
-        name: 'John Doe',
-        email: 'tset@mail.com',
-        comment: 'Hello World',
-      },
-      {
-        id: '2',
-        name: 'John ddd',
-        email: 'tset@mail.com',
-        comment: 'Hello World111',
-      },
-    ];
-
     res.status(200).json({ message: 'This is working' });
   }
 }
