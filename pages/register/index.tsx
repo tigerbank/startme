@@ -131,10 +131,6 @@ function RegisterScreen() {
                       placeholder="email"
                       {...register('email', {
                         required: 'This is required',
-                        pattern: {
-                          value: /\S+@\S+\.\S+/,
-                          message: 'Email is wrong format',
-                        },
                       })}
                     />
                     <FormErrorMessage>

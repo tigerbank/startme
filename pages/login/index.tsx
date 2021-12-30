@@ -114,10 +114,6 @@ function Login() {
                       placeholder="email"
                       {...register('identifier', {
                         required: 'This is required',
-                        pattern: {
-                          value: /\S+@\S+\.\S+/,
-                          message: 'Email is wrong format',
-                        },
                       })}
                     />
                     <FormErrorMessage>
