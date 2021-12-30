@@ -5,7 +5,7 @@ import { Store } from '@/util/Store';
 import BackToRealEstate from '@/components/RealEstate/BackToRealEstate';
 
 function AddPropertyScreen() {
-  const { state, dispatch } = useContext(Store);
+  const { state } = useContext(Store);
   const { user } = state;
 
   return (

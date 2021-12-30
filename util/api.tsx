@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { isNull } from 'cypress/types/lodash';
 import {
   LoginInfoProps,
   PropertyProps,
@@ -169,21 +168,19 @@ export async function getBrands(signal: any) {
   return axiosAPI(`/brands`, signal);
 }
 
-export async function filterProducts(filterProducts: any) {
+export async function filterProducts(filters: any) {
   let arr = [];
-  if (filterProducts.s !== '') {
-    arr.push(`name_contains=${filterProducts.s}`);
+  if (filters.s !== '') {
+    arr.push(`name_contains=${filters.s}`);
   }
 
-  if (filterProducts.range.length !== 0) {
-    arr.push(
-      `price_gte=${filterProducts.range[0]}&price_lte=${filterProducts.range[1]}`,
-    );
+  if (filters.range.length !== 0) {
+    arr.push(`price_gte=${filters.range[0]}&price_lte=${filters.range[1]}`);
   }
 
-  if (filterProducts.checkedBrand !== []) {
+  if (filters.checkedBrand !== []) {
     let brandArr: string[] = [];
-    filterProducts?.checkedBrand?.forEach((brand: number) => {
+    filters?.checkedBrand?.forEach((brand: number) => {
       brandArr.push(`brands.id=${brand}`);
     });
 
