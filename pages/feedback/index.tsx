@@ -30,6 +30,7 @@ export const getStaticProps = async () => {
     props: {
       feedbackItems: data,
     },
+    revalidate: 10,
   };
 };
 

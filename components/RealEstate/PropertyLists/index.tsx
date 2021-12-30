@@ -16,6 +16,14 @@ function PropertyLists({ properties }: { properties: PropertyProps[] }) {
 
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
+  if (properties.length === 0) {
+    return (
+      <Box mt="50px" textAlign="center">
+        No property...
+      </Box>
+    );
+  }
+
   return (
     <>
       <Box mb="20px">

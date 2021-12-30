@@ -29,6 +29,7 @@ function Pagination({
                   px="10px"
                   py="5px"
                   cursor="pointer"
+                  data-testid={`paginationList-${number}`}
                 >
                   {number}
                 </Badge>

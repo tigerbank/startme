@@ -45,6 +45,7 @@ export const getStaticProps = async (context: any) => {
       properties,
       global,
     },
+    revalidate: 10,
   };
 };
 
