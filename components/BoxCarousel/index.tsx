@@ -1,8 +1,9 @@
-import { Box, Heading, Text } from '@chakra-ui/layout';
+import { Box, Heading } from '@chakra-ui/layout';
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Slider from 'react-slick';
+import TruncateText from '@/components/Common/TruncateText';
 import { BoxCarouselDetailProps, BoxCarouselProps } from '@/interfaces/common';
 
 function BoxCarousel({ data }: { data: BoxCarouselProps }) {
@@ -63,7 +64,8 @@ function BoxCarousel({ data }: { data: BoxCarouselProps }) {
                 <Heading mt="15px" as="h4" fontSize="20px">
                   {item.title}
                 </Heading>
-                <Text>{item.subtitle}</Text>
+
+                <TruncateText text={item.subtitle} width="100%" />
               </Box>
             </Box>
           ))}

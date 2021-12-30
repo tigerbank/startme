@@ -5,6 +5,7 @@ import Sections from '@/components/sections';
 import { PageProps } from '@/interfaces/common';
 import { getPageData, getGlobalData, fetchAPI } from '@/util/api';
 import Newsletter from '@/components/Newsletter';
+import ParagraphContent from '@/components/ParagraphContent';
 
 function Page({ page }: { page: PageProps }) {
   const sections = page.contentSections;
@@ -15,6 +16,7 @@ function Page({ page }: { page: PageProps }) {
         description="A short description goes here."
       />
       <Sections sections={sections} />
+      <ParagraphContent />
       <Newsletter />
     </>
   );

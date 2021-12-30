@@ -1,5 +1,5 @@
 import { Box, Text } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function TruncateText({ text, width }: { text: string; width: string }) {
   const [readMore, setReadMore] = useState(false);
@@ -16,6 +16,7 @@ function TruncateText({ text, width }: { text: string; width: string }) {
         overflow={readMore ? 'auto' : 'hidden'}
         textOverflow={readMore ? 'initial' : 'ellipsis'}
         whiteSpace={readMore ? 'initial' : 'nowrap'}
+        className="ellipsis-text"
       >
         {text}
       </Text>

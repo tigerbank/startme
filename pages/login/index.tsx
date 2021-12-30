@@ -94,7 +94,7 @@ function Login() {
       <NextSeo title="Login" description="A short description goes here." />
       <Box className="container" mt="20px">
         <Flex align={'center'} justify={'center'}>
-          <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+          <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} w="100%">
             <Stack align={'center'}>
               <Heading as="h3">Sign in to your account</Heading>]
             </Stack>

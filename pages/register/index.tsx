@@ -97,7 +97,7 @@ function RegisterScreen() {
       <NextSeo title="Register" description="A short description goes here." />
       <Box className="container" mt="20px">
         <Flex align={'center'} justify={'center'}>
-          <Stack w="600px" spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+          <Stack w="100%" spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
             <Stack align={'center'}>
               <Heading as="h3">Register</Heading>]
             </Stack>
