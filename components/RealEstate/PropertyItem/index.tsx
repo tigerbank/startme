@@ -8,7 +8,7 @@ function PropertyItem({ property }: { property: PropertyProps }) {
   return (
     <Link passHref href={`/real-estate/${property.property_slug}`}>
       <Box
-        w="350px"
+        w={{ base: '100%', md: '350px' }}
         bg="white"
         borderWidth="1px"
         borderRadius="lg"

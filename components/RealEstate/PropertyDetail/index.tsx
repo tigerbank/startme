@@ -45,7 +45,7 @@ function PropertyDetail({ property }: { property: PropertyProps }) {
             </ListItem>
             <ListItem>
               <Text>Price</Text>
-              <Text>{property.price}</Text>
+              <Text>THB {property.price.toLocaleString()}</Text>
             </ListItem>
             <ListItem>
               <Text>Bed Room</Text>

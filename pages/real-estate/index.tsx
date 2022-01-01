@@ -1,6 +1,7 @@
 import { Box, Button } from '@chakra-ui/react';
 import React from 'react';
 import Link from 'next/link';
+import { NextSeo } from 'next-seo';
 import { getGlobalData, getAllProperties } from '@/util/api';
 import { PropertyProps } from '@/interfaces/common';
 
@@ -10,6 +11,10 @@ import SearchProperty from '@/components/RealEstate/SearchProperty';
 function RealEstateMain({ properties }: { properties: PropertyProps[] }) {
   return (
     <>
+      <NextSeo
+        title="Real Estate"
+        description="A short description goes here."
+      />
       <Box h="300px" w="100%" className="realEstate__main">
         <Box className="container">
           <SearchProperty />

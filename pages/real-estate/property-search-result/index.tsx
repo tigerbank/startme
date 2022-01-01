@@ -1,6 +1,7 @@
 import { Box } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { NextSeo } from 'next-seo';
 import { filterProperty } from '@/util/api';
 import PropertyLists from '@/components/RealEstate/PropertyLists';
 import BackToRealEstate from '@/components/RealEstate/BackToRealEstate';
@@ -31,12 +32,15 @@ function PropertySearchResult() {
   }, [router]);
 
   return (
-    <Box className="container" mt="50px">
-      Search Result: {searchString}
-      {isLoading && <div>Loading...</div>}
-      {properties && <PropertyLists properties={properties} />}
-      <BackToRealEstate />
-    </Box>
+    <>
+      <NextSeo title="Search" description="A short description goes here." />
+      <Box className="container" mt="50px">
+        Search Result: {searchString}
+        {isLoading && <div>Loading...</div>}
+        {properties && <PropertyLists properties={properties} />}
+        <BackToRealEstate />
+      </Box>
+    </>
   );
 }
 

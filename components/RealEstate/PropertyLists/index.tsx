@@ -28,11 +28,12 @@ function PropertyLists({ properties }: { properties: PropertyProps[] }) {
     <>
       <Box mb="20px">
         <UnorderedList
-          d="flex"
-          flexDir="row"
+          d={{ base: 'flex', md: 'flex' }}
+          flexDir={{ base: 'column', md: 'row' }}
           aria-label="properties"
           gap="40px"
           flexWrap="wrap"
+          ml="0px"
         >
           {currentList &&
             currentList.map((property) => (
