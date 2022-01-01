@@ -56,6 +56,7 @@ function BoxCarousel({ data }: { data: BoxCarouselProps }) {
                           src={item.image.url}
                           alt=""
                           layout="responsive"
+                          priority
                         />
                       )}
                     </a>
