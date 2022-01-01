@@ -236,7 +236,7 @@ function PlaceOrder() {
   );
 }
 
-export async function getStaticProps({ locale }: { locale: string }) {
+export async function getServerSideProps({ locale }: { locale: string }) {
   const global = await getGlobalData(locale);
 
   return {
@@ -244,7 +244,6 @@ export async function getStaticProps({ locale }: { locale: string }) {
       ...(await serverSideTranslations(locale, ['common'])),
       global,
     },
-    revalidate: 10,
   };
 }
 

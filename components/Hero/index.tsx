@@ -2,10 +2,11 @@ import { Box } from '@chakra-ui/layout';
 import React from 'react';
 import Slider from 'react-slick';
 // @ts-ignore
-import { Image } from 'cloudinary-react';
+import Image from 'next/image';
 
 function Hero({ data }: { data: any }) {
   const settings = {
+    arrows: false,
     dots: false,
     infinite: true,
     speed: 500,
@@ -19,13 +20,12 @@ function Hero({ data }: { data: any }) {
           data.heroImage.map((item: any) => (
             <Box key={item.id}>
               <Image
-                secure
-                cloudName="di4k2zher"
-                publicId={item.image.provider_metadata.public_id}
                 width={item.image.width}
                 height={item.image.height}
-                crop="fill"
+                layout="responsive"
                 alt={item.image.alternativeText}
+                src={item.image.url}
+                priority
               />
             </Box>
           ))}
