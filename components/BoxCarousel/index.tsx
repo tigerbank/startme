@@ -1,12 +1,23 @@
 import { Box, Heading } from '@chakra-ui/layout';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Slider from 'react-slick';
+import Loading from '../Common/Loading/Index';
 import TruncateText from '@/components/Common/TruncateText';
 import { BoxCarouselDetailProps, BoxCarouselProps } from '@/interfaces/common';
 
 function BoxCarousel({ data }: { data: BoxCarouselProps }) {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (data.BoxCarouselDetail === 0) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, [data]);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -38,6 +49,10 @@ function BoxCarousel({ data }: { data: BoxCarouselProps }) {
       },
     ],
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <Box mb="20px">

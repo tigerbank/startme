@@ -35,7 +35,7 @@ function MobileNavigation({ nav }: { nav: NavProps[] }) {
       );
     } else {
       return (
-        <Accordion allowToggle>
+        <Accordion allowToggle key={navItem.id}>
           <AccordionItem
             isFocusable={false}
             borderTop="none"
