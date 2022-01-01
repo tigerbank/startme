@@ -6,7 +6,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { ProductProps } from '@/interfaces/common';
 import AddToCart from '@/components/Shop/AddToCart';
 import BackToShop from '@/components/Shop/BackToShop';
-import { getGlobalData, getProductsBySlug } from '@/util/api';
+import { getGlobalData, getProducts, getProductsBySlug } from '@/util/api';
 
 function ProductScreen({ product }: { product: ProductProps }) {
   if (!product) {
@@ -67,9 +67,29 @@ function ProductScreen({ product }: { product: ProductProps }) {
   );
 }
 
-export async function getServerSideProps(context: any) {
-  const slug = context.query.slug;
-  const locale = context.locale;
+export async function getStaticPaths({ locales }: { locales: any }) {
+  const products = await getProducts();
+
+  let productPaths: any = [];
+  products.forEach((product: ProductProps) => {
+    for (const locale of locales) {
+      productPaths.push({
+        params: {
+          slug: product.slug,
+        },
+        locale,
+      });
+    }
+  });
+
+  return {
+    paths: productPaths,
+    fallback: true,
+  };
+}
+
+export async function getStaticProps({ params, locale }: any) {
+  const slug = params.slug;
   const product = await getProductsBySlug(slug);
   const global = await getGlobalData(locale);
 
@@ -79,6 +99,7 @@ export async function getServerSideProps(context: any) {
       product,
       global,
     },
+    revalidate: 10,
   };
 }
 

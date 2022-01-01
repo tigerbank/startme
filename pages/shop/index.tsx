@@ -91,7 +91,7 @@ function Shop({ data }: { data: ProductProps[] }) {
   );
 }
 
-export async function getServerSideProps({ locale }: { locale: string }) {
+export async function getStaticProps({ locale }: { locale: string }) {
   const data = await getProducts();
   const global = await getGlobalData(locale);
 
@@ -101,6 +101,7 @@ export async function getServerSideProps({ locale }: { locale: string }) {
       data,
       global,
     },
+    revalidate: 10,
   };
 }
 
