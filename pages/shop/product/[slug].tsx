@@ -32,6 +32,7 @@ function ProductScreen({ product }: { product: ProductProps }) {
               }
               alt=""
               layout="responsive"
+              priority
             />
           </Box>
           <Box mt={{ base: '20px', md: 0 }} w={{ base: '100%', md: '50%' }}>
