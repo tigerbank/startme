@@ -3,7 +3,7 @@ import React from 'react';
 import BackToRealEstate from '@/components/RealEstate/BackToRealEstate';
 import PropertyDetail from '@/components/RealEstate/PropertyDetail';
 import { PropertyProps } from '@/interfaces/common';
-import { getGlobalData, getPropertyBySlug } from '@/util/api';
+import { getAllProperties, getGlobalData, getPropertyBySlug } from '@/util/api';
 
 function Property({ property }: { property: PropertyProps }) {
   return (
@@ -16,12 +16,30 @@ function Property({ property }: { property: PropertyProps }) {
   );
 }
 
-export const getServerSideProps = async (context: any) => {
-  const { params } = context;
+export async function getStaticPaths({ locales }: { locales: any }) {
+  const properties = await getAllProperties(null);
 
-  const property_slug = params.property_slug;
-  const locale = context.locale;
-  const property = await getPropertyBySlug(property_slug);
+  let propertyPaths: any = [];
+  properties.forEach((property: PropertyProps) => {
+    for (const locale of locales) {
+      propertyPaths.push({
+        params: {
+          property_slug: property.property_slug,
+        },
+        locale,
+      });
+    }
+  });
+
+  return {
+    paths: propertyPaths,
+    fallback: true,
+  };
+}
+
+export const getStaticProps = async ({ params, locale }: any) => {
+  const propertySlug = params.property_slug;
+  const property = await getPropertyBySlug(propertySlug);
   const global = await getGlobalData(locale);
 
   if (!property) {
@@ -35,6 +53,7 @@ export const getServerSideProps = async (context: any) => {
       property: property || null,
       global,
     },
+    revalidate: 10,
   };
 };
 

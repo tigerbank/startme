@@ -6,6 +6,10 @@ import TruncateText from '@/components/Common/TruncateText';
 import PropertyGallery from '@/components/RealEstate/PropertyGallery';
 
 function PropertyDetail({ property }: { property: PropertyProps }) {
+  if (!property) {
+    return <Box>property not found</Box>;
+  }
+
   return (
     <Box className={styles.propertyDetail}>
       <Box className="container">
@@ -13,9 +17,7 @@ function PropertyDetail({ property }: { property: PropertyProps }) {
           {property.name}
         </Heading>
       </Box>
-
       <PropertyGallery images={property.images} />
-
       <Box className="container">
         <TruncateText text={property.shortDetail} width="100%" />
 
