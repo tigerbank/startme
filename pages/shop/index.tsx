@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { NextSeo } from 'next-seo';
-import { Box, Flex, Select, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Flex,
+  Select,
+  Text,
+} from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { filterProducts, getGlobalData, getProducts } from '@/util/api';
@@ -48,7 +56,21 @@ function Shop({ data }: { data: ProductProps[] }) {
   return (
     <>
       <NextSeo title="Shop" description="A short description goes here." />
+
       <Box className="container" mt="40px">
+        <Box mb="10px" className="container">
+          <Breadcrumb fontWeight="medium" fontSize="sm">
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/shop" isCurrentPage>
+                Shop
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </Box>
         <Flex flexDir={{ base: 'column', xl: 'row' }}>
           <Box w={{ base: '100%', xl: '20%' }} mb="50px">
             <Box px={{ base: '30px', xl: '0px' }}>

@@ -18,15 +18,15 @@ function Property({ property }: { property: PropertyProps }) {
         title={property && property.name}
         description="A short description goes here."
       />
-      <Box mt="50px" className="container">
-        <Box mb="10px">
+      <Box mt="50px">
+        <Box mb="10px" className="container">
           <Breadcrumb fontWeight="medium" fontSize="sm">
             <BreadcrumbItem>
-              <BreadcrumbLink href="#">Home</BreadcrumbLink>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem>
-              <BreadcrumbLink href="#">Real Estate</BreadcrumbLink>
+              <BreadcrumbLink href="/real-estate">Real Estate</BreadcrumbLink>
             </BreadcrumbItem>
 
             <BreadcrumbItem isCurrentPage>

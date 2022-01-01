@@ -27,7 +27,12 @@ function Header({ nav }: { nav: NavProps[] }) {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Heading fontSize="20px" as="h3" fontFamily="Comfortaa, cursive">
+          <Heading
+            fontSize="20px"
+            as="h3"
+            fontFamily="Comfortaa, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif"
+          >
             <Link href="/">
               <a>TEERASAKYUKAN</a>
             </Link>

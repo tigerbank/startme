@@ -1,6 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import { Box, Heading, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Heading,
+  Text,
+} from '@chakra-ui/react';
 import { NextSeo } from 'next-seo';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { ProductProps } from '@/interfaces/common';
@@ -20,6 +27,22 @@ function ProductScreen({ product }: { product: ProductProps }) {
         description="A short description goes here."
       />
       <Box className="container" mt="50px">
+        <Box mb="20px" className="container">
+          <Breadcrumb fontWeight="medium" fontSize="sm">
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/shop">Shop</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="#" isCurrentPage>
+                {product.name}
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </Box>
         <Box d={{ base: 'block', md: 'flex' }}>
           <Box w={{ base: '100%', md: '50%' }}>
             <Image
