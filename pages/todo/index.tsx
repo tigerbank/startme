@@ -1,15 +1,15 @@
 import React from 'react';
-import { Box } from '@chakra-ui/layout';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import ToDoList from '@/components/ToDoList';
 import { getGlobalData, getTodosData } from '@/util/api';
 import { TodoProps } from '@/interfaces/common';
+import DefaultTemplate from '@/components/templates/DefaultTemplate';
 
 function Todo({ todos }: { todos: TodoProps[] }) {
   return (
-    <Box>
+    <DefaultTemplate title="todo" description="description">
       <ToDoList todos={todos} />
-    </Box>
+    </DefaultTemplate>
   );
 }
 

@@ -1,27 +1,34 @@
-import { Box, Heading } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
 import React, { useContext } from 'react';
-import { NextSeo } from 'next-seo';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import AddForm from '@/components/RealEstate/AddForm';
 import { Store } from '@/util/Store';
 import BackToRealEstate from '@/components/RealEstate/BackToRealEstate';
+import DefaultTemplate from '@/components/templates/DefaultTemplate';
+import { getGlobalData } from '@/util/api';
 
 function AddPropertyScreen() {
   const { state } = useContext(Store);
   const { user } = state;
 
   return (
-    <>
-      <NextSeo
-        title="Add Property"
-        description="A short description goes here."
-      />
-      <Box className="container" mt="100px">
-        <Heading as="h3">Add Property</Heading>
-        {user ? <AddForm /> : 'You are not logged in'}
-        <BackToRealEstate />
-      </Box>
-    </>
+    <DefaultTemplate title="Add Property" description="description">
+      <Heading as="h3">Add Property</Heading>
+      {user ? <AddForm /> : 'You are not logged in'}
+      <BackToRealEstate />
+    </DefaultTemplate>
   );
+}
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  const global = await getGlobalData(locale);
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+      global,
+    },
+  };
 }
 
 export default AddPropertyScreen;

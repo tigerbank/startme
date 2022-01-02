@@ -18,7 +18,7 @@ function Property({ property }: { property: PropertyProps }) {
         title={property && property.name}
         description="A short description goes here."
       />
-      <Box mt="50px">
+      <Box mt="30px">
         <Box mb="10px" className="container">
           <Breadcrumb fontWeight="medium" fontSize="sm">
             <BreadcrumbItem>

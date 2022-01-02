@@ -5,6 +5,7 @@ import { axiosJobsData, getGlobalData } from '@/util/api';
 import JobList from '@/components/Jobs/JobList';
 import Loading from '@/components/Common/Loading/Index';
 import JobFilterBackend from '@/components/Jobs/JobFilterBackend';
+import DefaultTemplate from '@/components/templates/DefaultTemplate';
 
 function BackendJobs() {
   const [loading, setLoading] = useState(false);
@@ -52,7 +53,7 @@ function BackendJobs() {
   };
 
   return (
-    <Box className="container" mt="40px">
+    <DefaultTemplate title="Backend job filter" description="description">
       <Box d={{ base: 'block', md: 'flex' }} justifyContent="space-between">
         <Box width={{ base: '100%', md: '30%' }} mr={{ base: 0, md: '30px' }}>
           <JobFilterBackend
@@ -81,7 +82,7 @@ function BackendJobs() {
           </>
         </Box>
       </Box>
-    </Box>
+    </DefaultTemplate>
   );
 }
 

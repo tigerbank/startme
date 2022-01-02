@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-import { NextSeo } from 'next-seo';
+
 import {
   Flex,
   Box,
@@ -21,6 +21,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { LoginInfoProps } from '@/interfaces/common';
 import { Store } from '@/util/Store';
 import { getGlobalData, postLogin } from '@/util/api';
+import DefaultTemplate from '@/components/templates/DefaultTemplate';
 
 function Login() {
   const {
@@ -90,70 +91,67 @@ function Login() {
   };
 
   return (
-    <>
-      <NextSeo title="Login" description="A short description goes here." />
-      <Box className="container" mt="20px">
-        <Flex align={'center'} justify={'center'}>
-          <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} w="100%">
-            <Stack align={'center'}>
-              <Heading as="h3">Sign in to your account</Heading>]
-            </Stack>
-            <form onSubmit={handleSubmit(submitHandler)}>
-              <Box
-                rounded={'lg'}
-                bg={useColorModeValue('white', 'gray.700')}
-                boxShadow={'lg'}
-                p={8}
-              >
-                <Stack spacing={4}>
-                  <FormControl isInvalid={errors.identifier}>
-                    <FormLabel>Email</FormLabel>
-                    <Input
-                      id="identifier"
-                      type="email"
-                      placeholder="email"
-                      {...register('identifier', {
-                        required: 'This is required',
-                      })}
-                    />
-                    <FormErrorMessage>
-                      {errors.identifier && errors.identifier.message}
-                    </FormErrorMessage>
-                  </FormControl>
-                  <FormControl isInvalid={errors.password}>
-                    <FormLabel>Password</FormLabel>
-                    <Input
-                      id="password"
-                      type="password"
-                      placeholder="password"
-                      {...register('password', {
-                        required: 'Password is required',
-                      })}
-                    />
-                    <FormErrorMessage>
-                      {errors.password && errors.password.message}
-                    </FormErrorMessage>
-                  </FormControl>
-                  <Stack spacing={10}>
-                    <Stack
-                      direction={{ base: 'column', md: 'row' }}
-                      align={'start'}
-                      justify={'space-between'}
-                    >
-                      <Checkbox>Remember me</Checkbox>
-                      <Link color={'teal.400'}>Forgot password?</Link>
-                    </Stack>
-                    <Button colorScheme="teal" type="submit">
-                      Sign in
-                    </Button>
-                  </Stack>
-                </Stack>
-              </Box>
-            </form>
+    <DefaultTemplate title="login" description="this is meta description">
+      <Flex align={'center'} justify={'center'}>
+        <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6} w="100%">
+          <Stack align={'center'}>
+            <Heading as="h3">Sign in to your account</Heading>]
           </Stack>
-        </Flex>
-      </Box>
-    </>
+          <form onSubmit={handleSubmit(submitHandler)}>
+            <Box
+              rounded={'lg'}
+              bg={useColorModeValue('white', 'gray.700')}
+              boxShadow={'lg'}
+              p={8}
+            >
+              <Stack spacing={4}>
+                <FormControl isInvalid={errors.identifier}>
+                  <FormLabel>Email</FormLabel>
+                  <Input
+                    id="identifier"
+                    type="email"
+                    placeholder="email"
+                    {...register('identifier', {
+                      required: 'This is required',
+                    })}
+                  />
+                  <FormErrorMessage>
+                    {errors.identifier && errors.identifier.message}
+                  </FormErrorMessage>
+                </FormControl>
+                <FormControl isInvalid={errors.password}>
+                  <FormLabel>Password</FormLabel>
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="password"
+                    {...register('password', {
+                      required: 'Password is required',
+                    })}
+                  />
+                  <FormErrorMessage>
+                    {errors.password && errors.password.message}
+                  </FormErrorMessage>
+                </FormControl>
+                <Stack spacing={10}>
+                  <Stack
+                    direction={{ base: 'column', md: 'row' }}
+                    align={'start'}
+                    justify={'space-between'}
+                  >
+                    <Checkbox>Remember me</Checkbox>
+                    <Link color={'teal.400'}>Forgot password?</Link>
+                  </Stack>
+                  <Button colorScheme="teal" type="submit">
+                    Sign in
+                  </Button>
+                </Stack>
+              </Stack>
+            </Box>
+          </form>
+        </Stack>
+      </Flex>
+    </DefaultTemplate>
   );
 }
 

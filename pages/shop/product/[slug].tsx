@@ -8,12 +8,13 @@ import {
   Heading,
   Text,
 } from '@chakra-ui/react';
-import { NextSeo } from 'next-seo';
+
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { ProductProps } from '@/interfaces/common';
 import AddToCart from '@/components/Shop/AddToCart';
 import BackToShop from '@/components/Shop/BackToShop';
 import { getGlobalData, getProducts, getProductsBySlug } from '@/util/api';
+import DefaultTemplate from '@/components/templates/DefaultTemplate';
 
 function ProductScreen({ product }: { product: ProductProps }) {
   if (!product) {
@@ -21,73 +22,70 @@ function ProductScreen({ product }: { product: ProductProps }) {
   }
 
   return (
-    <>
-      <NextSeo
-        title={product.name}
-        description="A short description goes here."
-      />
-      <Box className="container" mt="50px">
-        <Box mb="20px" className="container">
-          <Breadcrumb fontWeight="medium" fontSize="sm">
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
+    <DefaultTemplate
+      title={product.name}
+      description="A short description goes here."
+    >
+      <Box mb="20px">
+        <Breadcrumb fontWeight="medium" fontSize="sm">
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          </BreadcrumbItem>
 
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/shop">Shop</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="#" isCurrentPage>
-                {product.name}
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="/shop">Shop</BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbItem>
+            <BreadcrumbLink href="#" isCurrentPage>
+              {product.name}
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
+      </Box>
+      <Box d={{ base: 'block', md: 'flex' }}>
+        <Box w={{ base: '100%', md: '50%' }}>
+          <Image
+            width="900"
+            height="900"
+            src={
+              product.image.url
+                ? product.image.url
+                : 'https://via.placeholder.com/800'
+            }
+            alt=""
+            layout="responsive"
+            priority
+          />
         </Box>
-        <Box d={{ base: 'block', md: 'flex' }}>
-          <Box w={{ base: '100%', md: '50%' }}>
-            <Image
-              width="900"
-              height="900"
-              src={
-                product.image.url
-                  ? product.image.url
-                  : 'https://via.placeholder.com/800'
-              }
-              alt=""
-              layout="responsive"
-              priority
-            />
-          </Box>
-          <Box mt={{ base: '20px', md: 0 }} w={{ base: '100%', md: '50%' }}>
-            <Box px="30px">
-              <Heading>{product.name}</Heading>
-              <Text mb="20px" fontSize="20px" fontWeight="bold">
-                THB {product.price.toLocaleString()}
-              </Text>
-              <Text>
-                <strong>Category:</strong> {product.category}
-              </Text>
-              <Text>
-                <strong>Brand:</strong> {product.brands.name}
-              </Text>
-              <Text>
-                <strong>Stock:</strong> {product.countInStock}
-              </Text>
-              <Box as="hr" my="20px" />
-              <Text>
-                <strong>Detail:</strong>
-                <br /> {product.description}
-              </Text>
+        <Box mt={{ base: '20px', md: 0 }} w={{ base: '100%', md: '50%' }}>
+          <Box px="30px">
+            <Heading>{product.name}</Heading>
+            <Text mb="20px" fontSize="20px" fontWeight="bold">
+              THB {product.price.toLocaleString()}
+            </Text>
+            <Text>
+              <strong>Category:</strong> {product.category}
+            </Text>
+            <Text>
+              <strong>Brand:</strong> {product.brands.name}
+            </Text>
+            <Text>
+              <strong>Stock:</strong> {product.countInStock}
+            </Text>
+            <Box as="hr" my="20px" />
+            <Text>
+              <strong>Detail:</strong>
+              <br /> {product.description}
+            </Text>
 
-              <Box mt="20px">
-                <AddToCart product={product} />
-              </Box>
+            <Box mt="20px">
+              <AddToCart product={product} />
             </Box>
           </Box>
         </Box>
-        <BackToShop />
       </Box>
-    </>
+      <BackToShop />
+    </DefaultTemplate>
   );
 }
 

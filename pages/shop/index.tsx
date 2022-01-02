@@ -16,6 +16,7 @@ import { ProductProps } from '@/interfaces/common';
 import FilterProduct from '@/components/Shop/FilterProduct';
 import ProductLists from '@/components/Shop/ProductLists';
 import Pagination from '@/components/Common/Pagination';
+import DefaultTemplate from '@/components/templates/DefaultTemplate';
 
 function Shop({ data }: { data: ProductProps[] }) {
   const { t } = useTranslation('common');
@@ -55,9 +56,10 @@ function Shop({ data }: { data: ProductProps[] }) {
 
   return (
     <>
-      <NextSeo title="Shop" description="A short description goes here." />
-
-      <Box className="container" mt="40px">
+      <DefaultTemplate
+        title="Shop"
+        description="A short description goes here."
+      >
         <Box mb="10px" className="container">
           <Breadcrumb fontWeight="medium" fontSize="sm">
             <BreadcrumbItem>
@@ -108,7 +110,7 @@ function Shop({ data }: { data: ProductProps[] }) {
             />
           </Box>
         </Flex>
-      </Box>
+      </DefaultTemplate>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-import { NextSeo } from 'next-seo';
+
 import {
   Flex,
   Box,
@@ -19,6 +19,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { RegisterInfoProps } from '@/interfaces/common';
 import { getGlobalData, postRegister } from '@/util/api';
 import { Store } from '@/util/Store';
+import DefaultTemplate from '@/components/templates/DefaultTemplate';
 
 function RegisterScreen() {
   const {
@@ -93,90 +94,87 @@ function RegisterScreen() {
   };
 
   return (
-    <>
-      <NextSeo title="Register" description="A short description goes here." />
-      <Box className="container" mt="20px">
-        <Flex align={'center'} justify={'center'}>
-          <Stack w="100%" spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-            <Stack align={'center'}>
-              <Heading as="h3">Register</Heading>]
-            </Stack>
-            <form onSubmit={handleSubmit(submitHandler)}>
-              <Box
-                rounded={'lg'}
-                bg={useColorModeValue('white', 'gray.700')}
-                boxShadow={'lg'}
-                p={8}
-              >
-                <Stack spacing={4}>
-                  <FormControl isInvalid={errors.username}>
-                    <FormLabel>Username</FormLabel>
-                    <Input
-                      id="username"
-                      type="text"
-                      placeholder="username"
-                      {...register('username', {
-                        required: 'This is required',
-                      })}
-                    />
-                    <FormErrorMessage>
-                      {errors.username && errors.username.message}
-                    </FormErrorMessage>
-                  </FormControl>
-                  <FormControl isInvalid={errors.email}>
-                    <FormLabel>Email</FormLabel>
-                    <Input
-                      id="identifier"
-                      type="email"
-                      placeholder="email"
-                      {...register('email', {
-                        required: 'This is required',
-                      })}
-                    />
-                    <FormErrorMessage>
-                      {errors.email && errors.email.message}
-                    </FormErrorMessage>
-                  </FormControl>
-                  <FormControl isInvalid={errors.password}>
-                    <FormLabel>Password</FormLabel>
-                    <Input
-                      id="password"
-                      type="password"
-                      placeholder="password"
-                      {...register('password', {
-                        required: 'Password is required',
-                      })}
-                    />
-                    <FormErrorMessage>
-                      {errors.password && errors.password.message}
-                    </FormErrorMessage>
-                  </FormControl>
-                  <FormControl isInvalid={errors.confirmPassword}>
-                    <FormLabel>Confirm Password</FormLabel>
-                    <Input
-                      id="confirmPassword"
-                      type="password"
-                      placeholder="confirm password"
-                      {...register('confirmPassword', {
-                        required: 'Confirm Password is required',
-                      })}
-                    />
-                    <FormErrorMessage>
-                      {errors.confirmPassword && errors.confirmPassword.message}
-                    </FormErrorMessage>
-                  </FormControl>
-                  <Stack spacing={10}>
-                    <Button colorScheme="teal" type="submit">
-                      Register
-                    </Button>
-                  </Stack>
-                </Stack>
-              </Box>
-            </form>
+    <DefaultTemplate title="Register" description="this is meta description">
+      <Flex align={'center'} justify={'center'}>
+        <Stack w="100%" spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+          <Stack align={'center'}>
+            <Heading as="h3">Register</Heading>]
           </Stack>
-        </Flex>
-      </Box>
-    </>
+          <form onSubmit={handleSubmit(submitHandler)}>
+            <Box
+              rounded={'lg'}
+              bg={useColorModeValue('white', 'gray.700')}
+              boxShadow={'lg'}
+              p={8}
+            >
+              <Stack spacing={4}>
+                <FormControl isInvalid={errors.username}>
+                  <FormLabel>Username</FormLabel>
+                  <Input
+                    id="username"
+                    type="text"
+                    placeholder="username"
+                    {...register('username', {
+                      required: 'This is required',
+                    })}
+                  />
+                  <FormErrorMessage>
+                    {errors.username && errors.username.message}
+                  </FormErrorMessage>
+                </FormControl>
+                <FormControl isInvalid={errors.email}>
+                  <FormLabel>Email</FormLabel>
+                  <Input
+                    id="identifier"
+                    type="email"
+                    placeholder="email"
+                    {...register('email', {
+                      required: 'This is required',
+                    })}
+                  />
+                  <FormErrorMessage>
+                    {errors.email && errors.email.message}
+                  </FormErrorMessage>
+                </FormControl>
+                <FormControl isInvalid={errors.password}>
+                  <FormLabel>Password</FormLabel>
+                  <Input
+                    id="password"
+                    type="password"
+                    placeholder="password"
+                    {...register('password', {
+                      required: 'Password is required',
+                    })}
+                  />
+                  <FormErrorMessage>
+                    {errors.password && errors.password.message}
+                  </FormErrorMessage>
+                </FormControl>
+                <FormControl isInvalid={errors.confirmPassword}>
+                  <FormLabel>Confirm Password</FormLabel>
+                  <Input
+                    id="confirmPassword"
+                    type="password"
+                    placeholder="confirm password"
+                    {...register('confirmPassword', {
+                      required: 'Confirm Password is required',
+                    })}
+                  />
+                  <FormErrorMessage>
+                    {errors.confirmPassword && errors.confirmPassword.message}
+                  </FormErrorMessage>
+                </FormControl>
+                <Stack spacing={10}>
+                  <Button colorScheme="teal" type="submit">
+                    Register
+                  </Button>
+                </Stack>
+              </Stack>
+            </Box>
+          </form>
+        </Stack>
+      </Flex>
+    </DefaultTemplate>
   );
 }
 

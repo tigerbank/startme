@@ -7,6 +7,7 @@ import JobList from '@/components/Jobs/JobList';
 import Loading from '@/components/Common/Loading/Index';
 import { JobProps } from '@/interfaces/common';
 import { getGlobalData, getJobsData } from '@/util/api';
+import DefaultTemplate from '@/components/templates/DefaultTemplate';
 
 function Jobs() {
   const [loading, setLoading] = useState(false);
@@ -71,7 +72,7 @@ function Jobs() {
   };
 
   return (
-    <Box className="container">
+    <DefaultTemplate title="jobs" description="description">
       <Box d={{ base: 'none', md: 'block' }} mt="40px" mb="40px">
         <Image
           src="/images/jobs_main.png"
@@ -113,7 +114,7 @@ function Jobs() {
           )}
         </Box>
       </Box>
-    </Box>
+    </DefaultTemplate>
   );
 }
 

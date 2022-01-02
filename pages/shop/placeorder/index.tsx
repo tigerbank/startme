@@ -25,6 +25,7 @@ import BackToShop from '@/components/Shop/BackToShop';
 import { totalItemPrice } from '@/util/cart';
 import { Store } from '@/util/Store';
 import { getGlobalData } from '@/util/api';
+import DefaultTemplate from '@/components/templates/DefaultTemplate';
 
 function PlaceOrder() {
   const { state, dispatch } = useContext(Store);
@@ -128,111 +129,108 @@ function PlaceOrder() {
   };
 
   return (
-    <>
-      <NextSeo title="Register" description="A short description goes here." />
-      <Box className="container" pt="30px">
-        <CartSteps currentStep={3} />
-        <Heading as="h3">Place order</Heading>
-        <Flex flexDir={{ base: 'column', xl: 'row' }}>
-          <Box w={{ base: '100%', xl: '70%' }} mr="40px">
-            <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
-              <Heading mb="10px" as="h4" fontSize="18px">
-                Shipping Address
-              </Heading>
-              <Text>
-                {shippingAddress.address}, {shippingAddress.city},{' '}
-                {shippingAddress.postalCode} {shippingAddress.country}
-              </Text>
-            </Box>
+    <DefaultTemplate titile="Place order" description="description">
+      <CartSteps currentStep={3} />
+      <Heading as="h3">Place order</Heading>
+      <Flex flexDir={{ base: 'column', xl: 'row' }}>
+        <Box w={{ base: '100%', xl: '70%' }} mr="40px">
+          <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
+            <Heading mb="10px" as="h4" fontSize="18px">
+              Shipping Address
+            </Heading>
+            <Text>
+              {shippingAddress.address}, {shippingAddress.city},{' '}
+              {shippingAddress.postalCode} {shippingAddress.country}
+            </Text>
+          </Box>
 
-            <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
-              <Heading mb="10px" as="h4" fontSize="18px">
-                Payment Method
-              </Heading>
-              <Text>{paymentMethod}</Text>
-            </Box>
+          <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
+            <Heading mb="10px" as="h4" fontSize="18px">
+              Payment Method
+            </Heading>
+            <Text>{paymentMethod}</Text>
+          </Box>
 
-            <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
-              <Heading mb="10px" as="h4" fontSize="18px">
-                Order Items
-              </Heading>
-              <Table
-                variant="simple"
-                overflowX="scroll"
-                d={{ base: 'block', md: 'table' }}
-              >
-                <Thead>
-                  <Tr>
-                    <Th textAlign="center">Image</Th>
-                    <Th textAlign="center">Name</Th>
-                    <Th textAlign="center">Quantity</Th>
-                    <Th textAlign="center">Price</Th>
+          <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
+            <Heading mb="10px" as="h4" fontSize="18px">
+              Order Items
+            </Heading>
+            <Table
+              variant="simple"
+              overflowX="scroll"
+              d={{ base: 'block', md: 'table' }}
+            >
+              <Thead>
+                <Tr>
+                  <Th textAlign="center">Image</Th>
+                  <Th textAlign="center">Name</Th>
+                  <Th textAlign="center">Quantity</Th>
+                  <Th textAlign="center">Price</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                {cartItems.map((item: OrderItemProps) => (
+                  <Tr key={item.name}>
+                    <Td textAlign="center">
+                      <Image
+                        src={item.image}
+                        layout="fixed"
+                        width="100"
+                        height="100"
+                        alt=""
+                      />
+                    </Td>
+                    <Td textAlign="center">{item.name}</Td>
+                    <Td textAlign="center">{item.quantity}</Td>
+                    <Td textAlign="center">{item.price.toLocaleString()}</Td>
                   </Tr>
-                </Thead>
-                <Tbody>
-                  {cartItems.map((item: OrderItemProps) => (
-                    <Tr key={item.name}>
-                      <Td textAlign="center">
-                        <Image
-                          src={item.image}
-                          layout="fixed"
-                          width="100"
-                          height="100"
-                          alt=""
-                        />
-                      </Td>
-                      <Td textAlign="center">{item.name}</Td>
-                      <Td textAlign="center">{item.quantity}</Td>
-                      <Td textAlign="center">{item.price.toLocaleString()}</Td>
-                    </Tr>
-                  ))}
-                </Tbody>
-              </Table>
-            </Box>
+                ))}
+              </Tbody>
+            </Table>
           </Box>
-          <Box flex="1" w={{ base: '100%', xl: 'auto' }}>
-            <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
-              <Heading mb="10px" as="h4" fontSize="18px">
-                Order Summary
-              </Heading>
-              <Flex justifyContent="space-between">
-                <Text>Items:</Text>
-                <Text>
-                  {itemPrice.toLocaleString()}
-                  THB
-                </Text>
-              </Flex>
-              <Flex justifyContent="space-between">
-                <Text>Tax:</Text>
-                <Text>{taxPrice.toLocaleString()}</Text>
-              </Flex>
-              <Flex justifyContent="space-between">
-                <Text>Shipping:</Text>
-                <Text>{shippingPrice.toLocaleString()}</Text>
-              </Flex>
-              <Flex justifyContent="space-between">
-                <Text fontWeight="bold">Total:</Text>
-                <Text fontWeight="bold">{total.toLocaleString()}</Text>
-              </Flex>
-              <Button
-                colorScheme="teal"
-                mt="20px"
-                isFullWidth
-                onClick={handleSubmit}
-              >
-                Place order
-              </Button>
-              {loading && (
-                <Box textAlign="center" mt="20px">
-                  <Spinner />
-                </Box>
-              )}
-            </Box>
+        </Box>
+        <Box flex="1" w={{ base: '100%', xl: 'auto' }}>
+          <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
+            <Heading mb="10px" as="h4" fontSize="18px">
+              Order Summary
+            </Heading>
+            <Flex justifyContent="space-between">
+              <Text>Items:</Text>
+              <Text>
+                {itemPrice.toLocaleString()}
+                THB
+              </Text>
+            </Flex>
+            <Flex justifyContent="space-between">
+              <Text>Tax:</Text>
+              <Text>{taxPrice.toLocaleString()}</Text>
+            </Flex>
+            <Flex justifyContent="space-between">
+              <Text>Shipping:</Text>
+              <Text>{shippingPrice.toLocaleString()}</Text>
+            </Flex>
+            <Flex justifyContent="space-between">
+              <Text fontWeight="bold">Total:</Text>
+              <Text fontWeight="bold">{total.toLocaleString()}</Text>
+            </Flex>
+            <Button
+              colorScheme="teal"
+              mt="20px"
+              isFullWidth
+              onClick={handleSubmit}
+            >
+              Place order
+            </Button>
+            {loading && (
+              <Box textAlign="center" mt="20px">
+                <Spinner />
+              </Box>
+            )}
           </Box>
-        </Flex>
-        <BackToShop />
-      </Box>
-    </>
+        </Box>
+      </Flex>
+      <BackToShop />
+    </DefaultTemplate>
   );
 }
 

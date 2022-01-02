@@ -10,6 +10,7 @@ import { totalItemPrice } from '@/util/cart';
 import { CartItemProps } from '@/interfaces/common';
 import BackToShop from '@/components/Shop/BackToShop';
 import { getGlobalData } from '@/util/api';
+import DefaultTemplate from '@/components/templates/DefaultTemplate';
 
 function CartScreen() {
   const { state, dispatch } = useContext(Store);
@@ -41,7 +42,7 @@ function CartScreen() {
   };
 
   return (
-    <Box className="container" pt="30px">
+    <DefaultTemplate title="Cart" description="description">
       <Heading as="h3">Shopping Cart</Heading>
       {cartItems.length === 0 && <Box mt="20px">Cart is empty</Box>}
 
@@ -127,7 +128,7 @@ function CartScreen() {
       )}
 
       <BackToShop />
-    </Box>
+    </DefaultTemplate>
   );
 }
 

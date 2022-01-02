@@ -1,10 +1,11 @@
 import { Box } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { NextSeo } from 'next-seo';
-import { filterProperty } from '@/util/api';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { filterProperty, getGlobalData } from '@/util/api';
 import PropertyLists from '@/components/RealEstate/PropertyLists';
 import BackToRealEstate from '@/components/RealEstate/BackToRealEstate';
+import DefaultTemplate from '@/components/templates/DefaultTemplate';
 
 function PropertySearchResult() {
   const router = useRouter();
@@ -32,16 +33,27 @@ function PropertySearchResult() {
   }, [router]);
 
   return (
-    <>
-      <NextSeo title="Search" description="A short description goes here." />
-      <Box className="container" mt="50px">
-        Search Result: {searchString}
-        {isLoading && <div>Loading...</div>}
-        {properties && <PropertyLists properties={properties} />}
-        <BackToRealEstate />
-      </Box>
-    </>
+    <DefaultTemplate
+      title="Property Search"
+      description="Description goes here"
+    >
+      Search Result: {searchString}
+      {isLoading && <div>Loading...</div>}
+      {properties && <PropertyLists properties={properties} />}
+      <BackToRealEstate />
+    </DefaultTemplate>
   );
+}
+
+export async function getServerSideProps({ locale }: { locale: string }) {
+  const global = await getGlobalData(locale);
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+      global,
+    },
+  };
 }
 
 export default PropertySearchResult;
