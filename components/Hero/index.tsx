@@ -12,6 +12,8 @@ function Hero({ data }: { data: any }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
   };
   return (
     <Box maxW="1700px" ml="auto" mr="auto" mb="20px">
