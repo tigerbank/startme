@@ -4,6 +4,7 @@ import styles from './PropertyDetail.module.scss';
 import { PropertyProps } from '@/interfaces/common';
 import TruncateText from '@/components/Common/TruncateText';
 import PropertyGallery from '@/components/RealEstate/PropertyGallery';
+import Disclaimer from '@/components/Common/Disclaimer';
 
 function PropertyDetail({ property }: { property: PropertyProps }) {
   if (!property) {
@@ -65,7 +66,11 @@ function PropertyDetail({ property }: { property: PropertyProps }) {
             </ListItem>
           </UnorderedList>
 
-          <Box mt="50px">{property.fullDetail}</Box>
+          <Box mt="50px" mb="30px">
+            {property.fullDetail}
+          </Box>
+
+          <Disclaimer align="left" />
         </Box>
       </Box>
     </Box>

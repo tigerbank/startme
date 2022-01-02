@@ -64,10 +64,8 @@ function BackendJobs() {
         </Box>
 
         <Box w={{ base: '100%', md: '70%' }} mt={{ base: '20px', md: 0 }}>
-          {loading && <Loading />}
-
           <>
-            {!loading && <JobList jobs={jobs} />}
+            <JobList jobs={jobs} loading={loading} />
 
             {!loading && jobs.length !== 0 && !lastPage && (
               <Button
@@ -79,6 +77,7 @@ function BackendJobs() {
                 {loading ? 'Loading...' : 'Load More'}
               </Button>
             )}
+            {loading && <Loading />}
           </>
         </Box>
       </Box>

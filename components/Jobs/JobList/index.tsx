@@ -3,9 +3,10 @@ import { Box, Heading, Text, Badge } from '@chakra-ui/react';
 import Image from 'next/image';
 import moment from 'moment';
 import { JobProps } from '@/interfaces/common';
+import Disclaimer from '@/components/Common/Disclaimer';
 
-function JobList({ jobs }: any) {
-  if (jobs.length === 0) {
+function JobList({ jobs, loading }: any) {
+  if (jobs.length === 0 && loading) {
     return (
       <Box textAlign="center" mt="50px">
         <Text>No jobs found...</Text>
@@ -15,6 +16,7 @@ function JobList({ jobs }: any) {
 
   return (
     <>
+      <Disclaimer align="right" />
       {jobs.map((job: JobProps, index: number) => (
         <Box
           key={index}

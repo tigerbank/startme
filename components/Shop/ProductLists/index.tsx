@@ -5,6 +5,7 @@ import { Box, Text, Flex } from '@chakra-ui/react';
 import { ProductProps } from '@/interfaces/common';
 import AddToCart from '@/components/Shop/AddToCart';
 import Loading from '@/components/Common/Loading/Index';
+import Disclaimer from '@/components/Common/Disclaimer';
 
 function ProductLists({
   products,
@@ -27,6 +28,7 @@ function ProductLists({
 
   return (
     <>
+      <Disclaimer align="left" />
       {products.length > 0 ? (
         <Flex
           flexWrap="wrap"

@@ -3,6 +3,7 @@ import { ListItem, UnorderedList, Box } from '@chakra-ui/react';
 import { PropertyProps } from '@/interfaces/common';
 import Pagination from '@/components/Common/Pagination';
 import PropertyItem from '@/components/RealEstate/PropertyItem';
+import Disclaimer from '@/components/Common/Disclaimer';
 
 function PropertyLists({ properties }: { properties: PropertyProps[] }) {
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,6 +28,7 @@ function PropertyLists({ properties }: { properties: PropertyProps[] }) {
   return (
     <>
       <Box mb="20px">
+        <Disclaimer align="left" />
         <UnorderedList
           d="flex"
           flexDir={{ base: 'column', md: 'row' }}
