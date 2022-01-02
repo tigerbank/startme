@@ -16,7 +16,7 @@ import {
   AccordionPanel,
   Box,
 } from '@chakra-ui/react';
-import { HamburgerIcon } from '@chakra-ui/icons';
+import { HamburgerIcon, ExternalLinkIcon } from '@chakra-ui/icons';
 import styles from '@/components/Layout/Navigation/Mobile/Navigation.module.scss';
 import { NavProps } from '@/interfaces/common';
 import LanguageSwitcher from '@/components/Layout/Header/LanguageSwitcher';
@@ -56,7 +56,14 @@ function MobileNavigation({ nav }: { nav: NavProps[] }) {
                     key={subNavItem.id}
                     onClick={onClose}
                   >
-                    <Link href={subNavItem.url}>{subNavItem.text}</Link>
+                    <Link href={subNavItem.url}>
+                      <a target={subNavItem.newTab ? '_blank' : '_self'}>
+                        {subNavItem.text}
+                        {subNavItem.newTab && (
+                          <ExternalLinkIcon ml="5px" mt="-2px" color="grey" />
+                        )}
+                      </a>
+                    </Link>
                   </Box>
                 ))}
             </AccordionPanel>

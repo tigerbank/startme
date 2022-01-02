@@ -2,7 +2,7 @@ import { Box } from '@chakra-ui/layout';
 import React from 'react';
 import Link from 'next/link';
 import { Menu, MenuButton, MenuItem, MenuList, Text } from '@chakra-ui/react';
-import { ChevronDownIcon } from '@chakra-ui/icons';
+import { ChevronDownIcon, ExternalLinkIcon } from '@chakra-ui/icons';
 import styles from '@/components/Layout/Navigation/Desktop/Navigation.module.scss';
 import { NavProps } from '@/interfaces/common';
 
@@ -28,7 +28,14 @@ function DesktopNavigation({ nav }: { nav: NavProps[] }) {
               {navItem.subnav &&
                 navItem.subnav.map((subNavItem: any) => (
                   <Link passHref href={subNavItem.url} key={subNavItem.id}>
-                    <MenuItem color="black">{subNavItem.text}</MenuItem>
+                    <a target={subNavItem.newTab ? '_blank' : '_self'}>
+                      <MenuItem color="black" d="flex" alignItems="center">
+                        {subNavItem.text}
+                        {subNavItem.newTab && (
+                          <ExternalLinkIcon ml="5px" mt="-3px" color="grey" />
+                        )}
+                      </MenuItem>
+                    </a>
                   </Link>
                 ))}
             </MenuList>
