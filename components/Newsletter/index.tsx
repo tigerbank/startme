@@ -39,7 +39,7 @@ function Newsletter() {
             value={inputText}
           />
           <Button type="submit" ml="15px" w="100px" colorScheme="teal">
-            Submit
+            {t('submit')}
           </Button>
         </Box>
       </form>

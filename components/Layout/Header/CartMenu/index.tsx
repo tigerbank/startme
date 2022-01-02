@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 
 import Link from 'next/link';
 import { Text, Badge } from '@chakra-ui/react';
+import { useTranslation } from 'next-i18next';
 import { Store } from '@/util/Store';
 
 function CartMenu() {
   const { state } = useContext(Store);
   const { cart } = state;
+  const { t } = useTranslation('common');
   return (
     <Text
       mr="5px"
@@ -17,7 +19,7 @@ function CartMenu() {
     >
       <Link href="/shop/cart">
         <a>
-          Cart
+          {t('cart')}
           {cart.cartItems.length > 0 && (
             <Badge
               position="relative"

@@ -5,5 +5,10 @@
   "product_name": "Product Name",
   "brand": "Brand",
   "price": "Price",
-  "add_to_cart": "Add to Cart"
+  "add_to_cart": "Add to Cart",
+  "login": "Login",
+  "register": "Register",
+  "cart": "Cart",
+  "submit": "Submit",
+  "back_to_shop": "Back to shop"
 }

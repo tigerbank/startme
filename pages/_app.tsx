@@ -17,10 +17,11 @@ const breakpoints = createBreakpoints({
 });
 
 const theme = extendTheme({
-  // fonts: {
-  //   heading: 'Prompt',
-  //   body: 'Prompt',
-  // },
+  fonts: {
+    heading: 'IBM Plex Sans Thai, sans-serif',
+    body: 'IBM Plex Sans Thai, sans-serif',
+  },
+
   colors: {
     main: {
       gray: '#f1f1f1',

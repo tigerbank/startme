@@ -11,12 +11,14 @@ import Link from 'next/link';
 import Cookies from 'js-cookie';
 import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 import { Store } from '@/util/Store';
 
 function UserMenu({ onClose }: { onClose?: () => void }) {
   const { state, dispatch } = useContext(Store);
   const { user } = state;
   const router = useRouter();
+  const { t } = useTranslation('common');
 
   const logoutHandler = () => {
     dispatch({ type: 'LOGOUT' });
@@ -33,13 +35,13 @@ function UserMenu({ onClose }: { onClose?: () => void }) {
         <>
           <Text mr="10px">
             <Link href="/login">
-              <a onClick={onClose}>Login</a>
+              <a onClick={onClose}> {t('login')}</a>
             </Link>
           </Text>
 
           <Text mr="10px">
             <Link href="/register">
-              <a onClick={onClose}>Register</a>
+              <a onClick={onClose}> {t('register')}</a>
             </Link>
           </Text>
         </>
