@@ -28,16 +28,19 @@ function PropertyLists({ properties }: { properties: PropertyProps[] }) {
     <>
       <Box mb="20px">
         <UnorderedList
-          d={{ base: 'flex', md: 'flex' }}
+          d="flex"
           flexDir={{ base: 'column', md: 'row' }}
           aria-label="properties"
-          gap="40px"
           flexWrap="wrap"
           ml="0px"
         >
           {currentList &&
             currentList.map((property) => (
-              <ListItem listStyleType="none" key={property.name}>
+              <ListItem
+                w={{ base: '100%', md: '50%', lg: '33%' }}
+                listStyleType="none"
+                key={property.name}
+              >
                 <PropertyItem property={property} />
               </ListItem>
             ))}
