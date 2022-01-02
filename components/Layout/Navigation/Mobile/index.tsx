@@ -41,7 +41,7 @@ function MobileNavigation({ nav }: { nav: NavProps[] }) {
             borderTop="none"
             borderBottom="none"
           >
-            <AccordionButton py="15px">
+            <AccordionButton py="15px" borderBottom="solid 1px #e6e6e6">
               <Box flex="1" textAlign="left">
                 {navItem.text}
               </Box>
