@@ -6,7 +6,7 @@ import { JobProps } from '@/interfaces/common';
 import Disclaimer from '@/components/Common/Disclaimer';
 
 function JobList({ jobs, loading }: any) {
-  if (jobs.length === 0 && loading) {
+  if (jobs.length === 0 && !loading) {
     return (
       <Box textAlign="center" mt="50px">
         <Text>No jobs found...</Text>
@@ -16,7 +16,7 @@ function JobList({ jobs, loading }: any) {
 
   return (
     <>
-      <Disclaimer align="right" />
+      {!loading && <Disclaimer align="right" />}
       {jobs.map((job: JobProps, index: number) => (
         <Box
           key={index}

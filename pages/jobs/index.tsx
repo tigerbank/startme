@@ -105,7 +105,7 @@ function Jobs() {
         </Box>
         <Box w={{ base: '100%', md: '70%' }} mt={{ base: '20px', md: 0 }}>
           {loading && <Loading />}
-          <JobList jobs={filteredJobs} filters={filters} />
+          <JobList jobs={filteredJobs} filters={filters} loading={loading} />
 
           {filters.page !== lastPage && !loading && (
             <Button colorScheme="teal" onClick={loadMore} isFullWidth>
