@@ -129,7 +129,7 @@ function PlaceOrder() {
   };
 
   return (
-    <DefaultTemplate titile="Place order" description="description">
+    <DefaultTemplate title="Place order" description="description">
       <CartSteps currentStep={3} />
       <Heading as="h3">Place order</Heading>
       <Flex flexDir={{ base: 'column', xl: 'row' }}>
