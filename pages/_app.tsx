@@ -6,6 +6,7 @@ import { Box } from '@chakra-ui/layout';
 import { createBreakpoints } from '@chakra-ui/theme-tools';
 import { appWithTranslation } from 'next-i18next';
 import Script from 'next/script';
+import { DefaultSeo } from 'next-seo';
 import { StoreProvider } from '@/util/Store';
 import Layout from '@/components/Layout';
 
@@ -52,6 +53,22 @@ function MyApp({ Component, pageProps }: AppProps) {
       )}
 
       <NextNprogress options={{ showSpinner: false }} />
+      <DefaultSeo
+        openGraph={{
+          type: 'website',
+          url: 'https://teerasakyukan.com',
+          site_name: 'Teerasakyukan Portfolio',
+          images: [
+            {
+              url: 'https://teerasakuyukan.com/og-image.jpg',
+              width: 800,
+              height: 600,
+              alt: 'Og Image Alt',
+              type: 'image/jpeg',
+            },
+          ],
+        }}
+      />
       <StoreProvider>
         <ChakraProvider theme={theme}>
           <Box bg="main.gray">
