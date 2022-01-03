@@ -5,6 +5,7 @@ import NextNprogress from 'nextjs-progressbar';
 import { Box } from '@chakra-ui/layout';
 import { createBreakpoints } from '@chakra-ui/theme-tools';
 import { appWithTranslation } from 'next-i18next';
+import Script from 'next/script';
 import { StoreProvider } from '@/util/Store';
 import Layout from '@/components/Layout';
 
@@ -31,8 +32,25 @@ const theme = extendTheme({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const env = process.env.NODE_ENV;
   return (
     <>
+      {env === 'production' && (
+        <>
+          <Script
+            strategy="lazyOnload"
+            src={`https://www.googletagmanager.com/gtag/js?id=G-${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
+          />
+          <Script id="analytics" strategy="lazyOnload">
+            {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}')`}
+          </Script>
+        </>
+      )}
+
       <NextNprogress options={{ showSpinner: false }} />
       <StoreProvider>
         <ChakraProvider theme={theme}>
