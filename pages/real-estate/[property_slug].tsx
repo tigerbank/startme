@@ -23,7 +23,7 @@ function Property({ property }: { property: PropertyProps }) {
                 link: '/real-estate',
               },
               {
-                name: property.name,
+                name: property && property.name,
                 link: '#',
               },
             ]}
@@ -31,6 +31,7 @@ function Property({ property }: { property: PropertyProps }) {
         </Box>
 
         <PropertyDetail property={property} />
+
         <Box className="container">
           <BackToRealEstate />
         </Box>
