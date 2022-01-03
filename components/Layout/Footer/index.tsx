@@ -4,7 +4,7 @@ import React from 'react';
 function Footer() {
   return (
     <Box mt="auto" bg="#ddd" py="20px" as="footer" width="100%">
-      <Box className="container">© 2021 Teerasakyukan.com</Box>
+      <Box className="container">© 2022 Teerasakyukan.com</Box>
     </Box>
   );
 }

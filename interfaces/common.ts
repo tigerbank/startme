@@ -23,10 +23,16 @@ export type NavProps = {
   subnav: any;
 };
 
+export type MetaProps = {
+  metaTitle?: string;
+  metaDescription?: string;
+};
+
 export type PageProps = {
   title: string;
   body: string;
   contentSections: any;
+  meta: MetaProps;
 };
 
 export type RestaurantProps = {

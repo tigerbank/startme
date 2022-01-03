@@ -12,8 +12,8 @@ function Page({ page }: { page: PageProps }) {
   return (
     <>
       <NextSeo
-        title={page.title}
-        description="A short description goes here."
+        title={page.meta.metaTitle ? page.meta.metaTitle : ''}
+        description={page.meta.metaTitle ? page.meta.metaDescription : ''}
       />
       <Sections sections={sections} />
       <ParagraphContent />
