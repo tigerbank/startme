@@ -90,6 +90,4 @@ describe('Shipping', () => {
     expect(country).toHaveValue('');
     expect(await screen.findByText('Country is required')).toBeInTheDocument();
   });
-
-  it('should redirect to login page if no user login', () => {});
 });

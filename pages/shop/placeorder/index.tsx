@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Cookies from 'js-cookie';
-import { NextSeo } from 'next-seo';
 import {
   useToast,
   Spinner,

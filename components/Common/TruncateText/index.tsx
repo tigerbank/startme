@@ -1,5 +1,5 @@
 import { Box, Text } from '@chakra-ui/react';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function TruncateText({ text, width }: { text: string; width: string }) {
   const [readMore, setReadMore] = useState(false);

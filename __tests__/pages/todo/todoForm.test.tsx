@@ -10,7 +10,12 @@ const mockedHandleSubmit = jest
 describe('ToDoForm', () => {
   beforeEach(() => {
     render(
-      <ToDoForm handleChange={() => {}} handleSubmit={mockedHandleSubmit} />,
+      <ToDoForm
+        handleChange={() => {
+          // do nothing
+        }}
+        handleSubmit={mockedHandleSubmit}
+      />,
     );
   });
 
@@ -28,6 +33,4 @@ describe('ToDoForm', () => {
     userEvent.type(inputElement, 'good');
     expect(inputElement).toHaveValue('good');
   });
-
- 
 });

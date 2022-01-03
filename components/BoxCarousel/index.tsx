@@ -3,7 +3,6 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Slider from 'react-slick';
-import Loading from '../Common/Loading/Index';
 import TruncateText from '@/components/Common/TruncateText';
 import { BoxCarouselDetailProps, BoxCarouselProps } from '@/interfaces/common';
 
@@ -31,7 +30,7 @@ function BoxCarousel({ data }: { data: BoxCarouselProps }) {
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 767,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
