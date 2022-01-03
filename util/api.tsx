@@ -227,3 +227,14 @@ export async function getTestProperties() {
   );
   return response.data;
 }
+
+export async function postPropertyInquiry(data: any) {
+  return fetch(`${process.env.NEXT_PUBLIC_STRAPI_API_URL}/property-inquiries`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+}

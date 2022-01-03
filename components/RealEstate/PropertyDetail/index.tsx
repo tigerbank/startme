@@ -77,7 +77,7 @@ function PropertyDetail({ property }: { property: PropertyProps }) {
               <Disclaimer align="left" />
             </Box>
           </Box>
-          <ContactAgent />
+          <ContactAgent listId={property.id} />
         </ContentWithSidebar>
       </Box>
     </Box>

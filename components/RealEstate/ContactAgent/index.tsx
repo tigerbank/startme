@@ -6,28 +6,56 @@ import {
   Heading,
   Input,
   Text,
+  useToast,
 } from '@chakra-ui/react';
+
 import React from 'react';
 
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { postPropertyInquiry } from '@/util/api';
 
 type Inputs = {
   name: string;
   phone: number;
   email: string;
+  propertyId: number;
 };
 
-function ContactAgent() {
+function ContactAgent({ listId }: { listId: number }) {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<Inputs>();
+  const toast = useToast();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
-    reset();
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    //hidden field return string so need to convert here
+    const transformData = {
+      ...data,
+      propertyId: Number(data.propertyId),
+    };
+
+    try {
+      await postPropertyInquiry(transformData);
+      toast({
+        title: 'Success',
+        description: 'successfully Sent',
+        status: 'success',
+        duration: 5000,
+        isClosable: true,
+      });
+      reset();
+    } catch (error: any) {
+      toast({
+        title: 'Error',
+        description: 'Something went wrong',
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+      });
+    }
   };
 
   return (
@@ -72,6 +100,14 @@ function ContactAgent() {
             {...register('email', { required: true })}
           />
           {errors.email && <Text color="red">This field is required</Text>}
+        </FormControl>
+        <FormControl isRequired>
+          <Input
+            id="propertyId"
+            type="hidden"
+            value={listId}
+            {...register('propertyId', { required: true })}
+          />
         </FormControl>
 
         <Button mt="20px" isFullWidth colorScheme="red" type="submit">
