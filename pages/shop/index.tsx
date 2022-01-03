@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NextSeo } from 'next-seo';
-import {
-  Box,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  Flex,
-  Select,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Flex, Select, Text } from '@chakra-ui/react';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { filterProducts, getGlobalData, getProducts } from '@/util/api';
@@ -17,6 +8,7 @@ import FilterProduct from '@/components/Shop/FilterProduct';
 import ProductLists from '@/components/Shop/ProductLists';
 import Pagination from '@/components/Common/Pagination';
 import DefaultTemplate from '@/components/templates/DefaultTemplate';
+import Breadcrumbs from '@/components/Common/Breadcrumb';
 
 function Shop({ data }: { data: ProductProps[] }) {
   const { t } = useTranslation('common');
@@ -60,19 +52,15 @@ function Shop({ data }: { data: ProductProps[] }) {
         title="Shop"
         description="A short description goes here."
       >
-        <Box mb="10px" className="container">
-          <Breadcrumb fontWeight="medium" fontSize="sm">
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
+        <Breadcrumbs
+          lists={[
+            {
+              name: 'Shop',
+              link: '/shop',
+            },
+          ]}
+        />
 
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/shop" isCurrentPage>
-                Shop
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
-        </Box>
         <Flex flexDir={{ base: 'column', xl: 'row' }}>
           <Box w={{ base: '100%', xl: '20%' }} mb="50px">
             <Box px={{ base: '30px', xl: '0px' }}>

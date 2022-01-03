@@ -5,7 +5,9 @@ import AddPropertyScreen from '@/pages/real-estate/add-property';
 describe('Real Estate Add property', () => {
   it('should render Add preperty page', () => {
     render(<AddPropertyScreen />);
-    expect(screen.getByText(/Add property/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: 'Add Property' }),
+    ).toBeInTheDocument();
   });
 
   it('should show login message for non-login user', () => {

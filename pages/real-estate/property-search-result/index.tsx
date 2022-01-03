@@ -6,6 +6,7 @@ import { filterProperty, getGlobalData } from '@/util/api';
 import PropertyLists from '@/components/RealEstate/PropertyLists';
 import BackToRealEstate from '@/components/RealEstate/BackToRealEstate';
 import DefaultTemplate from '@/components/templates/DefaultTemplate';
+import Breadcrumbs from '@/components/Common/Breadcrumb';
 
 function PropertySearchResult() {
   const router = useRouter();
@@ -37,7 +38,13 @@ function PropertySearchResult() {
       title="Property Search"
       description="Description goes here"
     >
-      Search Result: {searchString}
+      <Breadcrumbs
+        lists={[
+          { name: 'Real Estate', link: '/real-estate' },
+          { name: 'Search', link: '/real-estate/property-search-result#' },
+        ]}
+      />
+      <Box mt="20px">Search Result: {searchString}</Box>
       {isLoading && <div>Loading...</div>}
       {properties && <PropertyLists properties={properties} />}
       <BackToRealEstate />

@@ -1,15 +1,11 @@
-import {
-  Box,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-} from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import React from 'react';
 import { NextSeo } from 'next-seo';
 import BackToRealEstate from '@/components/RealEstate/BackToRealEstate';
 import PropertyDetail from '@/components/RealEstate/PropertyDetail';
 import { PropertyProps } from '@/interfaces/common';
 import { getAllProperties, getGlobalData, getPropertyBySlug } from '@/util/api';
+import Breadcrumbs from '@/components/Common/Breadcrumb';
 
 function Property({ property }: { property: PropertyProps }) {
   return (
@@ -20,21 +16,18 @@ function Property({ property }: { property: PropertyProps }) {
       />
       <Box mt="30px">
         <Box mb="10px" className="container">
-          <Breadcrumb fontWeight="medium" fontSize="sm">
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
-
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/real-estate">Real Estate</BreadcrumbLink>
-            </BreadcrumbItem>
-
-            <BreadcrumbItem isCurrentPage>
-              <BreadcrumbLink href="#">
-                {property && property.name}
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-          </Breadcrumb>
+          <Breadcrumbs
+            lists={[
+              {
+                name: 'Real Estate',
+                link: '/real-estate',
+              },
+              {
+                name: property.name,
+                link: '#',
+              },
+            ]}
+          />
         </Box>
 
         <PropertyDetail property={property} />

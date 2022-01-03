@@ -1,7 +1,6 @@
 import { Box } from '@chakra-ui/layout';
 import React from 'react';
 import Slider from 'react-slick';
-// @ts-ignore
 import Image from 'next/image';
 
 function Hero({ data }: { data: any }) {

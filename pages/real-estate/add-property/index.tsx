@@ -6,6 +6,7 @@ import { Store } from '@/util/Store';
 import BackToRealEstate from '@/components/RealEstate/BackToRealEstate';
 import DefaultTemplate from '@/components/templates/DefaultTemplate';
 import { getGlobalData } from '@/util/api';
+import Breadcrumbs from '@/components/Common/Breadcrumb';
 
 function AddPropertyScreen() {
   const { state } = useContext(Store);
@@ -13,6 +14,12 @@ function AddPropertyScreen() {
 
   return (
     <DefaultTemplate title="Add Property" description="description">
+      <Breadcrumbs
+        lists={[
+          { name: 'Real Estate', link: '/real-estate' },
+          { name: 'Add Property', link: '/real-estate/add-property' },
+        ]}
+      />
       <Heading as="h3">Add Property</Heading>
       {user ? <AddForm /> : 'You are not logged in'}
       <BackToRealEstate />

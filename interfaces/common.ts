@@ -206,3 +206,8 @@ export interface PaginationProps {
   currentPage: number;
   noOfAllPosts: number;
 }
+
+export interface BreadcrumbsProps {
+  name: string;
+  link: string;
+}

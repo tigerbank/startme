@@ -1,13 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import {
-  Box,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  Heading,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { ProductProps } from '@/interfaces/common';
@@ -15,6 +8,7 @@ import AddToCart from '@/components/Shop/AddToCart';
 import BackToShop from '@/components/Shop/BackToShop';
 import { getGlobalData, getProducts, getProductsBySlug } from '@/util/api';
 import DefaultTemplate from '@/components/templates/DefaultTemplate';
+import Breadcrumbs from '@/components/Common/Breadcrumb';
 
 function ProductScreen({ product }: { product: ProductProps }) {
   if (!product) {
@@ -26,22 +20,19 @@ function ProductScreen({ product }: { product: ProductProps }) {
       title={product.name}
       description="A short description goes here."
     >
-      <Box mb="20px">
-        <Breadcrumb fontWeight="medium" fontSize="sm">
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
-          </BreadcrumbItem>
+      <Breadcrumbs
+        lists={[
+          {
+            name: 'Shop',
+            link: '/shop',
+          },
+          {
+            name: product.name,
+            link: '#',
+          },
+        ]}
+      />
 
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/shop">Shop</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="#" isCurrentPage>
-              {product.name}
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-        </Breadcrumb>
-      </Box>
       <Box d={{ base: 'block', md: 'flex' }}>
         <Box w={{ base: '100%', md: '50%' }}>
           <Image
