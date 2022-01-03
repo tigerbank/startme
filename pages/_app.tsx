@@ -60,10 +60,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           site_name: 'Teerasakyukan Portfolio',
           images: [
             {
-              url: 'https://teerasakuyukan.com/og-image.jpg',
+              url: 'https://teerasakuyukan.com/images/og-image.jpg',
               width: 800,
               height: 600,
-              alt: 'Og Image Alt',
+              alt: 'Teerasakyukan Portfolio',
               type: 'image/jpeg',
             },
           ],
