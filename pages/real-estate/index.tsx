@@ -1,4 +1,4 @@
-import { Box, Button } from '@chakra-ui/react';
+import { Box, Button, Heading } from '@chakra-ui/react';
 import React from 'react';
 import Link from 'next/link';
 import { NextSeo } from 'next-seo';
@@ -15,7 +15,7 @@ function RealEstateMain({ properties }: { properties: PropertyProps[] }) {
         title="Real Estate"
         description="A short description goes here."
       />
-      <Box h="300px" w="100%" className="realEstate__main">
+      <Box bg="#e03d31" h="150px" w="100%">
         <Box className="container">
           <SearchProperty />
         </Box>

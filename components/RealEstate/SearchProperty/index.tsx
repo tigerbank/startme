@@ -29,10 +29,10 @@ function SearchProperty() {
       ml="auto"
       mr="auto"
       w={{ base: '100%', md: '700px' }}
-      bg="teal"
+      bg="#e03d31"
       p="40px 30px"
       mb="30px"
-      top="200px"
+      top="30px"
       position="relative"
       color="white"
       boxShadow="lg"

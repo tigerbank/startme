@@ -29,7 +29,7 @@ function PropertyItem({ property }: { property: PropertyProps }) {
 
         <Box p="6">
           <Box display="flex" alignItems="baseline">
-            <Badge borderRadius="full" px="2" colorScheme="teal">
+            <Badge borderRadius="full" px="2" colorScheme="red">
               New
             </Badge>
             <Box

@@ -74,7 +74,7 @@ function ContactAgent() {
           {errors.email && <Text color="red">This field is required</Text>}
         </FormControl>
 
-        <Button mt="20px" isFullWidth colorScheme="teal" type="submit">
+        <Button mt="20px" isFullWidth colorScheme="red" type="submit">
           Submit
         </Button>
       </form>
