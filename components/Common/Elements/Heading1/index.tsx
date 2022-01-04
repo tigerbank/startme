@@ -17,6 +17,7 @@ function index({
   as = 'h2',
   textAlign = 'left',
   letterSpacing = '0px',
+  fontWeight = '800',
   children,
 }: HeadlineProps) {
   return (
@@ -26,6 +27,7 @@ function index({
       as={as}
       textAlign={textAlign}
       letterSpacing={letterSpacing}
+      fontWeight={fontWeight}
     >
       {children}
     </Heading>
