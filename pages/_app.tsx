@@ -19,10 +19,10 @@ const breakpoints = createBreakpoints({
 });
 
 const theme = extendTheme({
-  fonts: {
-    heading: 'IBM Plex Sans Thai, sans-serif',
-    body: 'IBM Plex Sans Thai, sans-serif',
-  },
+  // fonts: {
+  //   heading: 'IBM Plex Sans Thai', 'sans-serif',
+  //   body: 'IBM Plex Sans Thai', 'sans-serif',
+  // },
 
   colors: {
     main: {
