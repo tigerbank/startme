@@ -1,14 +1,14 @@
 import React from 'react';
-import { Heading, Input, Stack, Select } from '@chakra-ui/react';
+import { Heading, Input, Stack, Select, Text } from '@chakra-ui/react';
+import Heading1 from '@/components/Common/Elements/Heading1';
 
 function JobFilter({ setFilters, filters }: { setFilters: any; filters: {} }) {
   return (
     <>
-      <Heading mb="10px" as="h4" fontSize="16px">
-        Search
-      </Heading>
+      <Heading1>Job search </Heading1>
+      <Text>Fetch data from frontend code</Text>
 
-      <Stack spacing={3}>
+      <Stack spacing={3} mt="20px">
         <Input
           w="100%"
           bg="white"

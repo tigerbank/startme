@@ -7,6 +7,7 @@ import TruncateText from '@/components/Common/TruncateText';
 import PropertyGallery from '@/components/RealEstate/PropertyGallery';
 import Disclaimer from '@/components/Common/Disclaimer';
 import ContentWithSidebar from '@/components/templates/ContentWithSiderbar';
+import Heading1 from '@/components/Common/Elements/Heading1';
 
 function PropertyDetail({ property }: { property: PropertyProps }) {
   if (!property) {
@@ -15,10 +16,8 @@ function PropertyDetail({ property }: { property: PropertyProps }) {
 
   return (
     <Box className={styles.propertyDetail}>
-      <Box className="container">
-        <Heading as="h2" mb="15px">
-          {property.name}
-        </Heading>
+      <Box className="container" mb="10px">
+        <Heading1 color="red.600">{property.name}</Heading1>
       </Box>
       <PropertyGallery images={property.images} />
       <Box className="container">
@@ -27,7 +26,9 @@ function PropertyDetail({ property }: { property: PropertyProps }) {
             <TruncateText text={property.shortDetail} width="100%" />
 
             <Box mt="20px">
-              <Heading as="h3">Details</Heading>
+              <Heading as="h3" fontSize="20px" ml="10px">
+                Details
+              </Heading>
 
               <UnorderedList
                 className={styles.propertyDetail__info}

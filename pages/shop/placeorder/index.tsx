@@ -25,6 +25,7 @@ import { totalItemPrice } from '@/util/cart';
 import { Store } from '@/util/Store';
 import { getGlobalData } from '@/util/api';
 import DefaultTemplate from '@/components/templates/DefaultTemplate';
+import Heading1 from '@/components/Common/Elements/Heading1';
 
 function PlaceOrder() {
   const { state, dispatch } = useContext(Store);
@@ -130,7 +131,7 @@ function PlaceOrder() {
   return (
     <DefaultTemplate title="Place order" description="description">
       <CartSteps currentStep={3} />
-      <Heading as="h3">Place order</Heading>
+      <Heading1>Place order</Heading1>
       <Flex flexDir={{ base: 'column', xl: 'row' }}>
         <Box w={{ base: '100%', xl: '70%' }} mr="40px">
           <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">

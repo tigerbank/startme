@@ -11,6 +11,7 @@ import {
 import { getCompanies, getLocations } from '@/util/api';
 import CompanyList from '@/components/Jobs/CompanyList';
 import LocationList from '@/components/Jobs/LocationList';
+import Heading1 from '@/components/Common/Elements/Heading1';
 
 function JobFilterBackend({ filterJobs, setJobs, setFilterJobs }: any) {
   const [companies, setCompanies] = useState([]);
@@ -52,7 +53,7 @@ function JobFilterBackend({ filterJobs, setJobs, setFilterJobs }: any) {
   return (
     <>
       <Stack>
-        <Heading>Job search </Heading>
+        <Heading1>Job search </Heading1>
         <Text>Fetch data from backend anytime filter change</Text>
         <FormControl id="city">
           <FormLabel fontWeight="bold">Search by position</FormLabel>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 import { Input, Box, Heading, Button, useToast } from '@chakra-ui/react';
 import { subscribeMail } from '@/util/api';
+import Heading1 from '@/components/Common/Elements/Heading1';
 
 function Newsletter() {
   const { t } = useTranslation('common');
@@ -26,9 +27,9 @@ function Newsletter() {
 
   return (
     <Box py="50px">
-      <Heading as="h4" textAlign="center">
+      <Heading1 textAlign="center" fontSize="35px">
         {t('newsletter_title')}
-      </Heading>
+      </Heading1>
       <form onSubmit={submitFormHandler}>
         <Box w="320px" ml="auto" mr="auto" mt="20px" d="flex">
           <Input

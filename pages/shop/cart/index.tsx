@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from '@chakra-ui/layout';
+import { Box, Text, Heading } from '@chakra-ui/layout';
 import { Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/table';
 import React, { useContext } from 'react';
 import Image from 'next/image';
@@ -11,6 +11,7 @@ import { CartItemProps } from '@/interfaces/common';
 import BackToShop from '@/components/Shop/BackToShop';
 import { getGlobalData } from '@/util/api';
 import DefaultTemplate from '@/components/templates/DefaultTemplate';
+import Heading1 from '@/components/Common/Elements/Heading1';
 
 function CartScreen() {
   const { state, dispatch } = useContext(Store);
@@ -43,7 +44,8 @@ function CartScreen() {
 
   return (
     <DefaultTemplate title="Cart" description="description">
-      <Heading as="h3">Shopping Cart</Heading>
+      <Heading1>Shopping Cart</Heading1>
+
       {cartItems.length === 0 && <Box mt="20px">Cart is empty</Box>}
 
       {cartItems.length !== 0 && (

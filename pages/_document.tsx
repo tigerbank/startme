@@ -9,7 +9,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@500;600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@500;800&display=swap"
             rel="stylesheet"
           />
 

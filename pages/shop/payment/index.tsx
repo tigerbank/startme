@@ -15,6 +15,7 @@ import CartSteps from '@/components/Shop/CartSteps';
 import BackToShop from '@/components/Shop/BackToShop';
 import DefaultTemplate from '@/components/templates/DefaultTemplate';
 import { getGlobalData } from '@/util/api';
+import Heading1 from '@/components/Common/Elements/Heading1';
 
 function Payment() {
   const router = useRouter();
@@ -48,7 +49,7 @@ function Payment() {
   return (
     <DefaultTemplate title="Payment" description="description">
       <CartSteps currentStep={2} />
-      <Heading as="h3">Payment</Heading>
+      <Heading1>Payment</Heading1>
       <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
         <Heading mb="10px" as="h4" fontSize="18px">
           Select Payment Method

@@ -9,7 +9,6 @@ import {
   Button,
   Input,
   Box,
-  Heading,
   Stack,
 } from '@chakra-ui/react';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
@@ -18,6 +17,7 @@ import BackToShop from '@/components/Shop/BackToShop';
 import { Store } from '@/util/Store';
 import { getGlobalData } from '@/util/api';
 import DefaultTemplate from '@/components/templates/DefaultTemplate';
+import Heading1 from '@/components/Common/Elements/Heading1';
 
 function Shipping() {
   const router = useRouter();
@@ -83,7 +83,7 @@ function Shipping() {
   return (
     <DefaultTemplate title="Shipping" description="description">
       <CartSteps currentStep={1} />
-      <Heading as="h3">Shipping</Heading>
+      <Heading1>Shipping</Heading1>
       <form onSubmit={handleSubmit(submitHandler)}>
         <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
           <Stack spacing={4}>

@@ -23,6 +23,7 @@ import { OrderProps } from '@/interfaces/common';
 import { Store } from '@/util/Store';
 import BackToShop from '@/components/Shop/BackToShop';
 import { getGlobalData, getOrder, updateOrderStatus } from '@/util/api';
+import Heading1 from '@/components/Common/Elements/Heading1';
 
 function Order({ orderId }: { orderId: number }) {
   const router = useRouter();
@@ -56,7 +57,7 @@ function Order({ orderId }: { orderId: number }) {
   } else {
     return (
       <DefaultTemplate title="Order detail" description="description">
-        <Heading as="h3">Order Summary</Heading>
+        <Heading1>Order Summary</Heading1>
         <Flex flexDir={{ base: 'column', lg: 'row' }}>
           <Box w={{ base: '100%', lg: '70%' }} mr="40px">
             <Box bg="white" borderRadius="md" boxShadow="md" p="30px" mt="20px">
