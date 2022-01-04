@@ -18,7 +18,7 @@ function Layout({
     <>
       <Box h="100vh" d="flex" flexDir="column" justifyContent="space-between">
         <Header nav={nav} />
-        {!isMobile && nav && <DesktopNavigation nav={nav} />}
+        {/* {!isMobile && nav && <DesktopNavigation nav={nav} />} */}
         <Box mb="40px" mt={{ base: '45px', md: '0' }}>
           {children}
         </Box>
