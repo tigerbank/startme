@@ -7,6 +7,7 @@ type HeadlineProps = {
   fontSize?: string;
   as?: any;
   fontWeight?: string;
+  letterSpacing?: string;
   textAlign?: 'left' | 'center' | 'right';
 };
 
@@ -15,10 +16,17 @@ function index({
   fontSize = '32px',
   as = 'h2',
   textAlign = 'left',
+  letterSpacing = '0px',
   children,
 }: HeadlineProps) {
   return (
-    <Heading color={color} fontSize={fontSize} as={as} textAlign={textAlign}>
+    <Heading
+      color={color}
+      fontSize={fontSize}
+      as={as}
+      textAlign={textAlign}
+      letterSpacing={letterSpacing}
+    >
       {children}
     </Heading>
   );
