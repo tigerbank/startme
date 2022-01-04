@@ -21,8 +21,8 @@ const breakpoints = createBreakpoints({
 
 const theme = extendTheme({
   fonts: {
-    heading: 'IBM Plex Sans Thai',
-    body: 'IBM Plex Sans Thai',
+    heading: 'IBM Plex Sans Thai, sans-serif',
+    body: 'IBM Plex Sans Thai, sans-serif',
   },
 
   colors: {
