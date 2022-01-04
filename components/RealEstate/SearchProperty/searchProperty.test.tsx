@@ -16,6 +16,4 @@ describe('Search property', () => {
       screen.getByPlaceholderText('property name, location'),
     ).toBeInTheDocument();
   });
-
-  it('should go to search result page after click search button', () => {});
 });

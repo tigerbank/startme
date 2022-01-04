@@ -21,4 +21,11 @@ describe('PropertyLists', () => {
     userEvent.click(page2);
     expect(screen.getAllByRole('listitem')).toHaveLength(1);
   });
+
+  it('should show price from high to low when click sort by price high to low', () => {
+    render(<PropertyLists properties={MockProperties} />);
+    userEvent.click(screen.getByRole('option', { name: 'Price (high-low)' }));
+    const firstItem = screen.getAllByRole('listitem');
+    expect(firstItem[0]).toHaveTextContent(/THB 1,200,000/i);
+  });
 });
