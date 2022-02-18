@@ -17,7 +17,7 @@ function Page({ page }: { page: PageProps }) {
       />
       <Sections sections={sections} />
       <ParagraphContent />
-      <Newsletter />
+      {/* <Newsletter /> */}
     </>
   );
 }
