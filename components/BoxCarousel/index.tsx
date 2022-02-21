@@ -45,7 +45,7 @@ function BoxCarousel({ data }: { data: BoxCarouselProps }) {
         {data &&
           data.BoxCarouselDetail.map((item: BoxCarouselDetailProps) => (
             <Box key={item.id} p="10px">
-              <Box bg="white" h="100%" p="20px">
+              <Box bg="white" h="100%" p="20px" borderRadius="lg">
                 <Box w="100%" h="100%">
                   <Link href={item.url ? item.url : '#'}>
                     <a target="_blank">

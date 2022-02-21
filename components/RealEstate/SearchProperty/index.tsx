@@ -25,17 +25,15 @@ function SearchProperty() {
 
   return (
     <Box
-      borderRadius="xl"
       ml="auto"
       mr="auto"
-      w={{ base: '100%', md: '700px' }}
-      bg="#e03d31"
-      p="40px 30px"
-      mb="30px"
+      w={{ base: '100%', md: '100%' }}
       top="30px"
       position="relative"
-      color="white"
-      boxShadow="lg"
+      color="gray.700"
+      borderBottom="solid 2px"
+      pb="30px"
+      borderColor="gray.200"
     >
       <Box
         d={{ base: 'block', md: 'flex' }}
@@ -43,10 +41,14 @@ function SearchProperty() {
         mb="5px"
       >
         <Heading as="h2" fontSize="22px" mb="10px">
-          Search properties
+          Search Properties
         </Heading>
         <HStack>
-          <RadioGroup onChange={(e) => setListType(e)} value={listType}>
+          <RadioGroup
+            colorScheme="red"
+            onChange={(e) => setListType(e)}
+            value={listType}
+          >
             <Stack direction="row" mb="10px">
               <Radio bg="white" value="buy">
                 <Text fontSize="18px" fontWeight="bold">
@@ -77,7 +79,7 @@ function SearchProperty() {
           value={input}
           color="black"
         />
-        <Button colorScheme="orange" onClick={handleClick}>
+        <Button colorScheme="red" onClick={handleClick}>
           Search
         </Button>
       </HStack>

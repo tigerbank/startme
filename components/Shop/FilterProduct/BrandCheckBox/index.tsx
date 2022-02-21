@@ -48,12 +48,13 @@ function BrandCheckBox({ checkedBrand, setCheckedBrand }: any) {
   }
   return (
     <Box>
-      <Heading my="15px" as="h4" fontSize="16px">
+      <Heading as="h4" fontSize="16px" mb="10px">
         {t('brand')}
       </Heading>
       <Stack>
         {brands.map((brand: BrandProps) => (
           <Checkbox
+            colorScheme="red"
             onChange={() => handleToggle(brand.id)}
             key={brand.id}
             value={brand.id}

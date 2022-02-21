@@ -3,8 +3,8 @@ import React from 'react';
 
 function ParagraphContent() {
   return (
-    <Box py="70px" bg="teal" mt="30px">
-      <Box className="container" color="white">
+    <Box mt="30px">
+      <Box className="container" color="gray.700">
         <Heading as="h3" fontSize="30px" textAlign="center">
           About This Website
         </Heading>

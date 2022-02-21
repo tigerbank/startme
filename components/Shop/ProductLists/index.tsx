@@ -28,7 +28,10 @@ function ProductLists({
 
   return (
     <>
-      <Disclaimer align="left" />
+      <Box ml="20px" mt="20px">
+        <Disclaimer align="left" />
+      </Box>
+
       {products.length > 0 ? (
         <Flex
           flexWrap="wrap"
@@ -63,10 +66,9 @@ function ProductLists({
                       <Text fontWeight="bold">{product.name}</Text>
                       <Text>THB {product.price.toLocaleString()}</Text>
                     </Box>
-
-                    <Box mt="5px">
-                      <AddToCart product={product} />
-                    </Box>
+                  </Box>
+                  <Box mt="5px">
+                    <AddToCart product={product} />
                   </Box>
                 </Box>
               </Box>

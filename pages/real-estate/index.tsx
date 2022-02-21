@@ -15,17 +15,18 @@ function RealEstateMain({ properties }: { properties: PropertyProps[] }) {
         title="Real Estate"
         description="A short description goes here."
       />
-      <Box bg="#e03d31" h="150px" w="100%">
+      <Box w="100%">
         <Box className="container">
           <SearchProperty />
         </Box>
       </Box>
 
-      <Box mt={{ base: '150px', md: '100px' }} className="container">
-        <Button>
+      <Box mt={{ base: '50px', md: '50px' }} className="container">
+        <Button colorScheme="red">
           <Link href="/real-estate/add-property">Add property</Link>
         </Button>
-        Real Estate App
+        <Box mt="20px">Real Estate App</Box>
+
         <PropertyLists properties={properties} />
       </Box>
     </>

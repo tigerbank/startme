@@ -24,6 +24,7 @@ function PriceRangeScreen({ range, setRange }: any) {
         min={0}
         max={50000}
         step={5000}
+        colorScheme="teal"
       >
         <RangeSliderTrack>
           <RangeSliderFilledTrack />

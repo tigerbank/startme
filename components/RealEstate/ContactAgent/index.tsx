@@ -59,7 +59,7 @@ function ContactAgent({ listId }: { listId: number }) {
   };
 
   return (
-    <Box bg="gray.200" p="30px">
+    <Box bg="gray.200" p="30px" borderRadius="lg">
       <Heading as="h3" fontSize="24px" mb="20px">
         Contact Agent
       </Heading>

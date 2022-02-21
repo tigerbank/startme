@@ -24,8 +24,9 @@ function Pagination({
               <List mr="10px" key={number}>
                 <Badge
                   onClick={() => paginate(number)}
+                  borderRadius="md"
                   variant="outline"
-                  colorScheme="teal"
+                  colorScheme="gray"
                   px="10px"
                   py="5px"
                   cursor="pointer"

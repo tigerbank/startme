@@ -44,8 +44,10 @@ function FilterProduct({ productFilter, setProductFilter }: any) {
         >
           {t('filter_product')}
         </Heading>
-        <Stack>
+        <Box borderEndRadius="lg">
           <Input
+            mb="20px"
+            bg="white"
             placeholder={t('product_name')}
             onKeyUp={(e) =>
               setProductFilter({
@@ -61,7 +63,7 @@ function FilterProduct({ productFilter, setProductFilter }: any) {
           />
 
           <PriceRangeScreen setRange={setRange} range={range} />
-        </Stack>
+        </Box>
       </>
     );
   };

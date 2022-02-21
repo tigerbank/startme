@@ -61,7 +61,7 @@ function Shop({ data }: { data: ProductProps[] }) {
           ]}
         />
 
-        <Flex flexDir={{ base: 'column', xl: 'row' }}>
+        <Flex flexDir={{ base: 'column', xl: 'row' }} gap="20px">
           <Box w={{ base: '100%', xl: '20%' }} mb="50px">
             <Box px={{ base: '30px', xl: '0px' }}>
               <FilterProduct

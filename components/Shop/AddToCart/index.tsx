@@ -33,7 +33,7 @@ function AddToCart({ product }: any) {
   };
 
   return (
-    <Button colorScheme="teal" onClick={addToCartHandler}>
+    <Button isFullWidth colorScheme="teal" onClick={addToCartHandler}>
       {t('add_to_cart')}
     </Button>
   );
