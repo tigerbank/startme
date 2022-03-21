@@ -49,3 +49,8 @@ h6 {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+svg {
+  background: #cecece;
+  margin-top: 80px;
+}
