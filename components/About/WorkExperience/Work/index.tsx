@@ -3,7 +3,6 @@ import { Box, Heading, ListItem, UnorderedList } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 
 const MotionBox = motion(Box);
-const MotionHeading = motion(Heading);
 
 function Work({ duration, company, position, description }: any) {
   return (

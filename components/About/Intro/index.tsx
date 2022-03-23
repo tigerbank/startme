@@ -2,7 +2,6 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 
 const marqueeVariants = {
@@ -43,14 +42,14 @@ function Intro() {
       <Text mt="30px">
         My name is{' '}
         <strong>
-          Teerasak Yukantapornpong "Bank" (ธีรศักดิ์ ยุคันตพรพงษ์)
+          Teerasak Yukantapornpong &quot;Bank&quot; (ธีรศักดิ์ ยุคันตพรพงษ์)
         </strong>
-        . I'm a <strong>Frontend Web Developer</strong> specializing in building
-        a website focused on user experience, page speed optimisation and the
-        best practices for Search engine optimisation. Use the modern tech such
-        as Nextjs, Typescript, Strapi, Chakra-ui and many more tools to build a
-        website. I have been working in the web development industry for the
-        past 10 years and looking to produce the quality work everyday.
+        . I&apos;m a <strong>Frontend Web Developer</strong> specializing in
+        building a website focused on user experience, page speed optimisation
+        and the best practices for Search engine optimisation. Use the modern
+        tech such as Nextjs, Typescript, Strapi, Chakra-ui and many more tools
+        to build a website. I have been working in the web development industry
+        for the past 10 years and looking to produce the quality work everyday.
       </Text>
     </Box>
   );
