@@ -44,26 +44,31 @@ const MotionText = motion(Text);
 
 function Skill() {
   const [displaySkill, setDisplaySkill] = useState(skill);
-  const [background, setBackground] = useState('#cecece');
+  const [background, setBackground] = useState('#f1c456');
+  const [color, setColor] = useState('#000');
 
   const handleClick = (e: any) => {
     const selectedCategory = e.target.innerHTML.toLowerCase();
     const filteredItem = skill.filter((item) => item.type === selectedCategory);
 
     if (selectedCategory === 'all') {
-      setBackground('#cecece');
+      setBackground('#f1c456');
+      setColor('#000');
     }
 
     if (selectedCategory === 'coding') {
-      setBackground('#dd843e');
+      setBackground('#b5d0cd');
+      setColor('#000');
     }
 
     if (selectedCategory === 'design') {
-      setBackground('#f1c456');
+      setBackground('#144c92');
+      setColor('#fff');
     }
 
     if (selectedCategory === 'other') {
-      setBackground('#f9d853');
+      setBackground('#ef8888');
+      setColor('#000');
     }
 
     setDisplaySkill(filteredItem);
@@ -75,8 +80,8 @@ function Skill() {
 
   return (
     <MotionBox
-      initial={{ backgroundColor: '#fff' }}
-      animate={{ backgroundColor: background }}
+      initial={{ backgroundColor: '#fff', color: '#000' }}
+      animate={{ backgroundColor: background, color: color }}
       transition={{ duration: 1 }}
       pt="100px"
       pb="100px"
@@ -84,9 +89,8 @@ function Skill() {
     >
       <Box w="90%" ml="auto" mr="auto">
         <MotionHeading
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.75 }}
+          initial={{ opacity: 0, x: 500 }}
+          whileInView={{ opacity: 1, x: 0 }}
           as="h3"
           fontSize={{ base: '60px', lg: '100px' }}
         >
@@ -95,11 +99,10 @@ function Skill() {
 
         <Box mt="50px" d="flex" gap="10px" flexWrap="wrap">
           {category.map((item) => (
-            <>
+            <Box key={item} d="flex" alignItems="center">
               <MotionText
-                key={item}
-                mr="10px"
-                fontSize="30px"
+                mr={{ base: '5px', md: '10px' }}
+                fontSize={{ base: '22px', md: '30px' }}
                 cursor="pointer"
                 onClick={handleClick}
                 whileHover={{
@@ -111,11 +114,14 @@ function Skill() {
                 {item}
               </MotionText>
               {item !== 'Other' && (
-                <Text mr="10px" fontSize="30px">
+                <Text
+                  mr={{ base: '5px', md: '10px' }}
+                  fontSize={{ base: '30px', md: '45px' }}
+                >
                   &middot;
                 </Text>
               )}
-            </>
+            </Box>
           ))}
         </Box>
 
@@ -128,6 +134,7 @@ function Skill() {
               variant="outline"
               color="black"
               backgroundColor="white"
+              whiteSpace="nowrap"
             >
               {item.name}
             </MotionTag>

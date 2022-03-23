@@ -25,7 +25,9 @@ function Work({ duration, company, position, description }: any) {
       </Box>
       <Box w={{ base: '100%', lg: '65%' }}>
         <Heading as="h4">{company}</Heading>
-        <Heading as="h5">{position}</Heading>
+        <Heading as="h5" mb="20px">
+          - {position}
+        </Heading>
         <UnorderedList>
           {description.map((item: any) => (
             <ListItem key={item}>{item}</ListItem>

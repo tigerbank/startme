@@ -17,7 +17,7 @@ function WorkExperience() {
         backgroundColor: '#2a3433',
         color: '#fff',
       }}
-      transition={{ delay: 1, duration: 1 }}
+      transition={{ delay: 3, duration: 1 }}
       pt="100px"
       py="100px"
     >
@@ -25,8 +25,9 @@ function WorkExperience() {
         <MotionHeading
           as="h2"
           fontSize={{ base: '60px', lg: '100px' }}
-          initial={{ y: 200, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
+          initial={{ opacity: 0, x: 500 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5 }}
         >
           work experience:
         </MotionHeading>

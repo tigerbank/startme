@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const MotionHeading = motion(Heading);
+const MotionText = motion(Text);
 
 const marqueeVariants = {
   animate: {
@@ -24,8 +25,8 @@ function Intro() {
       <MotionHeading
         as="h1"
         fontSize={{ base: '60px', lg: '100px' }}
-        initial={{ x: -500 }}
-        animate={{ x: 0 }}
+        initial={{ opacity: 0, x: -500 }}
+        whileInView={{ opacity: 1, x: 0 }}
       >
         about
       </MotionHeading>
@@ -39,7 +40,12 @@ function Intro() {
         Teerasak Yukantapornpong Teerasak Yukantapornpong Teerasak
         Yukantapornpong Teerasak Yukantapornpong
       </MotionHeading>
-      <Text mt="30px">
+      <MotionText
+        initial={{ opacity: 0, x: 500 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.75 }}
+        mt="30px"
+      >
         My name is{' '}
         <strong>
           Teerasak Yukantapornpong &quot;Bank&quot; (ธีรศักดิ์ ยุคันตพรพงษ์)
@@ -50,7 +56,7 @@ function Intro() {
         tech such as Nextjs, Typescript, Strapi, Chakra-ui and many more tools
         to build a website. I have been working in the web development industry
         for the past 10 years and looking to produce the quality work everyday.
-      </Text>
+      </MotionText>
     </Box>
   );
 }
