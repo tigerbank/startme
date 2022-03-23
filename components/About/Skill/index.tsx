@@ -89,7 +89,7 @@ function Skill() {
     >
       <Box w="90%" ml="auto" mr="auto">
         <MotionHeading
-          initial={{ opacity: 0, x: 500 }}
+          initial={{ opacity: 0, x: 200 }}
           whileInView={{ opacity: 1, x: 0 }}
           as="h3"
           fontSize={{ base: '60px', lg: '100px' }}

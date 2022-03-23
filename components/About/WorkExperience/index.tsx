@@ -25,7 +25,7 @@ function WorkExperience() {
         <MotionHeading
           as="h2"
           fontSize={{ base: '60px', lg: '100px' }}
-          initial={{ opacity: 0, x: 500 }}
+          initial={{ opacity: 0, x: 200 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.5 }}
         >

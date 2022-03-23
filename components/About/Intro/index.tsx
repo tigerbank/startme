@@ -25,7 +25,7 @@ function Intro() {
       <MotionHeading
         as="h1"
         fontSize={{ base: '60px', lg: '100px' }}
-        initial={{ opacity: 0, x: -500 }}
+        initial={{ opacity: 0, x: -200 }}
         whileInView={{ opacity: 1, x: 0 }}
       >
         about
@@ -41,7 +41,7 @@ function Intro() {
         Yukantapornpong Teerasak Yukantapornpong
       </MotionHeading>
       <MotionText
-        initial={{ opacity: 0, x: 500 }}
+        initial={{ opacity: 0, x: 100 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.75 }}
         mt="30px"
