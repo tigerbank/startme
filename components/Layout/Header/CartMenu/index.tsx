@@ -15,7 +15,7 @@ function CartMenu() {
       borderRight="solid 1px #b1b1b1"
       borderLeft="solid 1px #b1b1b1"
       py="10px"
-      px="25px"
+      px="15px"
     >
       <Link href="/shop/cart">
         <a>

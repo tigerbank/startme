@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Box, Heading, useBreakpointValue } from '@chakra-ui/react';
+import Image from 'next/image';
 import SubMenu from '@/components/Layout/Header/SubMenu';
 import CartMenu from '@/components/Layout/Header/CartMenu';
 import MobileNavigation from '@/components/Layout/Navigation/Mobile';
@@ -24,19 +25,21 @@ function Header({ nav }: { nav: NavProps[] }) {
         <Box
           className="container"
           d="flex"
-          justifyContent="space-between"
           alignItems="center"
+          justifyContent="space-between"
         >
-          <Heading
-            fontSize="20px"
-            as="h3"
-            fontFamily="Comfortaa, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif"
-          >
+          <Box mt="6px">
             <Link href="/">
-              <a>TEERASAKYUKAN</a>
+              <Image
+                src="/images/teerasak-logo.svg"
+                width="220"
+                height="18"
+                layout="intrinsic"
+                alt=""
+              />
             </Link>
-          </Heading>
+          </Box>
+
           {!isMobile && <SubMenu />}
 
           {/*If it is not [[...slug]], need to pass nav prop to page */}
