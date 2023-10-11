@@ -1,9 +1,9 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
-import React from 'react';
-import { motion } from 'framer-motion';
+import { Box, Heading, Text } from "@chakra-ui/react"
+import React from "react"
+import { motion } from "framer-motion"
 
-const MotionHeading = motion(Heading);
-const MotionText = motion(Text);
+const MotionHeading = motion(Heading)
+const MotionText = motion(Text)
 
 const marqueeVariants = {
   animate: {
@@ -11,20 +11,20 @@ const marqueeVariants = {
     transition: {
       x: {
         repeat: Infinity,
-        repeatType: 'loop',
+        repeatType: "loop",
         duration: 50,
-        ease: 'linear',
+        ease: "linear",
       },
     },
   },
-};
+}
 
 function Intro() {
   return (
     <Box width="90%" ml="auto" mr="auto" pb="50px">
       <MotionHeading
         as="h1"
-        fontSize={{ base: '60px', lg: '100px' }}
+        fontSize={{ base: "60px", lg: "100px" }}
         initial={{ opacity: 0, x: -200 }}
         whileInView={{ opacity: 1, x: 0 }}
       >
@@ -46,19 +46,20 @@ function Intro() {
         transition={{ delay: 0.75 }}
         mt="30px"
       >
-        My name is{' '}
+        My name is{" "}
         <strong>
           Teerasak Yukantapornpong &quot;Bank&quot; (ธีรศักดิ์ ยุคันตพรพงษ์)
         </strong>
         . I&apos;m a <strong>Frontend Web Developer</strong> specializing in
         building a website focused on user experience, page speed optimisation
         and the best practices for Search engine optimisation. Use the modern
-        tech such as Nextjs, Typescript, Strapi, Chakra-ui and many more tools
-        to build a website. I have been working in the web development industry
-        for the past 10 years and looking to produce the quality work everyday.
+        tech such as Nextjs, Typescript, Strapi, Tailwindcss, Chakra-ui and many
+        more tools to build a website. I have been working in the web
+        development industry for the past 10 years and looking to produce the
+        quality work everyday.
       </MotionText>
     </Box>
-  );
+  )
 }
 
-export default Intro;
+export default Intro

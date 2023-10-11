@@ -1,86 +1,88 @@
-import { Box, Tag, Heading, Text } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { Box, Tag, Heading, Text } from "@chakra-ui/react"
+import React, { useState } from "react"
+import { motion } from "framer-motion"
 
 const skill = [
-  { name: 'HTML5', type: 'coding' },
-  { name: 'CSS / CSS3', type: 'coding' },
-  { name: 'SCSS', type: 'coding' },
-  { name: 'Javascript', type: 'coding' },
-  { name: 'Typescript', type: 'coding' },
-  { name: 'ReactJs', type: 'coding' },
-  { name: 'NextJs', type: 'coding' },
-  { name: 'Strapi CMS', type: 'coding' },
-  { name: 'REST API', type: 'coding' },
-  { name: 'Framer motion', type: 'coding' },
-  { name: 'Chakra-ui', type: 'coding' },
-  { name: 'Storybook', type: 'coding' },
-  { name: 'Responsive Web Design', type: 'coding' },
-  { name: 'Wordpress', type: 'coding' },
-  { name: 'Wordpress theme development', type: 'coding' },
-  { name: 'SEO (Search engine optimization)', type: 'coding' },
-  { name: 'Vercel', type: 'coding' },
-  { name: 'Heroku', type: 'coding' },
-  { name: 'PHP', type: 'coding' },
-  { name: 'SVN', type: 'coding' },
-  { name: 'Git', type: 'coding' },
-  { name: 'Adobe Photoshop', type: 'design' },
-  { name: 'Photoshop Retouch', type: 'design' },
-  { name: 'Adobe Illustrator', type: 'design' },
-  { name: 'jQuery', type: 'coding' },
-  { name: 'Firebase', type: 'coding' },
-  { name: 'Google Adwords', type: 'other' },
-  { name: 'Google Analytics', type: 'other' },
-  { name: 'Microsoft Office', type: 'other' },
-  { name: 'Cypress', type: 'coding' },
-];
+  { name: "HTML5", type: "coding" },
+  { name: "CSS / CSS3", type: "coding" },
+  { name: "SCSS", type: "coding" },
+  { name: "Javascript", type: "coding" },
+  { name: "Typescript", type: "coding" },
+  { name: "ReactJs", type: "coding" },
+  { name: "NextJs", type: "coding" },
+  { name: "Strapi CMS", type: "coding" },
+  { name: "REST API", type: "coding" },
+  { name: "Framer motion", type: "coding" },
+  { name: "Tailwind", type: "coding" },
+  { name: "Chakra-ui", type: "coding" },
+  { name: "Storybook", type: "coding" },
+  { name: "Responsive Web Design", type: "coding" },
+  { name: "Wordpress", type: "coding" },
+  { name: "Wordpress theme development", type: "coding" },
+  { name: "SEO (Search engine optimization)", type: "coding" },
+  { name: "Vercel", type: "coding" },
+  { name: "Heroku", type: "coding" },
+  // { name: "PHP", type: "coding" },
+  // { name: "SVN", type: "coding" },
+  { name: "Git", type: "coding" },
+  { name: "Adobe Photoshop", type: "design" },
+  { name: "Figma", type: "design" },
+  // { name: "Photoshop Retouch", type: "design" },
+  // { name: "Adobe Illustrator", type: "design" },
+  { name: "jQuery", type: "coding" },
+  { name: "Firebase", type: "coding" },
+  { name: "Google Adwords", type: "other" },
+  { name: "Google Analytics", type: "other" },
+  // { name: "Microsoft Office", type: "other" },
+  { name: "Cypress", type: "coding" },
+]
 
-const category = ['All', 'Coding', 'Design', 'Other'];
+const category = ["All", "Coding", "Design", "Other"]
 
-const MotionBox = motion(Box);
-const MotionHeading = motion(Heading);
-const MotionTag = motion(Tag);
-const MotionText = motion(Text);
+const MotionBox: any = motion(Box)
+const MotionHeading: any = motion(Heading)
+const MotionTag: any = motion(Tag)
+const MotionText: any = motion(Text)
 
 function Skill() {
-  const [displaySkill, setDisplaySkill] = useState(skill);
-  const [background, setBackground] = useState('#f1c456');
-  const [color, setColor] = useState('#000');
+  const [displaySkill, setDisplaySkill] = useState(skill)
+  const [background, setBackground] = useState("#f1c456")
+  const [color, setColor] = useState("#000")
 
   const handleClick = (e: any) => {
-    const selectedCategory = e.target.innerHTML.toLowerCase();
-    const filteredItem = skill.filter((item) => item.type === selectedCategory);
+    const selectedCategory = e.target.innerHTML.toLowerCase()
+    const filteredItem = skill.filter((item) => item.type === selectedCategory)
 
-    if (selectedCategory === 'all') {
-      setBackground('#f1c456');
-      setColor('#000');
+    if (selectedCategory === "all") {
+      setBackground("#f1c456")
+      setColor("#000")
     }
 
-    if (selectedCategory === 'coding') {
-      setBackground('#b5d0cd');
-      setColor('#000');
+    if (selectedCategory === "coding") {
+      setBackground("#b5d0cd")
+      setColor("#000")
     }
 
-    if (selectedCategory === 'design') {
-      setBackground('#144c92');
-      setColor('#fff');
+    if (selectedCategory === "design") {
+      setBackground("#144c92")
+      setColor("#fff")
     }
 
-    if (selectedCategory === 'other') {
-      setBackground('#ef8888');
-      setColor('#000');
+    if (selectedCategory === "other") {
+      setBackground("#ef8888")
+      setColor("#000")
     }
 
-    setDisplaySkill(filteredItem);
+    setDisplaySkill(filteredItem)
 
-    if (selectedCategory === 'all') {
-      setDisplaySkill(skill);
+    if (selectedCategory === "all") {
+      setDisplaySkill(skill)
     }
-  };
+  }
 
   return (
     <MotionBox
-      initial={{ backgroundColor: '#fff', color: '#000' }}
+      initial={{ backgroundColor: "#fff", color: "#000" }}
       animate={{ backgroundColor: background, color: color }}
       transition={{ duration: 1 }}
       pt="100px"
@@ -92,7 +94,7 @@ function Skill() {
           initial={{ opacity: 0, x: 200 }}
           whileInView={{ opacity: 1, x: 0 }}
           as="h3"
-          fontSize={{ base: '60px', lg: '100px' }}
+          fontSize={{ base: "60px", lg: "100px" }}
         >
           &lt;skill /&gt;
         </MotionHeading>
@@ -101,8 +103,8 @@ function Skill() {
           {category.map((item) => (
             <Box key={item} d="flex" alignItems="center">
               <MotionText
-                mr={{ base: '5px', md: '10px' }}
-                fontSize={{ base: '22px', md: '30px' }}
+                mr={{ base: "5px", md: "10px" }}
+                fontSize={{ base: "22px", md: "30px" }}
                 cursor="pointer"
                 onClick={handleClick}
                 whileHover={{
@@ -113,10 +115,10 @@ function Skill() {
               >
                 {item}
               </MotionText>
-              {item !== 'Other' && (
+              {item !== "Other" && (
                 <Text
-                  mr={{ base: '5px', md: '10px' }}
-                  fontSize={{ base: '30px', md: '45px' }}
+                  mr={{ base: "5px", md: "10px" }}
+                  fontSize={{ base: "30px", md: "45px" }}
                 >
                   &middot;
                 </Text>
@@ -142,7 +144,7 @@ function Skill() {
         </Box>
       </Box>
     </MotionBox>
-  );
+  )
 }
 
-export default Skill;
+export default Skill
