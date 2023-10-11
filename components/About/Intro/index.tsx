@@ -55,8 +55,8 @@ function Intro() {
         best practices for Search engine optimisation. Use the modern tech such
         as Nextjs, Typescript, Strapi, Tailwindcss, Chakra-ui and many more
         tools to build a website. I have been working in the web development
-        industry for the past 10 years and looking to produce the quality work
-        everyday.
+        industry for the past 10 years and looking to produce the quality
+        work everyday.
       </MotionText>
     </Box>
   )
