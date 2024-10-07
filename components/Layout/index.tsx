@@ -24,7 +24,7 @@ function Layout({
         </Box>
         <Footer /> */}
         <div className="flex justify-center items-center h-screen">
-          "Be yourself; everyone else is already taken." — Oscar Wilde
+          &quot;Be yourself; everyone else is already taken.&quot; — Oscar Wilde
         </div>
       </Box>
     </>
