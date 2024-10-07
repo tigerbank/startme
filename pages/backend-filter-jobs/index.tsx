@@ -1,60 +1,60 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Button } from '@chakra-ui/react';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { axiosJobsData, getGlobalData } from '@/util/api';
-import JobList from '@/components/Jobs/JobList';
-import Loading from '@/components/Common/Loading/Index';
-import JobFilterBackend from '@/components/Jobs/JobFilterBackend';
-import DefaultTemplate from '@/components/templates/DefaultTemplate';
+import React, { useEffect, useState } from "react"
+import { Box, Button } from "@chakra-ui/react"
+import { serverSideTranslations } from "next-i18next/serverSideTranslations"
+import { axiosJobsData, getGlobalData } from "@/util/api"
+import JobList from "@/components/Jobs/JobList"
+import Loading from "@/components/Common/Loading/Index"
+import JobFilterBackend from "@/components/Jobs/JobFilterBackend"
+import DefaultTemplate from "@/components/templates/DefaultTemplate"
 
 function BackendJobs() {
-  const [loading, setLoading] = useState(false);
-  const [jobs, setJobs] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false)
+  const [jobs, setJobs] = useState<any[]>([])
 
   const [filterJobs, setFilterJobs] = useState({
-    s: '',
-    company: '',
-    location: '',
+    s: "",
+    company: "",
+    location: "",
     page: 1,
-  });
-  const [lastPage, setLastPage] = useState(false);
-  const perPage = 4;
+  })
+  const [lastPage, setLastPage] = useState(false)
+  const perPage = 4
 
   useEffect(() => {
-    let identifier: any = null;
+    let identifier: any = null
     const fetchJobs = async () => {
-      setLoading(true);
-      setLastPage(false);
+      setLoading(true)
+      setLastPage(false)
 
       //to prevent API request for every key stroke
       identifier = setTimeout(async () => {
-        const data = await axiosJobsData(filterJobs, perPage);
-        setJobs([...jobs, ...data]);
+        const data = await axiosJobsData(filterJobs, perPage)
+        setJobs([...jobs, ...data])
 
         if (data.length === 0 || data.length < perPage) {
-          setLastPage(true);
+          setLastPage(true)
         }
-        setLoading(false);
-      }, 1000);
+        setLoading(false)
+      }, 1000)
 
-      return identifier;
-    };
-    fetchJobs();
+      return identifier
+    }
+    fetchJobs()
     return () => {
-      clearTimeout(identifier);
-    };
-  }, [filterJobs]);
+      clearTimeout(identifier)
+    }
+  }, [filterJobs])
 
   const loadMore = () => {
     setFilterJobs({
       ...filterJobs,
       page: filterJobs.page + 1,
-    });
-  };
+    })
+  }
 
   return (
     <DefaultTemplate title="Backend job filter" description="description">
-      <Box d={{ base: 'block', md: 'flex' }} justifyContent="space-between">
+      {/* <Box d={{ base: 'block', md: 'flex' }} justifyContent="space-between">
         <Box width={{ base: '100%', md: '30%' }} mr={{ base: 0, md: '30px' }}>
           <JobFilterBackend
             filterJobs={filterJobs}
@@ -80,21 +80,22 @@ function BackendJobs() {
             {loading && <Loading />}
           </>
         </Box>
-      </Box>
+      </Box> */}
+      -
     </DefaultTemplate>
-  );
+  )
 }
 
 export async function getStaticProps({ locale }: { locale: string }) {
-  const global = await getGlobalData(locale);
+  const global = await getGlobalData(locale)
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...(await serverSideTranslations(locale, ["common"])),
       global,
     },
     revalidate: 10,
-  };
+  }
 }
 
-export default BackendJobs;
+export default BackendJobs

@@ -1,43 +1,43 @@
-import '../styles/globals.css';
-import '../styles/slick-theme.css';
-import type { AppProps } from 'next/app';
-import { ChakraProvider, extendTheme } from '@chakra-ui/react';
-import NextNprogress from 'nextjs-progressbar';
-import { Box } from '@chakra-ui/layout';
-import { createBreakpoints } from '@chakra-ui/theme-tools';
-import { appWithTranslation } from 'next-i18next';
-import Script from 'next/script';
-import { DefaultSeo } from 'next-seo';
-import { StoreProvider } from '@/util/Store';
-import Layout from '@/components/Layout';
+import "../styles/globals.css"
+import "../styles/slick-theme.css"
+import type { AppProps } from "next/app"
+import { ChakraProvider, extendTheme } from "@chakra-ui/react"
+import NextNprogress from "nextjs-progressbar"
+import { Box } from "@chakra-ui/layout"
+import { createBreakpoints } from "@chakra-ui/theme-tools"
+import { appWithTranslation } from "next-i18next"
+import Script from "next/script"
+import { DefaultSeo } from "next-seo"
+import { StoreProvider } from "@/util/Store"
+import Layout from "@/components/Layout"
 
 const breakpoints = createBreakpoints({
-  sm: '320px',
-  md: '768px',
-  lg: '960px',
-  xl: '1200px',
-  '2xl': '1536px',
-});
+  sm: "320px",
+  md: "768px",
+  lg: "960px",
+  xl: "1200px",
+  "2xl": "1536px",
+})
 
 const theme = extendTheme({
   fonts: {
-    heading: 'IBM Plex Sans Thai, sans-serif',
-    body: 'IBM Plex Sans Thai, sans-serif',
+    heading: "IBM Plex Sans Thai, sans-serif",
+    body: "IBM Plex Sans Thai, sans-serif",
   },
 
   colors: {
     main: {
-      gray: '#f1f1f1',
+      gray: "#f1f1f1",
     },
   },
   breakpoints,
-});
+})
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const env = process.env.NODE_ENV;
+  const env = process.env.NODE_ENV
   return (
     <>
-      {env === 'production' && (
+      {/* {env === 'production' && (
         <>
           <Script
             strategy="lazyOnload"
@@ -78,9 +78,12 @@ function MyApp({ Component, pageProps }: AppProps) {
             </Layout>
           </Box>
         </ChakraProvider>
-      </StoreProvider>
+      </StoreProvider> */}
+      <div className="flex justify-center items-center h-screen">
+        &quot;Be yourself; everyone else is already taken.&quot; — Oscar Wilde
+      </div>
     </>
-  );
+  )
 }
 
-export default appWithTranslation(MyApp);
+export default appWithTranslation(MyApp)
